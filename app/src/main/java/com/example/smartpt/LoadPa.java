@@ -41,8 +41,10 @@ public class LoadPa extends AppCompatActivity {
     private Handler h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_pa);
+        getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
         h=new Handler();
         level= getIntent().getStringExtra("level");

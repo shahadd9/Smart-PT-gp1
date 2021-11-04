@@ -33,6 +33,7 @@ public class Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment);
+
         equBtn= findViewById(R.id.equBtn);
         dmbl=findViewById(R.id.dumbble);
         barbell=findViewById(R.id.barbell);
