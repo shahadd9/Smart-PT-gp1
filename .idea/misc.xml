@@ -9,6 +9,7 @@
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/activity_equipment.xml" value="0.2234375" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/activity_fitness_level.xml" value="0.2234375" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/activity_plan_view.xml" value="0.264" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/activity_training_days.xml" value="0.264" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/activity_update_profile.xml" value="0.264" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/db_dialog.xml" value="0.1" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-dcdb439f36ffdb19f978bf4911f5f9fa3442404c/app/src/main/res/layout/gender_dialog.xml" value="0.1" />
@@ -28,15 +29,10 @@
         <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_training_place.xml" value="0.2" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/drawable/background.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/drawable/weekly_textstyle.xml" value="0.2703125" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_goal.xml" value="0.1598731884057971" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_plan_view.xml" value="0.264" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_training_days.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

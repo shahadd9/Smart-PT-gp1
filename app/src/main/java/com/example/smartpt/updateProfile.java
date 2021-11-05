@@ -73,11 +73,11 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         //eWeight.setText();
         for(int i = 0; i<goal.size();i++){
 
-            goalString=goalString+","+ goal.get(i);
+            goalString=goalString+" "+ goal.get(i);
         }
         for(int i = 0; i<tDays.size();i++){
 
-            tDaysString=tDaysString+","+ tDays.get(i);
+            tDaysString=tDaysString+" "+ tDays.get(i);
         }
         eFocusArea.setText(goalString);
         //eReminder.setText();

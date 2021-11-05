@@ -80,7 +80,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) dmbl.getText());
                 }
-                activate();
+//                activate();
             }
         });
         barbell.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +95,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) barbell.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -111,7 +111,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) ball.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -127,7 +127,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) jumpR.getText());
                 }
-                activate();
+//                activate();
             }
         });
         ktl.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +142,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) ktl.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -158,7 +158,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) pullup.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -174,7 +174,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) btlR.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -190,7 +190,7 @@ public class Equipment extends AppCompatActivity {
                     count--;
                     equpmtList.remove((String) band.getText());
                 }
-                activate();
+//                activate();
             }
         });
 
@@ -213,6 +213,23 @@ public class Equipment extends AppCompatActivity {
                     //show.setText(stringBuilder.toString());
                     //show.setText("you must choose one at least");
                     //show.setEnabled(false);
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("equpmtList",0);
+                    db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                        }
+                    });
+                    goNext();
                 }
                 else {
 
@@ -247,19 +264,19 @@ public class Equipment extends AppCompatActivity {
         intent.putExtra("equpmtList",equpmtList);
         startActivity(intent);
     }
-    public void activate(){
-
-        if(count>0){
-
-            equBtn.setBackgroundColor(Color.parseColor("#48D0FE"));
-            //t.setText(equpmtList.toString());
-
-        }
-        else{
-            equBtn.setBackgroundColor(Color.parseColor("#D8D4D4"));
-            //t.setText(equpmtList.toString());
-
-        }
-
-    }
+//    public void activate(){
+//
+//        if(count>0){
+//
+//            equBtn.setBackgroundColor(Color.parseColor("#48D0FE"));
+//            //t.setText(equpmtList.toString());
+//
+//        }
+//        else{
+//            equBtn.setBackgroundColor(Color.parseColor("#D8D4D4"));
+//            //t.setText(equpmtList.toString());
+//
+//        }
+//
+//    }
 }
