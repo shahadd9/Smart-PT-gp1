@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Formatter;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -43,6 +46,30 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        (navigation bar)
+//        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
+//        bottomNavigationView.setSelectedItemId(R.id.profile);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext(),PlanView.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.profile:
+//                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                      case R.id.progress:
+//                          startActivity(new Intent(getApplicationContext(),progress.class));
+//                          overridePendingTransition(0,0);
+//                          return true;
+//                }
+//                return false;
+//            }
+//        });
+
 
         eName=(TextView) findViewById(R.id.editName);
         eGender=(TextView) findViewById(R.id.editGender);
