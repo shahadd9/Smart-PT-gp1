@@ -10,5 +10,7 @@
     <color name="orange1">#fc9d67</color>
     <color name="yell">#fdffb0</color>
     <color name="textYell">#fedf26</color>
+    <color name="butt">#f1f3fa</color>
+    <color name="textbut">#d1d4dd</color>
 
 </resources>

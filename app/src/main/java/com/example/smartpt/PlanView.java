@@ -111,22 +111,35 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#24c8fe"));
+
                 buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
 
                for (int i=0;i<days.size();i++){
@@ -155,23 +168,36 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#24c8fe"));
+
                 buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
 
 
@@ -202,22 +228,33 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#24c8fe"));
                 buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+               
+                
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
 
                 for (int i=0;i<days.size();i++){
@@ -246,22 +283,34 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonTue.setBackgroundColor(Color.parseColor("#24c8fe"));
                 buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
                 for (int i=0;i<days.size();i++){
                     String day =days.get(i);
@@ -291,23 +340,36 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonWed.setBackgroundColor(Color.parseColor("#24c8fe"));
+
                 buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
                 for (int i=0;i<days.size();i++){
                     String day =days.get(i);
@@ -336,22 +398,35 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonThu.setBackgroundColor(Color.parseColor("#24c8fe"));
+
                 buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setBackground(getDrawable(R.drawable.background));
+                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonFri.setTextColor(getResources().getColor(R.color.black));
+
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonFri.setTextColor( Color.parseColor("#696969"));
+
 
                 for (int i=0;i<days.size();i++){
                     String day =days.get(i);
@@ -380,21 +455,34 @@ private ArrayList<String> days=TrainingDays.gettDays();
             @Override
             public void onClick(View v) {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackground(getDrawable(R.drawable.background));
-                buttonSun.setBackground(getDrawable(R.drawable.background));
-                buttonMon.setBackground(getDrawable(R.drawable.background));
-                buttonTue.setBackground(getDrawable(R.drawable.background));
-                buttonWed.setBackground(getDrawable(R.drawable.background));
-                buttonThu.setBackground(getDrawable(R.drawable.background));
-                buttonFri.setBackground(getDrawable(R.drawable.button_color));
+                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+
+                buttonFri.setBackgroundColor(Color.parseColor("#24c8fe"));
+
                 buttonFri.setTextColor(getResources().getColor(R.color.white));
 
-                buttonMon.setTextColor(getResources().getColor(R.color.black));
-                buttonSat.setTextColor(getResources().getColor(R.color.black));
-                buttonSun.setTextColor(getResources().getColor(R.color.black));
-                buttonTue.setTextColor(getResources().getColor(R.color.black));
-                buttonWed.setTextColor(getResources().getColor(R.color.black));
-                buttonThu.setTextColor(getResources().getColor(R.color.black));
+                buttonMon.setTextColor( Color.parseColor("#696969"));
+
+                buttonSat.setTextColor( Color.parseColor("#696969"));
+
+                buttonSun.setTextColor( Color.parseColor("#696969"));
+
+                buttonTue.setTextColor( Color.parseColor("#696969"));
+
+                buttonWed.setTextColor( Color.parseColor("#696969"));
+
+                buttonThu.setTextColor( Color.parseColor("#696969"));
+
 
                 for (int i=0;i<days.size();i++){
                     String day =days.get(i);
