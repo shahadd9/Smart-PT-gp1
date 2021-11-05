@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -28,6 +29,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -43,20 +46,28 @@ public class PlanView extends AppCompatActivity {
     private Button buttonALeart;
 
     private TextView TextviewEx1;
+    private TextView TextviewEx2;
+    private TextView TextviewEx3;
+
 
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
     private DocumentReference ex1=db.collection("Exercise").document("9kfu4LzQIe8ZF9PxHTur");
+    private DocumentReference ex2=db.collection("Exercise").document("2");
+    private DocumentReference ex3=db.collection("Exercise").document("3");
 
     private static final String TAG = "PlanView";
 
     private static final String KEY_Name = "name";
     private static final String KEY_TARGET = "targetedMuscle";
 
-
+   // private TrainingDays tDays =((TrainingDays)getApplicationContext());
+    //private ArrayList<String> tDay=tDays.gettDays();
+   // private TrainingDays trainingDays=new TrainingDays();
+//List<String> testd=new ArrayList<>();
     //DatabaseRefernce databaseRefernce;
     //private FirebaseFirestore db;
 
-
+private ArrayList<String> days=TrainingDays.gettDays();
 
 
 
@@ -64,13 +75,20 @@ public class PlanView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
-        LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
 
+        LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
         FrameLayout alertFrame = (FrameLayout) findViewById(R.id.alertFrame);
 
+
+        //trainingDays=new TrainingDays();
+        //ArrayList<String> days= trainingDays.gettDays();
+        //int len=days.size();
         //ex
         TextviewEx1 = findViewById(R.id.textViewex1);
+        TextviewEx2 = findViewById(R.id.textViewex2);
+        TextviewEx3 = findViewById(R.id.textViewex3);
+
 
 
         buttonALeart.setOnClickListener(new View.OnClickListener() {
@@ -111,17 +129,22 @@ public class PlanView extends AppCompatActivity {
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
 
-                if (mon.getText().equals("")) {
+               for (int i=0;i<days.size();i++){
+                   String day =days.get(i);
+                if (day.contains("Mon")) {
                     mon.setText("My Exercises for today");
                     exFrame.setVisibility(View.VISIBLE);
-                    loadEx(v);
-
+                    loadEx1(v);
+                    loadEx2(v);
+                    loadEx3(v);
+                    break;
                 } else {
+
                     mon.setText("There is no exercises for today");
                     exFrame.setVisibility(View.INVISIBLE);
-
-
                 }
+
+            }// end for
 
             }
         });
@@ -150,14 +173,26 @@ public class PlanView extends AppCompatActivity {
                 buttonThu.setTextColor(getResources().getColor(R.color.black));
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
 
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Sat")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
+
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -184,14 +219,25 @@ public class PlanView extends AppCompatActivity {
                 buttonThu.setTextColor(getResources().getColor(R.color.black));
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
 
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Sun")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
+
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -217,14 +263,24 @@ public class PlanView extends AppCompatActivity {
                 buttonThu.setTextColor(getResources().getColor(R.color.black));
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Tue")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
 
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -253,14 +309,24 @@ public class PlanView extends AppCompatActivity {
                 buttonThu.setTextColor(getResources().getColor(R.color.black));
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Wed")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
 
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -287,13 +353,24 @@ public class PlanView extends AppCompatActivity {
                 buttonWed.setTextColor(getResources().getColor(R.color.black));
                 buttonFri.setTextColor(getResources().getColor(R.color.black));
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Thu")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
+
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -319,14 +396,24 @@ public class PlanView extends AppCompatActivity {
                 buttonWed.setTextColor(getResources().getColor(R.color.black));
                 buttonThu.setTextColor(getResources().getColor(R.color.black));
 
+                for (int i=0;i<days.size();i++){
+                    String day =days.get(i);
+                    if (day.contains("Fri")) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                        break;
 
-                if (mon.getText().equals("")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
-                } else {
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                    } else {
+
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                }// end for
+
 
             }
         });
@@ -335,7 +422,7 @@ public class PlanView extends AppCompatActivity {
 
 //               Data Exercise
 
-    public void loadEx(View v){
+    public void loadEx1(View v){
         ex1.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -360,8 +447,67 @@ public class PlanView extends AppCompatActivity {
 
                     }
                 });
+
+
     }
 
+
+    public void loadEx2(View v) {
+        ex2.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String name = documentSnapshot.getString(KEY_Name);
+                            String target = documentSnapshot.getString(KEY_TARGET);
+
+                            TextviewEx2.setText(name + "\n" + "Targe Muscle: " + target);
+
+                        } else {
+                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+
+                    }
+                });
+    }
+
+
+        public void loadEx3(View v){
+            ex3.get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()){
+                                String name =documentSnapshot.getString(KEY_Name);
+                                String target=documentSnapshot.getString(KEY_TARGET);
+
+                                TextviewEx3.setText(name+"\n"+"Targe Muscle: "+target);
+
+                            }else {
+                                Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, e.toString());
+
+                        }
+                    });
+
+
+        }
 
 
 

@@ -22,7 +22,7 @@ public class TrainingDays extends AppCompatActivity {
     private int thurCount;
     private int friCount;
     private int satCount;
-    private ArrayList<String> tDays;
+    private static ArrayList<String> tDays;
 //    private TextView days;
     private TextView tip;
     private String txt;
@@ -200,4 +200,8 @@ public class TrainingDays extends AppCompatActivity {
         }
 
     }
+    public static ArrayList<String> gettDays(){
+        return tDays;
+    }
+
 }
