@@ -33,7 +33,7 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder, eTrainingDays;
     Button updateProfile;
     private FirebaseFirestore db;
-    private int place;  //0 for home 1 for gym
+    private int place=0;  //0 for home 1 for gym
     private String level;
     private ArrayList<String> goal;
     private ArrayList<String> tDays;
@@ -45,30 +45,33 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+        level="";
+        equpmtList= new ArrayList<>();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        (navigation bar)
-//        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
-//        bottomNavigationView.setSelectedItemId(R.id.profile);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.home:
-//                        startActivity(new Intent(getApplicationContext(),PlanView.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.profile:
-//                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+        //(navigation bar)
+        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),PlanView.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
+                        overridePendingTransition(0,0);
+                        return true;
 //                      case R.id.progress:
 //                          startActivity(new Intent(getApplicationContext(),progress.class));
 //                          overridePendingTransition(0,0);
 //                          return true;
-//                }
-//                return false;
-//            }
-//        });
+                }
+                return false;
+            }
+        });
 
 
         eName=(TextView) findViewById(R.id.editName);

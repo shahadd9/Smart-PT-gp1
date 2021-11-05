@@ -47,6 +47,8 @@ public class TrainingDays extends AppCompatActivity {
         setContentView(R.layout.activity_training_days);
 //        tLbl=findViewById(R.id.trainingDayslbl);
 //        lbl=findViewById(R.id.days);
+        sunCount=monCount=tueCount=wedCount=thurCount=friCount=satCount=0;
+        txt="";
         sun= findViewById(R.id.sunBtn);
         mon=findViewById(R.id.monBtn);
         tue=findViewById(R.id.tueBtn);
@@ -234,7 +236,7 @@ public class TrainingDays extends AppCompatActivity {
 
     }
 
-    public static ArrayList<String> gettDays(){
+    public static  ArrayList<String> gettDays(){
         return tDays;
     }
 

@@ -30,7 +30,7 @@
         <activity
             android:name=".TrainingPlace"
             android:exported="true"
-            android:parentActivityName=".FitnessLevel"
+            android:parentActivityName=".TrainingDays"
             android:label="@string/Profile"
 
             />

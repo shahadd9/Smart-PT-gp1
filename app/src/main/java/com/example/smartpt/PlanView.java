@@ -89,11 +89,11 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         overridePendingTransition(0,0);
                         return true;
 //                     (update profile activity)
-//                    case R.id.profile:
-//                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
+                        overridePendingTransition(0,0);
+                        return true;
+//
 //                    case R.id.progress:
 //                        startActivity(new Intent(getApplicationContext(),progress.class));
 //                        overridePendingTransition(0,0);
