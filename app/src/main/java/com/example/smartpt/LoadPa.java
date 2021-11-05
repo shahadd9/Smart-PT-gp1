@@ -55,7 +55,7 @@ public class LoadPa extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         rotateAnimation();
-        add();
+        //add();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -90,7 +90,7 @@ public class LoadPa extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
             }
         });
 
