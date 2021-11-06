@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/First3Fragment"
-        android:name="com.example.smartpt.First3Fragment"
+        android:name="com.example.smartpt.First4Fragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first3">
 

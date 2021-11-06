@@ -1,5 +1,8 @@
 package com.example.smartpt;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +29,9 @@ public class First2Fragment extends Fragment {
 
     }
 
-//    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
 //        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -36,7 +39,7 @@ public class First2Fragment extends Fragment {
 //                        .navigate(R.id.action_First2Fragment_to_Second2Fragment);
 //            }
 //        });
-//    }
+    }
 
     @Override
     public void onDestroyView() {

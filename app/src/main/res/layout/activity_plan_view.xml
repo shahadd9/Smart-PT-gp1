@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlanView">
+
+    <FrameLayout
+        android:id="@+id/alertFrame"
+
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="0dp"
+
+        android:layout_marginEnd="0dp"
+        android:background="@color/yell">
+
+
+        <TextView
+            android:id="@+id/alertText"
+
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:text="Don't forget to a warm up before exercises and cool down after"
+            android:textColor="@color/textYell"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/alertButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="360dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="44dp"
+            android:backgroundTint="#fdffb0"
+            android:text="X"
+            android:textColor="@color/black"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="7dp"
+
+            app:srcCompat="@drawable/waningpng" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/WeeklyFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="198dp"
+        android:layout_below="@+id/alertFrame"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="422dp"
+        android:background="@drawable/weekly_textstyle"
+        android:weightSum="10">
+
+
+        <TextView
+            android:id="@+id/WeeklytextView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="148dp"
+            android:padding="15dp"
+            android:text="Weekly Active Days"
+            android:textColor="@color/orange1"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sessionText"
+            android:layout_width="83dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="148dp"
+            android:text="0/Session"
+            android:textColor="@color/orange1"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:translationZ="100dip" />
+
+        <Button
+            android:id="@+id/buttonSat"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Sat"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonSun"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Sun"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonMon"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="109dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Mon"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonThu"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="268dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="267dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Thu"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonTue"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="162dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Tue"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonWed"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="215dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Wed"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonFri"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="321dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="329dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#f1f3fa"
+            android:text="Fri"
+            android:textAllCaps="false"
+            android:textColor="#696969"
+            android:textSize="8dp"
+
+
+            android:textStyle="bold" />
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/ExercisesView"
+        android:layout_width="388dp"
+        android:layout_height="match_parent"
+
+        android:layout_above="@+id/ExFrame"
+        android:layout_below="@+id/WeeklyFrame"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-388dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="330dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ExFrame"
+        android:layout_width="388dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/WeeklyFrame"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-300dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="102dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="67dp">
+
+            <ImageView
+                android:id="@+id/imageViewex1"
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ex1" />
+
+            <TextView
+                android:id="@+id/textViewex1"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/start1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/imageViewex2"
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ex2" />
+
+            <TextView
+                android:id="@+id/textViewex2"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/start2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="67dp">
+
+            <ImageView
+                android:id="@+id/imageViewex3"
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ex3" />
+
+            <TextView
+                android:id="@+id/textViewex3"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/start3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@drawable/selector"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/nav_menu" />
+
+</RelativeLayout>

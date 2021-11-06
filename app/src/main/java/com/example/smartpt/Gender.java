@@ -26,8 +26,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.example.smartpt.databinding.ActivityGenderBinding;
+//
+//import com.example.smartpt.databinding.ActivityGenderBinding;
 
 public class Gender extends AppCompatActivity {
 

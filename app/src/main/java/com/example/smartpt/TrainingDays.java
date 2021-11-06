@@ -1,15 +1,25 @@
 package com.example.smartpt;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TrainingDays extends AppCompatActivity {
     private Button sun,mon,tue,wed,thur,fri,sat,next;
@@ -22,10 +32,12 @@ public class TrainingDays extends AppCompatActivity {
     private int thurCount;
     private int friCount;
     private int satCount;
-    private ArrayList<String> tDays;
+    private static ArrayList<String> tDays;
 //    private TextView days;
     private TextView tip;
     private String txt;
+    private FirebaseFirestore db;
+    private String userIp;
 //    private boolean isChoose;
     private String level;
     private ArrayList<String> goal;
@@ -35,6 +47,8 @@ public class TrainingDays extends AppCompatActivity {
         setContentView(R.layout.activity_training_days);
 //        tLbl=findViewById(R.id.trainingDayslbl);
 //        lbl=findViewById(R.id.days);
+        sunCount=monCount=tueCount=wedCount=thurCount=friCount=satCount=0;
+        txt="";
         sun= findViewById(R.id.sunBtn);
         mon=findViewById(R.id.monBtn);
         tue=findViewById(R.id.tueBtn);
@@ -45,6 +59,10 @@ public class TrainingDays extends AppCompatActivity {
 //        days= findViewById(R.id.days);
         next= findViewById(R.id.next);
         sunCount=0;
+        db = FirebaseFirestore.getInstance();
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
 //        isChoose=false;
         tDays= new ArrayList<>();
 //        count=0;
@@ -161,6 +179,23 @@ public class TrainingDays extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(tDays.size()>=2){
+
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("trainingDays",tDays.toString());
+                    db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                        }
+                    });
                     goEqupment();
                 }
             }
@@ -200,4 +235,9 @@ public class TrainingDays extends AppCompatActivity {
         }
 
     }
+
+    public static  ArrayList<String> gettDays(){
+        return tDays;
+    }
+
 }

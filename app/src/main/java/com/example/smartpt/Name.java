@@ -25,7 +25,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.smartpt.databinding.ActivityNameBinding;
+//import com.example.smartpt.databinding.ActivityNameBinding;
 
 public class Name extends AppCompatActivity {
 

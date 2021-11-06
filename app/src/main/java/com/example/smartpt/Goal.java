@@ -173,7 +173,7 @@ public class Goal extends AppCompatActivity {
         });
 
         activate();
-        //db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,22 +190,22 @@ public class Goal extends AppCompatActivity {
                 }
                 else {
                     show.setText("");
-//                    Map<String,Object> user = new HashMap<>();
-//                    user.put("focusArea",result.toString());
-//                    db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-//                            }
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-//
-//                        }
-//                    });
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("focusArea",focusArea.toString());
+                    db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                        }
+                    });
 
                     goFittnesLevel();
                 }

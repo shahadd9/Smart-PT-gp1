@@ -22,7 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.smartpt.databinding.ActivityHeightandWeightBinding;
+//import com.example.smartpt.databinding.ActivityHeightandWeightBinding;
 
 import com.kevalpatel2106.rulerpicker.RulerValuePicker;
 import com.kevalpatel2106.rulerpicker.RulerValuePickerListener;

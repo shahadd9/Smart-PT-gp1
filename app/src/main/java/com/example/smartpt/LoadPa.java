@@ -2,7 +2,9 @@ package com.example.smartpt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -36,11 +38,15 @@ public class LoadPa extends AppCompatActivity {
     private ArrayList<String> tDays;
     private ArrayList<String> equpmtList;
     private String userIp;
+    private Handler h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_pa);
+        getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
+        h=new Handler();
         level= getIntent().getStringExtra("level");
         goal=getIntent().getStringArrayListExtra("goal");
         tDays=getIntent().getStringArrayListExtra("tDays");
@@ -49,7 +55,20 @@ public class LoadPa extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         rotateAnimation();
-        add();
+        //add();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(LoadPa.this, PlanView.class);
+                i.putExtra("tDays",tDays);
+                i.putExtra("goal",goal);
+                i.putExtra("level",level);
+                i.putExtra("place",place);
+                i.putExtra("equpmtList",equpmtList);
+                startActivity(i);
+                 finish();
+            }
+        }, 2500);
     }
 
     private void add() {
@@ -71,7 +90,7 @@ public class LoadPa extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
             }
         });
 

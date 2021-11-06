@@ -18,7 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.smartpt.databinding.ActivityHomeBinding;
+//import com.example.smartpt.databinding.ActivityHomeBinding;
 
 public class Home extends AppCompatActivity {
     private TextView textWelcome;
