@@ -256,7 +256,7 @@ public static ArrayList<String> equpmtList;
         });
     }
     public void goNext(){
-        Intent intent= new Intent(this, LoadPa.class);
+        Intent intent= new Intent(this, TrainingTime.class);
 //        intent.putExtra("tDays",tDays);
 //        intent.putExtra("goal",goal);
 //        intent.putExtra("level",level);

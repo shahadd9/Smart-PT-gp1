@@ -13,41 +13,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".TrainingDuration"
+            android:exported="true" />
+        <activity
+            android:name=".TrainingTime"
+            android:exported="true" />
+        <activity
             android:name=".HeightandWeight"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Birthdate"
-             />
+            android:parentActivityName=".Birthdate" />
         <activity
             android:name=".PlanView"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".updateProfile"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Birthdate"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Gender"
-             />
+            android:parentActivityName=".Gender" />
         <activity
             android:name=".Gender"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Name"
-             />
+            android:parentActivityName=".Name" />
         <activity
             android:name=".Name"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Home"
-             />
+            android:parentActivityName=".Home" />
         <activity
             android:name=".LoadPa"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Equipment"
             android:exported="true"
@@ -84,7 +83,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

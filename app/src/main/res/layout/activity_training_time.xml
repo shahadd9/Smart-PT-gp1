@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrainingTime">
+
+    <TextView
+        android:id="@+id/timeLbl"
+        android:layout_width="264dp"
+        android:layout_height="40dp"
+        android:text="What time that suit you?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <RadioGroup
+        android:layout_width="278dp"
+        android:layout_height="211dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/mor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Morning"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:checked="true"
+            android:onClick="rntn"
+            />
+
+        <RadioButton
+            android:id="@+id/noon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Afternoon"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:onClick="rntn"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/ev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Evening"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:onClick="rntn"
+
+
+            />
+    </RadioGroup>
+    <Button
+        android:id="@+id/time"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#48D0FE"
+        android:text="Next"
+        android:textSize="20sp"
+        app:cornerRadius="6sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
