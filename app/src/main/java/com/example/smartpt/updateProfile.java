@@ -42,10 +42,11 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     private int w;
     private int gender;
     private ArrayList<String> goal;
-    private String reminder;
     private String goalStrin="";
     private String tDaysString="";
     private ArrayList<String>a;
+    private String tTime;
+    private String tDuration;
 
     private Map<String,Object> user = new HashMap<>();
 
@@ -116,8 +117,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eGender.setText("Female");
         else
             eGender.setText("Male");
-
-
 ///////////////////////////////////////////////////////////////////
         date=Birthdate.date;
         eDB.setText(date);
@@ -127,6 +126,11 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eHeight.setText(""+h);
         eWeight.setText(""+w);
 ///////////////////////////////////////////////////////////////////
+        tTime=TrainingTime.tTime;
+//        eTime.setText(tTime);
+
+        tDuration=TrainingDuration.tDuration+"";
+//        eDuration.setText(tDuration);
 
 
 
