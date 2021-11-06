@@ -10,15 +10,14 @@
         android:id="@+id/textView"
         android:layout_width="376dp"
         android:layout_height="38dp"
+        android:layout_marginTop="120dp"
         android:text="Select the areas you want to focus on:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/glute"
@@ -122,18 +121,19 @@
 
     <Button
         android:id="@+id/pickDaysBtn"
-        android:backgroundTint="#D8D4D4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#D8D4D4"
         android:text="Next"
         android:textSize="20sp"
-        app:cornerRadius="20dp"
+        app:cornerRadius="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947"/>
+        app:layout_constraintVertical_bias="0.652" />
 
     <TextView
         android:id="@+id/shows"

@@ -13,47 +13,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
-            android:name=".updateProfile"
-            android:exported="true" />
+            android:name=".HeightandWeight"
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".Birthdate"
+             />
         <activity
-            android:name=".PlanView"
-            android:exported="true" />
+            android:name=".Birthdate"
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".Gender"
+             />
+        <activity
+            android:name=".Gender"
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".Name"
+             />
+        <activity
+            android:name=".Name"
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".Home"
+             />
         <activity
             android:name=".LoadPa"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".Equipment"
             android:exported="true"
-            android:parentActivityName=".TrainingPlace"
             android:label="@string/Profile"
-            />
+            android:parentActivityName=".TrainingPlace" />
         <activity
             android:name=".TrainingPlace"
             android:exported="true"
-            android:parentActivityName=".TrainingDays"
             android:label="@string/Profile"
-
-            />
+            android:parentActivityName=".FitnessLevel" />
         <activity
             android:name=".TrainingDays"
             android:exported="true"
-            android:parentActivityName=".FitnessLevel"
             android:label="@string/Profile"
-
-            />
+            android:parentActivityName=".FitnessLevel" />
         <activity
             android:name=".FitnessLevel"
             android:exported="true"
-            android:parentActivityName=".Goal"
             android:label="@string/Profile"
-
-            />
+            android:parentActivityName=".Goal" />
         <activity
             android:name=".Goal"
             android:exported="true"
             android:label="@string/Profile"
-
-            >
+            android:parentActivityName=".Name" />
+        <activity
+            android:name=".Home"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartPT.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
