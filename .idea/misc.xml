@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_equipment.xml" value="0.2" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_fitness_level.xml" value="0.264" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_goal.xml" value="0.176" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_load_p.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_load_pa.xml" value="0.2" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_loading.xml" value="0.1" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_training_days.xml" value="0.264" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/layout/activity_training_place.xml" value="0.2" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_birthdate.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_equipment.xml" value="0.22" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_fitness_level.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_gender.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_goal.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_heightand_weight.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_name.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_training_days.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/activity_training_place.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/content_birthdate.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/content_gender.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/content_heightand_weight.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/content_name.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first2.xml" value="0.12" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first3.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first4.xml" value="0.5" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first5.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_first6.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_second.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_second4.xml" value="0.1" />
+        <entry key="..\:/Users/r7r3l/AndroidStudioProjects/Smart-PT-master/app/src/main/res/layout/fragment_second5.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
