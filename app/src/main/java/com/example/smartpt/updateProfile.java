@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +28,8 @@ import java.util.Map;
 public class updateProfile extends AppCompatActivity implements nameDialog.DialogListener,
         genderDialog.DialogListener, DB_Dialog.DialogListener, heightDialog.DialogListener,
         areaDialog.DialogListener, weightDialog.DialogListener,
-        reminderDialog.DialogListener, daysDialog.DialogListener{
-    TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder, eTrainingDays;
+        reminderDialog.DialogListener, daysDialog.DialogListener,durationDialog.DialogListener{
+    TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder,eDuration, eTrainingDays;
     Button updateProfile;
     private FirebaseFirestore db;
     private String userIp;
@@ -86,7 +84,8 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eHeight=(TextView) findViewById(R.id.editHeight);
         eWeight=(TextView) findViewById(R.id.editWeight);
         eFocusArea=(TextView) findViewById(R.id.editFocusArea);
-        eReminder = (TextView) findViewById(R.id.editReminder);
+        eReminder = (TextView) findViewById(R.id.editReminder2);
+        eDuration = (TextView) findViewById(R.id.editDuration);
         eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
         updateProfile=(Button) findViewById(R.id.updateProfileB);
 
@@ -223,6 +222,16 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
         });
 
+        eDuration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openDurationDialog();
+            }
+
+
+        });
+
         eTrainingDays.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,6 +276,11 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     public void openReminderDialog(){
         reminderDialog eReminder=new reminderDialog();
         eReminder.show(getSupportFragmentManager(),"Reminder");
+    }
+
+    public void openDurationDialog(){
+        durationDialog eDuration=new durationDialog();
+        eDuration.show(getSupportFragmentManager(),"Duration");
     }
 
     public void openDaysDialog(){
@@ -315,6 +329,11 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     public void applyReminderText(String reminder){
         eReminder.setText(reminder);
+
+    }
+
+    public void applyDurationText(String duration){
+        eDuration.setText(duration);
 
     }
 

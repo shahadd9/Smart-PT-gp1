@@ -14,8 +14,8 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class reminderDialog extends AppCompatDialogFragment {
-    private RadioGroup eReminder;
+public class durationDialog extends AppCompatDialogFragment {
+    private RadioGroup eDuration;
     private DialogListener listener;
 
     @Override
@@ -24,11 +24,11 @@ public class reminderDialog extends AppCompatDialogFragment {
 
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=getActivity().getLayoutInflater();
-        View view= inflater.inflate(R.layout.reminder_dialog, null);
-        eReminder=view.findViewById(R.id.eReminderRadioGroup);
+        View view= inflater.inflate(R.layout.duration_dialog, null);
+        eDuration=view.findViewById(R.id.eDurationRadioGroup);
 
         builder.setView(view)
-                .setTitle("Reminder")
+                .setTitle("Duration")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -37,9 +37,9 @@ public class reminderDialog extends AppCompatDialogFragment {
                 }).setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                final String reminder = ((RadioButton)view.findViewById(eReminder.getCheckedRadioButtonId()))
+                final String duration = ((RadioButton)view.findViewById(eDuration.getCheckedRadioButtonId()))
                         .getText().toString();
-                listener.applyReminderText(reminder);
+                listener.applyDurationText(duration);
 
 
             }
@@ -60,7 +60,7 @@ public class reminderDialog extends AppCompatDialogFragment {
     }
 
     public interface DialogListener{
-        void  applyReminderText(String gender);
+        void  applyDurationText(String duration);
     }
 }
 
