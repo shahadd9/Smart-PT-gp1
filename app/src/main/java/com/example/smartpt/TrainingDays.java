@@ -40,7 +40,7 @@ public class TrainingDays extends AppCompatActivity {
     private String userIp;
 //    private boolean isChoose;
     private String level;
-    private ArrayList<String> goal;
+//    private ArrayList<String> goal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,7 @@ public class TrainingDays extends AppCompatActivity {
         tDays= new ArrayList<>();
 //        count=0;
         level= getIntent().getStringExtra("level");
-        goal=getIntent().getStringArrayListExtra("goal");
+//        goal=getIntent().getStringArrayListExtra("goal");
 
 
         tip= findViewById(R.id.biggenerTip);
@@ -218,9 +218,9 @@ public class TrainingDays extends AppCompatActivity {
     }
     public void goEqupment(){
         Intent intent= new Intent(this, TrainingPlace.class);
-        intent.putExtra("tDays",tDays);
-        intent.putExtra("goal",goal);
-        intent.putExtra("level",level);
+//        intent.putExtra("tDays",tDays);
+//        intent.putExtra("goal",goal);
+//        intent.putExtra("level",level);
         startActivity(intent);
     }
 

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,21 +34,25 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder, eTrainingDays;
     Button updateProfile;
     private FirebaseFirestore db;
-    private int place=0;  //0 for home 1 for gym
-    private String level;
-    private ArrayList<String> goal;
-    private ArrayList<String> tDays;
-    private ArrayList<String> equpmtList;
     private String userIp;
-    private String goalString;
-    private String tDaysString;
+    private ArrayList<String> tDays;
+    private String name;
+    private String date;
+    private int h;
+    private int w;
+    private int gender;
+    private ArrayList<String> goal;
+    private String reminder;
+    private String goalStrin="";
+    private String tDaysString="";
+    private ArrayList<String>a;
+
     private Map<String,Object> user = new HashMap<>();
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        level="";
-        equpmtList= new ArrayList<>();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //(navigation bar)
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
@@ -83,35 +88,47 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eReminder = (TextView) findViewById(R.id.editReminder);
         eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
         updateProfile=(Button) findViewById(R.id.updateProfileB);
+
+
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         db = FirebaseFirestore.getInstance();
-        goalString="";
-        tDaysString="";
-
-
-        level= getIntent().getStringExtra("level");
-        goal=getIntent().getStringArrayListExtra("goal");
-        tDays=getIntent().getStringArrayListExtra("tDays");
-        place=getIntent().getIntExtra("place",0);
-        equpmtList= getIntent().getStringArrayListExtra("equpmtList");
-
-        //eName.setText();
-        //eGender.setText();
-        //eDB.setText();
-        //eHeight.setText();
-        //eWeight.setText();
-        for(int i = 0; i<goal.size();i++){
-
-            goalString=goalString+" "+ goal.get(i);
-        }
+        /////////////////////////////////////////////////////////
+        tDays=TrainingDays.gettDays();
         for(int i = 0; i<tDays.size();i++){
 
             tDaysString=tDaysString+" "+ tDays.get(i);
         }
-        eFocusArea.setText(goalString);
-        //eReminder.setText();
         eTrainingDays.setText(tDaysString);
+        ///////////////////////////////////////////////////////////
+        goal=Goal.focusArea;
+    for(int i = 0; i<goal.size();i++){
+
+        goalStrin=goalStrin+" "+ goal.get(i);
+        }
+        eFocusArea.setText(goalStrin);
+///////////////////////////////////////////////////////////////////
+        name=Name.name;
+        eName.setText(name);
+///////////////////////////////////////////////////////////////////
+        gender=Gender.gen;
+        if (gender==0)
+        eGender.setText("Female");
+        else
+            eGender.setText("Male");
+
+
+///////////////////////////////////////////////////////////////////
+        date=Birthdate.date;
+        eDB.setText(date);
+///////////////////////////////////////////////////////////////////
+        h=HeightandWeight.h;
+        w=HeightandWeight.w;
+        eHeight.setText(""+h);
+        eWeight.setText(""+w);
+///////////////////////////////////////////////////////////////////
+
+
 
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,8 +138,8 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
+                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
+                                    Toast.LENGTH_LONG).show();                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -255,29 +272,33 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     public void applyNameText(String name){
         eName.setText(name);
-
-//        user.put("focusArea",goal.toString());
+        user.put("name",name);
 
     }
 
     public void applyGenderText(String gender){
         eGender.setText(gender);
+        user.put("gender",gender);
+
 
     }
 
     public void applyDBText(String DB){
         eDB.setText(DB);
+        user.put("Birthdate",DB);
+
 
     }
 
     public void applyHeightText(String height){
         eHeight.setText(height);
-
+        user.put("heigth",height);
     }
 
 
     public void applyWeightText(String weight){
         eWeight.setText(weight);
+        user.put("weigth",weight);
 
     }
 
@@ -298,7 +319,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eTrainingDays.setText(days);
         user.put("trainingDays",days);
 
-
     }
 
     public void onClick(View view) {
@@ -308,3 +328,4 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
 
 }
+

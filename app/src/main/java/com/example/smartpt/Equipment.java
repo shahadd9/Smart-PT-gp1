@@ -35,12 +35,12 @@ public class Equipment extends AppCompatActivity {
     private FirebaseFirestore db;
     private String userIp;
 //    private TextView t ;
-    private ArrayList<String> equpmtList;
+public static ArrayList<String> equpmtList;
     private int count;
-    private int place;  //0 for home 1 for gym
-    private String level;
-    private ArrayList<String> goal;
-    private ArrayList<String> tDays;
+//    private int place;  //0 for home 1 for gym
+//    private String level;
+//    private ArrayList<String> goal;
+//    private ArrayList<String> tDays;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +59,10 @@ public class Equipment extends AppCompatActivity {
         btlR=findViewById(R.id.battleR);
         band=findViewById(R.id.band);
         equpmtList=new ArrayList<>();
-        level= getIntent().getStringExtra("level");
-        goal=getIntent().getStringArrayListExtra("goal");
-        tDays=getIntent().getStringArrayListExtra("tDays");
-        place=getIntent().getIntExtra("place",0);
+//        level= getIntent().getStringExtra("level");
+//        goal=getIntent().getStringArrayListExtra("goal");
+//        tDays=getIntent().getStringArrayListExtra("tDays");
+//        place=getIntent().getIntExtra("place",0);
 
 
         //t= findViewById(R.id.textView2);
@@ -257,11 +257,11 @@ public class Equipment extends AppCompatActivity {
     }
     public void goNext(){
         Intent intent= new Intent(this, LoadPa.class);
-        intent.putExtra("tDays",tDays);
-        intent.putExtra("goal",goal);
-        intent.putExtra("level",level);
-        intent.putExtra("place",place);
-        intent.putExtra("equpmtList",equpmtList);
+//        intent.putExtra("tDays",tDays);
+//        intent.putExtra("goal",goal);
+//        intent.putExtra("level",level);
+//        intent.putExtra("place",place);
+//        intent.putExtra("equpmtList",equpmtList);
         startActivity(intent);
     }
 //    public void activate(){

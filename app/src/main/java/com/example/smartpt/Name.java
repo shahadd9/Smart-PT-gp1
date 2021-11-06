@@ -3,15 +3,22 @@ package com.example.smartpt;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +32,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //import com.example.smartpt.databinding.ActivityNameBinding;
 
 public class Name extends AppCompatActivity {
@@ -35,9 +45,10 @@ public class Name extends AppCompatActivity {
 //    Context context = getApplicationContext();
     private int count = 0;
 //    private FloatingActionButton btnBackToHome;
-    private String name = "";
+    public static String name = "";
     boolean isNameEntered = false;
-
+    private FirebaseFirestore db;
+    private String userIp;
 
 
 
@@ -46,7 +57,9 @@ public class Name extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
-
+        db = FirebaseFirestore.getInstance();
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         eName = findViewById(R.id.traineeName);
         qName = findViewById(R.id.qName);
         btnToGender = findViewById(R.id.toGender);
@@ -95,6 +108,22 @@ public class Name extends AppCompatActivity {
                     count++;
                     activate();
                     Log.d("myName", name);
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("name",name);
+                    db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                        }
+                    });
                     Intent intent = new Intent(Name.this, Gender.class);
                     startActivity(intent);
                 }

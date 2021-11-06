@@ -1,13 +1,19 @@
 package com.example.smartpt;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -24,8 +31,12 @@ import androidx.navigation.ui.NavigationUI;
 
 //import com.example.smartpt.databinding.ActivityHeightandWeightBinding;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.kevalpatel2106.rulerpicker.RulerValuePicker;
 import com.kevalpatel2106.rulerpicker.RulerValuePickerListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class HeightandWeight extends AppCompatActivity {
@@ -39,6 +50,10 @@ public class HeightandWeight extends AppCompatActivity {
     private TextView weightValue;
     private String wUnit = "kg";
     private String hUnit = "cm";
+    private FirebaseFirestore db;
+    private String userIp;
+    public static  int h;
+    public static int w;
 
 
     @Override
@@ -52,8 +67,11 @@ public class HeightandWeight extends AppCompatActivity {
         enterHeight=findViewById(R.id.height);
         heightValue=findViewById(R.id.heightValue);
         weightValue=findViewById(R.id.weightValue);
-
-
+        db = FirebaseFirestore.getInstance();
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+h=156;
+w=55;
 //        backToBirthdate=findViewById(R.id.backToBirthdate);
 //        humanBody=findViewById(R.id.body);
 //        height=findViewById(R.id.seekBarHeight);
@@ -68,11 +86,13 @@ public class HeightandWeight extends AppCompatActivity {
             @Override
             public void onValueChange(final int selectedValue) {
                 heightValue.setText(selectedValue + " "+hUnit);
+                h=selectedValue;
             }
 
             @Override
             public void onIntermediateValueChange(final int selectedValue) {
                 heightValue.setText(selectedValue + " "+hUnit);
+                h=selectedValue;
             }
         });
 
@@ -85,12 +105,14 @@ public class HeightandWeight extends AppCompatActivity {
             @Override
             public void onValueChange(final int selectedValue) {
                 weightValue.setText(selectedValue + " "+wUnit);
+                w=selectedValue;
 
             }
 
             @Override
             public void onIntermediateValueChange(final int selectedValue) {
                 weightValue.setText(selectedValue + " "+wUnit);
+                w=selectedValue;
 
             }
         });
@@ -110,6 +132,23 @@ public class HeightandWeight extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Log.d("myTag", "we are here");
+                Map<String,Object> user = new HashMap<>();
+                user.put("height",h);
+                user.put("weigth",w);
+                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                           // Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                    }
+                });
                 Intent intent = new Intent(HeightandWeight.this, Goal.class);
                 startActivity(intent);
 

@@ -32,12 +32,12 @@ import java.util.ArrayList;
 public class LoadPa extends AppCompatActivity {
     private ImageView logo;
     private FirebaseFirestore db;
-    private int place;  //0 for home 1 for gym
-    private String level;
-    private ArrayList<String> goal;
-    private ArrayList<String> tDays;
-    private ArrayList<String> equpmtList;
-    private String userIp;
+//    private int place;  //0 for home 1 for gym
+//    private String level;
+//    private ArrayList<String> goal;
+//    private ArrayList<String> tDays;
+//    private ArrayList<String> equpmtList;
+//    private String userIp;
     private Handler h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,54 +47,54 @@ public class LoadPa extends AppCompatActivity {
         getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
         h=new Handler();
-        level= getIntent().getStringExtra("level");
-        goal=getIntent().getStringArrayListExtra("goal");
-        tDays=getIntent().getStringArrayListExtra("tDays");
-        place=getIntent().getIntExtra("place",0);
-        equpmtList= getIntent().getStringArrayListExtra("equpmtList");
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        level= getIntent().getStringExtra("level");
+//        goal=getIntent().getStringArrayListExtra("goal");
+//        tDays=getIntent().getStringArrayListExtra("tDays");
+//        place=getIntent().getIntExtra("place",0);
+//        equpmtList= getIntent().getStringArrayListExtra("equpmtList");
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         rotateAnimation();
         //add();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent i = new Intent(LoadPa.this, PlanView.class);
-                i.putExtra("tDays",tDays);
-                i.putExtra("goal",goal);
-                i.putExtra("level",level);
-                i.putExtra("place",place);
-                i.putExtra("equpmtList",equpmtList);
+//                i.putExtra("tDays",tDays);
+//                i.putExtra("goal",goal);
+//                i.putExtra("level",level);
+//                i.putExtra("place",place);
+//                i.putExtra("equpmtList",equpmtList);
                 startActivity(i);
                  finish();
             }
         }, 2500);
     }
 
-    private void add() {
-        db = FirebaseFirestore.getInstance();
-        Map<String,Object> user = new HashMap<>();
-        user.put("focusArea",goal.toString());
-        user.put("level",level);
-        user.put("trainingDays",tDays.toString());
-        user.put("trainingPlace",place);
-        user.put("equipment",equpmtList.toString());
-
-        db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
-            }
-        });
-
-    }
+//    private void add() {
+//        db = FirebaseFirestore.getInstance();
+//        Map<String,Object> user = new HashMap<>();
+//        user.put("focusArea",goal.toString());
+//        user.put("level",level);
+//        user.put("trainingDays",tDays.toString());
+//        user.put("trainingPlace",place);
+//        user.put("equipment",equpmtList.toString());
+//
+//        db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if(task.isSuccessful()){
+//                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                }
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
+//            }
+//        });
+//
+//    }
 
     private void rotateAnimation() {
 

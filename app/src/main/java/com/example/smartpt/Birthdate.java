@@ -4,18 +4,27 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Birthdate extends AppCompatActivity {
 
@@ -26,6 +35,10 @@ public class Birthdate extends AppCompatActivity {
 //    private FloatingActionButton btnBackToGender;
     private Button btnToHandW;
     private DatePicker picker;
+    private FirebaseFirestore db;
+    private String userIp;
+    public static String date;
+
 
 
 
@@ -36,8 +49,10 @@ public class Birthdate extends AppCompatActivity {
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
 //        btnBackToGender= findViewById(R.id.backToGender);
         btnToHandW = findViewById(R.id.toHandW);
-
-
+date="6/10/1921";
+        db = FirebaseFirestore.getInstance();
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 //        mDisplayDate.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -96,6 +111,8 @@ public class Birthdate extends AppCompatActivity {
             public void onDateChanged(DatePicker datePicker, int dayOfMonth, int month, int year) {
                 Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
                 mDisplayDate.setText("Selected Date: "+ picker.getDayOfMonth()+"/"+ (picker.getMonth() + 1)+"/"+picker.getYear());
+                date=picker.getDayOfMonth()+"/"+ (picker.getMonth() + 1)+"/"+picker.getYear();
+
 
             }
         } );
@@ -116,6 +133,22 @@ public class Birthdate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Log.d("myTag", "we are here");
+                Map<String,Object> user = new HashMap<>();
+                user.put("Birthdate",date);
+                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                    }
+                });
                 Intent intent = new Intent(Birthdate.this, HeightandWeight.class);
                 startActivity(intent);
 

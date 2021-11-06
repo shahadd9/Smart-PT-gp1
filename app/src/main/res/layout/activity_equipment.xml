@@ -261,7 +261,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginTop="600dp"
-        android:backgroundTint="#D8D4D4"
+        android:backgroundTint="#48D0FE"
         android:text="Next"
         android:textSize="20sp"
         app:cornerRadius="6sp"

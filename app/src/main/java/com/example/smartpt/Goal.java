@@ -28,7 +28,7 @@ public class Goal extends AppCompatActivity {
     private CheckBox ch1,ch2,ch3,ch4,ch5,ch6,ch7;
     private Button b;
     private TextView show;
-    private ArrayList<String> focusArea;
+    public static ArrayList<String> focusArea;
     private int count;
     private FirebaseFirestore db;
     private String userIp;
@@ -192,7 +192,7 @@ public class Goal extends AppCompatActivity {
                     show.setText("");
                     Map<String,Object> user = new HashMap<>();
                     user.put("focusArea",focusArea.toString());
-                    db.collection("userProfile").document(userIp).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

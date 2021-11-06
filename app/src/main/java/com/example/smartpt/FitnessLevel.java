@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class FitnessLevel extends AppCompatActivity {
     private Button pickDaysBtn;
-    private ArrayList<String> goal;
-    private String level;
+//    private ArrayList<String> goal;
+public static String level;
     private SeekBar seekBar;
     private TextView seekBarValue;
     private TextView tLvl;
@@ -41,7 +41,7 @@ public class FitnessLevel extends AppCompatActivity {
          seekBar = (SeekBar)findViewById(R.id.lvlSeekBar);
           seekBarValue = (TextView)findViewById(R.id.seekBarValue);
          tLvl= findViewById(R.id.lvl);
-        goal=getIntent().getStringArrayListExtra("goal");
+//        goal=getIntent().getStringArrayListExtra("goal");
         level="Intermediate";
 
         db = FirebaseFirestore.getInstance();
@@ -110,7 +110,7 @@ public class FitnessLevel extends AppCompatActivity {
     public void goTrainingDays(){
         Intent intent= new Intent(this, TrainingDays.class);
         intent.putExtra("level",level);
-        intent.putExtra("goal",goal);
+//        intent.putExtra("goal",goal);
         startActivity(intent);
     }
 

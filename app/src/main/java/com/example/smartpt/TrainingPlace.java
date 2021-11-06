@@ -23,10 +23,10 @@ import java.util.Map;
 public class TrainingPlace extends AppCompatActivity {
     private Button home;
     private Button gym;
-    private int place;  //0 for home 1 for gym
-    private String level;
-    private ArrayList<String> goal;
-    private ArrayList<String> tDays;
+    public static int place;  //0 for home 1 for gym
+//    private String level;
+//    private ArrayList<String> goal;
+//    private ArrayList<String> tDays;
     private FirebaseFirestore db;
     private String userIp;
     @Override
@@ -36,9 +36,9 @@ public class TrainingPlace extends AppCompatActivity {
         place=0;
         home = findViewById(R.id.homeBtn);
         gym= findViewById(R.id.gymBtn);
-        level= getIntent().getStringExtra("level");
-        goal=getIntent().getStringArrayListExtra("goal");
-        tDays=getIntent().getStringArrayListExtra("tDays");
+//        level= getIntent().getStringExtra("level");
+//        goal=getIntent().getStringArrayListExtra("goal");
+//        tDays=getIntent().getStringArrayListExtra("tDays");
 
         db = FirebaseFirestore.getInstance();
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -96,10 +96,10 @@ public class TrainingPlace extends AppCompatActivity {
 
     public void goEqupment2(){
         Intent intent= new Intent(this, Equipment.class);
-        intent.putExtra("tDays",tDays);
-        intent.putExtra("goal",goal);
-        intent.putExtra("level",level);
-        intent.putExtra("place",place);
+//        intent.putExtra("tDays",tDays);
+//        intent.putExtra("goal",goal);
+//        intent.putExtra("level",level);
+//        intent.putExtra("place",place);
         startActivity(intent);
     }
 }
