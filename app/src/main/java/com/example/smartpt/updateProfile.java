@@ -52,7 +52,7 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //(navigation bar)
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.profile);
@@ -113,23 +113,23 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 ///////////////////////////////////////////////////////////////////
         gender=Gender.gen;
         if (gender==0)
-        eGender.setText("Female");
+        eGender.setText("Male");
         else
-            eGender.setText("Male");
+            eGender.setText("Female");
 ///////////////////////////////////////////////////////////////////
         date=Birthdate.date;
         eDB.setText(date);
 ///////////////////////////////////////////////////////////////////
         h=HeightandWeight.h;
         w=HeightandWeight.w;
-        eHeight.setText(""+h);
-        eWeight.setText(""+w);
+        eHeight.setText(""+h+"cm");
+        eWeight.setText(""+w+"kg");
 ///////////////////////////////////////////////////////////////////
         tTime=TrainingTime.tTime;
-//        eTime.setText(tTime);
+        eReminder.setText(tTime);
 
         tDuration=TrainingDuration.tDuration+"";
-//        eDuration.setText(tDuration);
+        eDuration.setText(tDuration+" minutes");
 
 
 
@@ -147,7 +147,8 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//                        Toast.makeText(com.example.smartpt.updateProfile.this, "faild",
+//                                Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -296,7 +297,17 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     public void applyGenderText(String gender){
         eGender.setText(gender);
-        user.put("gender",gender);
+        if(gender.equals("Male")) {
+
+            user.put("gender", 0);
+        }
+            else{
+
+                user.put("gender",1);
+
+            }
+
+
 
 
     }
@@ -310,13 +321,13 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     public void applyHeightText(String height){
         eHeight.setText(height);
-        user.put("heigth",height);
+        user.put("height",height);
     }
 
 
     public void applyWeightText(String weight){
         eWeight.setText(weight);
-        user.put("weigth",weight);
+        user.put("weight",weight);
 
     }
 
@@ -329,11 +340,13 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     public void applyReminderText(String reminder){
         eReminder.setText(reminder);
+        user.put("TrainingTime",reminder);
 
     }
 
     public void applyDurationText(String duration){
         eDuration.setText(duration);
+        user.put("TrainingDuration",duration);
 
     }
 

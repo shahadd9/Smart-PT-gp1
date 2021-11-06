@@ -40,6 +40,7 @@ public class TrainingDuration extends AppCompatActivity {
         noon=findViewById(R.id.noon);
         ev=findViewById(R.id.ev);
         time=findViewById(R.id.time);
+        tDuration=30;
 
         time.setOnClickListener(new View.OnClickListener() {
             @Override

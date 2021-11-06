@@ -134,7 +134,7 @@ w=55;
                 //Log.d("myTag", "we are here");
                 Map<String,Object> user = new HashMap<>();
                 user.put("height",h);
-                user.put("weigth",w);
+                user.put("weight",w);
                 db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

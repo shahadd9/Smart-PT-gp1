@@ -30,7 +30,7 @@
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_training_duration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_training_place.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_training_time.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_update_profile.xml" value="0.4" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_update_profile.xml" value="0.264" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/content_birthdate.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/content_gender.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/content_heightand_weight.xml" value="0.15833333333333333" />
@@ -67,8 +67,6 @@
         <entry key="..\:/Users/96655/AndroidStudioProjects/SmartPT/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_plan_view.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_update_profile.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/duration_dialog.xml" value="0.12952898550724637" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/reminder_dialog.xml" value="0.2" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/drawable/background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/drawable/weekly_textstyle.xml" value="0.2703125" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp1/app/src/main/res/layout/activity_goal.xml" value="0.1598731884057971" />

@@ -222,7 +222,8 @@
             app:layout_constraintHorizontal_bias="0.907"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.451" />
+            app:layout_constraintVertical_bias="0.451"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tName"
@@ -261,7 +262,7 @@
             android:layout_width="99dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:text="Duration"
+            android:text="Training days "
             android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="16sp"
@@ -277,7 +278,7 @@
             android:layout_width="99dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:text="Training days"
+            android:text="Duration"
             android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="16sp"
