@@ -14,10 +14,16 @@
         android:theme="@style/Theme.SmartPT">
         <activity
             android:name=".TrainingDuration"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".TrainingTime"
+            />
         <activity
             android:name=".TrainingTime"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/Profile"
+            android:parentActivityName=".Equipment"
+            />
         <activity
             android:name=".HeightandWeight"
             android:exported="true"
