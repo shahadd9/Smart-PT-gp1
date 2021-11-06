@@ -32,6 +32,7 @@ public class TrainingDays extends AppCompatActivity {
     private int thurCount;
     private int friCount;
     private int satCount;
+    private String tDaysString;
     private static ArrayList<String> tDays;
 //    private TextView days;
     private TextView tip;
@@ -47,6 +48,7 @@ public class TrainingDays extends AppCompatActivity {
         setContentView(R.layout.activity_training_days);
 //        tLbl=findViewById(R.id.trainingDayslbl);
 //        lbl=findViewById(R.id.days);
+        tDaysString="";
         sunCount=monCount=tueCount=wedCount=thurCount=friCount=satCount=0;
         txt="";
         sun= findViewById(R.id.sunBtn);
@@ -179,9 +181,14 @@ public class TrainingDays extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(tDays.size()>=2){
+                    tDays=TrainingDays.gettDays();
+                    for(int i = 0; i<tDays.size();i++){
+
+                        tDaysString=tDaysString+" "+ tDays.get(i);
+                    }
 
                     Map<String,Object> user = new HashMap<>();
-                    user.put("trainingDays",tDays.toString());
+                    user.put("trainingDays",tDaysString);
                     db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
