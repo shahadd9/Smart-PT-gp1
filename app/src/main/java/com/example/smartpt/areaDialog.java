@@ -22,8 +22,8 @@ public class areaDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog( Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-        String[] focusAreas=new String[]{"core","chest","Back","Arm","shoulder","leg","Glue"};
-        boolean[]checkedAreas=new boolean[]{false,false,false,false,false,false,false};
+        String[] focusAreas=new String[]{"Core","Chest","Back","Arm","Shoulder","Leg and Glutes"};
+        boolean[]checkedAreas=new boolean[]{false,false,false,false,false,false};
         final List<String> aList= Arrays.asList(focusAreas);
 
         builder.setTitle("Focus Areas")

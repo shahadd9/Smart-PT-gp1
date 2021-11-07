@@ -38,7 +38,7 @@ public class Goal extends AppCompatActivity {
         setContentView(R.layout.activity_goal);
         ch1= findViewById(R.id.chest);
         ch2= findViewById(R.id.core);
-        ch3= findViewById(R.id.glute);
+        //ch3= findViewById(R.id.glute);
         ch4= findViewById(R.id.shoulder);
         ch5= findViewById(R.id.leg);
         ch6= findViewById(R.id.arm);
@@ -86,7 +86,7 @@ public class Goal extends AppCompatActivity {
                 activate();
             }
         });
-        ch3.setOnClickListener(new View.OnClickListener() {
+       /* ch3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(ch3.isChecked()){
@@ -102,7 +102,7 @@ public class Goal extends AppCompatActivity {
                 activate();
 
             }
-        });
+        });*/
         ch4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,14 +124,14 @@ public class Goal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(ch5.isChecked()){
-                    focusArea.add("Leg");
+                    focusArea.add("Leg and Glutes");
 
                     count++;
 
                 }
                 else {
                     count--;
-                    focusArea.remove("Leg");
+                    focusArea.remove("Leg and Glutes");
                 }
                 activate();
 
