@@ -30,9 +30,6 @@ public class heightDialog extends AppCompatDialogFragment {
         eHeightPicker.setMaxValue(195);
 
 
-
-
-
         builder.setView(view)
                 .setTitle("Height")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
