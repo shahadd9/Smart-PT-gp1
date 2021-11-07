@@ -1,6 +1,7 @@
 package com.example.smartpt;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +20,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,13 +43,14 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     private String date;
     private int h;
     private int w;
-    private int gender;
+    private double gender;
     private ArrayList<String> goal;
     private String goalStrin="";
     private String tDaysString="";
     private ArrayList<String>a;
     private String tTime;
     private String tDuration;
+
 
     private Map<String,Object> user = new HashMap<>();
 
@@ -93,43 +99,68 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         db = FirebaseFirestore.getInstance();
-        /////////////////////////////////////////////////////////
-        tDays=TrainingDays.gettDays();
-        for(int i = 0; i<tDays.size();i++){
+        DocumentReference documentReference=db.collection("userProfile").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                eTrainingDays.setText(value.getString("trainingDays"));
+                eFocusArea.setText(value.getString("focusArea"));
+                eName.setText(value.getString("name"));
+//
+                gender=value.getDouble("gender");
+                h= (int)gender;
 
-            tDaysString=tDaysString+" "+ tDays.get(i);
-        }
-        eTrainingDays.setText(tDaysString);
-        ///////////////////////////////////////////////////////////
-        goal=Goal.focusArea;
-    for(int i = 0; i<goal.size();i++){
-
-        goalStrin=goalStrin+" "+ goal.get(i);
-        }
-        eFocusArea.setText(goalStrin);
-///////////////////////////////////////////////////////////////////
-        name=Name.name;
-        eName.setText(name);
-///////////////////////////////////////////////////////////////////
-        gender=Gender.gen;
-        if (gender==0)
-        eGender.setText("Male");
-        else
-            eGender.setText("Female");
-///////////////////////////////////////////////////////////////////
-        date=Birthdate.date;
-        eDB.setText(date);
-///////////////////////////////////////////////////////////////////
-        h=HeightandWeight.h;
-        w=HeightandWeight.w;
-        eHeight.setText(""+h+"cm");
-        eWeight.setText(""+w+"kg");
-///////////////////////////////////////////////////////////////////
-        tTime=TrainingTime.tTime;
-        eReminder.setText(tTime);
-
-        tDuration=TrainingDuration.tDuration+"";
-        eDuration.setText(tDuration+" minutes");
+                if (h==0)
+                    eGender.setText("Male");
+                else
+                    eGender.setText("Female");
+//
+                eDB.setText(value.getString("Birthdate"));
+////
+                eHeight.setText(value.getString("height")+"");
+                eWeight.setText(value.getString("weight")+"");
+////
+                eReminder.setText(value.getString("TrainingTime")+"");
+                eDuration.setText(value.getString("TrainingDuration")+"minutes");
+            }
+        });
+//            /////////////////////////////////////////////////////////
+//        tDays=TrainingDays.gettDays();
+//        for(int i = 0; i<tDays.size();i++){
+//
+//            tDaysString=tDaysString+" "+ tDays.get(i);
+//        }
+//        eTrainingDays.setText(tDaysString);
+//        ///////////////////////////////////////////////////////////
+//        goal=Goal.focusArea;
+//    for(int i = 0; i<goal.size();i++){
+//
+//        goalStrin=goalStrin+" "+ goal.get(i);
+//        }
+//        eFocusArea.setText(goalStrin);
+/////////////////////////////////////////////////////////////////////
+//        name=Name.name;
+//        eName.setText(name);
+/////////////////////////////////////////////////////////////////////
+//        gender=Gender.gen;
+//        if (gender==0)
+//        eGender.setText("Male");
+//        else
+//            eGender.setText("Female");
+/////////////////////////////////////////////////////////////////////
+//        date=Birthdate.date;
+//        eDB.setText(date);
+/////////////////////////////////////////////////////////////////////
+//        h=HeightandWeight.h;
+//        w=HeightandWeight.w;
+//        eHeight.setText(""+h+"cm");
+//        eWeight.setText(""+w+"kg");
+/////////////////////////////////////////////////////////////////////
+//        tTime=TrainingTime.tTime;
+//        eReminder.setText(tTime);
+//
+//        tDuration=TrainingDuration.tDuration+"";
+//        eDuration.setText(tDuration+" minutes");
 
 
 

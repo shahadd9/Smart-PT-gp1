@@ -52,8 +52,8 @@ public class HeightandWeight extends AppCompatActivity {
     private String hUnit = "cm";
     private FirebaseFirestore db;
     private String userIp;
-    public static  int h;
-    public static int w;
+    public static  String h;
+    public static String  w;
 
 
     @Override
@@ -70,8 +70,8 @@ public class HeightandWeight extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-h=156;
-w=55;
+h=156+"cm";
+w=55+"kg";
 //        backToBirthdate=findViewById(R.id.backToBirthdate);
 //        humanBody=findViewById(R.id.body);
 //        height=findViewById(R.id.seekBarHeight);
@@ -86,13 +86,13 @@ w=55;
             @Override
             public void onValueChange(final int selectedValue) {
                 heightValue.setText(selectedValue + " "+hUnit);
-                h=selectedValue;
+                h=selectedValue+"cm";
             }
 
             @Override
             public void onIntermediateValueChange(final int selectedValue) {
                 heightValue.setText(selectedValue + " "+hUnit);
-                h=selectedValue;
+                h=selectedValue+"cm";
             }
         });
 
@@ -105,14 +105,14 @@ w=55;
             @Override
             public void onValueChange(final int selectedValue) {
                 weightValue.setText(selectedValue + " "+wUnit);
-                w=selectedValue;
+                w=selectedValue+"kg";
 
             }
 
             @Override
             public void onIntermediateValueChange(final int selectedValue) {
                 weightValue.setText(selectedValue + " "+wUnit);
-                w=selectedValue;
+                w=selectedValue+"kg";
 
             }
         });
