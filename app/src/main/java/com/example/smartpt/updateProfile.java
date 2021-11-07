@@ -121,7 +121,7 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
                 eWeight.setText(value.getString("weight")+"");
 ////
                 eReminder.setText(value.getString("TrainingTime")+"");
-                eDuration.setText(value.getString("TrainingDuration")+"minutes");
+                eDuration.setText(value.getString("TrainingDuration")+"");
             }
         });
 //            /////////////////////////////////////////////////////////
