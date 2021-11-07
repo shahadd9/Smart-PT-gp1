@@ -5,16 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.nfc.Tag;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -26,15 +22,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class PlanView extends AppCompatActivity {
@@ -46,23 +43,41 @@ public class PlanView extends AppCompatActivity {
     private Button buttonFri;
     private Button buttonThu;
     private Button buttonALeart;
-
+    //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+    //String userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
     private TextView TextviewEx1;
     private TextView TextviewEx2;
     private TextView TextviewEx3;
-
+    static String namedays=new String();
 
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
     private DocumentReference ex1=db.collection("Exercise").document("9kfu4LzQIe8ZF9PxHTur");
     private DocumentReference ex2=db.collection("Exercise").document("2");
     private DocumentReference ex3=db.collection("Exercise").document("3");
+  //  private DocumentReference tdays=db.collection("userProfile").document(userIp);
+
 
     private static final String TAG = "PlanView";
 
     private static final String KEY_Name = "name";
     private static final String KEY_TARGET = "targetedMuscle";
+    private static final String KEY_T="trainingDays";
 
-   // private TrainingDays tDays =((TrainingDays)getApplicationContext());
+    boolean daySat;
+    boolean daySun;
+    boolean dayMon;
+    boolean dayTue;
+    boolean dayWed;
+    boolean dayThu;
+    boolean dayFri;
+
+
+
+    //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+    //userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+
+    // private TrainingDays tDays =((TrainingDays)getApplicationContext());
     //private ArrayList<String> tDay=tDays.gettDays();
    // private TrainingDays trainingDays=new TrainingDays();
 //List<String> testd=new ArrayList<>();
@@ -72,11 +87,91 @@ public class PlanView extends AppCompatActivity {
 private ArrayList<String> days=TrainingDays.gettDays();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
+
+ //ondata();
+
+        WifiManager wifiManager=(WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+//db.collection("userProfile").document().
+     /*   db.collection("userProfile").document(userIp).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+             namedays = documentSnapshot.getString(KEY_T);
+
+
+
+            }
+        });*/
+
+        db.collection("userProfile").document(ipAddress).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                           String test= documentSnapshot.getString(KEY_T);
+                           namedays=test;
+
+                        } else {
+                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+
+                    }
+                });
+
+
+      //   namedays.replace("[", "").replace("]", "");
+
+
+       //String[] ary = namedays.split(" ");
+        //String [] str = namedays.trim().split("\\s*,\\s*");
+       //String [] str = namedays.trim().split(" +");
+
+        //List<String> al = new ArrayList<String>();
+        //al = Arrays.asList(str);
+        //StringUtils
+     //   String t=namedays.toString();
+
+
+
+
+
+
+
+
+        //boolean dayTue=false;
+
+
+
+
+
+
+
+        //ArrayList<String> list = new ArrayList<>(Arrays.asList(namedays.split(" ")));
+
+
+
+
+
+
+
+        // String nameday =documentSnapshot.getString(KEY_Name);
+       // ondata();
+        //String ndays = namedays.replaceAll("[^a-zA-Z0-9]", "");
+
+        //String[] ary = ndays.split(" ");
 
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -137,6 +232,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                int intIndexdayMon = namedays.indexOf("Mon");
+                if(intIndexdayMon == - 1) {
+                    dayMon=false;
+                }else {
+                    dayMon=true;
+                }
+
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -169,22 +273,23 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
 
 
-               for (int i=0;i<days.size();i++){
-                   String day =days.get(i);
-                if (day.contains("Mon")) {
-                    mon.setText("My Exercises for today");
-                    exFrame.setVisibility(View.VISIBLE);
-                    loadEx1(v);
-                    loadEx2(v);
-                    loadEx3(v);
-                    break;
-                } else {
+               // for (int i=0;i<days.size();i++){
+                 //   String day =days.get(i);
+                    if (dayMon) {
+                        mon.setText("My Exercises for today");
+                        exFrame.setVisibility(View.VISIBLE);
+                        loadEx1(v);
+                        loadEx2(v);
+                        loadEx3(v);
+                   ///     break;
 
-                    mon.setText("There is no exercises for today");
-                    exFrame.setVisibility(View.INVISIBLE);
-                }
+                    } else {
 
-            }// end for
+                        mon.setText("There is no exercises for today");
+                        exFrame.setVisibility(View.INVISIBLE);
+                    }
+
+                //}// end for
 
             }
         });
@@ -194,6 +299,12 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndexdaySat = namedays.indexOf("Sat");
+                if(intIndexdaySat == - 1) {
+                    daySat=false;
+                }else {
+                    daySat=true;
+                }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#24c8fe"));
 
@@ -228,15 +339,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Sat")) {
+              //  for (int i=0;i<days.size();i++){
+                //    String day =days.get(i);
+                    if (daySat) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                  ///      break;
 
                     } else {
 
@@ -244,7 +355,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+                //}/// end for
 
 
             }
@@ -254,6 +365,13 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonSun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndexdaySun = namedays.indexOf("Sun");
+                if(intIndexdaySun == - 1) {
+                    daySun=false;
+                }else {
+                    daySun=true;
+                }
+
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -284,15 +402,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Sun")) {
+               // for (int i=0;i<days.size();i++){
+                 //   String day =days.get(i);
+                    if (daySun) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                   //     break;
 
                     } else {
 
@@ -300,7 +418,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+                //}// end for
 
 
             }
@@ -309,6 +427,12 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonTue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndexdayTue = namedays.indexOf("Tue");
+                if(intIndexdayTue == - 1) {
+                    dayTue=false;
+                }else {
+                    dayTue=true;
+                }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -339,15 +463,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Tue")) {
+                //for (int i=0;i<days.size();i++){
+                  //  String day =days.get(i);
+                    if (dayTue) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                //        break;
 
                     } else {
 
@@ -355,7 +479,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+              //  }// end for
 
 
             }
@@ -366,6 +490,13 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonWed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndexdayWed= namedays.indexOf("Wed");
+                if(intIndexdayWed == - 1) {
+                    dayWed=false;
+                }else {
+                    dayWed=true;
+                }
+
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -398,15 +529,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Wed")) {
+             //   for (int i=0;i<days.size();i++){
+               //     String day =days.get(i);
+                    if (dayWed) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                 //       break;
 
                     } else {
 
@@ -414,7 +545,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+            //    }// end for
 
 
             }
@@ -424,6 +555,12 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndexdayThu= namedays.indexOf("Thu");
+                if(intIndexdayThu == - 1) {
+                    dayThu=false;
+                }else {
+                    dayThu=true;
+                }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -455,15 +592,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Thu")) {
+            //    for (int i=0;i<days.size();i++){
+              //      String day =days.get(i);
+                    if (dayThu) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                 //       break;
 
                     } else {
 
@@ -471,7 +608,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+              //  }// end for
 
 
             }
@@ -481,6 +618,12 @@ private ArrayList<String> days=TrainingDays.gettDays();
         buttonFri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int intIndex = namedays.indexOf("Fri");
+                if(intIndex == - 1) {
+                    dayFri=false;
+                }else {
+                    dayFri=true;
+                }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -511,15 +654,15 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 buttonThu.setTextColor( Color.parseColor("#696969"));
 
 
-                for (int i=0;i<days.size();i++){
-                    String day =days.get(i);
-                    if (day.contains("Fri")) {
+                //for (int i=0;i<days.size();i++){
+                   // String day =days.get(i);
+                    if (dayFri) {
                         mon.setText("My Exercises for today");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                        break;
+                     //   break;
 
                     } else {
 
@@ -527,7 +670,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
-                }// end for
+               // }// end for
 
 
             }
@@ -622,14 +765,65 @@ private ArrayList<String> days=TrainingDays.gettDays();
                     });
 
 
+
+
         }
 
+        /*
+
+    public void dayst(View v) {
+        tdays.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            namedays =(String) documentSnapshot.getString(KEY_T);
+
+
+                        } else {
+                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+
+                    }
+                });
+
+    }*/
+
+    public void ondata(){
+        FirebaseUser uid = FirebaseAuth.getInstance().getCurrentUser();
+String currid=uid.getUid();
+DocumentReference reference;
+reference=db.collection("userProfile").document(currid);
+reference.get()
+        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.getResult().exists()){
+                    String nameday=task.getResult().getString(KEY_T);
+                    namedays=nameday;
+
+                }else {
+                    Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
 
 
 
-
-
-
-
+public String getNamedays(){
+        return namedays;
+}
 
 }
