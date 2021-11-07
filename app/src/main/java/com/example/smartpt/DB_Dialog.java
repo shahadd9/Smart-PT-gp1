@@ -49,7 +49,11 @@ public class DB_Dialog extends AppCompatDialogFragment {
                     Toast.makeText(getActivity(), "Age must be 18 at least!",
                             Toast.LENGTH_LONG).show();
 
-                }else {
+                }else if (cur-dobYear>100){
+                    Toast.makeText(getActivity(), "Age must be not exceed 100!",
+                            Toast.LENGTH_LONG).show();
+
+                } else {
                     StringBuilder sb = new StringBuilder();
                     sb.append(Integer.toString(dobYear)).append("-").append(Integer.toString(dobMonth)).append("-")
                             .append(Integer.toString(dobDate));
