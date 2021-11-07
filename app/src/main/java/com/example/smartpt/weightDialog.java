@@ -14,9 +14,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class weightDialog extends AppCompatDialogFragment {
     private DialogListener listener;
-    private NumberPicker eWeightPicker,units;
-    private String[] weightUnits;
-    private String pickedUnit = "Kg";
+    private NumberPicker eWeightPicker;
+
 
 
     @Override
@@ -27,36 +26,10 @@ public class weightDialog extends AppCompatDialogFragment {
 
         eWeightPicker=view.findViewById(R.id.weightPicker);
 
-        units=view.findViewById(R.id.wUnitPicker);
-        units.setMinValue(0);
-        units.setMaxValue(1);
-        weightUnits=getResources().getStringArray(R.array.weightUnits);
-        units.setDisplayedValues(weightUnits);
-
         eWeightPicker.setMinValue(39);
         eWeightPicker.setMaxValue(150);
 
 
-        units.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                switch (picker.getValue()){
-                    case 0:
-                        eWeightPicker.setMinValue(39);
-                        eWeightPicker.setMaxValue(150);
-                        pickedUnit = "Kg";
-                        break;
-
-                    case 1:
-                        eWeightPicker.setMinValue(85);
-                        eWeightPicker.setMaxValue(330);
-                        pickedUnit = "lbs";
-                        break;
-
-                }
-
-            }
-        });
 
 
         builder.setView(view)
@@ -71,7 +44,7 @@ public class weightDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int i) {
                 int pickedValue = eWeightPicker.getValue();
                 StringBuilder sb=new StringBuilder();
-                sb.append(Integer.toString(pickedValue)).append(pickedUnit);
+                sb.append(Integer.toString(pickedValue)).append("Kg");
                 String wStr=sb.toString();
                 listener.applyWeightText(wStr);
 
