@@ -34,6 +34,7 @@ public class TrainingDays extends AppCompatActivity {
     private int satCount;
     private String tDaysString;
     private static ArrayList<String> tDays;
+    private TextView note;
 //    private TextView days;
     private TextView tip;
     private String txt;
@@ -49,6 +50,7 @@ public class TrainingDays extends AppCompatActivity {
 //        tLbl=findViewById(R.id.trainingDayslbl);
 //        lbl=findViewById(R.id.days);
         tDaysString="";
+        note=findViewById(R.id.note);
         sunCount=monCount=tueCount=wedCount=thurCount=friCount=satCount=0;
         txt="";
         sun= findViewById(R.id.sunBtn);
@@ -241,6 +243,12 @@ public class TrainingDays extends AppCompatActivity {
 
         }
 
+    }
+    public void note(){
+        if(tDays.size()==5){
+            note.setText("");
+
+        }
     }
 
     public static  ArrayList<String> gettDays(){

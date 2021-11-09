@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+class Birthdate  {
+
+    private static final String TAG = "Birthdate";
+
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private Button btnToHandW;
+    private DatePicker picker;
+    private FirebaseFirestore db;
+    private String userIp;
+    public static String date;
+    }
+       class Equipment{
+        private Button equBtn;
+        private CheckBox dmbl;
+        private CheckBox barbell;
+        private CheckBox ball;
+        private CheckBox jumpR;
+        private CheckBox ktl;
+        private CheckBox pullup;
+        private  CheckBox btlR;
+        private CheckBox band;
+        private FirebaseFirestore db;
+        private String userIp;
+        }
+
+@enduml
