@@ -90,7 +90,7 @@ date="6/10/1921";
         calendar.add(Calendar.YEAR, -100);
         Calendar calendar2 = Calendar.getInstance();
 
-        calendar2.add(Calendar.YEAR, -13);
+        calendar2.add(Calendar.YEAR, -18);
         long min = calendar.getTimeInMillis();
         long max = calendar2.getTimeInMillis();
 
