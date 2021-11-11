@@ -86,7 +86,7 @@
             android:layout_marginBottom="148dp"
             android:padding="15dp"
             android:text="Weekly Active Days"
-            android:textColor="#A6A42DB8"
+            android:textColor="#6F064208"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:text="0/Session"
-            android:textColor="#A6A42DB8"
+            android:textColor="#6F064208"
             android:textSize="18dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
