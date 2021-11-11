@@ -29,8 +29,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -71,7 +73,9 @@ public class PlanView extends AppCompatActivity {
     boolean dayThu;
     boolean dayFri;
 
-
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+    Date date = new Date();
+    String dayOfTheWeek = sdf.format(date);
 
     //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
     //userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -115,6 +119,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                         if (documentSnapshot.exists()) {
                            String test= documentSnapshot.getString(KEY_T);
                            namedays=test;
+                            currentDay();
 
                         } else {
                             Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
@@ -132,46 +137,10 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 });
 
 
-      //   namedays.replace("[", "").replace("]", "");
-
-
-       //String[] ary = namedays.split(" ");
-        //String [] str = namedays.trim().split("\\s*,\\s*");
-       //String [] str = namedays.trim().split(" +");
-
-        //List<String> al = new ArrayList<String>();
-        //al = Arrays.asList(str);
-        //StringUtils
-     //   String t=namedays.toString();
 
 
 
 
-
-
-
-
-        //boolean dayTue=false;
-
-
-
-
-
-
-
-        //ArrayList<String> list = new ArrayList<>(Arrays.asList(namedays.split(" ")));
-
-
-
-
-
-
-
-        // String nameday =documentSnapshot.getString(KEY_Name);
-       // ondata();
-        //String ndays = namedays.replaceAll("[^a-zA-Z0-9]", "");
-
-        //String[] ary = ndays.split(" ");
 
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -227,9 +196,21 @@ private ArrayList<String> days=TrainingDays.gettDays();
             }
         });
 
-
         buttonMon = (Button) findViewById(R.id.buttonMon);
-        buttonMon.setOnClickListener(new View.OnClickListener() {
+        buttonSat = (Button) findViewById(R.id.buttonSat);
+        buttonSun = (Button) findViewById(R.id.buttonSun);
+        buttonTue = (Button) findViewById(R.id.buttonTue);
+        buttonWed = (Button) findViewById(R.id.buttonWed);
+        buttonThu = (Button) findViewById(R.id.buttonThu);
+        buttonFri = (Button) findViewById(R.id.buttonFri);
+
+
+
+
+
+
+
+                buttonMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -276,7 +257,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                // for (int i=0;i<days.size();i++){
                  //   String day =days.get(i);
                     if (dayMon) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -285,7 +266,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -295,7 +276,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
         });
 
 
-        buttonSat = (Button) findViewById(R.id.buttonSat);
         buttonSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -342,7 +322,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
               //  for (int i=0;i<days.size();i++){
                 //    String day =days.get(i);
                     if (daySat) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -351,7 +331,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -361,7 +341,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
             }
         });
 
-        buttonSun = (Button) findViewById(R.id.buttonSun);
         buttonSun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -405,7 +384,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                // for (int i=0;i<days.size();i++){
                  //   String day =days.get(i);
                     if (daySun) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -414,7 +393,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -423,7 +402,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
             }
         });
-        buttonTue = (Button) findViewById(R.id.buttonTue);
         buttonTue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -466,7 +444,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 //for (int i=0;i<days.size();i++){
                   //  String day =days.get(i);
                     if (dayTue) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -475,7 +453,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -486,7 +464,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
         });
 
 
-        buttonWed = (Button) findViewById(R.id.buttonWed);
         buttonWed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -532,7 +509,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
              //   for (int i=0;i<days.size();i++){
                //     String day =days.get(i);
                     if (dayWed) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -541,7 +518,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -551,7 +528,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
             }
         });
 
-        buttonThu = (Button) findViewById(R.id.buttonThu);
         buttonThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -595,7 +571,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
             //    for (int i=0;i<days.size();i++){
               //      String day =days.get(i);
                     if (dayThu) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -604,7 +580,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -614,7 +590,6 @@ private ArrayList<String> days=TrainingDays.gettDays();
             }
         });
 
-        buttonFri = (Button) findViewById(R.id.buttonFri);
         buttonFri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -657,7 +632,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
                 //for (int i=0;i<days.size();i++){
                    // String day =days.get(i);
                     if (dayFri) {
-                        mon.setText("My Exercises for today");
+                        mon.setText("My Exercises for this day");
                         exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
@@ -666,7 +641,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
                     } else {
 
-                        mon.setText("There is no exercises for today");
+                        mon.setText("There is no exercises for this day");
                         exFrame.setVisibility(View.INVISIBLE);
                     }
 
@@ -675,6 +650,7 @@ private ArrayList<String> days=TrainingDays.gettDays();
 
             }
         });
+
 
     }
 
@@ -822,8 +798,20 @@ reference.get()
 
 
 
-public String getNamedays(){
-        return namedays;
-}
+public void currentDay(){
+
+    if(dayOfTheWeek.contains("Friday")){ buttonFri.performClick();}
+    else
+    if(dayOfTheWeek.contains("Monday")){ buttonMon.performClick();}
+    else
+    if(dayOfTheWeek.contains("Sunday")){ buttonSun.performClick();}
+    else
+    if(dayOfTheWeek.contains("Saturday")){ buttonSat.performClick();}
+    else
+    if(dayOfTheWeek.contains("Thursday")){ buttonThu.performClick();}
+    else
+    if(dayOfTheWeek.contains("Tuesday")){ buttonTue.performClick();}
+    else
+    if(dayOfTheWeek.contains("Wednesday")){ buttonWed.performClick();}}
 
 }

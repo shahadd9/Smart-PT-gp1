@@ -14,11 +14,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
 
         android:layout_marginEnd="0dp"
-        android:background="@color/yell">
+        android:background="#fee2cf">
 
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
             android:text="Don't forget to a warm up before exercises and cool down after"
-            android:textColor="@color/textYell"
+            android:textColor="@color/orange1"
             android:textSize="15dp"
             android:textStyle="italic" />
 
@@ -44,10 +44,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="360dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="7dp"
             android:layout_marginBottom="44dp"
-            android:backgroundTint="#fdffb0"
             android:text="X"
             android:textColor="@color/black"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
@@ -87,7 +86,7 @@
             android:layout_marginBottom="148dp"
             android:padding="15dp"
             android:text="Weekly Active Days"
-            android:textColor="@color/orange1"
+            android:textColor="#A6A42DB8"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -102,7 +101,7 @@
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:text="0/Session"
-            android:textColor="@color/orange1"
+            android:textColor="#A6A42DB8"
             android:textSize="18dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
