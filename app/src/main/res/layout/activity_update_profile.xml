@@ -76,14 +76,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.898" />
 
-        <TextView
-            android:id="@+id/editName"
+        <EditText  android:id="@+id/editName"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:longClickable="false"
-            android:onClick="onClick"
+            android:hint="Enter your name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -191,14 +190,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.149" />
 
-        <TextView
+            <EditText
             android:id="@+id/editHeight"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:layout_marginTop="25dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
+            android:hint="please enter your Height"
+            android:inputType="number"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -208,13 +207,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.336" />
 
-        <TextView
+        <EditText
             android:id="@+id/editWeight"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
+            android:hint="please enter your Weight"
+            android:inputType="number"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

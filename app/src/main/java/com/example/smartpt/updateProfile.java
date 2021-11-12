@@ -6,13 +6,17 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.format.Formatter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,11 +34,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class updateProfile extends AppCompatActivity implements nameDialog.DialogListener,
-        genderDialog.DialogListener, DB_Dialog.DialogListener, heightDialog.DialogListener,
-        areaDialog.DialogListener, weightDialog.DialogListener,
-        reminderDialog.DialogListener, daysDialog.DialogListener,durationDialog.DialogListener{
-    TextView eName, eGender, eDB, eHeight, eWeight, eFocusArea, eReminder,eDuration, eTrainingDays;
+public class updateProfile extends AppCompatActivity implements
+        genderDialog.DialogListener, DB_Dialog.DialogListener,
+        areaDialog.DialogListener, reminderDialog.DialogListener, daysDialog.DialogListener,durationDialog.DialogListener{
+    EditText eName , eHeight, eWeight;
+    TextView  eGender, eDB, eFocusArea, eReminder,eDuration, eTrainingDays;
     Button updateProfile;
     private FirebaseFirestore db;
     private String userIp;
@@ -84,16 +88,17 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         });
 
 
-        eName=(TextView) findViewById(R.id.editName);
+        eName=(EditText) findViewById(R.id.editName);
         eGender=(TextView) findViewById(R.id.editGender);
         eDB=(TextView) findViewById(R.id.editBD);
-        eHeight=(TextView) findViewById(R.id.editHeight);
-        eWeight=(TextView) findViewById(R.id.editWeight);
+        eHeight=(EditText) findViewById(R.id.editHeight);
+        eWeight=(EditText) findViewById(R.id.editWeight);
         eFocusArea=(TextView) findViewById(R.id.editFocusArea);
         eReminder = (TextView) findViewById(R.id.editReminder2);
         eDuration = (TextView) findViewById(R.id.editDuration);
         eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
         updateProfile=(Button) findViewById(R.id.updateProfileB);
+
 
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -162,6 +167,18 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 //        tDuration=TrainingDuration.tDuration+"";
 //        eDuration.setText(tDuration+" minutes");
 
+//        eName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(eName.getText().toString().matches("[a-zA-Z ]+")){
+//                    eName.setError("Only Alphabets characters are accepted! ");
+//                } else if( eName.getText().toString().equals("")){
+//                    eName.setError("This field is required!");
+//                }else{ applyNameText(eName.toString());}
+//            }
+//        });
+
 
 
         updateProfile.setOnClickListener(new View.OnClickListener() {
@@ -184,15 +201,68 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
                 });
             }
         });
-        eName.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+                eName.setFilters(new InputFilter[]{new InputFilter() {
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                        if (source.equals("")) {
+                            return source;
+                        }
+                        if (source.toString().matches("[a-zA-Z ]+")) {
+                            return source;
+                        }
+                        else {
+                            eName.setError("Only Alphabets characters are accepted! ");
+                        }
+                        return "";
+                    }
+                }
+                });
+                eName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String n=eName.getText().toString();
+                        if(n.isEmpty()){
+                            eName.setError("name is required!");
+                        }else {
+                            user.put("name", n);
+                        }
+
+                    }
+                });
+
+
+        eHeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String h= eHeight.getText().toString();
+                int height=Integer.parseInt(h);
+                if(height>249|| height<99){
+                    eHeight.setError("your height is out of range!");}
+                else {
+                    user.put("height",h.concat("cm"));
+                }
 
-                openNameDialog();
             }
-
-
         });
+
+        eWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w= eWeight.getText().toString();
+                int weight=Integer.parseInt(w);
+                if(weight>249 || weight<29){
+                    eWeight.setError("your weight is out of range!");}
+                else {
+                    user.put("weight",w.concat("kg"));
+                }
+
+            }
+        });
+
 
         eGender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,26 +279,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
             public void onClick(View v) {
 
                 openDB_Dialog();
-            }
-
-
-        });
-
-        eHeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openHeightDialog();
-            }
-
-
-        });
-
-        eWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openWeightDialog();
             }
 
 
@@ -275,11 +325,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         });
     }
 
-    public void openNameDialog(){
-        nameDialog eName=new nameDialog();
-        eName.show(getSupportFragmentManager(),"Name");
-    }
-
     public void openGenderDialog(){
         genderDialog eGender=new genderDialog();
         eGender.show(getSupportFragmentManager(),"Gender");
@@ -288,16 +333,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
     public void openDB_Dialog(){
         DB_Dialog eDB=new DB_Dialog();
         eDB.show(getSupportFragmentManager(),"DB");
-    }
-
-    public void openHeightDialog(){
-        heightDialog eHeight=new heightDialog();
-        eHeight.show(getSupportFragmentManager(),"Height");
-    }
-
-    public void openWeightDialog(){
-        weightDialog eWeight=new weightDialog();
-        eWeight.show(getSupportFragmentManager(),"Weight");
     }
 
     public void openAreaDialog(){
@@ -320,11 +355,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
         eTrainingDays.show(getSupportFragmentManager(),"Training Days");
     }
 
-    public void applyNameText(String name){
-        eName.setText(name);
-        user.put("name",name);
-
-    }
 
     public void applyGenderText(String gender){
         eGender.setText(gender);
@@ -350,17 +380,6 @@ public class updateProfile extends AppCompatActivity implements nameDialog.Dialo
 
     }
 
-    public void applyHeightText(String height){
-        eHeight.setText(height);
-        user.put("height",height);
-    }
-
-
-    public void applyWeightText(String weight){
-        eWeight.setText(weight);
-        user.put("weight",weight);
-
-    }
 
     public void applyAreaText(String area){
         eFocusArea.setText(area);
