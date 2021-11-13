@@ -86,7 +86,7 @@
             android:layout_marginBottom="148dp"
             android:padding="15dp"
             android:text="Weekly Active Days"
-            android:textColor="#6F064208"
+            android:textColor="#FFA623"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:text="0/Session"
-            android:textColor="#6F064208"
+            android:textColor="#FFA623"
             android:textSize="18dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
@@ -270,7 +270,7 @@
                 android:id="@+id/imageViewex1"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ex1" />
+                />
 
             <TextView
                 android:id="@+id/textViewex1"
@@ -299,7 +299,7 @@
                 android:id="@+id/imageViewex2"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ex2" />
+                />
 
             <TextView
                 android:id="@+id/textViewex2"
@@ -326,7 +326,7 @@
                 android:id="@+id/imageViewex3"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ex3" />
+                 />
 
             <TextView
                 android:id="@+id/textViewex3"

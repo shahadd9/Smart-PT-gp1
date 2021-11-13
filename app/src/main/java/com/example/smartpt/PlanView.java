@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +31,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +64,10 @@ public class PlanView extends AppCompatActivity {
     private DocumentReference ex1=db.collection("Exercise").document("9kfu4LzQIe8ZF9PxHTur");
     private DocumentReference ex2=db.collection("Exercise").document("2");
     private DocumentReference ex3=db.collection("Exercise").document("3");
-  //  private DocumentReference tdays=db.collection("userProfile").document(userIp);
+
+    private DocumentReference getimg=db.collection("Exercise").document("2");
+
+    private StorageReference mstorageReference=FirebaseStorage.getInstance().getReference().child("Exercice Pic/Q.png");;
 
 
     private static final String TAG = "PlanView";
@@ -76,6 +87,7 @@ public class PlanView extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
+    ImageView eximage;
 
     //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
     //userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -101,16 +113,30 @@ private ArrayList<String> days=TrainingDays.gettDays();
         WifiManager wifiManager=(WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
-//db.collection("userProfile").document().
-     /*   db.collection("userProfile").document(userIp).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-             namedays = documentSnapshot.getString(KEY_T);
+    mstorageReference = FirebaseStorage.getInstance().getReference().child("Exercice Pic/QuestionMark.jpg");
+        try {
+            final File localFile=File.createTempFile("QuestionMark","jpg");
+            mstorageReference.getFile(localFile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            ((ImageView)findViewById(R.id.imageViewex1)).setImageBitmap(bitmap);
+                            ((ImageView)findViewById(R.id.imageViewex2)).setImageBitmap(bitmap);
+                            ((ImageView)findViewById(R.id.imageViewex3)).setImageBitmap(bitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
-
-            }
-        });*/
 
         db.collection("userProfile").document(ipAddress).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
