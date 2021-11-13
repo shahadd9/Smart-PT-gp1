@@ -101,5 +101,20 @@
             app:layout_constraintTop_toBottomOf="@+id/qBirthdate"
             tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="267dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="130dp"
+            android:text="Note:This app is for use by people aged 18 years and over only."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
