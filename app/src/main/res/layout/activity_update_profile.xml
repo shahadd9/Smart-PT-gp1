@@ -85,7 +85,6 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="viewEnd"
-            android:textColor="#6A6363"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +103,7 @@
             android:onClick="onClick"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
@@ -119,7 +119,7 @@
             android:clickable="true"
             android:onClick="onClick"
             android:textAlignment="viewEnd"
-            android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
@@ -127,13 +127,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.542" />
 
-        <TextView
+        <Spinner
             android:id="@+id/editDuration"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,13 +141,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.809" />
 
-        <TextView
+        <Spinner
             android:id="@+id/editReminder2"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -167,7 +163,7 @@
             android:clickable="true"
             android:onClick="onClick"
             android:textAlignment="viewEnd"
-            android:textSize="20sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
@@ -175,14 +171,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.719" />
 
-        <TextView
+        <Spinner
             android:id="@+id/editGender"
-            android:layout_width="281dp"
+            android:layout_width="276dp"
             android:layout_height="53dp"
             android:layout_marginTop="24dp"
             android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -192,13 +186,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.149" />
 
-            <EditText
+        <EditText
             android:id="@+id/editHeight"
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:layout_marginTop="25dp"
             android:background="#E3E0E0"
-            android:textColor="#6A6363"
             android:hint="please enter your Height"
             android:inputType="number"
             android:textAlignment="viewEnd"
@@ -218,7 +211,6 @@
             android:hint="please enter your Weight"
             android:inputType="number"
             android:textAlignment="viewEnd"
-            android:textColor="#6A6363"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -312,6 +304,7 @@
             android:id="@+id/tGender"
             android:layout_width="99dp"
             android:layout_height="53dp"
+            android:layout_marginTop="2dp"
             android:background="#E3E0E0"
             android:text="Gender"
             android:textAlignment="viewStart"
