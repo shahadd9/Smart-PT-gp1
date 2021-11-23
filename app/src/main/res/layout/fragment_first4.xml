@@ -54,7 +54,7 @@
 
             <RadioButton
                 android:id="@+id/male"
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
                 android:text="Male"
@@ -68,7 +68,7 @@
 
             <RadioButton
                 android:id="@+id/female"
-                android:layout_width="100dp"
+                android:layout_width="169dp"
                 android:layout_height="67dp"
                 android:layout_gravity="center"
                 android:text="Female"

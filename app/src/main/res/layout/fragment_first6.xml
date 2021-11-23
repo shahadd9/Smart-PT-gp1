@@ -17,17 +17,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
-            android:layout_marginTop="600dp"
+            android:backgroundTint="#48D0FE"
             android:text="Next"
             android:textSize="20sp"
-            android:backgroundTint="#48D0FE"
             app:cornerRadius="6sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintVertical_bias="0.976"
             tools:ignore="MissingConstraints" />
 
         <TextView

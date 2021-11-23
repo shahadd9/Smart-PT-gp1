@@ -46,7 +46,7 @@ public class Name extends AppCompatActivity {
     private int count = 0;
 //    private FloatingActionButton btnBackToHome;
     public static String name = "";
-    boolean isNameEntered = false;
+    private boolean isNameEntered = false;
     private FirebaseFirestore db;
     private String userIp;
 

@@ -57,7 +57,7 @@
         <activity
             android:name=".Equipment"
             android:exported="true"
-            android:label="@string/Profile"
+            android:label="@string/Profile" 
             android:parentActivityName=".TrainingPlace" />
         <activity
             android:name=".TrainingPlace"
@@ -73,7 +73,7 @@
             android:name=".FitnessLevel"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Goal" />
+            android:parentActivityName=".HeightandWeight" />
         <activity
             android:name=".Goal"
             android:exported="true"
