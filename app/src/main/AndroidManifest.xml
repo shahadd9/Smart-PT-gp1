@@ -57,7 +57,7 @@
         <activity
             android:name=".Equipment"
             android:exported="true"
-            android:label="@string/Profile"
+            android:label="@string/Profile" 
             android:parentActivityName=".TrainingPlace" />
         <activity
             android:name=".TrainingPlace"
