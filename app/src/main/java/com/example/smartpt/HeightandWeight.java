@@ -149,7 +149,7 @@ w=55+"kg";
 
                     }
                 });
-                Intent intent = new Intent(HeightandWeight.this, Goal.class);
+                Intent intent = new Intent(HeightandWeight.this, FitnessLevel.class);
                 startActivity(intent);
 
             }
