@@ -49,8 +49,8 @@ public class DB_Dialog extends AppCompatDialogFragment {
                     Toast.makeText(getActivity(), "Age must be 18 at least!",
                             Toast.LENGTH_LONG).show();
 
-                }else if (cur-dobYear>100){
-                    Toast.makeText(getActivity(), "Age must be not exceed 100!",
+                }else if (cur-dobYear>65){
+                    Toast.makeText(getActivity(), "Age must be not exceed 64!",
                             Toast.LENGTH_LONG).show();
 
                 } else {

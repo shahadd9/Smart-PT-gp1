@@ -39,14 +39,14 @@ import java.util.List;
 import java.util.Map;
 
 public class updateProfile extends AppCompatActivity implements
-        DB_Dialog.DialogListener,
-        areaDialog.DialogListener, daysDialog.DialogListener, AdapterView.OnItemSelectedListener {
+        DB_Dialog.DialogListener, AdapterView.OnItemSelectedListener {
     EditText eName, eHeight, eWeight;
-    TextView eDB, eTrainingDays, eFocusArea;
-    Spinner eGender, eReminder, eDuration;
+    TextView eDB;
+    Spinner eGender, eReminder, eDuration, eTrainingDays;
     ArrayAdapter<String> eGenderAdapter;
     ArrayAdapter<String> eDurationAdapter;
     ArrayAdapter<String> eReminderAdapter;
+    ArrayAdapter<String> eDaysAdapter;
     Button updateProfile;
     private FirebaseFirestore db;
     private String userIp;
@@ -102,10 +102,10 @@ public class updateProfile extends AppCompatActivity implements
         eDB = (TextView) findViewById(R.id.editBD);
         eHeight = (EditText) findViewById(R.id.editHeight);
         eWeight = (EditText) findViewById(R.id.editWeight);
-        eFocusArea = (TextView) findViewById(R.id.editFocusArea);
+//        eFocusArea = (TextView) findViewById(R.id.editFocusArea);
         eReminder = (Spinner) findViewById(R.id.editReminder2);
         eDuration = (Spinner) findViewById(R.id.editDuration);
-        eTrainingDays = (TextView) findViewById(R.id.editTrainingDays);
+        eTrainingDays = (Spinner) findViewById(R.id.editTrainingDays);
         updateProfile = (Button) findViewById(R.id.updateProfileB);
 
 
@@ -118,8 +118,8 @@ public class updateProfile extends AppCompatActivity implements
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                eTrainingDays.setText(value.getString("trainingDays"));
-                eFocusArea.setText(value.getString("focusArea"));
+//                eTrainingDays.setText(value.getString("trainingDays"));
+//                eFocusArea.setText(value.getString("focusArea"));
                 eName.setText(value.getString("name"));
 //
                 gender = value.getDouble("gender");
@@ -139,6 +139,7 @@ public class updateProfile extends AppCompatActivity implements
                 // update reminder and duration spinners
                 eReminder.setSelection(eReminderAdapter.getPosition(value.getString("TrainingTime")));
                 eDuration.setSelection(eDurationAdapter.getPosition(value.getString("TrainingDuration")));
+                eTrainingDays.setSelection(eDaysAdapter.getPosition(value.getString("TrainingDays")));
             }
         });
 //            /////////////////////////////////////////////////////////
@@ -283,21 +284,21 @@ public class updateProfile extends AppCompatActivity implements
 
         });
 
-        eFocusArea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        eFocusArea.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                openAreaDialog();
+//            }
+//        });
 
-                openAreaDialog();
-            }
-        });
-
-        eTrainingDays.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openDaysDialog();
-            }
-        });
+//        eTrainingDays.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                openDaysDialog();
+//            }
+//        });
 
 
     }
@@ -306,17 +307,17 @@ public class updateProfile extends AppCompatActivity implements
         eDB.show(getSupportFragmentManager(), "DB");
     }
 
-    public void openAreaDialog() {
-        areaDialog eFocusArea = new areaDialog();
-        eFocusArea.show(getSupportFragmentManager(), "Area");
-    }
+//    public void openAreaDialog() {
+//        areaDialog eFocusArea = new areaDialog();
+//        eFocusArea.show(getSupportFragmentManager(), "Area");
+//    }
 
 
 
-    public void openDaysDialog() {
-        daysDialog eTrainingDays = new daysDialog();
-        eTrainingDays.show(getSupportFragmentManager(), "Training Days");
-    }
+//    public void openDaysDialog() {
+//        daysDialog eTrainingDays = new daysDialog();
+//        eTrainingDays.show(getSupportFragmentManager(), "Training Days");
+//    }
 
 
 
@@ -326,16 +327,16 @@ public class updateProfile extends AppCompatActivity implements
     }
 
 
-    public void applyAreaText(String area) {
-        eFocusArea.setText(area);
-        user.put("focusArea",area);
-    }
+//    public void applyAreaText(String area) {
+//        eFocusArea.setText(area);
+//        user.put("focusArea",area);
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void applyDaysText(String days) {
-        eTrainingDays.setText(days);
-        user.put("trainingDays", days);
-    }
+//    public void applyDaysText(String days) {
+//        eTrainingDays.setText(days);
+//        user.put("trainingDays", days);
+//    }
 
     public void onClick(View view) {}
 
@@ -359,6 +360,11 @@ public class updateProfile extends AppCompatActivity implements
         eDurationAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner_item, durations);
         eDuration.setAdapter(eDurationAdapter);
         eDuration.setOnItemSelectedListener(this);
+
+        List<String> days = new ArrayList<>(Arrays.asList("2","3","4","5"));
+        eDaysAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner_item, days);
+        eTrainingDays.setAdapter(eDaysAdapter);
+        eTrainingDays.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -375,6 +381,10 @@ public class updateProfile extends AppCompatActivity implements
 
             case R.id.editDuration:
                 updateDuration(item);
+                break;
+
+            case R.id.editTrainingDays:
+                updateDays(item);
                 break;
         }
 
@@ -397,6 +407,10 @@ public class updateProfile extends AppCompatActivity implements
 
     private void updateDuration(String duration) {
         user.put("TrainingDuration", duration);
+    }
+
+    private void updateDays(String days) {
+        user.put("TrainingDays", days);
     }
 
 }
