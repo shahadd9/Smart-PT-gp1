@@ -35,7 +35,7 @@ public class TrainingDays extends AppCompatActivity {
     private String tDaysString;
     private static ArrayList<String> tDays;
     private TextView note;
-//    private TextView days;
+    private TextView days;
     private TextView tip;
     private String txt;
     private FirebaseFirestore db;
@@ -60,7 +60,7 @@ public class TrainingDays extends AppCompatActivity {
         thur=findViewById(R.id.thruBtn);
         fri=findViewById(R.id.friBtn);
         sat=findViewById(R.id.satBtn);
-//        days= findViewById(R.id.days);
+        days= findViewById(R.id.days);
         next= findViewById(R.id.next);
         sunCount=0;
         db = FirebaseFirestore.getInstance();
@@ -183,7 +183,7 @@ public class TrainingDays extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(tDays.size()>=2){
-                    tDays=TrainingDays.gettDays();
+//                    tDays=TrainingDays.gettDays();
                     for(int i = 0; i<tDays.size();i++){
 
                         tDaysString=tDaysString+" "+ tDays.get(i);
@@ -215,13 +215,13 @@ public class TrainingDays extends AppCompatActivity {
         if(c%2==1){
             btn.setBackgroundColor(Color.parseColor("#ED0B8A"));
             tDays.add(txt);
-            //days.setText(tDays.toString()+ tDays.size());
+            days.setText(tDays.toString()+ tDays.size());
 
         }
         else {
             btn.setBackgroundColor(Color.parseColor("#E3C6D0"));
             tDays.remove(txt);
-            //days.setText(tDays.toString()+ tDays.size());
+            days.setText(tDays.toString()+ tDays.size());
 
         }
     }
@@ -251,8 +251,8 @@ public class TrainingDays extends AppCompatActivity {
         }
     }
 
-    public static  ArrayList<String> gettDays(){
-        return tDays;
-    }
+//    public static  ArrayList<String> gettDays(){
+//        return tDays;
+//    }
 
 }

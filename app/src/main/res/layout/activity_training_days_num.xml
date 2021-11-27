@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrainingDaysNum">
+
+    <TextView
+        android:id="@+id/Lbl"
+        android:layout_width="399dp"
+        android:layout_height="66dp"
+        android:text="How many days you want to exercise per week?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <RadioGroup
+        android:layout_width="247dp"
+        android:layout_height="278dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585">
+
+        <RadioButton
+            android:id="@+id/r1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:text="2 Days"
+            android:checked="true"
+            android:onClick="rntn"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/r2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:onClick="rntn"
+            android:text="3 Days"
+
+            />
+
+        <RadioButton
+            android:id="@+id/r3"
+            android:layout_width="match_parent"
+            android:onClick="rntn"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:text="4 Days"
+
+            />
+
+        <RadioButton
+            android:id="@+id/r4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EDEDED"
+            android:onClick="rntn"
+            android:text="5 Days"
+
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#48D0FE"
+        android:text="Next"
+        android:textSize="20sp"
+        app:cornerRadius="6sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+</androidx.constraintlayout.widget.ConstraintLayout>

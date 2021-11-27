@@ -89,7 +89,8 @@ public class TrainingPlace extends AppCompatActivity {
 
                     }
                 });
-                goEqupment2();
+                goNext();
+//                goEqupment2();
             }
         });
     }
@@ -100,6 +101,15 @@ public class TrainingPlace extends AppCompatActivity {
 //        intent.putExtra("goal",goal);
 //        intent.putExtra("level",level);
 //        intent.putExtra("place",place);
+        startActivity(intent);
+    }
+    public void goNext(){
+        Intent intent= new Intent(this, TrainingTime.class);
+//        intent.putExtra("tDays",tDays);
+//        intent.putExtra("goal",goal);
+//        intent.putExtra("level",level);
+//        intent.putExtra("place",place);
+//        intent.putExtra("equpmtList",equpmtList);
         startActivity(intent);
     }
 }

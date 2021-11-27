@@ -108,7 +108,7 @@ public static String level;
         });
     }
     public void goTrainingDays(){
-        Intent intent= new Intent(this, TrainingDays.class);
+        Intent intent= new Intent(this, TrainingDaysNum.class);
         intent.putExtra("level",level);
 //        intent.putExtra("goal",goal);
         startActivity(intent);
