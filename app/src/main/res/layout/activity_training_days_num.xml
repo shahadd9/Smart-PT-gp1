@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/Lbl"
-        android:layout_width="399dp"
-        android:layout_height="66dp"
+        android:layout_width="382dp"
+        android:layout_height="71dp"
         android:text="How many days you want to exercise per week?"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="22dp"
@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <RadioGroup
         android:layout_width="247dp"

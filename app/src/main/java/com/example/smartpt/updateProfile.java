@@ -53,15 +53,17 @@ public class updateProfile extends AppCompatActivity implements
     private ArrayList<String> tDays;
     private String name;
     private String date;
-    private int h;
-    private int w;
+    private String h;
+    private String w;
+    private int g;
+    private int dur;
     private double gender;
     private ArrayList<String> goal;
     private String goalStrin = "";
     private String tDaysString = "";
     private ArrayList<String> a;
     private String tTime;
-    private String tDuration;
+    private double tDuration;
 
 
     private Map<String, Object> user = new HashMap<>();
@@ -113,6 +115,8 @@ public class updateProfile extends AppCompatActivity implements
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+        //get data from database
         db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("userProfile").document(userIp);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -120,21 +124,23 @@ public class updateProfile extends AppCompatActivity implements
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 //                eTrainingDays.setText(value.getString("trainingDays"));
 //                eFocusArea.setText(value.getString("focusArea"));
-                eName.setText(value.getString("name"));
-//
+
+                name=value.getString("name");
+                eName.setText(name);
                 gender = value.getDouble("gender");
-                h = (int) gender;
+                g = (int) gender;
 
                 // update gender Spinner
-                if (h == 0)
+                if (g == 0)
                     eGender.setSelection(0);
                 else
                     eGender.setSelection(1);
-//
-                eDB.setText(value.getString("Birthdate"));
-////
-                eHeight.setText(value.getString("height") + "");
-                eWeight.setText(value.getString("weight") + "");
+                date = value.getString("Birthdate");
+                eDB.setText(date);
+                h=value.getString("height");
+                eHeight.setText(h);
+                w=value.getString("weight");
+                eWeight.setText(w);
 
                 // update reminder and duration spinners
                 eReminder.setSelection(eReminderAdapter.getPosition(value.getString("TrainingTime")));
@@ -201,6 +207,7 @@ public class updateProfile extends AppCompatActivity implements
 
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+
                             Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
                                     Toast.LENGTH_LONG).show();
                         }
@@ -212,6 +219,7 @@ public class updateProfile extends AppCompatActivity implements
 //                                Toast.LENGTH_LONG).show();
                     }
                 });
+
             }
         });
 
@@ -249,11 +257,11 @@ public class updateProfile extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 String h = eHeight.getText().toString();
-                int height = Integer.parseInt(h);
+                double height = Double.parseDouble(h);
                 if (height > 249 || height < 99) {
                     eHeight.setError("your height is out of range!");
                 } else {
-                    user.put("height", h.concat("cm"));
+                    user.put("height", h);
                 }
 
             }
@@ -263,11 +271,11 @@ public class updateProfile extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 String w = eWeight.getText().toString();
-                int weight = Integer.parseInt(w);
+                double weight = Double.parseDouble(w);
                 if (weight > 249 || weight < 29) {
                     eWeight.setError("your weight is out of range!");
                 } else {
-                    user.put("weight", w.concat("kg"));
+                    user.put("weight", w);
                 }
 
             }
@@ -355,7 +363,7 @@ public class updateProfile extends AppCompatActivity implements
         eReminder.setAdapter(eReminderAdapter);
         eReminder.setOnItemSelectedListener(this);
 
-        List<String> durations = new ArrayList<>(Arrays.asList("30 minutes","45 minutes","60 minutes"));
+        List<String> durations = new ArrayList<>(Arrays.asList("30","45","60"));
 
         eDurationAdapter = new ArrayAdapter<>(this, R.layout.custom_spinner_item, durations);
         eDuration.setAdapter(eDurationAdapter);
@@ -410,7 +418,8 @@ public class updateProfile extends AppCompatActivity implements
     }
 
     private void updateDays(String days) {
-        user.put("TrainingDays", days);
+        user.put("TrainingdaysNum", days);
+
     }
 
 }

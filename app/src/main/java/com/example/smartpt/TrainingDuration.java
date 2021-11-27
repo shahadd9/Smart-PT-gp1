@@ -40,7 +40,7 @@ public class TrainingDuration extends AppCompatActivity {
         noon=findViewById(R.id.noon);
         ev=findViewById(R.id.ev);
         time=findViewById(R.id.time);
-        tDuration=30+" minutes";
+        tDuration=30+"";
 
         time.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +79,12 @@ public class TrainingDuration extends AppCompatActivity {
 
     public void rntn(View v){
         if(mor.isChecked()){
-            tDuration=30+" minutes";
+            tDuration=30+"";
         }
         else if(noon.isChecked()){
-            tDuration=45+" minutes";
+            tDuration=45+"";
         }
-        else { tDuration= 60+" minutes";}
+        else { tDuration= 60+"";}
 
     }
 }

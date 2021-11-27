@@ -51,6 +51,7 @@ public class TrainingDaysNum extends AppCompatActivity {
        //as default
         tDays.add("Sun");
         tDays.add("Tue");
+        tDaysNo=2;
 
         tDaysString="";
 
