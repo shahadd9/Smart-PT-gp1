@@ -14,6 +14,21 @@
         tools:layout_editor_absoluteY="-103dp">
 
         <TextView
+            android:id="@+id/tWeight"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Weight"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/tHeight"
             android:layout_width="99dp"
             android:layout_height="53dp"
@@ -27,278 +42,7 @@
             app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.361" />
-
-        <TextView
-            android:id="@+id/tWeight"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Weight"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.451" />
-
-        <TextView
-            android:id="@+id/tBD"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Birthday "
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.272" />
-
-        <Button
-            android:id="@+id/updateProfileB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#48D0FE"
-            android:text="UPDATE"
-            android:textSize="20sp"
-            app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.898" />
-
-        <EditText
-            android:id="@+id/editName"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:hint="please enter your name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.088" />
-
-        <TextView
-            android:id="@+id/editBD"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="20dp"
-            android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.249" />
-
-        <TextView
-            android:id="@+id/editFocusArea"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.542" />
-
-        <Spinner
-            android:id="@+id/editDuration"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.809" />
-
-        <Spinner
-            android:id="@+id/editReminder2"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.631" />
-
-        <TextView
-            android:id="@+id/editTrainingDays"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.719" />
-
-        <Spinner
-            android:id="@+id/editGender"
-            android:layout_width="276dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="24dp"
-            android:background="#E3E0E0"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.149" />
-
-        <EditText
-            android:id="@+id/editHeight"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="25dp"
-            android:background="#E3E0E0"
-            android:hint="please enter your Height"
-            android:inputType="number"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.336" />
-
-        <EditText
-            android:id="@+id/editWeight"
-            android:layout_width="281dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:hint="please enter your Weight"
-            android:inputType="number"
-            android:textAlignment="viewEnd"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.451"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/tName"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Name"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.088" />
-
-        <TextView
-            android:id="@+id/tReminer"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Reminder"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.631" />
-
-        <TextView
-            android:id="@+id/tDuratinon"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Training days "
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.719" />
-
-        <TextView
-            android:id="@+id/tTrainingDays"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Duration"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.809" />
-
-        <TextView
-            android:id="@+id/tFocusArea2"
-            android:layout_width="99dp"
-            android:layout_height="53dp"
-            android:background="#E3E0E0"
-            android:text="Focus Areas"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.542" />
+            app:layout_constraintVertical_bias="0.41" />
 
         <TextView
             android:id="@+id/tGender"
@@ -315,7 +59,259 @@
             app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.179" />
+            app:layout_constraintVertical_bias="0.227" />
+
+        <TextView
+            android:id="@+id/tName"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137" />
+
+        <TextView
+            android:id="@+id/tBD"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Birthday "
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32" />
+
+        <Button
+            android:id="@+id/updateProfileB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#48D0FE"
+            android:text="UPDATE"
+            android:textSize="20sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.898" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/editFocusArea"-->
+        <!--            android:layout_width="281dp"-->
+        <!--            android:layout_height="53dp"-->
+        <!--            android:background="#E3E0E0"-->
+        <!--            android:clickable="true"-->
+        <!--            android:onClick="onClick"-->
+        <!--            android:textAlignment="viewEnd"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.907"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="0.542" />-->
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:hint="please enter your name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137" />
+
+        <Spinner
+            android:id="@+id/editGender"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="24dp"
+            android:background="#E3E0E0"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.911"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <TextView
+            android:id="@+id/editBD"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="20dp"
+            android:background="#E3E0E0"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.299" />
+
+        <EditText
+            android:id="@+id/editHeight"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="25dp"
+            android:background="#E3E0E0"
+            android:hint="please enter your Height"
+            android:inputType="number"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.387" />
+
+        <EditText
+            android:id="@+id/editWeight"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:hint="please enter your Weight"
+            android:inputType="number"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Spinner
+            android:id="@+id/editReminder2"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.915"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.591" />
+
+        <Spinner
+            android:id="@+id/editTrainingDays"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.679" />
+
+        <Spinner
+            android:id="@+id/editDuration"
+            android:layout_width="281dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:textAlignment="viewEnd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.915"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.769" />
+
+        <TextView
+            android:id="@+id/tDuratinon"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Training days "
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.679" />
+
+        <TextView
+            android:id="@+id/tReminer"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Reminder"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.591" />
+
+        <TextView
+            android:id="@+id/tTrainingDays"
+            android:layout_width="99dp"
+            android:layout_height="53dp"
+            android:background="#E3E0E0"
+            android:text="Duration"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.769" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tFocusArea2"-->
+        <!--            android:layout_width="99dp"-->
+        <!--            android:layout_height="53dp"-->
+        <!--            android:background="#E3E0E0"-->
+        <!--            android:text="Focus Areas"-->
+        <!--            android:textAlignment="viewStart"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="16sp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.051"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="0.542" />-->
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
