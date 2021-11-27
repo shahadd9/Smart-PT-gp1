@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,17 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".TrainingDaysNum"
+            android:exported="true" />
+        <activity
             android:name=".TrainingDuration"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".TrainingTime"
-            />
+            android:parentActivityName=".TrainingTime" />
         <activity
             android:name=".TrainingTime"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".Equipment"
-            />
+            android:parentActivityName=".Equipment" />
         <activity
             android:name=".HeightandWeight"
             android:exported="true"
@@ -57,7 +58,7 @@
         <activity
             android:name=".Equipment"
             android:exported="true"
-            android:label="@string/Profile" 
+            android:label="@string/Profile"
             android:parentActivityName=".TrainingPlace" />
         <activity
             android:name=".TrainingPlace"

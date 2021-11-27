@@ -100,7 +100,7 @@ public class PlanView extends AppCompatActivity {
     //DatabaseRefernce databaseRefernce;
     //private FirebaseFirestore db;
 
-private ArrayList<String> days=TrainingDays.gettDays();
+private ArrayList<String> days=TrainingDaysNum.gettDays();
 
 
     @Override
