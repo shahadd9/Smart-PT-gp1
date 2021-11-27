@@ -124,6 +124,7 @@ public class updateProfile extends AppCompatActivity implements
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 //                eTrainingDays.setText(value.getString("trainingDays"));
 //                eFocusArea.setText(value.getString("focusArea"));
+
                 name=value.getString("name");
                 eName.setText(name);
                 gender = value.getDouble("gender");
@@ -321,10 +322,10 @@ public class updateProfile extends AppCompatActivity implements
 
 
 
-    public void openDaysDialog() {
-        daysDialog eTrainingDays = new daysDialog();
-        eTrainingDays.show(getSupportFragmentManager(), "Training Days");
-    }
+//    public void openDaysDialog() {
+//        daysDialog eTrainingDays = new daysDialog();
+//        eTrainingDays.show(getSupportFragmentManager(), "Training Days");
+//    }
 
 
 
@@ -418,6 +419,7 @@ public class updateProfile extends AppCompatActivity implements
 
     private void updateDays(String days) {
         user.put("TrainingdaysNum", days);
+
     }
 
 }
