@@ -20,6 +20,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,6 +54,8 @@ public class LoadPa extends AppCompatActivity {
     private int exNo;
     private int sets;
     private int reps;
+    private String test;
+    private String eq;
     private int trainingdaysNum;
     private  String trainingDays;
     private String sunEx;
@@ -105,6 +110,7 @@ public class LoadPa extends AppCompatActivity {
                 level= value.getString("level");
                 heightD=value.getString("height");
                 weightD= value.getString("weight");
+                eq= value.getString("equpmtList");
                 height=Integer.parseInt(heightD);
                 weight=Integer.parseInt(weightD);
                 BMI= (weight/(height*height))*10000;
@@ -185,7 +191,20 @@ public class LoadPa extends AppCompatActivity {
                 sets=4;
             }
         }
+        ex();
+    }
+    public void ex(){
+
+        if (! Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+        Python py = Python.getInstance();
+        // creating python object
+        PyObject pyObj= py.getModule("myscript");
+        PyObject obj = pyObj.callAttr("main");
+        test = obj.toString();
         addPlan();
+
     }
 
     /*
@@ -278,6 +297,7 @@ public class LoadPa extends AppCompatActivity {
         planAdd.put("rest",rest);
         planAdd.put("reps",reps);
         planAdd.put("exNO",exNo);
+        planAdd.put("test",test);
         plan.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
