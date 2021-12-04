@@ -27,11 +27,11 @@ public class Equipment extends AppCompatActivity {
     private CheckBox dmbl;
     private CheckBox barbell;
     private CheckBox ball;
-    private CheckBox jumpR;
-    private CheckBox ktl;
-    private CheckBox pullup;
-    private  CheckBox btlR;
-    private CheckBox band;
+    private CheckBox bench;
+    private CheckBox dip;
+    private CheckBox cable;
+//    private  CheckBox btlR;
+//    private CheckBox band;
     private FirebaseFirestore db;
     private String userIp;
 //    private TextView t ;
@@ -53,11 +53,11 @@ public static ArrayList<String> equpmtList;
         dmbl=findViewById(R.id.dumbble);
         barbell=findViewById(R.id.barbell);
         ball=findViewById(R.id.ball);
-        jumpR=findViewById(R.id.jumpR);
-        ktl=findViewById(R.id.kettle);
-        pullup=findViewById(R.id.pullUp);
-        btlR=findViewById(R.id.battleR);
-        band=findViewById(R.id.band);
+        bench=findViewById(R.id.Bench);
+        dip=findViewById(R.id.dip);
+        cable=findViewById(R.id.cable);
+//        btlR=findViewById(R.id.battleR);
+//        band=findViewById(R.id.band);
         equpmtList=new ArrayList<>();
 //        level= getIntent().getStringExtra("level");
 //        goal=getIntent().getStringArrayListExtra("goal");
@@ -115,84 +115,84 @@ public static ArrayList<String> equpmtList;
             }
         });
 
-        jumpR.setOnClickListener(new View.OnClickListener() {
+        bench.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(jumpR.isChecked()){
-                    equpmtList.add((String) jumpR.getText());
+                if(bench.isChecked()){
+                    equpmtList.add((String) bench.getText());
                     count++;
                 }
                 else {
                     count--;
-                    equpmtList.remove((String) jumpR.getText());
+                    equpmtList.remove((String) bench.getText());
                 }
 //                activate();
             }
         });
-        ktl.setOnClickListener(new View.OnClickListener() {
+        dip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(ktl.isChecked()){
-                    equpmtList.add((String) ktl.getText());
+                if(dip.isChecked()){
+                    equpmtList.add((String) dip.getText());
                     count++;
                 }
                 else {
                     count--;
-                    equpmtList.remove((String) ktl.getText());
-                }
-//                activate();
-            }
-        });
-
-        pullup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(pullup.isChecked()){
-                    equpmtList.add((String) pullup.getText());
-                    count++;
-                }
-                else {
-                    count--;
-                    equpmtList.remove((String) pullup.getText());
+                    equpmtList.remove((String) dip.getText());
                 }
 //                activate();
             }
         });
 
-        btlR.setOnClickListener(new View.OnClickListener() {
+        cable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(btlR.isChecked()){
-                    equpmtList.add((String) btlR.getText());
+                if(cable.isChecked()){
+                    equpmtList.add((String) cable.getText());
                     count++;
                 }
                 else {
                     count--;
-                    equpmtList.remove((String) btlR.getText());
+                    equpmtList.remove((String) cable.getText());
                 }
 //                activate();
             }
         });
 
-        band.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        btlR.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(btlR.isChecked()){
+//                    equpmtList.add((String) btlR.getText());
+//                    count++;
+//                }
+//                else {
+//                    count--;
+//                    equpmtList.remove((String) btlR.getText());
+//                }
+////                activate();
+//            }
+//        });
 
-                if(band.isChecked()){
-                    equpmtList.add((String) band.getText());
-                    count++;
-                }
-                else {
-                    count--;
-                    equpmtList.remove((String) band.getText());
-                }
-//                activate();
-            }
-        });
+//        band.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(band.isChecked()){
+//                    equpmtList.add((String) band.getText());
+//                    count++;
+//                }
+//                else {
+//                    count--;
+//                    equpmtList.remove((String) band.getText());
+//                }
+////                activate();
+//            }
+//        });
 
         equBtn.setOnClickListener(new View.OnClickListener() {
             @Override
