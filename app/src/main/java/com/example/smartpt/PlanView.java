@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,18 +88,21 @@ public class PlanView extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
-    ImageView eximage;
+    private int[] exe_list= {
+            R.id.textViewex1,
+            R.id.textViewex2,
+            R.id.textViewex3,
+            R.id.textViewex4,
+            R.id.textViewex5,
+            R.id.textViewex6,
+            R.id.textViewex7,
+            R.id.textViewex8,
+            R.id.textViewex9,
+            R.id.textViewex10,
+            R.id.textViewex11,
+            R.id.textViewex12,
+    };
 
-    //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-    //userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-
-
-    // private TrainingDays tDays =((TrainingDays)getApplicationContext());
-    //private ArrayList<String> tDay=tDays.gettDays();
-   // private TrainingDays trainingDays=new TrainingDays();
-//List<String> testd=new ArrayList<>();
-    //DatabaseRefernce databaseRefernce;
-    //private FirebaseFirestore db;
 
 private ArrayList<String> days=TrainingDaysNum.gettDays();
 
@@ -121,9 +125,9 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                            ((ImageView)findViewById(R.id.imageViewex1)).setImageBitmap(bitmap);
-                            ((ImageView)findViewById(R.id.imageViewex2)).setImageBitmap(bitmap);
-                            ((ImageView)findViewById(R.id.imageViewex3)).setImageBitmap(bitmap);
+                            //((ImageView)findViewById(R.id.imageViewex1)).setImageBitmap(bitmap);
+                           // ((ImageView)findViewById(R.id.imageViewex2)).setImageBitmap(bitmap);
+                           // ((ImageView)findViewById(R.id.imageViewex3)).setImageBitmap(bitmap);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -193,15 +197,12 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
             }
         });
 
-        LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
+
+       // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
         FrameLayout alertFrame = (FrameLayout) findViewById(R.id.alertFrame);
-
-
-        //trainingDays=new TrainingDays();
-        //ArrayList<String> days= trainingDays.gettDays();
-        //int len=days.size();
-        //ex
+        ScrollView scrollView =(ScrollView)findViewById(R.id.ScrollFrame); 
+        
         TextviewEx1 = findViewById(R.id.textViewex1);
         TextviewEx2 = findViewById(R.id.textViewex2);
         TextviewEx3 = findViewById(R.id.textViewex3);
@@ -284,16 +285,17 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                  //   String day =days.get(i);
                     if (dayMon) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                   ///     break;
+                        scrollView.setVisibility(View.VISIBLE);
+
+                        ///     break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
                 //}// end for
@@ -313,52 +315,35 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#24c8fe"));
-
                 buttonSat.setTextColor(getResources().getColor(R.color.white));
-
                 buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
                 buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
                 buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
                 buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
                 buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
-
-
-
                 buttonMon.setTextColor( Color.parseColor("#696969"));
-
                 buttonSun.setTextColor( Color.parseColor("#696969"));
-
                 buttonTue.setTextColor( Color.parseColor("#696969"));
-
                 buttonWed.setTextColor( Color.parseColor("#696969"));
-
                 buttonThu.setTextColor( Color.parseColor("#696969"));
-
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
 
-
-              //  for (int i=0;i<days.size();i++){
-                //    String day =days.get(i);
                     if (daySat) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                  ///      break;
+                        scrollView.setVisibility(View.VISIBLE);
+
+                        ///      break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
                 //}/// end for
@@ -407,20 +392,20 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
 
 
-               // for (int i=0;i<days.size();i++){
-                 //   String day =days.get(i);
+
                     if (daySun) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                   //     break;
+                        scrollView.setVisibility(View.VISIBLE);
+
+                        //     break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
                 //}// end for
@@ -467,20 +452,19 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                //for (int i=0;i<days.size();i++){
-                  //  String day =days.get(i);
                     if (dayTue) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                //        break;
+                        scrollView.setVisibility(View.VISIBLE);
+
+                        //        break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
               //  }// end for
@@ -532,20 +516,19 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-             //   for (int i=0;i<days.size();i++){
-               //     String day =days.get(i);
                     if (dayWed) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
-                 //       break;
+                        scrollView.setVisibility(View.VISIBLE);
+
+                        //       break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
             //    }// end for
@@ -580,7 +563,6 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-
                 buttonMon.setTextColor( Color.parseColor("#696969"));
 
                 buttonSat.setTextColor( Color.parseColor("#696969"));
@@ -594,20 +576,19 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-            //    for (int i=0;i<days.size();i++){
-              //      String day =days.get(i);
+
                     if (dayThu) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
+                        scrollView.setVisibility(View.VISIBLE);
                  //       break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
               //  }// end for
@@ -659,16 +640,16 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                    // String day =days.get(i);
                     if (dayFri) {
                         mon.setText("My Exercises for this day");
-                        exFrame.setVisibility(View.VISIBLE);
                         loadEx1(v);
                         loadEx2(v);
                         loadEx3(v);
+                        scrollView.setVisibility(View.VISIBLE);
                      //   break;
 
                     } else {
 
                         mon.setText("There is no exercises for this day");
-                        exFrame.setVisibility(View.INVISIBLE);
+                        scrollView.setVisibility(View.INVISIBLE);
                     }
 
                // }// end for
@@ -690,6 +671,7 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                         if (documentSnapshot.exists()){
                             String name =documentSnapshot.getString(KEY_Name);
                             String target=documentSnapshot.getString(KEY_TARGET);
+
 
                             TextviewEx1.setText(name+"\n"+"Targe Muscle: "+target);
 
@@ -723,6 +705,7 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                             TextviewEx2.setText(name + "\n" + "Targe Muscle: " + target);
 
+
                         } else {
                             Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
                         }
@@ -750,6 +733,7 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                                 String target=documentSnapshot.getString(KEY_TARGET);
 
                                 TextviewEx3.setText(name+"\n"+"Targe Muscle: "+target);
+
 
                             }else {
                                 Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();

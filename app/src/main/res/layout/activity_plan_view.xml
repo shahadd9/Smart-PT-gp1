@@ -233,7 +233,7 @@
         android:layout_width="388dp"
         android:layout_height="match_parent"
 
-        android:layout_above="@+id/ExFrame"
+        android:layout_above="@+id/ScrollFrame"
         android:layout_below="@+id/WeeklyFrame"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -246,7 +246,354 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/ScrollFrame"
+        android:layout_width="388dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/WeeklyFrame"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-300dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="102dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="invisible"
+
+        >
+
+        <!--android:id="@+id/ExFrame"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_below="@+id/WeeklyFrame"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:orientation="vertical"
+            >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:id="@+id/exRow1"
+                >
+
+
+                <TextView
+                    android:id="@+id/textViewex1"
+                    android:layout_width="240dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="7dp"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/start1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/start" />
+            </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:id="@+id/exRow2"
+
+            >
+
+
+
+            <TextView
+                android:id="@+id/textViewex2"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/start2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/exRow3"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            >
+
+            <TextView
+                android:id="@+id/textViewex3"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+            <TableRow
+                android:id="@+id/exRow4"
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+
+
+                <TextView
+                    android:id="@+id/textViewex4"
+                    android:layout_width="240dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="7dp"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/start4"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="57dp"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/start" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/exRow5"
+                android:layout_width="match_parent"
+            android:layout_height="67dp">
+
+
+
+
+            <TextView
+                android:id="@+id/textViewex5"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start5"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+            <TableRow
+                android:id="@+id/exRow6"
+                android:layout_width="match_parent"
+            android:layout_height="67dp">
+
+
+
+
+            <TextView
+                android:id="@+id/textViewex6"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start6"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+            <TableRow
+                android:id="@+id/exRow7"
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+
+
+            <TextView
+                android:id="@+id/textViewex7"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start7"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+            <TableRow
+                android:id="@+id/exRow8"
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+
+
+                <TextView
+                    android:id="@+id/textViewex8"
+                    android:layout_width="240dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="7dp"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/start8"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="57dp"
+                    android:contentDescription="TODO"
+                    app:srcCompat="@drawable/start" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/exRow9"
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+            <TextView
+                android:id="@+id/textViewex9"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start9"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+            <TableRow
+                android:id="@+id/exRow10"
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+
+
+            <TextView
+                android:id="@+id/textViewex10"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+
+                />
+
+            <ImageView
+                android:id="@+id/start10"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+            <TableRow
+                android:id="@+id/exRow11"
+
+                android:layout_width="match_parent"
+                android:layout_height="67dp">
+
+
+
+
+            <TextView
+                android:id="@+id/textViewex11"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start11"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+            <TableRow
+                android:id="@+id/exRow12"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                >
+
+            <TextView
+                android:id="@+id/textViewex12"
+                android:layout_width="240dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/start12"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="57dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/start" />
+        </TableRow>
+
+    </LinearLayout>
+
+
+
+    </ScrollView>
+
+  <!-- <LinearLayout
         android:id="@+id/ExFrame"
         android:layout_width="388dp"
         android:layout_height="200dp"
@@ -266,17 +613,11 @@
             android:layout_width="match_parent"
             android:layout_height="67dp">
 
-            <ImageView
-                android:id="@+id/imageViewex1"
-                android:layout_width="107dp"
-                android:layout_height="match_parent"
-                />
+
 
             <TextView
                 android:id="@+id/textViewex1"
-                android:layout_width="176dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:layout_width="240dp"                android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"                android:textColor="@color/black"
                 android:textSize="13dp" />
@@ -303,8 +644,7 @@
 
             <TextView
                 android:id="@+id/textViewex2"
-                android:layout_width="176dp"
-                android:layout_height="match_parent"
+                android:layout_width="240dp"                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"                android:textColor="@color/black"
@@ -330,8 +670,7 @@
 
             <TextView
                 android:id="@+id/textViewex3"
-                android:layout_width="176dp"
-                android:layout_height="match_parent"
+                android:layout_width="240dp"                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
@@ -348,6 +687,8 @@
         </TableRow>
 
     </LinearLayout>
+
+    -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

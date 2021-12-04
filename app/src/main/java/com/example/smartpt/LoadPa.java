@@ -56,6 +56,18 @@ public class LoadPa extends AppCompatActivity {
     private int reps;
     private String test;
     private String eq;
+    private int trainingdaysNum;
+    private  String trainingDays;
+    private String sunEx;
+    private String monEx;
+    private String tueEx;
+    private String wedEx;
+    private String thurEx;
+    private String friEx;
+    private String satEx;
+    private String equipmentList;
+
+
     private CollectionReference plan = db.collection("userProfile");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +115,11 @@ public class LoadPa extends AppCompatActivity {
                 weight=Integer.parseInt(weightD);
                 BMI= (weight/(height*height))*10000;
                 Level(level);
+              //  trainingdaysNum=Integer.getInteger("TrainingdaysNum");
+                //trainingDays=value.getString("trainingDays");
+                //TrainingDays(trainingdaysNum,trainingDays);
+               // equipmentList=value.getString("equpmtList");
+                //equipment(equipmentList);
             }
         });
 
@@ -189,6 +206,89 @@ public class LoadPa extends AppCompatActivity {
         addPlan();
 
     }
+
+    /*
+   public void TrainingDays(Integer trainingdaysNum,String trainingDays){
+       // String[] splitedDays = trainingDays.split("\\s+");
+        if (trainingdaysNum==2){
+            sunEx="full body";
+            tueEx="full body";
+
+        }
+        else if(trainingdaysNum==3){
+            sunEx="full body";
+            tueEx="full body";
+            thurEx="full body";
+
+        }
+        else if(trainingdaysNum==4){
+            sunEx="upper";
+            tueEx="lower";
+            thurEx="upper";
+            satEx="lower";
+
+        }
+        else {//Number of Training Days = 5
+            sunEx="chest";
+            monEx="back,leg";
+            tueEx="shoulder";
+            thurEx="core";
+            friEx="arm";
+        }
+
+
+    }*/
+
+  /*  public void equipment(String equ){
+        boolean bench;
+        boolean dumbbell;
+        boolean barbell;
+        boolean stabilityBall;
+        boolean dipMachine;
+        boolean cableMachine;
+
+
+       if (equ.indexOf("bench")==-1){
+           bench=false;
+       }else {
+           bench=true;
+       }
+
+        if (equ.indexOf("barbell")==-1){
+            barbell=false;
+        }else {
+            barbell=true;
+        }
+
+        if (equ.indexOf("Dumbbell")==-1){
+            dumbbell=false;
+        }else {
+            dumbbell=true;
+        }
+
+        if (equ.indexOf("stability ball")==-1){
+            stabilityBall=false;
+        }else {
+            stabilityBall=true;
+        }
+
+        if (equ.indexOf("dip machine")==-1){
+            dipMachine=false;
+        }else {
+            dipMachine=true;
+        }
+
+        if (equ.indexOf("cable machine")==-1){
+            cableMachine=false;
+        }else {
+            cableMachine=true;
+        }
+
+
+
+    }*/
+
+
     public void addPlan(){
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());

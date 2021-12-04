@@ -14,12 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".Exercise"
+            android:exported="true"
+            android:label="Exercise details"
+            android:parentActivityName=".PlanView"  />
+        <activity
             android:name=".TrainingDaysNum"
             android:exported="true" />
         <activity
             android:name=".TrainingDuration"
             android:exported="true"
-            android:label="@string/Profile"
+            android:label="Create Profile"
             android:parentActivityName=".TrainingTime" />
         <activity
             android:name=".TrainingTime"
@@ -33,7 +38,8 @@
             android:parentActivityName=".Birthdate" />
         <activity
             android:name=".PlanView"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".updateProfile"
             android:exported="true" />
