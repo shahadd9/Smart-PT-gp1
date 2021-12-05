@@ -55,7 +55,7 @@ public class LoadPa extends AppCompatActivity {
     private int sets;
     private int reps;
     private String test;
-    private String eq;
+    private String equ;
     private int trainingdaysNum;
     private  String trainingDays;
     private String sunEx;
@@ -66,6 +66,13 @@ public class LoadPa extends AppCompatActivity {
     private String friEx;
     private String satEx;
     private String equipmentList;
+    private boolean bench;
+    private boolean benchT;
+    private boolean dumbbell;
+    private boolean barbell;
+    private boolean stabilityBall;
+    private boolean dipMachine;
+    private boolean cableMachine;
 
 
     private CollectionReference plan = db.collection("userProfile");
@@ -85,8 +92,8 @@ public class LoadPa extends AppCompatActivity {
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-        retreiveInfo();
         rotateAnimation();
+        retreiveInfo();
 
         h.postDelayed(new Runnable() {
             @Override
@@ -97,7 +104,7 @@ public class LoadPa extends AppCompatActivity {
                 startActivity(i);
                  finish();
             }
-        }, 2500);
+        }, 15000);
     }
 
     public void retreiveInfo() {
@@ -110,7 +117,7 @@ public class LoadPa extends AppCompatActivity {
                 level= value.getString("level");
                 heightD=value.getString("height");
                 weightD= value.getString("weight");
-                eq= value.getString("equpmtList");
+                equ= value.getString("equpmtList");
                 height=Integer.parseInt(heightD);
                 weight=Integer.parseInt(weightD);
                 BMI= (weight/(height*height))*10000;
@@ -191,7 +198,7 @@ public class LoadPa extends AppCompatActivity {
                 sets=4;
             }
         }
-        ex();
+        equipment();
     }
     public void ex(){
 
@@ -201,7 +208,7 @@ public class LoadPa extends AppCompatActivity {
         Python py = Python.getInstance();
         // creating python object
         PyObject pyObj= py.getModule("myscript");
-        PyObject obj = pyObj.callAttr("main");
+        PyObject obj = pyObj.callAttr("exercises",bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine);
         test = obj.toString();
         addPlan();
 
@@ -239,22 +246,17 @@ public class LoadPa extends AppCompatActivity {
 
     }*/
 
-  /*  public void equipment(String equ){
-        boolean bench;
-        boolean dumbbell;
-        boolean barbell;
-        boolean stabilityBall;
-        boolean dipMachine;
-        boolean cableMachine;
+    public void equipment(){
 
 
-       if (equ.indexOf("bench")==-1){
+
+       if (equ.indexOf("Bench")==-1){
            bench=false;
        }else {
            bench=true;
        }
 
-        if (equ.indexOf("barbell")==-1){
+        if (equ.indexOf("Barbell")==-1){
             barbell=false;
         }else {
             barbell=true;
@@ -266,27 +268,27 @@ public class LoadPa extends AppCompatActivity {
             dumbbell=true;
         }
 
-        if (equ.indexOf("stability ball")==-1){
+        if (equ.indexOf("Stability ball")==-1){
             stabilityBall=false;
         }else {
             stabilityBall=true;
         }
 
-        if (equ.indexOf("dip machine")==-1){
+        if (equ.indexOf("Dip Machine")==-1){
             dipMachine=false;
         }else {
             dipMachine=true;
         }
 
-        if (equ.indexOf("cable machine")==-1){
+        if (equ.indexOf("Cable Machine")==-1){
             cableMachine=false;
         }else {
             cableMachine=true;
         }
+ex();
 
 
-
-    }*/
+    }
 
 
     public void addPlan(){
