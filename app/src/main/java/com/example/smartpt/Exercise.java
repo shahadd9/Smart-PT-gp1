@@ -33,35 +33,35 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),PlanView.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-                        overridePendingTransition(0,0);
-                        return true;
-//
-//                    case R.id.progress:
-//                        startActivity(new Intent(getApplicationContext(),progress.class));
+//        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext(),PlanView.class));
 //                        overridePendingTransition(0,0);
 //                        return true;
-                }
-                return false;
-            }
-        });
+//
+//                    case R.id.profile:
+//                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+////
+////                    case R.id.progress:
+////                        startActivity(new Intent(getApplicationContext(),progress.class));
+////                        overridePendingTransition(0,0);
+////                        return true;
+//                }
+//                return false;
+//            }
+//        });
 
         exName=(TextView) findViewById(R.id.exName);
-        sets=(TextView) findViewById(R.id.sets);
-        reps=(TextView) findViewById(R.id.reps);
-        rest=(TextView) findViewById(R.id.rest);
+        sets=(TextView) findViewById(R.id.sets); //Done
+        reps=(TextView) findViewById(R.id.reps); //Done
+        rest=(TextView) findViewById(R.id.rest); //Done
         duration=(TextView) findViewById(R.id.duration);
         equipment=(TextView) findViewById(R.id.equipment);
         target=(TextView) findViewById(R.id.target);
@@ -78,57 +78,57 @@ public class Exercise extends AppCompatActivity {
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("Exercise").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                name=value.getString("exerciseName");
-                exName.setText(name);
+//                name=value.getString("exerciseName");
+//                exName.setText(name);
 
-                targetMuscle=value.getString("target");
-                target.setText(targetMuscle);
+//                targetMuscle=value.getString("target");
+//                target.setText(targetMuscle);
 
-                generalMuscle=value.getString("general");
-                general.setText(generalMuscle);
-
-                forc=value.getString("force");
-                force.setText(forc);
-
-                mecha=value.getString("mechanism");
-                mechanism.setText(mecha);
+//                generalMuscle=value.getString("general");
+//                general.setText(generalMuscle);
+//
+//                forc=value.getString("force");
+//                force.setText(forc);
+//
+//                mecha=value.getString("mechanism");
+//                mechanism.setText(mecha);
 
                 set=value.getDouble("sets");
                 s=(int)set;
-                sets.setText(s);
+                sets.setText(""+s+"");
 
                 rep=value.getDouble("reps");
                 r=(int)rep;
-                reps.setText(r);
+                reps.setText(r+"");
 
                 Res=value.getDouble("rest");
                 re=(int)Res;
-                rest.setText(re);
+                rest.setText(re+"");
 
-                dur=value.getDouble("duration");
-                d=(int)dur;
-                duration.setText(d);
+//                dur=value.getDouble("duration");
+//                d=(int)dur;
+//                duration.setText(d);
 
-                equip=value.getString("equipment");
-                if(equip=="0"){
-                    equipment.setText("No Equipment needed for this exercise");
-                }else {
-                    equipment.setText(equip);
-                }
-
-                execute=value.getString("execution");
-                execution.setText(execute);
-
-                tip=value.getString("tips");
-                tips.setText(tip);
-
-                str=value.getString("starting position");
-                start.setText(str);
+//                equip=value.getString("equipment");
+//                if(equip=="0"){
+//                    equipment.setText("No Equipment needed for this exercise");
+//                }else {
+//                    equipment.setText(equip);
+//                }
+//
+//                execute=value.getString("execution");
+//                execution.setText(execute);
+//
+//                tip=value.getString("tips");
+//                tips.setText(tip);
+//
+//                str=value.getString("starting position");
+//                start.setText(str);
 
 
 
