@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -214,7 +215,7 @@ public static ArrayList<String> equpmtList;
                     //show.setText("you must choose one at least");
                     //show.setEnabled(false);
                     Map<String,Object> user = new HashMap<>();
-                    user.put("equpmtList",0);
+                    user.put("equpmtList","0");
                     db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

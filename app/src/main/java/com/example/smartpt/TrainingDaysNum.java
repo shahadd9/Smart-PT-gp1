@@ -27,7 +27,7 @@ public class TrainingDaysNum extends AppCompatActivity {
     private RadioButton r2;
     private RadioButton r3;
     private RadioButton r4;
-    private int tDaysNo;
+    private String tDaysNo;
     private Button time;
     private String tDaysString;
 
@@ -51,7 +51,7 @@ public class TrainingDaysNum extends AppCompatActivity {
        //as default
         tDays.add("Sun");
         tDays.add("Tue");
-        tDaysNo=2;
+        tDaysNo=2+"";
 
         tDaysString="";
 
@@ -91,20 +91,20 @@ public class TrainingDaysNum extends AppCompatActivity {
 
     public void rntn(View v){
         if(r1.isChecked()){
-            tDaysNo=2;
+            tDaysNo=2+"";
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Tue");
         }
         else if(r2.isChecked()){
-            tDaysNo=3;
+            tDaysNo=3+"";
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Tue");
             tDays.add("Thur");
         }
         else if(r3.isChecked()){
-            tDaysNo=4;
+            tDaysNo=4+"";
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Tue");
@@ -113,7 +113,7 @@ public class TrainingDaysNum extends AppCompatActivity {
 
         }
         else {
-            tDaysNo=5;
+            tDaysNo=5+"";
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Mon");

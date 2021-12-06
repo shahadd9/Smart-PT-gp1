@@ -54,9 +54,9 @@ public class LoadPa extends AppCompatActivity {
     private int exNo;
     private int sets;
     private int reps;
-    private String test;
+    private String exercises;
     private String equ;
-    private int trainingdaysNum;
+    private String num;
     private  String trainingDays;
     private String sunEx;
     private String monEx;
@@ -66,6 +66,8 @@ public class LoadPa extends AppCompatActivity {
     private String friEx;
     private String satEx;
     private String equipmentList;
+    private double tPlace;
+    private int tP;
     private boolean bench;
     private boolean benchT;
     private boolean dumbbell;
@@ -84,11 +86,17 @@ public class LoadPa extends AppCompatActivity {
         getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
         h=new Handler();
-
+num="0";
         rest=0;
         exNo=0;
         sets=0;
         reps=10;
+        bench=true;
+        barbell=true;
+        cableMachine=true;
+        stabilityBall=true;
+        dipMachine=true;
+        dumbbell=true;
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -118,11 +126,16 @@ public class LoadPa extends AppCompatActivity {
                 heightD=value.getString("height");
                 weightD= value.getString("weight");
                 equ= value.getString("equpmtList");
+                tPlace= value.getDouble("trainingPlace");
+                num=value.getString("TrainingdaysNum");
+                tP=(int)tPlace;
+                if(tP==0) {
+                    equipmentList = value.getString("equpmtList");
+                }
                 height=Integer.parseInt(heightD);
                 weight=Integer.parseInt(weightD);
                 BMI= (weight/(height*height))*10000;
                 Level(level);
-              //  trainingdaysNum=Integer.getInteger("TrainingdaysNum");
                 //trainingDays=value.getString("trainingDays");
                 //TrainingDays(trainingdaysNum,trainingDays);
                // equipmentList=value.getString("equpmtList");
@@ -198,7 +211,19 @@ public class LoadPa extends AppCompatActivity {
                 sets=4;
             }
         }
-        equipment();
+        if(tP==0 && (equipmentList.equals(0)||equipmentList=="0"))  {
+            bench=false;
+            barbell=false;
+            cableMachine=false;
+            stabilityBall=false;
+            dipMachine=false;
+            dumbbell=false;
+            ex();
+        }
+        else if (tP==0){
+            equipment();
+        }
+        else {ex();}
     }
     public void ex(){
 
@@ -207,9 +232,55 @@ public class LoadPa extends AppCompatActivity {
         }
         Python py = Python.getInstance();
         // creating python object
-        PyObject pyObj= py.getModule("myscript");
-        PyObject obj = pyObj.callAttr("exercises",bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine);
-        test = obj.toString();
+        PyObject pyObj= py.getModule("myscript"); // call the python file
+        PyObject equi = pyObj.callAttr("exercises",bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine); // call the exercise method in python
+//        exercises = equi.toString();//retrieve  output
+
+//        //1
+        if(num.equals("2")){
+            int i;
+            for (i = 0 ;i<2;i++){
+
+                PyObject fullBody= pyObj.callAttr("fullbody",level);
+                exercises = fullBody.toString();
+                addExercises(i,exercises);
+
+            }}
+        else if (num.equals("3")){
+            int i;
+            for (i = 0 ;i<3;i++){
+
+                PyObject fullBody= pyObj.callAttr("fullbody",level);
+                exercises = fullBody.toString();
+                addExercises(i,exercises);
+
+            }
+        }
+        else if (num.equals("4")){
+            int i;
+            for (i = 0 ;i<2;i++){
+
+                PyObject upperbody= pyObj.callAttr("upperbody",level);
+                exercises = upperbody.toString();
+                addExercises(i,exercises);
+                PyObject lowerbody= pyObj.callAttr("lowerbody",level);
+                exercises = lowerbody.toString();
+                addExercises(i+1,exercises);
+
+
+            }
+
+
+
+
+        }
+
+
+//        //2
+//        //3
+
+
+
         addPlan();
 
     }
@@ -285,7 +356,7 @@ public class LoadPa extends AppCompatActivity {
         }else {
             cableMachine=true;
         }
-ex();
+          ex();
 
 
     }
@@ -299,7 +370,8 @@ ex();
         planAdd.put("rest",rest);
         planAdd.put("reps",reps);
         planAdd.put("exNO",exNo);
-        planAdd.put("test",test);
+//        planAdd.put("test",exercises);
+
         plan.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -316,4 +388,30 @@ ex();
         });
 
     }
+
+
+    public void addExercises(int i, String exercises){
+        CollectionReference ex = db.collection("userProfile");
+
+        String s="day"+(i+1);
+        Map<String,Object> planEx = new HashMap<>();
+        planEx.put("plan",exercises);
+
+        ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(LoadPa.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+    }
+
 }
