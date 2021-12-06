@@ -25,43 +25,121 @@ dfDetails = pd.read_csv(data, sep=",")
 
 print(dfDetails['id'])
 
+eqEx=pd.DataFrame()
 
 
 planlist = []
 def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
-    
+        global eqEx,upper,upper1,upper2,upper3,upper4,lower,lower1,lower2
+
+        NoEq=df.loc[df['isneedequipment'] == 0]
+        eqEx=pd.concat([NoEq, eqEx], axis=0)
+   
         if(bench==True):
-            benchEx=  dfDetails.loc[dfDetails['bench'] == 1]
-            arrrbench=benchEx.to_numpy()
-            planlist.append(arrrbench)
+            benchEx=  df.loc[df['bench'] == 1]
+            eqEx=pd.concat([eqEx, benchEx], axis=0)
+
+
         if(barbell==True):
-            barbellEx=  dfDetails.loc[dfDetails['barbell'] == 1]
-            arrbarbell=barbellEx.to_numpy()
-            planlist.append(arrbarbell)
+            barbellEx=  df.loc[df['barbell'] == 1]
+            eqEx=pd.concat([eqEx, barbellEx], axis=0)
 
         if(stabilityBall==True):
-            stabilityballEx=  dfDetails.loc[dfDetails['stability ball'] == 1]
-            arrSB=stabilityballEx.to_numpy()
-            planlist.append(arrSB)
+            stabilityballEx=  df.loc[df['stability ball'] == 1]
+            eqEx=pd.concat([eqEx, stabilityballEx], axis=0)
+
 
         if(dumbbell==True):
-            DumbbellEx=  dfDetails.loc[dfDetails['Dumbbell'] == 1]
-            arrDumbbell=DumbbellEx.to_numpy()
-            planlist.append(arrDumbbell)
+            DumbbellEx=  df.loc[df['dumbbell'] == 1]
+            eqEx=pd.concat([eqEx, DumbbellEx], axis=0)
+
+
 
         if(dipMachine==True):
-            dipmachineEx=  dfDetails.loc[dfDetails['dip machine'] == 1]
-            arrDM=dipmachineEx.to_numpy()
-            planlist.append(arrDM)
+            dipmachineEx=  df.loc[df['dip machine'] == 1]
+            eqEx=pd.concat([eqEx, dipmachineEx], axis=0)
+
 
         if(cableMachine==True):
-            cablemachineEx=  dfDetails.loc[dfDetails['cable machine'] == 1]
-            arrCM=cablemachineEx.to_numpy()
-            planlist.append(arrCM)
-          
-        NoEq=dfDetails.loc[dfDetails['isNeedEquipment'] == 0]
-        arrNoEq=NoEq.to_numpy()
-        planlist.append(arrNoEq)
+            cablemachineEx=  df.loc[df['cable machine'] == 1]
+            eqEx=pd.concat([eqEx, cablemachineEx], axis=0)
 
-        plan = np.array(planlist)
-        return plan
+
+
+
+        upper=eqEx.loc[eqEx['generalmuscle'].isin(['chest','arm','back','shoulders','back,arm'])]
+        upper1=eqEx.loc[eqEx['generalmuscle'].isin(['chest'])]
+        upper2=eqEx.loc[eqEx['generalmuscle'].isin(['arm'])]
+        upper3=eqEx.loc[eqEx['generalmuscle'].isin(['shoulders'])]
+        upper4=eqEx.loc[eqEx['generalmuscle'].isin(['back','back,arm'])]
+        lower=eqEx.loc[eqEx['generalmuscle'].isin(['core','legs and glutes'])]
+        lower1=eqEx.loc[eqEx['generalmuscle'].isin(['core'])]
+        lower2=eqEx.loc[eqEx['generalmuscle'].isin(['legs and glutes'])]
+
+
+
+
+def fullbody(level): 
+    ex1=upper1.sample()
+    ex2=upper2.sample()
+    ex3=upper3.sample()
+    ex4=upper4.sample()
+    ex5=upper.sample()
+    ex6=lower1.sample()
+    ex7=lower2.sample()
+    rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    
+    if(level=="intermediate" or level=="professional"):
+        ex8=upper.sample()
+        ex9=upper.sample()
+        ex10=lower.sample()
+        rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    if(level=="professional"):
+        ex11=upper.sample()
+        ex12=lower.sample()
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
+    return rs.to_numpy() 
+    
+    
+
+def upperbody(level): 
+    ex1=upper1.sample()
+    ex2=upper2.sample()
+    ex3=upper3.sample()
+    ex4=upper4.sample()
+    ex5=upper1.sample()
+    ex6=upper2.sample()
+    ex7=upper3.sample()
+    rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    
+    if(level=="inter" or level=="adv"):
+        ex8=upper4.sample()
+        ex9=upper.sample()
+        ex10=upper.sample()
+        rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    if(level=="adv"):
+        ex11=upper.sample()
+        ex12=upper.sample()
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
+    return rs.to_numpy()
+
+def lowerbody(level): 
+    ex1=lower1.sample()
+    ex2=lower2.sample()
+    ex3=lower1.sample()
+    ex4=lower2.sample()
+    ex5=lower1.sample()
+    ex6=lower2.sample()
+    ex7=lower.sample()
+    rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    
+    if(level=="inter" or level=="adv"):
+        ex8=lower.sample()
+        ex9=lower.sample()
+        ex10=lower.sample()
+        rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    if(level=="adv"):
+        ex11=lower.sample()
+        ex12=lower.sample()
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
+    return rs.to_numpy()
