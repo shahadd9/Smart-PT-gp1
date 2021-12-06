@@ -33,36 +33,49 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         global eqEx,upper,upper1,upper2,upper3,upper4,lower,lower1,lower2
 
         NoEq=df.loc[df['isneedequipment'] == 0]
+        NoEq['equipment'] = 'No Need to Equipment'
         eqEx=pd.concat([NoEq, eqEx], axis=0)
    
         if(bench==True):
             benchEx=  df.loc[df['bench'] == 1]
+            benchEx['equipment']='bench'
             eqEx=pd.concat([eqEx, benchEx], axis=0)
 
 
         if(barbell==True):
             barbellEx=  df.loc[df['barbell'] == 1]
+            barbellEx['equipment']='barbell'
             eqEx=pd.concat([eqEx, barbellEx], axis=0)
 
         if(stabilityBall==True):
             stabilityballEx=  df.loc[df['stability ball'] == 1]
+            stabilityballEx['equipment']='stability ball'
+
             eqEx=pd.concat([eqEx, stabilityballEx], axis=0)
 
 
         if(dumbbell==True):
             DumbbellEx=  df.loc[df['dumbbell'] == 1]
+            DumbbellEx['equipment']='dumbbell'
+
             eqEx=pd.concat([eqEx, DumbbellEx], axis=0)
 
 
 
         if(dipMachine==True):
             dipmachineEx=  df.loc[df['dip machine'] == 1]
+            dipmachineEx['equipment']='dip machine'
+
             eqEx=pd.concat([eqEx, dipmachineEx], axis=0)
 
 
         if(cableMachine==True):
             cablemachineEx=  df.loc[df['cable machine'] == 1]
+            cablemachineEx['equipment']='cable machine'
+
             eqEx=pd.concat([eqEx, cablemachineEx], axis=0)
+        eqEx.drop(['isneedequipment','bench','barbell','stability ball','dumbbell','dip machine','cable machine'], axis=1, inplace=True)
+        eqEx.drop(['lower pectoralis major','upper pectoralis major','anterior deltoid','triceps brachii' ,'tensor fasciae latae','sartorius',' pectineus,adductor longus','adductor brevis','rectus abdominis','iliopsoas','rectus femoris','quadriceps','serratus anterior','latissimus dorsi','pectoralis minor','rhomboids','levator scapulae','teres major','biceps brachii','brachialis','brachioradialis','internal and external obliques','rectus abdominis','infraspinatus','teres minor','lateral deltoid','middle and lower trapezius','hamstrings','adductor magnus','gracilis','obliques','gluteus maximus','supraspinatus','posterior deltoid','pectoralis major','quadratus lumborum','psoas major','iliocastalis iumborum','iliocastalis Thoracis','Soleus','gastrocnemius','popliteus','gluteus medius','gluteus minimus','flexor carpi radialis','anconeus'], axis=1, inplace=True)
 
 
 
@@ -112,12 +125,12 @@ def upperbody(level):
     ex7=upper3.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     
-    if(level=="inter" or level=="adv"):
+    if(level=="intermediate" or level=="professional"):
         ex8=upper4.sample()
         ex9=upper.sample()
         ex10=upper.sample()
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="adv"):
+    if(level=="professional"):
         ex11=upper.sample()
         ex12=upper.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
@@ -133,12 +146,12 @@ def lowerbody(level):
     ex7=lower.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     
-    if(level=="inter" or level=="adv"):
+    if(level=="intermediate" or level=="professional"):
         ex8=lower.sample()
         ex9=lower.sample()
         ex10=lower.sample()
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="adv"):
+    if(level=="professional"):
         ex11=lower.sample()
         ex12=lower.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
