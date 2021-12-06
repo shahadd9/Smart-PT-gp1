@@ -31,6 +31,7 @@ eqEx=pd.DataFrame()
 planlist = []
 def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         global eqEx,upper,upper1,upper2,upper3,upper4,lower,lower1,lower2
+        eqEx.drop(df.iloc[:, 7:67].columns, axis = 1)
 
         NoEq=df.loc[df['isneedequipment'] == 0]
         NoEq['equipment'] = 'No Need to Equipment'
@@ -74,8 +75,6 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
             cablemachineEx['equipment']='cable machine'
 
             eqEx=pd.concat([eqEx, cablemachineEx], axis=0)
-        eqEx.drop(['isneedequipment','bench','barbell','stability ball','dumbbell','dip machine','cable machine'], axis=1, inplace=True)
-        eqEx.drop(['lower pectoralis major','upper pectoralis major','anterior deltoid','triceps brachii' ,'tensor fasciae latae','sartorius',' pectineus,adductor longus','adductor brevis','rectus abdominis','iliopsoas','rectus femoris','quadriceps','serratus anterior','latissimus dorsi','pectoralis minor','rhomboids','levator scapulae','teres major','biceps brachii','brachialis','brachioradialis','internal and external obliques','rectus abdominis','infraspinatus','teres minor','lateral deltoid','middle and lower trapezius','hamstrings','adductor magnus','gracilis','obliques','gluteus maximus','supraspinatus','posterior deltoid','pectoralis major','quadratus lumborum','psoas major','iliocastalis iumborum','iliocastalis Thoracis','Soleus','gastrocnemius','popliteus','gluteus medius','gluteus minimus','flexor carpi radialis','anconeus'], axis=1, inplace=True)
 
 
 
