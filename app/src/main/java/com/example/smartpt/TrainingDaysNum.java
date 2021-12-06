@@ -48,7 +48,7 @@ public class TrainingDaysNum extends AppCompatActivity {
         r3= findViewById(R.id.r3);
         r4= findViewById(R.id.r4);
         time=findViewById(R.id.time);
-       //as default
+        //as default
         tDays.add("Sun");
         tDays.add("Tue");
         tDaysNo=2+"";

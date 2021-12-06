@@ -1,4 +1,3 @@
-
 import io
 import pandas as pd
 from os.path import dirname, join
@@ -23,7 +22,7 @@ data = io.StringIO(dataDetails)
 
 dfDetails = pd.read_csv(data, sep=",")
 
-print(dfDetails['id'])
+# print(dfDetails['id'])
 
 eqEx=pd.DataFrame()
 
@@ -31,12 +30,12 @@ eqEx=pd.DataFrame()
 planlist = []
 def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         global eqEx,upper,upper1,upper2,upper3,upper4,lower,lower1,lower2
-        eqEx.drop(df.iloc[:, 7:67].columns, axis = 1)
+        df.drop(df.iloc[:, 7:67].columns, axis = 1)
 
         NoEq=df.loc[df['isneedequipment'] == 0]
         NoEq['equipment'] = 'No Need to Equipment'
         eqEx=pd.concat([NoEq, eqEx], axis=0)
-   
+
         if(bench==True):
             benchEx=  df.loc[df['bench'] == 1]
             benchEx['equipment']='bench'
@@ -91,7 +90,7 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
 
 
 
-def fullbody(level): 
+def fullbody(level):
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -100,7 +99,7 @@ def fullbody(level):
     ex6=lower1.sample()
     ex7=lower2.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    
+
     if(level=="intermediate" or level=="professional"):
         ex8=upper.sample()
         ex9=upper.sample()
@@ -109,12 +108,12 @@ def fullbody(level):
     if(level=="professional"):
         ex11=upper.sample()
         ex12=lower.sample()
-        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
-    return rs.to_numpy() 
-    
-    
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    return rs.to_numpy()
 
-def upperbody(level): 
+
+
+def upperbody(level):
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -123,7 +122,7 @@ def upperbody(level):
     ex6=upper2.sample()
     ex7=upper3.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    
+
     if(level=="intermediate" or level=="professional"):
         ex8=upper4.sample()
         ex9=upper.sample()
@@ -132,10 +131,10 @@ def upperbody(level):
     if(level=="professional"):
         ex11=upper.sample()
         ex12=upper.sample()
-        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     return rs.to_numpy()
 
-def lowerbody(level): 
+def lowerbody(level):
     ex1=lower1.sample()
     ex2=lower2.sample()
     ex3=lower1.sample()
@@ -144,7 +143,7 @@ def lowerbody(level):
     ex6=lower2.sample()
     ex7=lower.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    
+
     if(level=="intermediate" or level=="professional"):
         ex8=lower.sample()
         ex9=lower.sample()
@@ -153,5 +152,38 @@ def lowerbody(level):
     if(level=="professional"):
         ex11=lower.sample()
         ex12=lower.sample()
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    return rs.to_numpy()
+
+def fiveDay(level,d):
+    if(d==1):
+        musels=eqEx.loc[eqEx['generalmuscle'].isin(['chest'])]
+    if(d==2):
+        musels=eqEx.loc[eqEx['generalmuscle'].isin(['back','legs and glutes'])]
+
+    if(d==3):
+        musels=eqEx.loc[eqEx['generalmuscle'].isin(['shoulders'])]
+    if(d==4):
+        musels=eqEx.loc[eqEx['generalmuscle'].isin(['core'])]
+    if(d==5):
+        musels=eqEx.loc[eqEx['generalmuscle'].isin(['arm','back,arm'])]
+
+    ex1=musels.sample()
+    ex2=musels.sample()
+    ex3=musels.sample()
+    ex4=musels.sample()
+    ex5=musels.sample()
+    ex6=musels.sample()
+    ex7=musels.sample()
+    rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+
+    if(level=="intermediate" or level=="professional"):
+        ex8=musels.sample()
+        ex9=musels.sample()
+        ex10=musels.sample()
+        rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+    if(level=="professional"):
+        ex11=musels.sample()
+        ex12=musels.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
     return rs.to_numpy()

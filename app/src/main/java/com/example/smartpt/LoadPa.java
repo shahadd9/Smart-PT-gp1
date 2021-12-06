@@ -86,7 +86,7 @@ public class LoadPa extends AppCompatActivity {
         getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
         h=new Handler();
-num="0";
+        num="0";
         rest=0;
         exNo=0;
         sets=0;
@@ -110,16 +110,16 @@ num="0";
                 Intent i = new Intent(LoadPa.this, PlanView.class);
 
                 startActivity(i);
-                 finish();
+                finish();
             }
         }, 15000);
     }
 
     public void retreiveInfo() {
-    Map<String,Object> user = new HashMap<>();
+        Map<String,Object> user = new HashMap<>();
 
-    DocumentReference documentReference = db.collection("userProfile").document(userIp);
-    documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 level= value.getString("level");
@@ -138,7 +138,7 @@ num="0";
                 Level(level);
                 //trainingDays=value.getString("trainingDays");
                 //TrainingDays(trainingdaysNum,trainingDays);
-               // equipmentList=value.getString("equpmtList");
+                // equipmentList=value.getString("equpmtList");
                 //equipment(equipmentList);
             }
         });
@@ -149,7 +149,7 @@ num="0";
 
         Animation rotate= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
 
-                logo.setAnimation(rotate);
+        logo.setAnimation(rotate);
     }
 
     public void Level(String level){
@@ -243,7 +243,7 @@ num="0";
 
                 PyObject fullBody= pyObj.callAttr("fullbody",level);
                 exercises = fullBody.toString();
-                addExercises(i,exercises);
+                addExercises(i+1,exercises);
 
             }}
         else if (num.equals("3")){
@@ -252,26 +252,48 @@ num="0";
 
                 PyObject fullBody= pyObj.callAttr("fullbody",level);
                 exercises = fullBody.toString();
-                addExercises(i,exercises);
+                addExercises(i+1,exercises);
 
             }
         }
         else if (num.equals("4")){
-            int i;
-            for (i = 0 ;i<2;i++){
-
-                PyObject upperbody= pyObj.callAttr("upperbody",level);
-                exercises = upperbody.toString();
-                addExercises(i,exercises);
-                PyObject lowerbody= pyObj.callAttr("lowerbody",level);
-                exercises = lowerbody.toString();
-                addExercises(i+1,exercises);
 
 
-            }
+            PyObject upperbody= pyObj.callAttr("upperbody",level);
+            exercises = upperbody.toString();
+            addExercises(1,exercises);
 
+            PyObject lowerbody= pyObj.callAttr("lowerbody",level);
+            exercises = lowerbody.toString();
+            addExercises(2,exercises);
 
+            PyObject upperbody2= pyObj.callAttr("upperbody",level);
+            exercises = upperbody2.toString();
+            addExercises(3,exercises);
+            PyObject lowerbody2= pyObj.callAttr("lowerbody",level);
+            exercises = lowerbody2.toString();
+            addExercises(4,exercises);
 
+        }
+        else if(num.equals("5")){
+
+            PyObject fiveDays1= pyObj.callAttr("fiveDay",level,1);
+            exercises = fiveDays1.toString();
+            addExercises(1,exercises);
+
+            PyObject fiveDays2= pyObj.callAttr("fiveDay",level,2);
+            exercises = fiveDays2.toString();
+            addExercises(2,exercises);
+
+            PyObject fiveDays3= pyObj.callAttr("fiveDay",level,3);
+            exercises = fiveDays3.toString();
+            addExercises(3,exercises);
+            PyObject fiveDays4= pyObj.callAttr("fiveDay",level,4);
+            exercises = fiveDays4.toString();
+            addExercises(4,exercises);
+            PyObject fiveDays5= pyObj.callAttr("fiveDay",level,5);
+            exercises = fiveDays5.toString();
+            addExercises(5,exercises);
 
         }
 
@@ -291,20 +313,17 @@ num="0";
         if (trainingdaysNum==2){
             sunEx="full body";
             tueEx="full body";
-
         }
         else if(trainingdaysNum==3){
             sunEx="full body";
             tueEx="full body";
             thurEx="full body";
-
         }
         else if(trainingdaysNum==4){
             sunEx="upper";
             tueEx="lower";
             thurEx="upper";
             satEx="lower";
-
         }
         else {//Number of Training Days = 5
             sunEx="chest";
@@ -313,19 +332,17 @@ num="0";
             thurEx="core";
             friEx="arm";
         }
-
-
     }*/
 
     public void equipment(){
 
 
 
-       if (equ.indexOf("Bench")==-1){
-           bench=false;
-       }else {
-           bench=true;
-       }
+        if (equ.indexOf("Bench")==-1){
+            bench=false;
+        }else {
+            bench=true;
+        }
 
         if (equ.indexOf("Barbell")==-1){
             barbell=false;
@@ -356,7 +373,7 @@ num="0";
         }else {
             cableMachine=true;
         }
-          ex();
+        ex();
 
 
     }
@@ -393,7 +410,7 @@ num="0";
     public void addExercises(int i, String exercises){
         CollectionReference ex = db.collection("userProfile");
 
-        String s="day"+(i+1);
+        String s="day"+i;
         Map<String,Object> planEx = new HashMap<>();
         planEx.put("plan",exercises);
 
