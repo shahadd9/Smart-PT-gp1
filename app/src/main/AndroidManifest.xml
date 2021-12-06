@@ -20,7 +20,10 @@
             android:parentActivityName=".PlanView"  />
         <activity
             android:name=".TrainingDaysNum"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Create Profile"
+            android:parentActivityName=".FitnessLevel"
+            />
         <activity
             android:name=".TrainingDuration"
             android:exported="true"
@@ -70,7 +73,7 @@
             android:name=".TrainingPlace"
             android:exported="true"
             android:label="@string/Profile"
-            android:parentActivityName=".FitnessLevel" />
+            android:parentActivityName=".TrainingDaysNum" />
         <activity
             android:name=".TrainingDays"
             android:exported="true"

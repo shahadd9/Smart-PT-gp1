@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,14 +30,14 @@ public class Equipment extends AppCompatActivity {
     private CheckBox bench;
     private CheckBox dip;
     private CheckBox cable;
-//    private  CheckBox btlR;
+    //    private  CheckBox btlR;
 //    private CheckBox band;
     private FirebaseFirestore db;
     private String userIp;
-//    private TextView t ;
-public static ArrayList<String> equpmtList;
+    //    private TextView t ;
+    public static ArrayList<String> equpmtList;
     private int count;
-//    private int place;  //0 for home 1 for gym
+    //    private int place;  //0 for home 1 for gym
 //    private String level;
 //    private ArrayList<String> goal;
 //    private ArrayList<String> tDays;
@@ -281,3 +280,4 @@ public static ArrayList<String> equpmtList;
 //
 //    }
 }
+
