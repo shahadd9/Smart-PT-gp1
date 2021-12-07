@@ -323,11 +323,11 @@ TT=findViewById(R.id.WeeklytextView);
 //
 //
 //                        }
-                        if(SessionNo.equals("4")){
-                            day2();
+//                        if(SessionNo.equals("4")){
+//                          day2();
 
-                        }
-                        else if(SessionNo.equals("5")) {
+//                        }
+                          if(SessionNo.equals("5")) {
                             day2();
                         }
 
@@ -387,10 +387,10 @@ TT=findViewById(R.id.WeeklytextView);
 //
 //
 //                        }
-//                        if(SessionNo.equals("4")){
-//                            day2();
-//
-//                        }
+                        if(SessionNo.equals("4")){
+                            day4();
+
+                        }
 //                        if(SessionNo.equals("5")) {
 //                            day2();
 //                        }
@@ -540,6 +540,7 @@ TT=findViewById(R.id.WeeklytextView);
                         scrollView.setVisibility(View.VISIBLE);
 
                         if(SessionNo.equals("2")){
+                            day2();
 
 
 
@@ -550,11 +551,12 @@ TT=findViewById(R.id.WeeklytextView);
 
                         }
                         if(SessionNo.equals("4")){
+                            day2();
 
                         }
-                        if(SessionNo.equals("5")) {
-                            day3();
-                        }
+                      if(SessionNo.equals("5")) {
+                          day3();
+                    }
                         //        break;
 
                     } else {
@@ -617,9 +619,9 @@ TT=findViewById(R.id.WeeklytextView);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                        scrollView.setVisibility(View.VISIBLE);//
 
-                        if(SessionNo.equals("2")){
+                     /*   if(SessionNo.equals("2")){
                             day2();
 
 
@@ -635,7 +637,7 @@ TT=findViewById(R.id.WeeklytextView);
                         if(SessionNo.equals("5")) {
                             day4();
                         }
-                        //       break;
+                        //       break;*/
 
                     } else {
 
@@ -697,21 +699,21 @@ TT=findViewById(R.id.WeeklytextView);
                         scrollView.setVisibility(View.VISIBLE);
 
 
-                        if(SessionNo.equals("2")){
+                    //    if(SessionNo.equals("2")){
 
 
-                        }
+                      //  }
                         if(SessionNo.equals("3")){
 
                             day3();
 
                         }
                         if(SessionNo.equals("4")){
-                            day4();
+                            day3();
 
                         }
                         if(SessionNo.equals("5")) {
-                            day5();
+                            day4();
                         }
                  //       break;
 
@@ -773,6 +775,9 @@ TT=findViewById(R.id.WeeklytextView);
 //                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
                      //   break;
+                     if(SessionNo.equals("5")) {
+                            day5();
+                        }
 
                     } else {
 
@@ -883,6 +888,11 @@ public void currentDay(){
             TextviewEx5.setText(day11[4]);
             TextviewEx6.setText(day11[5]);
             TextviewEx7.setText(day11[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Intermediate")){
@@ -897,7 +907,8 @@ public void currentDay(){
             TextviewEx8.setText(day11[7]);
             TextviewEx9.setText(day11[8]);
             TextviewEx10.setText(day11[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Professional")){
@@ -928,7 +939,12 @@ public void currentDay(){
             TextviewEx5.setText(day22[4]);
             TextviewEx6.setText(day22[5]);
             TextviewEx7.setText(day22[6]);
-
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
         }
         if(level.equals("Intermediate")){
 
@@ -942,7 +958,9 @@ public void currentDay(){
             TextviewEx8.setText(day22[7]);
             TextviewEx9.setText(day22[8]);
             TextviewEx10.setText(day22[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
 
         }
         if(level.equals("Professional")){
@@ -973,7 +991,12 @@ public void currentDay(){
             TextviewEx5.setText(day33[4]);
             TextviewEx6.setText(day33[5]);
             TextviewEx7.setText(day33[6]);
-
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
         }
         if(level.equals("Intermediate")){
 
@@ -987,7 +1010,9 @@ public void currentDay(){
             TextviewEx8.setText(day33[7]);
             TextviewEx9.setText(day33[8]);
             TextviewEx10.setText(day33[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
 
         }
         if(level.equals("Professional")){
@@ -1017,7 +1042,12 @@ public void currentDay(){
             TextviewEx5.setText(day44[4]);
             TextviewEx6.setText(day44[5]);
             TextviewEx7.setText(day44[6]);
-
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
         }
         if(level.equals("Intermediate")){
 
@@ -1031,7 +1061,8 @@ public void currentDay(){
             TextviewEx8.setText(day44[7]);
             TextviewEx9.setText(day44[8]);
             TextviewEx10.setText(day44[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Professional")){
@@ -1062,7 +1093,12 @@ public void currentDay(){
             TextviewEx5.setText(day55[4]);
             TextviewEx6.setText(day55[5]);
             TextviewEx7.setText(day55[6]);
-
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
+            
         }
         if(level.equals("Intermediate")){
 
@@ -1076,6 +1112,8 @@ public void currentDay(){
             TextviewEx8.setText(day55[7]);
             TextviewEx9.setText(day55[8]);
             TextviewEx10.setText(day55[9]);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);           
 
 
         }
