@@ -252,7 +252,7 @@ TT=findViewById(R.id.WeeklytextView);
                             i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
-                            finish();  
+                            finish();
                         }
 //
 //                    case R.id.progress:
@@ -370,14 +370,14 @@ TT=findViewById(R.id.WeeklytextView);
 
 
 
-               // for (int i=0;i<days.size();i++){
-                 //   String day =days.get(i);
-                    if (dayMon) {
-                        mon.setText("My Exercises for this day");
+                // for (int i=0;i<days.size();i++){
+                //   String day =days.get(i);
+                if (dayMon) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
 
 //                        if(SessionNo.equals("2")){
 //
@@ -387,26 +387,26 @@ TT=findViewById(R.id.WeeklytextView);
 //
 //
 //                        }
-                        if(SessionNo.equals("4")){
-                            day2();
+//                        if(SessionNo.equals("4")){
+//                          day2();
 
-                        }
-                        else if(SessionNo.equals("5")) {
-                            day2();
-                        }
-
-                            ///     break;
-
-                    } else {
-
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
+//                        }
+                    if(SessionNo.equals("5")) {
+                        day2();
                     }
+
+                    ///     break;
+
+                } else {
+
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
 
                 //}// end for
 
             }
-        });
+                });
 
 
         buttonSat.setOnClickListener(new View.OnClickListener() {
@@ -436,12 +436,12 @@ TT=findViewById(R.id.WeeklytextView);
 
 
 
-                    if (daySat) {
-                        mon.setText("My Exercises for this day");
+                if (daySat) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
 
 //                        if(SessionNo.equals("2")){
 //
@@ -451,20 +451,20 @@ TT=findViewById(R.id.WeeklytextView);
 //
 //
 //                        }
-//                        if(SessionNo.equals("4")){
-//                            day2();
-//
-//                        }
+                    if(SessionNo.equals("4")){
+                        day4();
+
+                    }
 //                        if(SessionNo.equals("5")) {
 //                            day2();
 //                        }
-                        ///      break;
+                    ///      break;
 
-                    } else {
+                } else {
 
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
-                    }
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
 
                 //}/// end for
 
@@ -515,38 +515,41 @@ TT=findViewById(R.id.WeeklytextView);
 
 
 
-                    if (daySun) {
-                        mon.setText("My Exercises for this day");
+                if (daySun) {
+                    mon.setText("My Exercises for this day");
+                    if(SessionNo.equals("2")){
+                        day1();
 
+                    }
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
 
-                        if(SessionNo.equals("2")){
+                    if(SessionNo.equals("2")){
 
-                            day1();
+                        day1();
 
-                        }
-                        if(SessionNo.equals("3")){
-                            day1();
-
-
-                        }
-                        if(SessionNo.equals("4")){
-                            day1();
-
-                        }
-                        if(SessionNo.equals("5")) {
-                            day1();
-                        }
-                        //     break;
-
-                    } else {
-
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
                     }
+                    if(SessionNo.equals("3")){
+                        day1();
+
+
+                    }
+                    if(SessionNo.equals("4")){
+                        day1();
+
+                    }
+                    if(SessionNo.equals("5")) {
+                        day1();
+                    }
+                    //     break;
+
+                } else {
+
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
 
                 //}// end for
 
@@ -593,39 +596,40 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                    if (dayTue) {
-                        mon.setText("My Exercises for this day");
+                if (dayTue) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
 
-                        if(SessionNo.equals("2")){
-
-
-
-
-                        }
-                        if(SessionNo.equals("3")){
-                            day2();
+                    if(SessionNo.equals("2")){
+                        day2();
 
 
-                        }
-                        if(SessionNo.equals("4")){
 
-                        }
-                        if(SessionNo.equals("5")) {
-                            day3();
-                        }
-                        //        break;
-
-                    } else {
-
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
                     }
+                    if(SessionNo.equals("3")){
+                        day2();
 
-              //  }// end for
+
+                    }
+                    if(SessionNo.equals("4")){
+                        day2();
+
+                    }
+                    if(SessionNo.equals("5")) {
+                        day3();
+                    }
+                    //        break;
+
+                } else {
+
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
+
+                //  }// end for
 
 
             }
@@ -674,38 +678,33 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setTextColor( Color.parseColor("#696969"));
 
 
-                    if (dayWed) {
-                        mon.setText("My Exercises for this day");
+                if (dayWed) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);//
 
-                        if(SessionNo.equals("2")){
+                     /*   if(SessionNo.equals("2")){
                             day2();
-
-
                         }
                         if(SessionNo.equals("3")){
-
-
                         }
                         if(SessionNo.equals("4")){
                             day3();
-
                         }
                         if(SessionNo.equals("5")) {
                             day4();
                         }
-                        //       break;
+                        //       break;*/
 
-                    } else {
+                } else {
 
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
-                    }
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
 
-            //    }// end for
+                //    }// end for
 
 
             }
@@ -751,39 +750,39 @@ TT=findViewById(R.id.WeeklytextView);
 
 
 
-                    if (dayThu) {
-                        mon.setText("My Exercises for this day");
+                if (dayThu) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
 
 
-                        if(SessionNo.equals("2")){
+                    //    if(SessionNo.equals("2")){
 
 
-                        }
-                        if(SessionNo.equals("3")){
+                    //  }
+                    if(SessionNo.equals("3")){
 
-                            day3();
+                        day3();
 
-                        }
-                        if(SessionNo.equals("4")){
-                            day4();
-
-                        }
-                        if(SessionNo.equals("5")) {
-                            day5();
-                        }
-                 //       break;
-
-                    } else {
-
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
                     }
+                    if(SessionNo.equals("4")){
+                        day3();
 
-              //  }// end for
+                    }
+                    if(SessionNo.equals("5")) {
+                        day4();
+                    }
+                    //       break;
+
+                } else {
+
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
+
+                //  }// end for
 
 
             }
@@ -828,25 +827,29 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonThu.setTextColor( Color.parseColor("#696969"));
 
 
-                    if (dayFri) {
-                        mon.setText("My Exercises for this day");
+                if (dayFri) {
+                    mon.setText("My Exercises for this day");
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
-                        scrollView.setVisibility(View.VISIBLE);
-                     //   break;
-
-                    } else {
-
-                        mon.setText("There is no exercises for this day");
-                        scrollView.setVisibility(View.INVISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
+                    //   break;
+                    if(SessionNo.equals("5")) {
+                        day5();
                     }
 
-               // }// end for
+                } else {
+
+                    mon.setText("There is no exercises for this day");
+                    scrollView.setVisibility(View.INVISIBLE);
+                }
+
+                // }// end for
 
 
             }
         });
+
 
         TextviewEx1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -943,6 +946,42 @@ TT=findViewById(R.id.WeeklytextView);
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
                 i.putExtra("name",TextviewEx9.getText());
+                startActivity(i);
+
+            }
+        });
+
+        TextviewEx10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx10.getText());
+                startActivity(i);
+
+            }
+        });
+
+        TextviewEx11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx11.getText());
+                startActivity(i);
+
+            }
+        });
+
+        TextviewEx12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx12.getText());
                 startActivity(i);
 
             }
@@ -1044,6 +1083,11 @@ public void currentDay(){
             TextviewEx5.setText(day11[4]);
             TextviewEx6.setText(day11[5]);
             TextviewEx7.setText(day11[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Intermediate")){
@@ -1058,7 +1102,8 @@ public void currentDay(){
             TextviewEx8.setText(day11[7]);
             TextviewEx9.setText(day11[8]);
             TextviewEx10.setText(day11[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Professional")){
@@ -1089,6 +1134,11 @@ public void currentDay(){
             TextviewEx5.setText(day22[4]);
             TextviewEx6.setText(day22[5]);
             TextviewEx7.setText(day22[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Intermediate")){
@@ -1103,6 +1153,8 @@ public void currentDay(){
             TextviewEx8.setText(day22[7]);
             TextviewEx9.setText(day22[8]);
             TextviewEx10.setText(day22[9]);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
 
         }
@@ -1123,9 +1175,9 @@ public void currentDay(){
 
     }
 
-    public void day3(){
+    public void day3() {
 
-        if(level.equals("Beginner")){
+        if (level.equals("Beginner")) {
 
             TextviewEx1.setText(day33[0]);
             TextviewEx2.setText(day33[1]);
@@ -1134,9 +1186,14 @@ public void currentDay(){
             TextviewEx5.setText(day33[4]);
             TextviewEx6.setText(day33[5]);
             TextviewEx7.setText(day33[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
-        if(level.equals("Intermediate")){
+        if (level.equals("Intermediate")) {
 
             TextviewEx1.setText(day33[0]);
             TextviewEx2.setText(day33[1]);
@@ -1148,10 +1205,12 @@ public void currentDay(){
             TextviewEx8.setText(day33[7]);
             TextviewEx9.setText(day33[8]);
             TextviewEx10.setText(day33[9]);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
 
         }
-        if(level.equals("Professional")){
+        if (level.equals("Professional")) {
             TextviewEx1.setText(day33[0]);
             TextviewEx2.setText(day33[1]);
             TextviewEx3.setText(day33[2]);
@@ -1165,7 +1224,6 @@ public void currentDay(){
             TextviewEx11.setText(day33[10]);
             TextviewEx12.setText(day33[11]);
         }
-
     }
     public void day4(){
 
@@ -1178,6 +1236,11 @@ public void currentDay(){
             TextviewEx5.setText(day44[4]);
             TextviewEx6.setText(day44[5]);
             TextviewEx7.setText(day44[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Intermediate")){
@@ -1192,7 +1255,8 @@ public void currentDay(){
             TextviewEx8.setText(day44[7]);
             TextviewEx9.setText(day44[8]);
             TextviewEx10.setText(day44[9]);
-
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Professional")){
@@ -1223,6 +1287,11 @@ public void currentDay(){
             TextviewEx5.setText(day55[4]);
             TextviewEx6.setText(day55[5]);
             TextviewEx7.setText(day55[6]);
+            TextviewEx8.setVisibility(View.GONE);
+            TextviewEx9.setVisibility(View.GONE);
+            TextviewEx10.setVisibility(View.GONE);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
         }
         if(level.equals("Intermediate")){
@@ -1237,6 +1306,8 @@ public void currentDay(){
             TextviewEx8.setText(day55[7]);
             TextviewEx9.setText(day55[8]);
             TextviewEx10.setText(day55[9]);
+            TextviewEx11.setVisibility(View.GONE);
+            TextviewEx12.setVisibility(View.GONE);
 
 
         }
@@ -1257,7 +1328,7 @@ public void currentDay(){
 
     }
 
-        public void splitPlan(){
+    public void splitPlan(){
         String SessionNo=getIntent().getStringExtra("sessionNo");
 
         if(SessionNo.equals("2")){

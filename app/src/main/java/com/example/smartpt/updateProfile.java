@@ -80,6 +80,7 @@ public class updateProfile extends AppCompatActivity implements
         setContentView(R.layout.activity_update_profile);
         SessionNo=getIntent().getStringExtra("sessionNo");
         level =getIntent().getStringExtra("level");
+
         if(SessionNo.equals("2")){
 
             day1=getIntent().getStringExtra("day1");
@@ -161,7 +162,7 @@ public class updateProfile extends AppCompatActivity implements
                         if(SessionNo.equals("2")){
                             i.putExtra("sessionNo",SessionNo);
                             i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);   
+                            i.putExtra("day2",day2);
                             i.putExtra("level",level);
                             startActivity(i);
                             overridePendingTransition(0, 0);

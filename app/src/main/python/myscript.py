@@ -106,6 +106,7 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
 #     return rs.to_numpy()
 
 def fullbody(level):
+    global fullbodygeneralmuscle,fullbodyforce,fullbodyname
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -124,10 +125,18 @@ def fullbody(level):
         ex11=upper.sample()
         ex12=lower.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    rs=rs.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-    return rs.to_numpy()
+    fullbodyname=rs.copy()
+    fullbodyforce=rs.copy()
+    fullbodygeneralmuscle=rs.copy()
+
+    fullbodyname=fullbodyname.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    fullbodyforce=fullbodyforce.drop(rs.columns[[ 0,1,2,3,4,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    fullbodygeneralmuscle=fullbodygeneralmuscle.drop(rs.columns[[ 0,1,2,3,4,5,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+
+ #   return rs.to_numpy()
 
 def upperbody(level):
+    global upperbodyname,upperbodyforce,upperbodygeneralmuscle
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -146,9 +155,18 @@ def upperbody(level):
         ex11=upper.sample()
         ex12=upper.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    return rs.to_numpy()
+    upperbodyname=rs.copy()
+    upperbodyforce=rs.copy()
+    upperbodygeneralmuscle=rs.copy()
+
+    upperbodyname=upperbodyname.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    upperbodyforce=upperbodyforce.drop(rs.columns[[ 0,1,2,3,4,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    upperbodygeneralmuscle=upperbodygeneralmuscle.drop(rs.columns[[ 0,1,2,3,4,5,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+
+ #   return rs.to_numpy()
 
 def lowerbody(level):
+    global lowerbodygeneralmuscle,lowerbodyforce,lowerbodyname
     ex1=lower1.sample()
     ex2=lower2.sample()
     ex3=lower1.sample()
@@ -167,10 +185,18 @@ def lowerbody(level):
         ex11=lower.sample()
         ex12=lower.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    rs=rs.drop(rs.columns[[ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-    return rs.to_numpy()
+    lowerbodyname=rs.copy()
+    lowerbodyforce=rs.copy()
+    lowerbodygeneralmuscle=rs.copy()
+
+    lowerbodyname=lowerbodyname.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    lowerbodyforce=lowerbodyforce.drop(rs.columns[[ 0,1,2,3,4,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    lowerbodygeneralmuscle=lowerbodygeneralmuscle.drop(rs.columns[[ 0,1,2,3,4,5,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    
+    #return rs.to_numpy()
 
 def fiveDay(level,d):
+    global fiveDayname,fiveDayforce,fiveDaygeneralmuscle
     if(d==1):
         musels=eqEx.loc[eqEx['generalmuscle'].isin(['chest'])]
     if(d==2):
@@ -201,5 +227,60 @@ def fiveDay(level,d):
         ex11=musels.sample()
         ex12=musels.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
-    rs=rs.drop(rs.columns[[ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-    return rs.to_numpy()
+    
+    fiveDayname=rs.copy()
+    fiveDayforce=rs.copy()
+    fiveDaygeneralmuscle=rs.copy()
+
+    fiveDayname=fiveDayname.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    fiveDayforce=fiveDayforce.drop(rs.columns[[ 0,1,2,3,4,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+    fiveDaygeneralmuscle=fiveDaygeneralmuscle.drop(rs.columns[[ 0,1,2,3,4,5,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
+   # return rs.to_numpy()
+
+def getfullbodyName():
+       return fullbodyname.to_numpy()
+   
+
+def getfullbodyForce():
+       return fullbodyforce.to_numpy()
+
+def getfullbodygeneralmuscle():
+       return fullbodygeneralmuscle.to_numpy()
+
+
+
+
+def getupperName():
+       return upperbodyname.to_numpy()
+   
+
+def getupperForce():
+       return upperbodyforce.to_numpy()
+
+def getuppergeneralmuscle():
+       return upperbodygeneralmuscle.to_numpy()
+
+
+
+def getlowerName():
+       return lowerbodyname.to_numpy()
+   
+
+def getlowerForce():
+       return lowerbodyforce.to_numpy()
+
+def getlowergeneralmuscle():
+       return lowerbodygeneralmuscle.to_numpy()
+
+
+
+
+def getfivedayName():
+       return fiveDayname.to_numpy()
+   
+
+def getfivedayForce():
+       return fiveDayforce.to_numpy()
+
+def getfivedaymuscle():
+       return fiveDaygeneralmuscle.to_numpy()

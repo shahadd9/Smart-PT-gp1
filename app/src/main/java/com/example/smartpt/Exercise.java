@@ -21,11 +21,15 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class Exercise extends AppCompatActivity {
 
     String name, targetMuscle,generalMuscle, execute, tip,equip, mecha, forc, str;
-    double set , rep, Res, dur;
+    double set , rep, Res;
+    private String durationDis;
     int s, r, re,d;
     TextView exName, target,general, sets, reps, rest, equipment,duration, execution, tips,start, mechanism, force;
     private FirebaseFirestore db;
     private String userIp;
+    private double tPlace;
+    private int tP;
+    private String equ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +67,14 @@ public class Exercise extends AppCompatActivity {
         reps=(TextView) findViewById(R.id.reps); //Done
         rest=(TextView) findViewById(R.id.rest); //Done
         duration=(TextView) findViewById(R.id.duration);
-        equipment=(TextView) findViewById(R.id.equipment);
-        target=(TextView) findViewById(R.id.target);
+//        equipment=(TextView) findViewById(R.id.equipment);
+//        target=(TextView) findViewById(R.id.target);
         general=(TextView) findViewById(R.id.general);
         mechanism=(TextView) findViewById(R.id.mchanism);
         force=(TextView) findViewById(R.id.force);
-        execution=(TextView) findViewById(R.id.execution);
-        tips=(TextView) findViewById(R.id.tips);
-        start=(TextView) findViewById(R.id.startPos);
+//        execution=(TextView) findViewById(R.id.execution);
+//        tips=(TextView) findViewById(R.id.tips);
+//        start=(TextView) findViewById(R.id.startPos);
 
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -83,8 +87,9 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-//                name=value.getString("exerciseName");
-//                exName.setText(name);
+
+                name=getIntent().getStringExtra("name");
+                exName.setText(name);
 
 //                targetMuscle=value.getString("target");
 //                target.setText(targetMuscle);
@@ -110,16 +115,20 @@ public class Exercise extends AppCompatActivity {
                 re=(int)Res;
                 rest.setText(re+"");
 
-//                dur=value.getDouble("duration");
-//                d=(int)dur;
-//                duration.setText(d);
+                durationDis=value.getString("duration");
+                duration.setText(durationDis);
 
-//                equip=value.getString("equipment");
-//                if(equip=="0"){
-//                    equipment.setText("No Equipment needed for this exercise");
-//                }else {
-//                    equipment.setText(equip);
+//                tPlace= value.getDouble("trainingPlace");
+//                tP=(int)tPlace;
+//                if(tP==0) {
+//                    equ = value.getString("equpmtList");
+//                    if(equip=="0"){
+//                        equipment.setText("No Equipment needed for this exercise");
+//                    }else {
+//                        equipment.setText(equip);
+//                    }
 //                }
+
 //
 //                execute=value.getString("execution");
 //                execution.setText(execute);

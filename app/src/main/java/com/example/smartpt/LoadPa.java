@@ -50,7 +50,7 @@ public class LoadPa extends AppCompatActivity {
     private int weight;
     private double BMI;
     private int rest;
-    private int duration;
+    private String duration;
     private int exNo;
     private int sets;
     private int reps;
@@ -64,6 +64,19 @@ public class LoadPa extends AppCompatActivity {
     private String day4;
     private String day5;
 
+    private String force1;
+    private String force2;
+    private String force3;
+    private String force4;
+    private String force5;
+
+    private String m1;
+    private String m2;
+    private String m3;
+    private String m4;
+    private String m5;
+
+
     private String equipmentList;
     private double tPlace;
     private int tP;
@@ -74,6 +87,7 @@ public class LoadPa extends AppCompatActivity {
     private boolean stabilityBall;
     private boolean dipMachine;
     private boolean cableMachine;
+
 
 
     private CollectionReference plan = db.collection("userProfile");
@@ -160,12 +174,12 @@ public class LoadPa extends AppCompatActivity {
                 level= value.getString("level");
                 heightD=value.getString("height");
                 weightD= value.getString("weight");
-                equ= value.getString("equpmtList");
+//                equ= value.getString("equpmtList");
                 tPlace= value.getDouble("trainingPlace");
                 SessionNo=value.getString("TrainingdaysNum");
                 tP=(int)tPlace;
                 if(tP==0) {
-                    equipmentList = value.getString("equpmtList");
+                    equ = value.getString("equpmtList");
                 }
                 height=Integer.parseInt(heightD);
                 weight=Integer.parseInt(weightD);
@@ -192,17 +206,17 @@ public class LoadPa extends AppCompatActivity {
         if(level.equalsIgnoreCase("beginner")){
             rest=120;
             exNo=7;
-            duration=30;
+            duration=30+"";
         }
         else if(level.equalsIgnoreCase("intermediate")){
             rest=90;
             exNo=10;
-            duration=45;
+            duration=45+"";
         }
         else{
             rest=60;
             exNo=12;
-            duration=60;
+            duration=60+"";
         }
 
         BMI(BMI,level);
@@ -277,30 +291,63 @@ public class LoadPa extends AppCompatActivity {
 //            for (i = 0 ;i<2;i++){
 
                 PyObject fullBody= pyObj.callAttr("fullbody",level);
-                day1 = fullBody.toString();
-                addExercises(1,day1);
+                PyObject fullBodyN1= pyObj.callAttr("getfullbodyName");
+                PyObject fullBodyF1= pyObj.callAttr("getfullbodyForce");
+                PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralmuscle");
+
+
+                day1 = fullBodyN1.toString();
+                force1=fullBodyF1.toString();
+                m1=fullBodyM1.toString();
+                addExercises(1,day1,m1,force1);
 
             PyObject fullBody2= pyObj.callAttr("fullbody",level);
-            day2 = fullBody2.toString();
+            PyObject fullBodyN2= pyObj.callAttr("getfullbodyName");
+            PyObject fullBodyF2= pyObj.callAttr("getfullbodyForce");
+            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralmuscle");
 
-            addExercises(2,day2);
+
+            day2 = fullBodyN2.toString();
+            force2=fullBodyF2.toString();
+            m2=fullBodyM2.toString();
+            addExercises(2,day2,m2,force2);
 
             }//}
         else if (SessionNo.equals("3")){
             int i;
-//            for (i = 0 ;i<3;i++){
 
             PyObject fullBody= pyObj.callAttr("fullbody",level);
-            day1 = fullBody.toString();
-            addExercises(1,day1);
+            PyObject fullBodyN1= pyObj.callAttr("getfullbodyName");
+            PyObject fullBodyF1= pyObj.callAttr("getfullbodyForce");
+            PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralmuscle");
+
+
+            day1 = fullBodyN1.toString();
+            force1=fullBodyF1.toString();
+            m1=fullBodyM1.toString();
+            addExercises(1,day1,m1,force1);
 
             PyObject fullBody2= pyObj.callAttr("fullbody",level);
-            day2 = fullBody2.toString();
-            addExercises(2,day2);
+            PyObject fullBodyN2= pyObj.callAttr("getfullbodyName");
+            PyObject fullBodyF2= pyObj.callAttr("getfullbodyForce");
+            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralmuscle");
+
+
+            day2 = fullBodyN2.toString();
+            force2=fullBodyF2.toString();
+            m2=fullBodyM2.toString();
+            addExercises(2,day2,m2,force2);
 
             PyObject fullBody3= pyObj.callAttr("fullbody",level);
-            day3 = fullBody3.toString();
-            addExercises(3,day3);
+            PyObject fullBodyN3= pyObj.callAttr("getfullbodyName");
+            PyObject fullBodyF3= pyObj.callAttr("getfullbodyForce");
+            PyObject fullBodyM3= pyObj.callAttr("getfullbodygeneralmuscle");
+
+
+            day3 = fullBodyN3.toString();
+            force3=fullBodyF3.toString();
+            m3=fullBodyM3.toString();
+            addExercises(3,day3,m3,force3);
 
 //            }
         }
@@ -308,40 +355,106 @@ public class LoadPa extends AppCompatActivity {
 
 
             PyObject upperbody= pyObj.callAttr("upperbody",level);
-            day1 = upperbody.toString();
-            addExercises(1,day1);
+            PyObject fullBodyN1= pyObj.callAttr("getupperName");
+            PyObject fullBodyF1= pyObj.callAttr("getupperForce");
+            PyObject fullBodyM1= pyObj.callAttr("getuppergeneralmuscle");
+
+            day1 = fullBodyN1.toString();
+            force1=fullBodyF1.toString();
+            m1=fullBodyM1.toString();
+            addExercises(1,day1,m1,force1);
 
             PyObject lowerbody= pyObj.callAttr("lowerbody",level);
-            day2 = lowerbody.toString();
-            addExercises(2,day2);
+            PyObject fullBodyN2= pyObj.callAttr("getlowerName");
+            PyObject fullBodyF2= pyObj.callAttr("getlowerForce");
+            PyObject fullBodyM2= pyObj.callAttr("getlowergeneralmuscle");
+
+
+            day2 = fullBodyN2.toString();
+            force2=fullBodyF2.toString();
+            m2=fullBodyM2.toString();
+            addExercises(2,day2,m2,force2);
 
             PyObject upperbody2= pyObj.callAttr("upperbody",level);
-            day3 = upperbody2.toString();
-            addExercises(3,day2);
+            PyObject fullBodyN3= pyObj.callAttr("getupperName");
+            PyObject fullBodyF3= pyObj.callAttr("getupperForce");
+            PyObject fullBodyM3= pyObj.callAttr("getuppergeneralmuscle");
+
+
+            day3 = fullBodyN3.toString();
+            force3=fullBodyF3.toString();
+            m3=fullBodyM3.toString();
+            addExercises(3,day3,m3,force3);
+
+
             PyObject lowerbody2= pyObj.callAttr("lowerbody",level);
-            day4 = lowerbody2.toString();
-            addExercises(4,day4);
+            PyObject fullBodyN4= pyObj.callAttr("getlowerName");
+            PyObject fullBodyF4= pyObj.callAttr("getlowerForce");
+            PyObject fullBodyM4= pyObj.callAttr("getlowergeneralmuscle");
+
+
+            day4 = fullBodyN4.toString();
+            force4=fullBodyF4.toString();
+            m4=fullBodyM4.toString();
+            addExercises(4,day4,m4,force4);
 
         }
         else if(SessionNo.equals("5")){
 
             PyObject fiveDays1= pyObj.callAttr("fiveDay",level,1);
-            day1 = fiveDays1.toString();
-            addExercises(1,day1);
+            PyObject fullBodyN1= pyObj.callAttr("getfivedayName");
+            PyObject fullBodyF1= pyObj.callAttr("getfivedayForce");
+            PyObject fullBodyM1= pyObj.callAttr("getfivedaymuscle");
+
+            day1 = fullBodyN1.toString();
+            force1=fullBodyF1.toString();
+            m1=fullBodyM1.toString();
+            addExercises(1,day1,m1,force1);
 
             PyObject fiveDays2= pyObj.callAttr("fiveDay",level,2);
-            day2 = fiveDays2.toString();
-            addExercises(2,day2);
+            PyObject fullBodyN2= pyObj.callAttr("getfivedayName");
+            PyObject fullBodyF2= pyObj.callAttr("getfivedayForce");
+            PyObject fullBodyM2= pyObj.callAttr("getfivedaymuscle");
+
+
+            day2 = fullBodyN2.toString();
+            force2=fullBodyF2.toString();
+            m2=fullBodyM2.toString();
+            addExercises(2,day2,m2,force2);
 
             PyObject fiveDays3= pyObj.callAttr("fiveDay",level,3);
-            day3 = fiveDays3.toString();
-            addExercises(3,day3);
+            PyObject fullBodyN3= pyObj.callAttr("getfivedayName");
+            PyObject fullBodyF3= pyObj.callAttr("getfivedayForce");
+            PyObject fullBodyM3= pyObj.callAttr("getfivedaymuscle");
+
+
+            day3 = fullBodyN3.toString();
+            force3=fullBodyF3.toString();
+            m3=fullBodyM3.toString();
+            addExercises(3,day3,m3,force3);
+
+
             PyObject fiveDays4= pyObj.callAttr("fiveDay",level,4);
-            day4 = fiveDays4.toString();
-            addExercises(4,day4);
+            PyObject fullBodyN4= pyObj.callAttr("getfivedayName");
+            PyObject fullBodyF4= pyObj.callAttr("getfivedayForce");
+            PyObject fullBodyM4= pyObj.callAttr("getfivedaymuscle");
+
+            day4 = fullBodyN4.toString();
+            force4=fullBodyF4.toString();
+            m4=fullBodyM4.toString();
+            addExercises(4,day4,m4,force4);
+
+
+
             PyObject fiveDays5= pyObj.callAttr("fiveDay",level,5);
-            day5 = fiveDays5.toString();
-            addExercises(5,day5);
+            PyObject fullBodyN5= pyObj.callAttr("getfivedayName");
+            PyObject fullBodyF5= pyObj.callAttr("getfivedayForce");
+            PyObject fullBodyM5= pyObj.callAttr("getfivedaymuscle");
+
+            day5 = fullBodyN5.toString();
+            force5=fullBodyF5.toString();
+            m5=fullBodyM5.toString();
+            addExercises(5,day5,m5,force5);
 
         }
 
@@ -411,6 +524,8 @@ public class LoadPa extends AppCompatActivity {
         planAdd.put("rest",rest);
         planAdd.put("reps",reps);
         planAdd.put("exNO",exNo);
+        planAdd.put("duration",duration);
+
 //        planAdd.put("test",exercises);
 
         plan.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -431,12 +546,16 @@ public class LoadPa extends AppCompatActivity {
     }
 
 
-    public void addExercises(int i, String exercises){
+    public void addExercises(int i, String exercises, String m, String f){
         CollectionReference ex = db.collection("userProfile");
 
         String s="day"+i;
         Map<String,Object> planEx = new HashMap<>();
         planEx.put("plan",exercises);
+        planEx.put("force",f);
+        planEx.put("muscle",m);
+
+
 
         ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -454,5 +573,6 @@ public class LoadPa extends AppCompatActivity {
         });
 
     }
+
 
 }
