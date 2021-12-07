@@ -54,17 +54,16 @@ public class LoadPa extends AppCompatActivity {
     private int exNo;
     private int sets;
     private int reps;
-    private String exercises;
+//    private String exercises;
     private String equ;
-    private String num;
+    private String SessionNo;
     private  String trainingDays;
-    private String sunEx;
-    private String monEx;
-    private String tueEx;
-    private String wedEx;
-    private String thurEx;
-    private String friEx;
-    private String satEx;
+    private String day1;
+    private String day2;
+    private String day3;
+    private String day4;
+    private String day5;
+
     private String equipmentList;
     private double tPlace;
     private int tP;
@@ -86,7 +85,7 @@ public class LoadPa extends AppCompatActivity {
         getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
         h=new Handler();
-        num="0";
+        SessionNo="0";
         rest=0;
         exNo=0;
         sets=0;
@@ -109,8 +108,44 @@ public class LoadPa extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(LoadPa.this, PlanView.class);
 
+                if(SessionNo.equals("2")){
+                i.putExtra("sessionNo",SessionNo);
+                i.putExtra("day1",day1);
+                i.putExtra("day2",day2);
+                i.putExtra("level",level);
                 startActivity(i);
                 finish();
+                }
+               else if(SessionNo.equals("3")){
+                    i.putExtra("sessionNo",SessionNo);
+                    i.putExtra("day1",day1);
+                    i.putExtra("day2",day2);
+                    i.putExtra("day3",day3);
+                    i.putExtra("level",level);
+                    startActivity(i);
+                    finish();
+                }
+               else if(SessionNo.equals("4")){
+                    i.putExtra("sessionNo",SessionNo);
+                    i.putExtra("day1",day1);
+                    i.putExtra("day2",day2);
+                    i.putExtra("day3",day3);
+                    i.putExtra("day4",day4);
+                    i.putExtra("level",level);
+                    startActivity(i);
+                    finish();
+                }
+               else if(SessionNo.equals("5")){
+                    i.putExtra("sessionNo",SessionNo);
+                    i.putExtra("day1",day1);
+                    i.putExtra("day2",day2);
+                    i.putExtra("day3",day3);
+                    i.putExtra("day4",day4);
+                    i.putExtra("day5",day5);
+                    i.putExtra("level",level);
+                    startActivity(i);
+                    finish();
+                }
             }
         }, 15000);
     }
@@ -127,7 +162,7 @@ public class LoadPa extends AppCompatActivity {
                 weightD= value.getString("weight");
                 equ= value.getString("equpmtList");
                 tPlace= value.getDouble("trainingPlace");
-                num=value.getString("TrainingdaysNum");
+                SessionNo=value.getString("TrainingdaysNum");
                 tP=(int)tPlace;
                 if(tP==0) {
                     equipmentList = value.getString("equpmtList");
@@ -218,14 +253,14 @@ public class LoadPa extends AppCompatActivity {
             stabilityBall=false;
             dipMachine=false;
             dumbbell=false;
-            ex();
+            createWorkoutPlan();
         }
         else if (tP==0){
             equipment();
         }
-        else {ex();}
+        else {createWorkoutPlan();}
     }
-    public void ex(){
+    public void createWorkoutPlan(){
 
         if (! Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
@@ -237,63 +272,76 @@ public class LoadPa extends AppCompatActivity {
 //        exercises = equi.toString();//retrieve  output
 
 //        //1
-        if(num.equals("2")){
-            int i;
-            for (i = 0 ;i<2;i++){
+        if(SessionNo.equals("2")){
+//            int i;
+//            for (i = 0 ;i<2;i++){
 
                 PyObject fullBody= pyObj.callAttr("fullbody",level);
-                exercises = fullBody.toString();
-                addExercises(i+1,exercises);
+                day1 = fullBody.toString();
+                addExercises(1,day1);
 
-            }}
-        else if (num.equals("3")){
+            PyObject fullBody2= pyObj.callAttr("fullbody",level);
+            day2 = fullBody2.toString();
+
+            addExercises(2,day2);
+
+            }//}
+        else if (SessionNo.equals("3")){
             int i;
-            for (i = 0 ;i<3;i++){
+//            for (i = 0 ;i<3;i++){
 
-                PyObject fullBody= pyObj.callAttr("fullbody",level);
-                exercises = fullBody.toString();
-                addExercises(i+1,exercises);
+            PyObject fullBody= pyObj.callAttr("fullbody",level);
+            day1 = fullBody.toString();
+            addExercises(1,day1);
 
-            }
+            PyObject fullBody2= pyObj.callAttr("fullbody",level);
+            day2 = fullBody2.toString();
+            addExercises(2,day2);
+
+            PyObject fullBody3= pyObj.callAttr("fullbody",level);
+            day3 = fullBody3.toString();
+            addExercises(2,day3);
+
+//            }
         }
-        else if (num.equals("4")){
+        else if (SessionNo.equals("4")){
 
 
             PyObject upperbody= pyObj.callAttr("upperbody",level);
-            exercises = upperbody.toString();
-            addExercises(1,exercises);
+            day1 = upperbody.toString();
+            addExercises(1,day1);
 
             PyObject lowerbody= pyObj.callAttr("lowerbody",level);
-            exercises = lowerbody.toString();
-            addExercises(2,exercises);
+            day2 = lowerbody.toString();
+            addExercises(2,day2);
 
             PyObject upperbody2= pyObj.callAttr("upperbody",level);
-            exercises = upperbody2.toString();
-            addExercises(3,exercises);
+            day3 = upperbody2.toString();
+            addExercises(3,day2);
             PyObject lowerbody2= pyObj.callAttr("lowerbody",level);
-            exercises = lowerbody2.toString();
-            addExercises(4,exercises);
+            day4 = lowerbody2.toString();
+            addExercises(4,day4);
 
         }
-        else if(num.equals("5")){
+        else if(SessionNo.equals("5")){
 
             PyObject fiveDays1= pyObj.callAttr("fiveDay",level,1);
-            exercises = fiveDays1.toString();
-            addExercises(1,exercises);
+            day1 = fiveDays1.toString();
+            addExercises(1,day1);
 
             PyObject fiveDays2= pyObj.callAttr("fiveDay",level,2);
-            exercises = fiveDays2.toString();
-            addExercises(2,exercises);
+            day2 = fiveDays2.toString();
+            addExercises(2,day2);
 
             PyObject fiveDays3= pyObj.callAttr("fiveDay",level,3);
-            exercises = fiveDays3.toString();
-            addExercises(3,exercises);
+            day3 = fiveDays3.toString();
+            addExercises(3,day3);
             PyObject fiveDays4= pyObj.callAttr("fiveDay",level,4);
-            exercises = fiveDays4.toString();
-            addExercises(4,exercises);
+            day4 = fiveDays4.toString();
+            addExercises(4,day4);
             PyObject fiveDays5= pyObj.callAttr("fiveDay",level,5);
-            exercises = fiveDays5.toString();
-            addExercises(5,exercises);
+            day5 = fiveDays5.toString();
+            addExercises(5,day5);
 
         }
 
@@ -307,32 +355,8 @@ public class LoadPa extends AppCompatActivity {
 
     }
 
-    /*
-   public void TrainingDays(Integer trainingdaysNum,String trainingDays){
-       // String[] splitedDays = trainingDays.split("\\s+");
-        if (trainingdaysNum==2){
-            sunEx="full body";
-            tueEx="full body";
-        }
-        else if(trainingdaysNum==3){
-            sunEx="full body";
-            tueEx="full body";
-            thurEx="full body";
-        }
-        else if(trainingdaysNum==4){
-            sunEx="upper";
-            tueEx="lower";
-            thurEx="upper";
-            satEx="lower";
-        }
-        else {//Number of Training Days = 5
-            sunEx="chest";
-            monEx="back,leg";
-            tueEx="shoulder";
-            thurEx="core";
-            friEx="arm";
-        }
-    }*/
+
+
 
     public void equipment(){
 
@@ -373,7 +397,7 @@ public class LoadPa extends AppCompatActivity {
         }else {
             cableMachine=true;
         }
-        ex();
+        createWorkoutPlan();
 
 
     }
