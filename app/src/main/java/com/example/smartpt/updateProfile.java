@@ -64,7 +64,13 @@ public class updateProfile extends AppCompatActivity implements
     private ArrayList<String> a;
     private String tTime;
     private double tDuration;
-
+    private String level;
+    private String SessionNo;
+    private String day1;
+    private String day2;
+    private String day3;
+    private String day4;
+    private String day5;
 
     private Map<String, Object> user = new HashMap<>();
 
@@ -72,6 +78,74 @@ public class updateProfile extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+        SessionNo=getIntent().getStringExtra("sessionNo");
+        level =getIntent().getStringExtra("level");
+        if(SessionNo.equals("2")){
+
+            day1=getIntent().getStringExtra("day1");
+
+
+
+            day2=getIntent().getStringExtra("day2");
+
+
+
+
+        }
+        else if(SessionNo.equals("3")){
+
+            day1=getIntent().getStringExtra("day1");
+
+
+
+            day2=getIntent().getStringExtra("day2");
+
+
+
+            day3=getIntent().getStringExtra("day3");
+
+
+
+
+        }
+        else if(SessionNo.equals("4")){
+            day1=getIntent().getStringExtra("day1");
+
+
+            day2=getIntent().getStringExtra("day2");
+
+
+
+            day3=getIntent().getStringExtra("day3");
+
+
+
+            day4=getIntent().getStringExtra("day4");
+
+
+        }
+        else if(SessionNo.equals("5")){
+            day1=getIntent().getStringExtra("day1");
+
+
+
+            day2=getIntent().getStringExtra("day2");
+
+
+
+            day3=getIntent().getStringExtra("day3");
+
+
+
+            day4=getIntent().getStringExtra("day4");
+
+
+
+            day5=getIntent().getStringExtra("day5");
+
+
+
+        }
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //(navigation bar)
@@ -82,9 +156,52 @@ public class updateProfile extends AppCompatActivity implements
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), PlanView.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        Intent i = new Intent(updateProfile.this, PlanView.class);
+
+                        if(SessionNo.equals("2")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+                        }
+                        else if(SessionNo.equals("3")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("4")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("day4",day4);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("5")) {
+                            i.putExtra("sessionNo", SessionNo);
+                            i.putExtra("day1", day1);
+                            i.putExtra("day2", day2);
+                            i.putExtra("day3", day3);
+                            i.putExtra("day4", day4);
+                            i.putExtra("day5", day5);
+                            i.putExtra("level", level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), updateProfile.class));
                         overridePendingTransition(0, 0);
@@ -145,7 +262,7 @@ public class updateProfile extends AppCompatActivity implements
                 // update reminder and duration spinners
                 eReminder.setSelection(eReminderAdapter.getPosition(value.getString("TrainingTime")));
                 eDuration.setSelection(eDurationAdapter.getPosition(value.getString("TrainingDuration")));
-                eTrainingDays.setSelection(eDaysAdapter.getPosition(value.getString("TrainingDays")));
+                eTrainingDays.setSelection(eDaysAdapter.getPosition(value.getString("TrainingdaysNum")));
             }
         });
 //            /////////////////////////////////////////////////////////

@@ -22,7 +22,7 @@ data = io.StringIO(dataDetails)
 
 dfDetails = pd.read_csv(data, sep=",")
 
-# print(dfDetails['id'])
+print(dfDetails['id'])
 
 eqEx=pd.DataFrame()
 
@@ -30,28 +30,32 @@ eqEx=pd.DataFrame()
 planlist = []
 def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         global eqEx,upper,upper1,upper2,upper3,upper4,lower,lower1,lower2
-        df.drop(df.iloc[:, 7:67].columns, axis = 1)
 
         NoEq=df.loc[df['isneedequipment'] == 0]
+        NoEq['equipment'] = 'No Need to Equipment'
         eqEx=pd.concat([NoEq, eqEx], axis=0)
-
+   
         if(bench==True):
             benchEx=  df.loc[df['bench'] == 1]
+            benchEx['equipment']='bench'
             eqEx=pd.concat([eqEx, benchEx], axis=0)
 
 
         if(barbell==True):
             barbellEx=  df.loc[df['barbell'] == 1]
+            barbellEx['equipment']='barbell'
             eqEx=pd.concat([eqEx, barbellEx], axis=0)
 
         if(stabilityBall==True):
             stabilityballEx=  df.loc[df['stability ball'] == 1]
+            stabilityballEx['equipment']='stability ball'
 
             eqEx=pd.concat([eqEx, stabilityballEx], axis=0)
 
 
         if(dumbbell==True):
             DumbbellEx=  df.loc[df['dumbbell'] == 1]
+            DumbbellEx['equipment']='dumbbell'
 
             eqEx=pd.concat([eqEx, DumbbellEx], axis=0)
 
@@ -59,14 +63,18 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
 
         if(dipMachine==True):
             dipmachineEx=  df.loc[df['dip machine'] == 1]
+            dipmachineEx['equipment']='dip machine'
 
             eqEx=pd.concat([eqEx, dipmachineEx], axis=0)
 
 
         if(cableMachine==True):
             cablemachineEx=  df.loc[df['cable machine'] == 1]
+            cablemachineEx['equipment']='cable machine'
 
             eqEx=pd.concat([eqEx, cablemachineEx], axis=0)
+        eqEx.drop(['isneedequipment','bench','barbell','stability ball','dumbbell','dip machine','cable machine'], axis=1, inplace=True)
+        eqEx.drop(['lower pectoralis major','upper pectoralis major','anterior deltoid','triceps brachii' ,'tensor fasciae latae','sartorius',' pectineus,adductor longus','adductor brevis','rectus abdominis','iliopsoas','rectus femoris','quadriceps','serratus anterior','latissimus dorsi','pectoralis minor','rhomboids','levator scapulae','teres major','biceps brachii','brachialis','brachioradialis','internal and external obliques','rectus abdominis','infraspinatus','teres minor','lateral deltoid','middle and lower trapezius','hamstrings','adductor magnus','gracilis','obliques','gluteus maximus','supraspinatus','posterior deltoid','pectoralis major','quadratus lumborum','psoas major','iliocastalis iumborum','iliocastalis Thoracis','Soleus','gastrocnemius','popliteus','gluteus medius','gluteus minimus','flexor carpi radialis','anconeus'], axis=1, inplace=True)
 
 
 
@@ -76,36 +84,14 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         upper2=eqEx.loc[eqEx['generalmuscle'].isin(['arm'])]
         upper3=eqEx.loc[eqEx['generalmuscle'].isin(['shoulders'])]
         upper4=eqEx.loc[eqEx['generalmuscle'].isin(['back','back,arm'])]
-        lower=eqEx.loc[eqEx['generalmuscle'].isin(['core','legs-and-glutes'])]
+        lower=eqEx.loc[eqEx['generalmuscle'].isin(['core','legs and glutes'])]
         lower1=eqEx.loc[eqEx['generalmuscle'].isin(['core'])]
-        lower2=eqEx.loc[eqEx['generalmuscle'].isin(['legs-and-glutes'])]
+        lower2=eqEx.loc[eqEx['generalmuscle'].isin(['legs and glutes'])]
 
 
 
 
-# def fullbody(level):
-#     ex1=upper1.sample()
-#     ex2=upper2.sample()
-#     ex3=upper3.sample()
-#     ex4=upper4.sample()
-#     ex5=upper.sample()
-#     ex6=lower1.sample()
-#     ex7=lower2.sample()
-#     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-#
-#     if(level=="Intermediate" or level=="Professional"):
-#         ex8=upper.sample()
-#         ex9=upper.sample()
-#         ex10=lower.sample()
-#         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-#     if(level=="Professional"):
-#         ex11=upper.sample()
-#         ex12=lower.sample()
-#         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-#     rs=rs.drop(rs.columns[[ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-#     return rs.to_numpy()
-
-def fullbody(level):
+def fullbody(level): 
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -114,20 +100,21 @@ def fullbody(level):
     ex6=lower1.sample()
     ex7=lower2.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-
-    if(level=="Intermediate" or level=="Professional"):
+    
+    if(level=="intermediate" or level=="professional"):
         ex8=upper.sample()
         ex9=upper.sample()
         ex10=lower.sample()
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="Professional"):
+    if(level=="professional"):
         ex11=upper.sample()
         ex12=lower.sample()
-        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    rs=rs.drop(rs.columns[[ 0,2,3,4,5,6,7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-    return rs.to_numpy()
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
+    return rs.to_numpy() 
+    
+    
 
-def upperbody(level):
+def upperbody(level): 
     ex1=upper1.sample()
     ex2=upper2.sample()
     ex3=upper3.sample()
@@ -136,19 +123,19 @@ def upperbody(level):
     ex6=upper2.sample()
     ex7=upper3.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-
-    if(level=="Intermediate" or level=="Professional"):
+    
+    if(level=="intermediate" or level=="professional"):
         ex8=upper4.sample()
         ex9=upper.sample()
         ex10=upper.sample()
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="Professional"):
+    if(level=="professional"):
         ex11=upper.sample()
         ex12=upper.sample()
-        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
+        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
     return rs.to_numpy()
 
-def lowerbody(level):
+def lowerbody(level): 
     ex1=lower1.sample()
     ex2=lower2.sample()
     ex3=lower1.sample()
@@ -157,49 +144,14 @@ def lowerbody(level):
     ex6=lower2.sample()
     ex7=lower.sample()
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-
-    if(level=="Intermediate" or level=="Professional"):
+    
+    if(level=="intermediate" or level=="professional"):
         ex8=lower.sample()
         ex9=lower.sample()
         ex10=lower.sample()
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="Professional"):
+    if(level=="professional"):
         ex11=lower.sample()
         ex12=lower.sample()
-        rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    rs=rs.drop(rs.columns[[ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
-    return rs.to_numpy()
-
-def fiveDay(level,d):
-    if(d==1):
-        musels=eqEx.loc[eqEx['generalmuscle'].isin(['chest'])]
-    if(d==2):
-        musels=eqEx.loc[eqEx['generalmuscle'].isin(['back','legs and glutes'])]
-
-    if(d==3):
-        musels=eqEx.loc[eqEx['generalmuscle'].isin(['shoulders'])]
-    if(d==4):
-        musels=eqEx.loc[eqEx['generalmuscle'].isin(['core'])]
-    if(d==5):
-        musels=eqEx.loc[eqEx['generalmuscle'].isin(['arm','back,arm'])]
-
-    ex1=musels.sample()
-    ex2=musels.sample()
-    ex3=musels.sample()
-    ex4=musels.sample()
-    ex5=musels.sample()
-    ex6=musels.sample()
-    ex7=musels.sample()
-    rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-
-    if(level=="Intermediate" or level=="Professional"):
-        ex8=musels.sample()
-        ex9=musels.sample()
-        ex10=musels.sample()
-        rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
-    if(level=="Professional"):
-        ex11=musels.sample()
-        ex12=musels.sample()
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1]) 
-    rs=rs.drop(rs.columns[[ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]], axis = 1)
     return rs.to_numpy()

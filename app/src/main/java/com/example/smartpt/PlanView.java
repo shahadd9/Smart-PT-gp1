@@ -1,6 +1,7 @@
 package com.example.smartpt;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.Arrays;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,9 +29,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -42,10 +46,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class PlanView extends AppCompatActivity {
+
+
+    // data base
+    private FirebaseFirestore db;
+    private String userIp;
+
+    private String SessionNo;
     private Button buttonSat;
     private Button buttonSun;
     private Button buttonMon;
@@ -54,27 +67,30 @@ public class PlanView extends AppCompatActivity {
     private Button buttonFri;
     private Button buttonThu;
     private Button buttonALeart;
-    //WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-    //String userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+
+
     private TextView TextviewEx1;
     private TextView TextviewEx2;
     private TextView TextviewEx3;
+    private TextView TextviewEx4;
+    private TextView TextviewEx5;
+    private TextView TextviewEx6;
+    private TextView TextviewEx7;
+    private TextView TextviewEx8;
+    private TextView TextviewEx9;
+    private TextView TextviewEx10;
+    private TextView TextviewEx11;
+    private TextView TextviewEx12;
+
+
+        private TextView TT;
+    private String name;
+private String level;
     static String namedays=new String();
-
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    private DocumentReference ex1=db.collection("Exercise").document("9kfu4LzQIe8ZF9PxHTur");
-    private DocumentReference ex2=db.collection("Exercise").document("2");
-    private DocumentReference ex3=db.collection("Exercise").document("3");
-
-    private DocumentReference getimg=db.collection("Exercise").document("2");
-
-    private StorageReference mstorageReference=FirebaseStorage.getInstance().getReference().child("Exercice Pic/Q.png");;
-
 
     private static final String TAG = "PlanView";
 
-    private static final String KEY_Name = "name";
-    private static final String KEY_TARGET = "targetedMuscle";
     private static final String KEY_T="trainingDays";
 
     boolean daySat;
@@ -85,26 +101,33 @@ public class PlanView extends AppCompatActivity {
     boolean dayThu;
     boolean dayFri;
 
+    private String day1;
+    String day11[]= new String[200];
+    private String day2;
+    String day22[]=new String[200];
+    private String day3;
+    String day33[]=new String[200];
+    private String day4;
+    String day44[]=new String[200];
+    private String day5;
+    String day55[]=new String[200];
+
+
+
+
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
-    private int[] exe_list= {
-            R.id.textViewex1,
-            R.id.textViewex2,
-            R.id.textViewex3,
-            R.id.textViewex4,
-            R.id.textViewex5,
-            R.id.textViewex6,
-            R.id.textViewex7,
-            R.id.textViewex8,
-            R.id.textViewex9,
-            R.id.textViewex10,
-            R.id.textViewex11,
-            R.id.textViewex12,
-    };
 
 
-private ArrayList<String> days=TrainingDaysNum.gettDays();
+
+    private String Wplan;
+//    private String SessionNo;
+
+
+
+
+    private ArrayList<String> days=TrainingDaysNum.gettDays();
 
 
     @Override
@@ -112,37 +135,39 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
 
+        TextviewEx1=findViewById(R.id.textViewex1);
+        TextviewEx2=findViewById(R.id.textViewex2);
+        TextviewEx3=findViewById(R.id.textViewex3);
+        TextviewEx4=findViewById(R.id.textViewex4);
+        TextviewEx5=findViewById(R.id.textViewex5);
+        TextviewEx6=findViewById(R.id.textViewex6);
+        TextviewEx7=findViewById(R.id.textViewex7);
+        TextviewEx8=findViewById(R.id.textViewex8);
+        TextviewEx9=findViewById(R.id.textViewex9);
+        TextviewEx10=findViewById(R.id.textViewex10);
+        TextviewEx11=findViewById(R.id.textViewex11);
+        TextviewEx12=findViewById(R.id.textViewex12);
+
+
+
+
+
+
  //ondata();
-
-        WifiManager wifiManager=(WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-
-    mstorageReference = FirebaseStorage.getInstance().getReference().child("Exercice Pic/QuestionMark.jpg");
-        try {
-            final File localFile=File.createTempFile("QuestionMark","jpg");
-            mstorageReference.getFile(localFile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                            //((ImageView)findViewById(R.id.imageViewex1)).setImageBitmap(bitmap);
-                           // ((ImageView)findViewById(R.id.imageViewex2)).setImageBitmap(bitmap);
-                           // ((ImageView)findViewById(R.id.imageViewex3)).setImageBitmap(bitmap);
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+SessionNo=getIntent().getStringExtra("sessionNo");
+level =getIntent().getStringExtra("level");
+TT=findViewById(R.id.WeeklytextView);
 
 
 
-        db.collection("userProfile").document(ipAddress).get()
+
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+        db = FirebaseFirestore.getInstance();
+
+
+        db.collection("userProfile").document(userIp).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -169,8 +194,8 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
 
 
-
-
+//        retreiveTDays();
+        splitPlan();
 
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -184,9 +209,51 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                         return true;
 //                     (update profile activity)
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                        Intent i = new Intent(PlanView.this, updateProfile.class);
+
+                        if(SessionNo.equals("2")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+                        }
+                        else if(SessionNo.equals("3")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("4")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("day4",day4);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("5")) {
+                            i.putExtra("sessionNo", SessionNo);
+                            i.putExtra("day1", day1);
+                            i.putExtra("day2", day2);
+                            i.putExtra("day3", day3);
+                            i.putExtra("day4", day4);
+                            i.putExtra("day5", day5);
+                            i.putExtra("level", level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
 //
 //                    case R.id.progress:
 //                        startActivity(new Intent(getApplicationContext(),progress.class));
@@ -197,15 +264,14 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
             }
         });
 
-
        // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
         FrameLayout alertFrame = (FrameLayout) findViewById(R.id.alertFrame);
-        ScrollView scrollView =(ScrollView)findViewById(R.id.ScrollFrame); 
+        ScrollView scrollView =(ScrollView)findViewById(R.id.ScrollFrame);
         
-        TextviewEx1 = findViewById(R.id.textViewex1);
-        TextviewEx2 = findViewById(R.id.textViewex2);
-        TextviewEx3 = findViewById(R.id.textViewex3);
+//        TextviewEx1 = findViewById(R.id.textViewex1);
+//        TextviewEx2 = findViewById(R.id.textViewex2);
+//        TextviewEx3 = findViewById(R.id.textViewex3);
 
 
 
@@ -222,6 +288,29 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         buttonMon = (Button) findViewById(R.id.buttonMon);
         buttonSat = (Button) findViewById(R.id.buttonSat);
@@ -285,12 +374,28 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                  //   String day =days.get(i);
                     if (dayMon) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
 
-                        ///     break;
+//                        if(SessionNo.equals("2")){
+//
+//
+//                        }
+//                        if(SessionNo.equals("3")){
+//
+//
+//                        }
+                        if(SessionNo.equals("4")){
+                            day2();
+
+                        }
+                        else if(SessionNo.equals("5")) {
+                            day2();
+                        }
+
+                            ///     break;
 
                     } else {
 
@@ -333,11 +438,26 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                     if (daySat) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
 
+//                        if(SessionNo.equals("2")){
+//
+//
+//                        }
+//                        if(SessionNo.equals("3")){
+//
+//
+//                        }
+//                        if(SessionNo.equals("4")){
+//                            day2();
+//
+//                        }
+//                        if(SessionNo.equals("5")) {
+//                            day2();
+//                        }
                         ///      break;
 
                     } else {
@@ -361,6 +481,8 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 }else {
                     daySun=true;
                 }
+                String SessionNo=getIntent().getStringExtra("sessionNo");
+
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
@@ -377,8 +499,8 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
-               
-                
+
+
                 buttonMon.setTextColor( Color.parseColor("#696969"));
                 buttonSat.setTextColor( Color.parseColor("#696969"));
 
@@ -395,11 +517,29 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                     if (daySun) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
 
+                        if(SessionNo.equals("2")){
+
+                            day1();
+
+                        }
+                        if(SessionNo.equals("3")){
+                            day1();
+
+
+                        }
+                        if(SessionNo.equals("4")){
+                            day1();
+
+                        }
+                        if(SessionNo.equals("5")) {
+                            day1();
+                        }
                         //     break;
 
                     } else {
@@ -422,6 +562,7 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 }else {
                     dayTue=true;
                 }
+
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -454,11 +595,28 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                     if (dayTue) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
 
+                        if(SessionNo.equals("2")){
+
+
+
+
+                        }
+                        if(SessionNo.equals("3")){
+                            day2();
+
+
+                        }
+                        if(SessionNo.equals("4")){
+
+                        }
+                        if(SessionNo.equals("5")) {
+                            day3();
+                        }
                         //        break;
 
                     } else {
@@ -518,11 +676,27 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                     if (dayWed) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
 
+                        if(SessionNo.equals("2")){
+                            day2();
+
+
+                        }
+                        if(SessionNo.equals("3")){
+
+
+                        }
+                        if(SessionNo.equals("4")){
+                            day3();
+
+                        }
+                        if(SessionNo.equals("5")) {
+                            day4();
+                        }
                         //       break;
 
                     } else {
@@ -579,10 +753,28 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
 
                     if (dayThu) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
+
+
+                        if(SessionNo.equals("2")){
+
+
+                        }
+                        if(SessionNo.equals("3")){
+
+                            day3();
+
+                        }
+                        if(SessionNo.equals("4")){
+                            day4();
+
+                        }
+                        if(SessionNo.equals("5")) {
+                            day5();
+                        }
                  //       break;
 
                     } else {
@@ -636,13 +828,11 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
                 buttonThu.setTextColor( Color.parseColor("#696969"));
 
 
-                //for (int i=0;i<days.size();i++){
-                   // String day =days.get(i);
                     if (dayFri) {
                         mon.setText("My Exercises for this day");
-                        loadEx1(v);
-                        loadEx2(v);
-                        loadEx3(v);
+//                        loadEx1(v);
+//                        loadEx2(v);
+//                        loadEx3(v);
                         scrollView.setVisibility(View.VISIBLE);
                      //   break;
 
@@ -658,131 +848,110 @@ private ArrayList<String> days=TrainingDaysNum.gettDays();
             }
         });
 
+        TextviewEx1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx1.getText());
+                    startActivity(i);
+
+            }
+        });
+        TextviewEx2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx2.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx3.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx4.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx5.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx6.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx7.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx8.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx9.getText());
+                startActivity(i);
+
+            }
+        });
     }
 
-//               Data Exercise
-
-    public void loadEx1(View v){
-        ex1.get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()){
-                            String name =documentSnapshot.getString(KEY_Name);
-                            String target=documentSnapshot.getString(KEY_TARGET);
-
-
-                            TextviewEx1.setText(name+"\n"+"Targe Muscle: "+target);
-
-                        }else {
-                            Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-
-                    }
-                });
-
-
-    }
-
-
-    public void loadEx2(View v) {
-        ex2.get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            String name = documentSnapshot.getString(KEY_Name);
-                            String target = documentSnapshot.getString(KEY_TARGET);
-
-                            TextviewEx2.setText(name + "\n" + "Targe Muscle: " + target);
-
-
-                        } else {
-                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-
-                    }
-                });
-    }
-
-
-        public void loadEx3(View v){
-            ex3.get()
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()){
-                                String name =documentSnapshot.getString(KEY_Name);
-                                String target=documentSnapshot.getString(KEY_TARGET);
-
-                                TextviewEx3.setText(name+"\n"+"Targe Muscle: "+target);
-
-
-                            }else {
-                                Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, e.toString());
-
-                        }
-                    });
 
 
 
-
-        }
-
-        /*
-
-    public void dayst(View v) {
-        tdays.get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            namedays =(String) documentSnapshot.getString(KEY_T);
-
-
-                        } else {
-                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-
-                    }
-                });
-
-    }*/
 
     public void ondata(){
         FirebaseUser uid = FirebaseAuth.getInstance().getCurrentUser();
@@ -824,4 +993,346 @@ public void currentDay(){
     else
     if(dayOfTheWeek.contains("Wednesday")){ buttonWed.performClick();}}
 
-}
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public void retreivePlan(int i) {
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+        db = FirebaseFirestore.getInstance();
+
+        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day" + i);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                Wplan = value.getString("plan");
+//                TT.setText(Wplan);
+
+
+            }
+        });
+    }
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//    public void retreiveTDays() {
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//
+//        db = FirebaseFirestore.getInstance();
+//        DocumentReference documentReference =  db.collection("userProfile").document(userIp);
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//                name= value.getString("name");
+//                SessionNo=value.getString("TrainingdaysNum");
+//
+//            }
+//        });
+//
+//
+//        }
+
+    public void day1(){
+
+        if(level.equals("Beginner")){
+
+            TextviewEx1.setText(day11[0]);
+            TextviewEx2.setText(day11[1]);
+            TextviewEx3.setText(day11[2]);
+            TextviewEx4.setText(day11[3]);
+            TextviewEx5.setText(day11[4]);
+            TextviewEx6.setText(day11[5]);
+            TextviewEx7.setText(day11[6]);
+
+        }
+        if(level.equals("Intermediate")){
+
+            TextviewEx1.setText(day11[0]);
+            TextviewEx2.setText(day11[1]);
+            TextviewEx3.setText(day11[2]);
+            TextviewEx4.setText(day11[3]);
+            TextviewEx5.setText(day11[4]);
+            TextviewEx6.setText(day11[5]);
+            TextviewEx7.setText(day11[6]);
+            TextviewEx8.setText(day11[7]);
+            TextviewEx9.setText(day11[8]);
+            TextviewEx10.setText(day11[9]);
+
+
+        }
+        if(level.equals("Professional")){
+            TextviewEx1.setText(day11[0]);
+            TextviewEx2.setText(day11[1]);
+            TextviewEx3.setText(day11[2]);
+            TextviewEx4.setText(day11[3]);
+            TextviewEx5.setText(day11[4]);
+            TextviewEx6.setText(day11[5]);
+            TextviewEx7.setText(day11[6]);
+            TextviewEx8.setText(day11[7]);
+            TextviewEx9.setText(day11[8]);
+            TextviewEx10.setText(day11[9]);
+            TextviewEx11.setText(day11[10]);
+            TextviewEx12.setText(day11[11]);
+        }
+
+    }
+
+    public void day2(){
+
+        if(level.equals("Beginner")){
+
+            TextviewEx1.setText(day22[0]);
+            TextviewEx2.setText(day22[1]);
+            TextviewEx3.setText(day22[2]);
+            TextviewEx4.setText(day22[3]);
+            TextviewEx5.setText(day22[4]);
+            TextviewEx6.setText(day22[5]);
+            TextviewEx7.setText(day22[6]);
+
+        }
+        if(level.equals("Intermediate")){
+
+            TextviewEx1.setText(day22[0]);
+            TextviewEx2.setText(day22[1]);
+            TextviewEx3.setText(day22[2]);
+            TextviewEx4.setText(day22[3]);
+            TextviewEx5.setText(day22[4]);
+            TextviewEx6.setText(day22[5]);
+            TextviewEx7.setText(day22[6]);
+            TextviewEx8.setText(day22[7]);
+            TextviewEx9.setText(day22[8]);
+            TextviewEx10.setText(day22[9]);
+
+
+        }
+        if(level.equals("Professional")){
+            TextviewEx1.setText(day22[0]);
+            TextviewEx2.setText(day22[1]);
+            TextviewEx3.setText(day22[2]);
+            TextviewEx4.setText(day22[3]);
+            TextviewEx5.setText(day22[4]);
+            TextviewEx6.setText(day22[5]);
+            TextviewEx7.setText(day22[6]);
+            TextviewEx8.setText(day22[7]);
+            TextviewEx9.setText(day22[8]);
+            TextviewEx10.setText(day22[9]);
+            TextviewEx11.setText(day22[10]);
+            TextviewEx12.setText(day22[11]);
+        }
+
+    }
+
+    public void day3(){
+
+        if(level.equals("Beginner")){
+
+            TextviewEx1.setText(day33[0]);
+            TextviewEx2.setText(day33[1]);
+            TextviewEx3.setText(day33[2]);
+            TextviewEx4.setText(day33[3]);
+            TextviewEx5.setText(day33[4]);
+            TextviewEx6.setText(day33[5]);
+            TextviewEx7.setText(day33[6]);
+
+        }
+        if(level.equals("Intermediate")){
+
+            TextviewEx1.setText(day33[0]);
+            TextviewEx2.setText(day33[1]);
+            TextviewEx3.setText(day33[2]);
+            TextviewEx4.setText(day33[3]);
+            TextviewEx5.setText(day33[4]);
+            TextviewEx6.setText(day33[5]);
+            TextviewEx7.setText(day33[6]);
+            TextviewEx8.setText(day33[7]);
+            TextviewEx9.setText(day33[8]);
+            TextviewEx10.setText(day33[9]);
+
+
+        }
+        if(level.equals("Professional")){
+            TextviewEx1.setText(day33[0]);
+            TextviewEx2.setText(day33[1]);
+            TextviewEx3.setText(day33[2]);
+            TextviewEx4.setText(day33[3]);
+            TextviewEx5.setText(day33[4]);
+            TextviewEx6.setText(day33[5]);
+            TextviewEx7.setText(day33[6]);
+            TextviewEx8.setText(day33[7]);
+            TextviewEx9.setText(day33[8]);
+            TextviewEx10.setText(day33[9]);
+            TextviewEx11.setText(day33[10]);
+            TextviewEx12.setText(day33[11]);
+        }
+
+    }
+    public void day4(){
+
+        if(level.equals("Beginner")){
+
+            TextviewEx1.setText(day44[0]);
+            TextviewEx2.setText(day44[1]);
+            TextviewEx3.setText(day44[2]);
+            TextviewEx4.setText(day44[3]);
+            TextviewEx5.setText(day44[4]);
+            TextviewEx6.setText(day44[5]);
+            TextviewEx7.setText(day44[6]);
+
+        }
+        if(level.equals("Intermediate")){
+
+            TextviewEx1.setText(day44[0]);
+            TextviewEx2.setText(day44[1]);
+            TextviewEx3.setText(day44[2]);
+            TextviewEx4.setText(day44[3]);
+            TextviewEx5.setText(day44[4]);
+            TextviewEx6.setText(day44[5]);
+            TextviewEx7.setText(day44[6]);
+            TextviewEx8.setText(day44[7]);
+            TextviewEx9.setText(day44[8]);
+            TextviewEx10.setText(day44[9]);
+
+
+        }
+        if(level.equals("Professional")){
+            TextviewEx1.setText(day44[0]);
+            TextviewEx2.setText(day44[1]);
+            TextviewEx3.setText(day44[2]);
+            TextviewEx4.setText(day44[3]);
+            TextviewEx5.setText(day44[4]);
+            TextviewEx6.setText(day44[5]);
+            TextviewEx7.setText(day44[6]);
+            TextviewEx8.setText(day44[7]);
+            TextviewEx9.setText(day44[8]);
+            TextviewEx10.setText(day44[9]);
+            TextviewEx11.setText(day44[10]);
+            TextviewEx12.setText(day44[11]);
+        }
+
+    }
+
+    public void day5(){
+
+        if(level.equals("Beginner")){
+
+            TextviewEx1.setText(day55[0]);
+            TextviewEx2.setText(day55[1]);
+            TextviewEx3.setText(day55[2]);
+            TextviewEx4.setText(day55[3]);
+            TextviewEx5.setText(day55[4]);
+            TextviewEx6.setText(day55[5]);
+            TextviewEx7.setText(day55[6]);
+
+        }
+        if(level.equals("Intermediate")){
+
+            TextviewEx1.setText(day55[0]);
+            TextviewEx2.setText(day55[1]);
+            TextviewEx3.setText(day55[2]);
+            TextviewEx4.setText(day55[3]);
+            TextviewEx5.setText(day55[4]);
+            TextviewEx6.setText(day55[5]);
+            TextviewEx7.setText(day55[6]);
+            TextviewEx8.setText(day55[7]);
+            TextviewEx9.setText(day55[8]);
+            TextviewEx10.setText(day55[9]);
+
+
+        }
+        if(level.equals("Professional")){
+            TextviewEx1.setText(day55[0]);
+            TextviewEx2.setText(day55[1]);
+            TextviewEx3.setText(day55[2]);
+            TextviewEx4.setText(day55[3]);
+            TextviewEx5.setText(day55[4]);
+            TextviewEx6.setText(day55[5]);
+            TextviewEx7.setText(day55[6]);
+            TextviewEx8.setText(day55[7]);
+            TextviewEx9.setText(day55[8]);
+            TextviewEx10.setText(day55[9]);
+            TextviewEx11.setText(day55[10]);
+            TextviewEx12.setText(day55[11]);
+        }
+
+    }
+
+        public void splitPlan(){
+        String SessionNo=getIntent().getStringExtra("sessionNo");
+
+        if(SessionNo.equals("2")){
+
+                    day1=getIntent().getStringExtra("day1");
+
+                    day11=day1.split(" ");
+
+                    day2=getIntent().getStringExtra("day2");
+
+                    day22=day2.split(" ");
+
+
+        }
+        else if(SessionNo.equals("3")){
+
+            day1=getIntent().getStringExtra("day1");
+
+            day11=day1.split(" ");
+
+            day2=getIntent().getStringExtra("day2");
+
+            day22=day2.split(" ");
+
+            day3=getIntent().getStringExtra("day3");
+
+            day33=day3.split(" ");
+
+
+                }
+                else if(SessionNo.equals("4")){
+            day1=getIntent().getStringExtra("day1");
+
+            day11=day1.split(" ");
+
+            day2=getIntent().getStringExtra("day2");
+
+            day22=day2.split(" ");
+
+            day3=getIntent().getStringExtra("day3");
+
+            day33=day3.split(" ");
+
+            day4=getIntent().getStringExtra("day4");
+
+            day44=day4.split(" ");
+                }
+                else if(SessionNo.equals("5")){
+            day1=getIntent().getStringExtra("day1");
+
+            day11=day1.split(" ");
+
+            day2=getIntent().getStringExtra("day2");
+
+            day22=day2.split(" ");
+
+            day3=getIntent().getStringExtra("day3");
+
+            day33=day3.split(" ");
+
+            day4=getIntent().getStringExtra("day4");
+
+            day44=day4.split(" ");
+
+            day5=getIntent().getStringExtra("day5");
+
+            day55=day5.split(" ");
+
+                }
+
+        }
+
+//    public void btnC(android.view.View i){
+//
+//
+//    }
+    }
+
