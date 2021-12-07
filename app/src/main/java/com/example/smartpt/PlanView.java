@@ -252,7 +252,7 @@ TT=findViewById(R.id.WeeklytextView);
                             i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
-                            finish();
+                            finish();  
                         }
 //
 //                    case R.id.progress:

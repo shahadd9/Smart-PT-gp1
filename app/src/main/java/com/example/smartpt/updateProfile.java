@@ -161,7 +161,7 @@ public class updateProfile extends AppCompatActivity implements
                         if(SessionNo.equals("2")){
                             i.putExtra("sessionNo",SessionNo);
                             i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
+                            i.putExtra("day2",day2);   
                             i.putExtra("level",level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
