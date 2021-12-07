@@ -300,7 +300,7 @@ public class LoadPa extends AppCompatActivity {
 
             PyObject fullBody3= pyObj.callAttr("fullbody",level);
             day3 = fullBody3.toString();
-            addExercises(2,day3);
+            addExercises(3,day3);
 
 //            }
         }

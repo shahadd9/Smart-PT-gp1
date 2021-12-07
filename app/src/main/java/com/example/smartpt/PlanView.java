@@ -209,9 +209,51 @@ TT=findViewById(R.id.WeeklytextView);
                         return true;
 //                     (update profile activity)
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                        Intent i = new Intent(PlanView.this, updateProfile.class);
+
+                        if(SessionNo.equals("2")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+                        }
+                        else if(SessionNo.equals("3")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("4")){
+                            i.putExtra("sessionNo",SessionNo);
+                            i.putExtra("day1",day1);
+                            i.putExtra("day2",day2);
+                            i.putExtra("day3",day3);
+                            i.putExtra("day4",day4);
+                            i.putExtra("level",level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                        else if(SessionNo.equals("5")) {
+                            i.putExtra("sessionNo", SessionNo);
+                            i.putExtra("day1", day1);
+                            i.putExtra("day2", day2);
+                            i.putExtra("day3", day3);
+                            i.putExtra("day4", day4);
+                            i.putExtra("day5", day5);
+                            i.putExtra("level", level);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
 //
 //                    case R.id.progress:
 //                        startActivity(new Intent(getApplicationContext(),progress.class));
@@ -246,6 +288,28 @@ TT=findViewById(R.id.WeeklytextView);
 
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         buttonMon = (Button) findViewById(R.id.buttonMon);
@@ -453,10 +517,7 @@ TT=findViewById(R.id.WeeklytextView);
 
                     if (daySun) {
                         mon.setText("My Exercises for this day");
-                        if(SessionNo.equals("2")){
-                            day1();
 
-                        }
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -540,6 +601,7 @@ TT=findViewById(R.id.WeeklytextView);
                         scrollView.setVisibility(View.VISIBLE);
 
                         if(SessionNo.equals("2")){
+
 
 
 
@@ -786,6 +848,105 @@ TT=findViewById(R.id.WeeklytextView);
             }
         });
 
+        TextviewEx1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx1.getText());
+                    startActivity(i);
+
+            }
+        });
+        TextviewEx2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx2.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx3.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx4.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx5.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx6.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx7.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx8.getText());
+                startActivity(i);
+
+            }
+        });
+        TextviewEx9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+
+                i.putExtra("name",TextviewEx9.getText());
+                startActivity(i);
+
+            }
+        });
     }
 
 
