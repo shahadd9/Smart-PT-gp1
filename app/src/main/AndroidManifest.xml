@@ -17,7 +17,7 @@
             android:name=".Exercise"
             android:exported="true"
             android:label="Exercise details"
-            android:parentActivityName=".PlanView"  />
+             />
         <activity
             android:name=".TrainingDaysNum"
             android:exported="true"

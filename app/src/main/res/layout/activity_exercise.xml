@@ -16,23 +16,15 @@
     tools:context=".Exercise">
 
     <TextView
-        android:id="@+id/tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
         android:id="@+id/exName"
-        android:layout_width="352dp"
-        android:layout_height="65dp"
+        android:layout_width="387dp"
+        android:layout_height="88dp"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
+        android:gravity="center"
+
         android:text="Push Up"
-        android:textColor="#0231F5"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,29 +34,6 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="12dp"
-        android:text="Target Muscle"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView29"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
-    <TextView
-        android:id="@+id/target"
-        android:layout_width="352dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/exName"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
         android:id="@+id/textView7"
         android:layout_width="118dp"
         android:layout_height="46dp"
@@ -72,6 +41,9 @@
         android:text="Sets "
         android:textSize="15dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
         app:layout_constraintEnd_toEndOf="@+id/force"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView25"
@@ -82,6 +54,8 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/force"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView25"
@@ -94,6 +68,9 @@
         android:layout_marginTop="24dp"
         android:text="Reps"
         android:textSize="15dp"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
+        android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/sets"
         app:layout_constraintHorizontal_bias="0.0"
@@ -104,6 +81,8 @@
         android:id="@+id/reps"
         android:layout_width="118dp"
         android:layout_height="46dp"
+        android:gravity="center"
+        android:textSize="15dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/sets"
         app:layout_constraintHorizontal_bias="1.0"
@@ -118,6 +97,9 @@
         android:text="Rest"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/reps"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -128,6 +110,7 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginTop="12dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/reps"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -137,10 +120,13 @@
         android:id="@+id/textView13"
         android:layout_width="118dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Duration"
         android:textSize="15dp"
+        android:gravity="center"
         android:textStyle="bold"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
         app:layout_constraintEnd_toEndOf="@+id/rest"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView11"
@@ -151,114 +137,54 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/rest"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/rest" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        android:text="Equpmint"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/duration"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <TextView
-        android:id="@+id/equipment"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/duration"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/duration" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:text="Execution"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/startPos"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/startPos"
-        app:layout_constraintTop_toBottomOf="@+id/startPos" />
-
-    <TextView
-        android:id="@+id/execution"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="14dp"
-        android:text="Tips"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/execution"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/execution"
-        app:layout_constraintTop_toBottomOf="@+id/execution" />
-
-    <TextView
         android:id="@+id/textView21"
         android:layout_width="118dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="General Muscle"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/target"
-        app:layout_constraintHorizontal_bias="0.017"
-        app:layout_constraintStart_toStartOf="@+id/target"
-        app:layout_constraintTop_toBottomOf="@+id/target" />
-
-    <TextView
-        android:id="@+id/general"
-        android:layout_width="352dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView21"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        android:gravity="center"
+        android:background="#E8F0F2"
+        android:textColor="#334257"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exName" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="118dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/general"
-        app:layout_constraintHorizontal_bias="0.017"
-        app:layout_constraintStart_toStartOf="@+id/general"
-        app:layout_constraintTop_toBottomOf="@+id/general" />
+
+        app:layout_constraintEnd_toEndOf="@+id/textView21"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
 
     <TextView
         android:id="@+id/mchanism"
         android:layout_width="118dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/general"
-        app:layout_constraintHorizontal_bias="0.606"
-        app:layout_constraintStart_toStartOf="@+id/general"
-        app:layout_constraintTop_toBottomOf="@+id/general" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221"
+        android:gravity="center"
+
+        android:textSize="15dp"
+        />
 
     <TextView
         android:id="@+id/textView25"
@@ -267,6 +193,9 @@
         android:layout_marginTop="12dp"
         android:text="Force"
         android:textSize="15dp"
+        android:background="#E8F0F2"
+        android:gravity="center"
+        android:textColor="#334257"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/mchanism"
         app:layout_constraintHorizontal_bias="0.0"
@@ -278,48 +207,27 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/mchanism"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/mchanism" />
 
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:text="Starting Position"
-        android:textSize="15dp"
-        android:textStyle="bold"
-
-        app:layout_constraintEnd_toEndOf="@+id/exName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/exName"
-        app:layout_constraintTop_toBottomOf="@+id/exName" />
-
-    <TextView
-        android:id="@+id/startPos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView27"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView27"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:text="Exercise Details"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tips"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tips"
-        app:layout_constraintTop_toBottomOf="@+id/tips" />
+<!--    <Button-->
+<!--        android:id="@+id/okBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="#48D0FE"-->
+<!--        android:text="OK"-->
+<!--        android:textSize="20sp"-->
+<!--        app:cornerRadius="6sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.464"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView13"-->
+<!--        app:layout_constraintVertical_bias="0.444" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
