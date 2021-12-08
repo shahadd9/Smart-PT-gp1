@@ -69,7 +69,6 @@ public class PlanView extends AppCompatActivity {
     private Button buttonALeart;
 
 
-
     private TextView TextviewEx1;
     private TextView TextviewEx2;
     private TextView TextviewEx3;
@@ -111,14 +110,14 @@ public class PlanView extends AppCompatActivity {
     private TextView f12;
 
 
-        private TextView TT;
+    private TextView TT;
     private String name;
-private String level;
-    static String namedays=new String();
+    private String level;
+    static String namedays = new String();
 
     private static final String TAG = "PlanView";
 
-    private static final String KEY_T="trainingDays";
+    private static final String KEY_T = "trainingDays";
 
     boolean daySat;
     boolean daySun;
@@ -129,52 +128,49 @@ private String level;
     boolean dayFri;
 
     private String day1;
-    String day11[]= new String[200];
+    String day11[] = new String[200];
     private String day2;
-    String day22[]=new String[200];
+    String day22[] = new String[200];
     private String day3;
-    String day33[]=new String[200];
+    String day33[] = new String[200];
     private String day4;
-    String day44[]=new String[200];
+    String day44[] = new String[200];
     private String day5;
-    String day55[]=new String[200];
+    String day55[] = new String[200];
 
 
     private String force1;
-    String force11[]= new String[200];
+    String force11[] = new String[200];
     private String force2;
-    String force22[]=new String[200];
+    String force22[] = new String[200];
     private String force3;
-    String force33[]=new String[200];
+    String force33[] = new String[200];
     private String force4;
-    String force44[]=new String[200];
+    String force44[] = new String[200];
     private String force5;
-    String force55[]=new String[200];
+    String force55[] = new String[200];
 
     private String muscle1;
-    String muscle11[]= new String[200];
+    String muscle11[] = new String[200];
     private String muscle2;
-    String muscle22[]=new String[200];
+    String muscle22[] = new String[200];
     private String muscle3;
-    String muscle33[]=new String[200];
+    String muscle33[] = new String[200];
     private String muscle4;
-    String muscle44[]=new String[200];
+    String muscle44[] = new String[200];
     private String muscle5;
-    String muscle55[]=new String[200];
+    String muscle55[] = new String[200];
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
 
 
-
     private String Wplan;
 //    private String SessionNo;
 
 
-
-
-    private ArrayList<String> days=TrainingDaysNum.gettDays();
+    private ArrayList<String> days = TrainingDaysNum.gettDays();
 
 
     @Override
@@ -182,56 +178,54 @@ private String level;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
 
-        TextviewEx1=findViewById(R.id.textViewex1);
-        TextviewEx2=findViewById(R.id.textViewex2);
-        TextviewEx3=findViewById(R.id.textViewex3);
-        TextviewEx4=findViewById(R.id.textViewex4);
-        TextviewEx5=findViewById(R.id.textViewex5);
-        TextviewEx6=findViewById(R.id.textViewex6);
-        TextviewEx7=findViewById(R.id.textViewex7);
-        TextviewEx8=findViewById(R.id.textViewex8);
-        TextviewEx9=findViewById(R.id.textViewex9);
-        TextviewEx10=findViewById(R.id.textViewex10);
-        TextviewEx11=findViewById(R.id.textViewex11);
-        TextviewEx12=findViewById(R.id.textViewex12);
+        TextviewEx1 = findViewById(R.id.textViewex1);
+        TextviewEx2 = findViewById(R.id.textViewex2);
+        TextviewEx3 = findViewById(R.id.textViewex3);
+        TextviewEx4 = findViewById(R.id.textViewex4);
+        TextviewEx5 = findViewById(R.id.textViewex5);
+        TextviewEx6 = findViewById(R.id.textViewex6);
+        TextviewEx7 = findViewById(R.id.textViewex7);
+        TextviewEx8 = findViewById(R.id.textViewex8);
+        TextviewEx9 = findViewById(R.id.textViewex9);
+        TextviewEx10 = findViewById(R.id.textViewex10);
+        TextviewEx11 = findViewById(R.id.textViewex11);
+        TextviewEx12 = findViewById(R.id.textViewex12);
 
 
-        f1=findViewById(R.id.f1);
-        f2=findViewById(R.id.f2);
-        f3=findViewById(R.id.f3);
-        f4=findViewById(R.id.f4);
-        f5=findViewById(R.id.f5);
-        f6=findViewById(R.id.f6);
-        f7=findViewById(R.id.f7);
-        f8=findViewById(R.id.f8);
-        f9=findViewById(R.id.f9);
-        f10=findViewById(R.id.f10);
-        f11=findViewById(R.id.f11);
-        f12=findViewById(R.id.f12);
+        f1 = findViewById(R.id.f1);
+        f2 = findViewById(R.id.f2);
+        f3 = findViewById(R.id.f3);
+        f4 = findViewById(R.id.f4);
+        f5 = findViewById(R.id.f5);
+        f6 = findViewById(R.id.f6);
+        f7 = findViewById(R.id.f7);
+        f8 = findViewById(R.id.f8);
+        f9 = findViewById(R.id.f9);
+        f10 = findViewById(R.id.f10);
+        f11 = findViewById(R.id.f11);
+        f12 = findViewById(R.id.f12);
 
 
-        m1=findViewById(R.id.m1);
-        m2=findViewById(R.id.m2);
-        m3=findViewById(R.id.m3);
-        m4=findViewById(R.id.m4);
-        m5=findViewById(R.id.m5);
-        m6=findViewById(R.id.m6);
-        m7=findViewById(R.id.m7);
-        m8=findViewById(R.id.m8);
-        m9=findViewById(R.id.m9);
-        m10=findViewById(R.id.m10);
-        m11=findViewById(R.id.m11);
-        m12=findViewById(R.id.m12);
+        m1 = findViewById(R.id.m1);
+        m2 = findViewById(R.id.m2);
+        m3 = findViewById(R.id.m3);
+        m4 = findViewById(R.id.m4);
+        m5 = findViewById(R.id.m5);
+        m6 = findViewById(R.id.m6);
+        m7 = findViewById(R.id.m7);
+        m8 = findViewById(R.id.m8);
+        m9 = findViewById(R.id.m9);
+        m10 = findViewById(R.id.m10);
+        m11 = findViewById(R.id.m11);
+        m12 = findViewById(R.id.m12);
 
 
+        //ondata();
+        SessionNo = getIntent().getStringExtra("SessionNo");
+        level = getIntent().getStringExtra("level");
+        TT = findViewById(R.id.WeeklytextView);
 
- //ondata();
-SessionNo=getIntent().getStringExtra("sessionNo");
-level =getIntent().getStringExtra("level");
-TT=findViewById(R.id.WeeklytextView);
-
-
-
+//        SessionNo="";
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -244,8 +238,8 @@ TT=findViewById(R.id.WeeklytextView);
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                           String test= documentSnapshot.getString(KEY_T);
-                           namedays=test;
+                            String test = documentSnapshot.getString(KEY_T);
+                            namedays = test;
                             currentDay();
 
                         } else {
@@ -264,63 +258,46 @@ TT=findViewById(R.id.WeeklytextView);
                 });
 
 
-
-
 //        retreiveTDays();
-        splitPlan();
+        call_E_F_M();
 
-        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),PlanView.class));
-                        overridePendingTransition(0,0);
-                        return true;
+//                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
 //                     (update profile activity)
                     case R.id.profile:
                         Intent i = new Intent(PlanView.this, updateProfile.class);
 
-                        if(SessionNo.equals("2")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
-                            i.putExtra("level",level);
+
+
+                        if (SessionNo.equals("2")) {
+                            i.putExtra("SessionNo", SessionNo);
+                            i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
                             return true;
-                        }
-                        else if(SessionNo.equals("3")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
-                            i.putExtra("day3",day3);
-                            i.putExtra("level",level);
+                        } else if (SessionNo.equals("3")) {
+                            i.putExtra("SessionNo", SessionNo);
+                            i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
-                        }
-                        else if(SessionNo.equals("4")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
-                            i.putExtra("day3",day3);
-                            i.putExtra("day4",day4);
-                            i.putExtra("level",level);
+                        } else if (SessionNo.equals("4")) {
+                            i.putExtra("SessionNo", SessionNo);
+                            i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
-                        }
-                        else if(SessionNo.equals("5")) {
-                            i.putExtra("sessionNo", SessionNo);
-                            i.putExtra("day1", day1);
-                            i.putExtra("day2", day2);
-                            i.putExtra("day3", day3);
-                            i.putExtra("day4", day4);
-                            i.putExtra("day5", day5);
+                        } else if (SessionNo.equals("5")) {
+                            i.putExtra("SessionNo", SessionNo);
                             i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
@@ -336,15 +313,14 @@ TT=findViewById(R.id.WeeklytextView);
             }
         });
 
-       // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
+        // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
         FrameLayout alertFrame = (FrameLayout) findViewById(R.id.alertFrame);
-        ScrollView scrollView =(ScrollView)findViewById(R.id.ScrollFrame);
-        
+        ScrollView scrollView = (ScrollView) findViewById(R.id.ScrollFrame);
+
 //        TextviewEx1 = findViewById(R.id.textViewex1);
 //        TextviewEx2 = findViewById(R.id.textViewex2);
 //        TextviewEx3 = findViewById(R.id.textViewex3);
-
 
 
         buttonALeart.setOnClickListener(new View.OnClickListener() {
@@ -356,32 +332,8 @@ TT=findViewById(R.id.WeeklytextView);
                 v.setVisibility(View.GONE);
 
 
-
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         buttonMon = (Button) findViewById(R.id.buttonMon);
@@ -393,21 +345,16 @@ TT=findViewById(R.id.WeeklytextView);
         buttonFri = (Button) findViewById(R.id.buttonFri);
 
 
-
-
-
-
-
-                buttonMon.setOnClickListener(new View.OnClickListener() {
+        buttonMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
                 int intIndexdayMon = namedays.indexOf("Mon");
-                if(intIndexdayMon == - 1) {
-                    dayMon=false;
-                }else {
-                    dayMon=true;
+                if (intIndexdayMon == -1) {
+                    dayMon = false;
+                } else {
+                    dayMon = true;
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
@@ -428,18 +375,17 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonSun.setTextColor( Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
 
-                buttonTue.setTextColor( Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
 
-                buttonWed.setTextColor( Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
 
-                buttonThu.setTextColor( Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
 
-                buttonFri.setTextColor( Color.parseColor("#696969"));
-
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 // for (int i=0;i<days.size();i++){
@@ -463,7 +409,7 @@ TT=findViewById(R.id.WeeklytextView);
 //                          day2();
 
 //                        }
-                    if(SessionNo.equals("5")) {
+                    if (SessionNo.equals("5")) {
                         day2();
                     }
 
@@ -478,17 +424,17 @@ TT=findViewById(R.id.WeeklytextView);
                 //}// end for
 
             }
-                });
+        });
 
 
         buttonSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int intIndexdaySat = namedays.indexOf("Sat");
-                if(intIndexdaySat == - 1) {
-                    daySat=false;
-                }else {
-                    daySat=true;
+                if (intIndexdaySat == -1) {
+                    daySat = false;
+                } else {
+                    daySat = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#24c8fe"));
@@ -499,13 +445,12 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
                 buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonMon.setTextColor( Color.parseColor("#696969"));
-                buttonSun.setTextColor( Color.parseColor("#696969"));
-                buttonTue.setTextColor( Color.parseColor("#696969"));
-                buttonWed.setTextColor( Color.parseColor("#696969"));
-                buttonThu.setTextColor( Color.parseColor("#696969"));
-                buttonFri.setTextColor( Color.parseColor("#696969"));
-
+                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 if (daySat) {
@@ -523,7 +468,7 @@ TT=findViewById(R.id.WeeklytextView);
 //
 //
 //                        }
-                    if(SessionNo.equals("4")){
+                    if (SessionNo.equals("4")) {
                         day4();
 
                     }
@@ -548,12 +493,12 @@ TT=findViewById(R.id.WeeklytextView);
             @Override
             public void onClick(View v) {
                 int intIndexdaySun = namedays.indexOf("Sun");
-                if(intIndexdaySun == - 1) {
-                    daySun=false;
-                }else {
-                    daySun=true;
+                if (intIndexdaySun == -1) {
+                    daySun = false;
+                } else {
+                    daySun = true;
                 }
-                String SessionNo=getIntent().getStringExtra("sessionNo");
+//                String SessionNo = getIntent().getStringExtra("sessionNo");
 
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
@@ -573,23 +518,21 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
-                buttonMon.setTextColor( Color.parseColor("#696969"));
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonTue.setTextColor( Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
 
-                buttonWed.setTextColor( Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
 
-                buttonThu.setTextColor( Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
 
-                buttonFri.setTextColor( Color.parseColor("#696969"));
-
-
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 if (daySun) {
                     mon.setText("My Exercises for this day");
-                    if(SessionNo.equals("2")){
+                    if (SessionNo.equals("2")) {
                         day1();
 
                     }
@@ -598,21 +541,21 @@ TT=findViewById(R.id.WeeklytextView);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
 
-                    if(SessionNo.equals("2")){
+                    if (SessionNo.equals("2")) {
 
                         day1();
 
                     }
-                    if(SessionNo.equals("3")){
+                    if (SessionNo.equals("3")) {
                         day1();
 
 
                     }
-                    if(SessionNo.equals("4")){
+                    if (SessionNo.equals("4")) {
                         day1();
 
                     }
-                    if(SessionNo.equals("5")) {
+                    if (SessionNo.equals("5")) {
                         day1();
                     }
                     //     break;
@@ -632,10 +575,10 @@ TT=findViewById(R.id.WeeklytextView);
             @Override
             public void onClick(View v) {
                 int intIndexdayTue = namedays.indexOf("Tue");
-                if(intIndexdayTue == - 1) {
-                    dayTue=false;
-                }else {
-                    dayTue=true;
+                if (intIndexdayTue == -1) {
+                    dayTue = false;
+                } else {
+                    dayTue = true;
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
@@ -655,17 +598,17 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
-                buttonMon.setTextColor( Color.parseColor("#696969"));
+                buttonMon.setTextColor(Color.parseColor("#696969"));
 
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonSun.setTextColor( Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
 
-                buttonWed.setTextColor( Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
 
-                buttonThu.setTextColor( Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
 
-                buttonFri.setTextColor( Color.parseColor("#696969"));
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 if (dayTue) {
@@ -675,22 +618,21 @@ TT=findViewById(R.id.WeeklytextView);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
 
-                    if(SessionNo.equals("2")){
-                        day2();
-
-
-
-                    }
-                    if(SessionNo.equals("3")){
+                    if (SessionNo.equals("2")) {
                         day2();
 
 
                     }
-                    if(SessionNo.equals("4")){
+                    if (SessionNo.equals("3")) {
+                        day2();
+
+
+                    }
+                    if (SessionNo.equals("4")) {
                         day2();
 
                     }
-                    if(SessionNo.equals("5")) {
+                    if (SessionNo.equals("5")) {
                         day3();
                     }
                     //        break;
@@ -711,11 +653,11 @@ TT=findViewById(R.id.WeeklytextView);
         buttonWed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int intIndexdayWed= namedays.indexOf("Wed");
-                if(intIndexdayWed == - 1) {
-                    dayWed=false;
-                }else {
-                    dayWed=true;
+                int intIndexdayWed = namedays.indexOf("Wed");
+                if (intIndexdayWed == -1) {
+                    dayWed = false;
+                } else {
+                    dayWed = true;
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
@@ -736,18 +678,17 @@ TT=findViewById(R.id.WeeklytextView);
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
 
+                buttonMon.setTextColor(Color.parseColor("#696969"));
 
-                buttonMon.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
 
-                buttonSun.setTextColor( Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
 
-                buttonTue.setTextColor( Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
 
-                buttonThu.setTextColor( Color.parseColor("#696969"));
-
-                buttonFri.setTextColor( Color.parseColor("#696969"));
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 if (dayWed) {
@@ -785,11 +726,11 @@ TT=findViewById(R.id.WeeklytextView);
         buttonThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int intIndexdayThu= namedays.indexOf("Thu");
-                if(intIndexdayThu == - 1) {
-                    dayThu=false;
-                }else {
-                    dayThu=true;
+                int intIndexdayThu = namedays.indexOf("Thu");
+                if (intIndexdayThu == -1) {
+                    dayThu = false;
+                } else {
+                    dayThu = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
@@ -808,18 +749,17 @@ TT=findViewById(R.id.WeeklytextView);
 
                 buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonMon.setTextColor( Color.parseColor("#696969"));
+                buttonMon.setTextColor(Color.parseColor("#696969"));
 
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonSun.setTextColor( Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
 
-                buttonTue.setTextColor( Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
 
-                buttonWed.setTextColor( Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
 
-                buttonFri.setTextColor( Color.parseColor("#696969"));
-
+                buttonFri.setTextColor(Color.parseColor("#696969"));
 
 
                 if (dayThu) {
@@ -834,16 +774,16 @@ TT=findViewById(R.id.WeeklytextView);
 
 
                     //  }
-                    if(SessionNo.equals("3")){
+                    if (SessionNo.equals("3")) {
 
                         day3();
 
                     }
-                    if(SessionNo.equals("4")){
+                    if (SessionNo.equals("4")) {
                         day3();
 
                     }
-                    if(SessionNo.equals("5")) {
+                    if (SessionNo.equals("5")) {
                         day4();
                     }
                     //       break;
@@ -864,10 +804,10 @@ TT=findViewById(R.id.WeeklytextView);
             @Override
             public void onClick(View v) {
                 int intIndex = namedays.indexOf("Fri");
-                if(intIndex == - 1) {
-                    dayFri=false;
-                }else {
-                    dayFri=true;
+                if (intIndex == -1) {
+                    dayFri = false;
+                } else {
+                    dayFri = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
@@ -886,17 +826,17 @@ TT=findViewById(R.id.WeeklytextView);
 
                 buttonFri.setTextColor(getResources().getColor(R.color.white));
 
-                buttonMon.setTextColor( Color.parseColor("#696969"));
+                buttonMon.setTextColor(Color.parseColor("#696969"));
 
-                buttonSat.setTextColor( Color.parseColor("#696969"));
+                buttonSat.setTextColor(Color.parseColor("#696969"));
 
-                buttonSun.setTextColor( Color.parseColor("#696969"));
+                buttonSun.setTextColor(Color.parseColor("#696969"));
 
-                buttonTue.setTextColor( Color.parseColor("#696969"));
+                buttonTue.setTextColor(Color.parseColor("#696969"));
 
-                buttonWed.setTextColor( Color.parseColor("#696969"));
+                buttonWed.setTextColor(Color.parseColor("#696969"));
 
-                buttonThu.setTextColor( Color.parseColor("#696969"));
+                buttonThu.setTextColor(Color.parseColor("#696969"));
 
 
                 if (dayFri) {
@@ -906,7 +846,7 @@ TT=findViewById(R.id.WeeklytextView);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
                     //   break;
-                    if(SessionNo.equals("5")) {
+                    if (SessionNo.equals("5")) {
                         day5();
                     }
 
@@ -923,16 +863,18 @@ TT=findViewById(R.id.WeeklytextView);
         });
 
 
-
         TextviewEx1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name",TextviewEx1.getText());
-                i.putExtra("force",f1.getText());
-                i.putExtra("muscle",m1.getText());
-                    startActivity(i);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                startActivity(i);
 
             }
         });
@@ -942,9 +884,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx2.getText());
-                i.putExtra("force",f2.getText());
-                i.putExtra("muscle",m2.getText());
+                i.putExtra("name", TextviewEx2.getText());
+                i.putExtra("force", f2.getText());
+                i.putExtra("muscle", m2.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -955,9 +899,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx3.getText());
-                i.putExtra("force",f3.getText());
-                i.putExtra("muscle",m3.getText());
+                i.putExtra("name", TextviewEx3.getText());
+                i.putExtra("force", f3.getText());
+                i.putExtra("muscle", m3.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -968,9 +914,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx4.getText());
-                i.putExtra("force",f4.getText());
-                i.putExtra("muscle",m4.getText());
+                i.putExtra("name", TextviewEx4.getText());
+                i.putExtra("force", f4.getText());
+                i.putExtra("muscle", m4.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -981,9 +929,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx5.getText());
-                i.putExtra("force",f5.getText());
-                i.putExtra("muscle",m5.getText());
+                i.putExtra("name", TextviewEx5.getText());
+                i.putExtra("force", f5.getText());
+                i.putExtra("muscle", m5.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -994,9 +944,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx6.getText());
-                i.putExtra("force",f6.getText());
-                i.putExtra("muscle",m6.getText());
+                i.putExtra("name", TextviewEx6.getText());
+                i.putExtra("force", f6.getText());
+                i.putExtra("muscle", m6.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1007,9 +959,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx7.getText());
-                i.putExtra("force",f7.getText());
-                i.putExtra("muscle",m7.getText());
+                i.putExtra("name", TextviewEx7.getText());
+                i.putExtra("force", f7.getText());
+                i.putExtra("muscle", m7.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1020,9 +974,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx8.getText());
-                i.putExtra("force",f8.getText());
-                i.putExtra("muscle",m8.getText());
+                i.putExtra("name", TextviewEx8.getText());
+                i.putExtra("force", f8.getText());
+                i.putExtra("muscle", m8.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1033,9 +989,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx9.getText());
-                i.putExtra("force",f9.getText());
-                i.putExtra("muscle",m9.getText());
+                i.putExtra("name", TextviewEx9.getText());
+                i.putExtra("force", f9.getText());
+                i.putExtra("muscle", m9.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1047,9 +1005,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx10.getText());
-                i.putExtra("force",f10.getText());
-                i.putExtra("muscle",m10.getText());
+                i.putExtra("name", TextviewEx10.getText());
+                i.putExtra("force", f10.getText());
+                i.putExtra("muscle", m10.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1061,9 +1021,11 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx11.getText());
-                i.putExtra("force",f11.getText());
-                i.putExtra("muscle",m11.getText());
+                i.putExtra("name", TextviewEx11.getText());
+                i.putExtra("force", f11.getText());
+                i.putExtra("muscle", m11.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
@@ -1075,61 +1037,61 @@ TT=findViewById(R.id.WeeklytextView);
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
 
-                i.putExtra("name",TextviewEx12.getText());
-                i.putExtra("force",f12.getText());
-                i.putExtra("muscle",m12.getText());
+                i.putExtra("name", TextviewEx12.getText());
+                i.putExtra("force", f12.getText());
+                i.putExtra("muscle", m12.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
                 startActivity(i);
 
             }
         });
 
-        callF_M();
+//        call_E_F_M();
     }
 
 
-
-
-
-    public void ondata(){
+    public void ondata() {
         FirebaseUser uid = FirebaseAuth.getInstance().getCurrentUser();
-String currid=uid.getUid();
-DocumentReference reference;
-reference=db.collection("userProfile").document(currid);
-reference.get()
-        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.getResult().exists()){
-                    String nameday=task.getResult().getString(KEY_T);
-                    namedays=nameday;
+        String currid = uid.getUid();
+        DocumentReference reference;
+        reference = db.collection("userProfile").document(currid);
+        reference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.getResult().exists()) {
+                            String nameday = task.getResult().getString(KEY_T);
+                            namedays = nameday;
 
-                }else {
-                    Toast.makeText(PlanView.this,"Document not exist",Toast.LENGTH_SHORT).show();
-                }
+                        } else {
+                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                        }
 
-            }
-        });
+                    }
+                });
 
     }
 
 
+    public void currentDay() {
 
-public void currentDay(){
-
-    if(dayOfTheWeek.contains("Friday")){ buttonFri.performClick();}
-    else
-    if(dayOfTheWeek.contains("Monday")){ buttonMon.performClick();}
-    else
-    if(dayOfTheWeek.contains("Sunday")){ buttonSun.performClick();}
-    else
-    if(dayOfTheWeek.contains("Saturday")){ buttonSat.performClick();}
-    else
-    if(dayOfTheWeek.contains("Thursday")){ buttonThu.performClick();}
-    else
-    if(dayOfTheWeek.contains("Tuesday")){ buttonTue.performClick();}
-    else
-    if(dayOfTheWeek.contains("Wednesday")){ buttonWed.performClick();}}
-
+        if (dayOfTheWeek.contains("Friday")) {
+            buttonFri.performClick();
+        } else if (dayOfTheWeek.contains("Monday")) {
+            buttonMon.performClick();
+        } else if (dayOfTheWeek.contains("Sunday")) {
+            buttonSun.performClick();
+        } else if (dayOfTheWeek.contains("Saturday")) {
+            buttonSat.performClick();
+        } else if (dayOfTheWeek.contains("Thursday")) {
+            buttonThu.performClick();
+        } else if (dayOfTheWeek.contains("Tuesday")) {
+            buttonTue.performClick();
+        } else if (dayOfTheWeek.contains("Wednesday")) {
+            buttonWed.performClick();
+        }
+    }
 
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -1170,34 +1132,28 @@ public void currentDay(){
 //
 //        }
 
-    public void callF_M(){
+    public void call_E_F_M() {
 
-        if(SessionNo.equals("2")){
+        if (SessionNo.equals("2")) {
 
             retreiveF_M1();
             retreiveF_M2();
 
 
-
-
-        }
-        else if(SessionNo.equals("3")){
+        } else if (SessionNo.equals("3")) {
 
             retreiveF_M1();
             retreiveF_M2();
             retreiveF_M3();
 
 
-
-        }
-        else if(SessionNo.equals("4")){
+        } else if (SessionNo.equals("4")) {
             retreiveF_M1();
             retreiveF_M2();
             retreiveF_M3();
             retreiveF_M4();
 
-        }
-        else if(SessionNo.equals("5")){
+        } else if (SessionNo.equals("5")) {
             retreiveF_M1();
             retreiveF_M2();
             retreiveF_M3();
@@ -1210,9 +1166,9 @@ public void currentDay(){
 
     }
 
-    public void day1(){
+    public void day1() {
 
-        if(level.equals("Beginner")){
+        if (level.equals("Beginner")) {
 
             TextviewEx1.setText(day11[0]);
             TextviewEx2.setText(day11[1]);
@@ -1244,9 +1200,8 @@ public void currentDay(){
             m7.setText(muscle11[6]);
 
 
-
         }
-        if(level.equals("Intermediate")){
+        if (level.equals("Intermediate")) {
 
             TextviewEx1.setText(day11[0]);
             TextviewEx2.setText(day11[1]);
@@ -1284,7 +1239,7 @@ public void currentDay(){
             m10.setText(muscle11[9]);
 
         }
-        if(level.equals("Professional")){
+        if (level.equals("Professional")) {
             TextviewEx1.setText(day11[0]);
             TextviewEx2.setText(day11[1]);
             TextviewEx3.setText(day11[2]);
@@ -1327,9 +1282,9 @@ public void currentDay(){
 
     }
 
-    public void day2(){
+    public void day2() {
 
-        if(level.equals("Beginner")){
+        if (level.equals("Beginner")) {
 
             TextviewEx1.setText(day22[0]);
             TextviewEx2.setText(day22[1]);
@@ -1362,9 +1317,8 @@ public void currentDay(){
             m7.setText(muscle22[6]);
 
 
-
         }
-        if(level.equals("Intermediate")){
+        if (level.equals("Intermediate")) {
 
             TextviewEx1.setText(day22[0]);
             TextviewEx2.setText(day22[1]);
@@ -1403,9 +1357,8 @@ public void currentDay(){
             m10.setText(muscle22[9]);
 
 
-
         }
-        if(level.equals("Professional")){
+        if (level.equals("Professional")) {
             TextviewEx1.setText(day22[0]);
             TextviewEx2.setText(day22[1]);
             TextviewEx3.setText(day22[2]);
@@ -1523,7 +1476,6 @@ public void currentDay(){
             m10.setText(muscle33[9]);
 
 
-
         }
         if (level.equals("Professional")) {
             TextviewEx1.setText(day33[0]);
@@ -1566,9 +1518,10 @@ public void currentDay(){
             m12.setText(muscle33[11]);
         }
     }
-    public void day4(){
 
-        if(level.equals("Beginner")){
+    public void day4() {
+
+        if (level.equals("Beginner")) {
 
             TextviewEx1.setText(day44[0]);
             TextviewEx2.setText(day44[1]);
@@ -1602,7 +1555,7 @@ public void currentDay(){
 
 
         }
-        if(level.equals("Intermediate")){
+        if (level.equals("Intermediate")) {
 
             TextviewEx1.setText(day44[0]);
             TextviewEx2.setText(day44[1]);
@@ -1642,7 +1595,7 @@ public void currentDay(){
 
 
         }
-        if(level.equals("Professional")){
+        if (level.equals("Professional")) {
             TextviewEx1.setText(day44[0]);
             TextviewEx2.setText(day44[1]);
             TextviewEx3.setText(day44[2]);
@@ -1685,9 +1638,9 @@ public void currentDay(){
 
     }
 
-    public void day5(){
+    public void day5() {
 
-        if(level.equals("Beginner")){
+        if (level.equals("Beginner")) {
 
             TextviewEx1.setText(day55[0]);
             TextviewEx2.setText(day55[1]);
@@ -1721,7 +1674,7 @@ public void currentDay(){
 
 
         }
-        if(level.equals("Intermediate")){
+        if (level.equals("Intermediate")) {
 
             TextviewEx1.setText(day55[0]);
             TextviewEx2.setText(day55[1]);
@@ -1760,9 +1713,8 @@ public void currentDay(){
             m10.setText(muscle55[9]);
 
 
-
         }
-        if(level.equals("Professional")){
+        if (level.equals("Professional")) {
             TextviewEx1.setText(day55[0]);
             TextviewEx2.setText(day55[1]);
             TextviewEx3.setText(day55[2]);
@@ -1805,98 +1757,117 @@ public void currentDay(){
 
     }
 
-    public void splitPlan(){
-        String SessionNo=getIntent().getStringExtra("sessionNo");
+//    public void splitPlan(){
+//        String SessionNo=getIntent().getStringExtra("sessionNo");
+//
+//        if(SessionNo.equals("2")){
+//
+//                    day1=getIntent().getStringExtra("day1");
+//
+//                    day11=day1.split(" ");
+//
+//                    day2=getIntent().getStringExtra("day2");
+//
+//                    day22=day2.split(" ");
+//
+//
+//        }
+//        else if(SessionNo.equals("3")){
+//
+//            day1=getIntent().getStringExtra("day1");
+//
+//            day11=day1.split(" ");
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//            day22=day2.split(" ");
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//            day33=day3.split(" ");
+//
+//
+//                }
+//                else if(SessionNo.equals("4")){
+//            day1=getIntent().getStringExtra("day1");
+//
+//            day11=day1.split(" ");
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//            day22=day2.split(" ");
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//            day33=day3.split(" ");
+//
+//            day4=getIntent().getStringExtra("day4");
+//
+//            day44=day4.split(" ");
+//                }
+//                else if(SessionNo.equals("5")){
+//            day1=getIntent().getStringExtra("day1");
+//
+//            day11=day1.split(" ");
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//            day22=day2.split(" ");
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//            day33=day3.split(" ");
+//
+//            day4=getIntent().getStringExtra("day4");
+//
+//            day44=day4.split(" ");
+//
+//            day5=getIntent().getStringExtra("day5");
+//
+//            day55=day5.split(" ");
+//
+//                }
+//
+//        }
 
-        if(SessionNo.equals("2")){
+    public void retreiveF_M1() {
 
-                    day1=getIntent().getStringExtra("day1");
+        db = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                    day11=day1.split(" ");
+                day1 = value.getString("plan");
+                day11 = day1.split(" ");
 
-                    day2=getIntent().getStringExtra("day2");
+                force1 = value.getString("force");
+                force11 = force1.split(" ");
 
-                    day22=day2.split(" ");
+                muscle1 = value.getString("muscle");
+                muscle11 = muscle1.split(" ");
 
+            }
+        });
+    }
 
-        }
-        else if(SessionNo.equals("3")){
+//    public void retreiveSessionNum() {
+//
+//        db = FirebaseFirestore.getInstance();
+//        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//                SessionNo = value.getString("sessionNo");
+//                level=value.getString("level");
+//
+//
+//            }
+//        });
+//    }
 
-            day1=getIntent().getStringExtra("day1");
-
-            day11=day1.split(" ");
-
-            day2=getIntent().getStringExtra("day2");
-
-            day22=day2.split(" ");
-
-            day3=getIntent().getStringExtra("day3");
-
-            day33=day3.split(" ");
-
-
-                }
-                else if(SessionNo.equals("4")){
-            day1=getIntent().getStringExtra("day1");
-
-            day11=day1.split(" ");
-
-            day2=getIntent().getStringExtra("day2");
-
-            day22=day2.split(" ");
-
-            day3=getIntent().getStringExtra("day3");
-
-            day33=day3.split(" ");
-
-            day4=getIntent().getStringExtra("day4");
-
-            day44=day4.split(" ");
-                }
-                else if(SessionNo.equals("5")){
-            day1=getIntent().getStringExtra("day1");
-
-            day11=day1.split(" ");
-
-            day2=getIntent().getStringExtra("day2");
-
-            day22=day2.split(" ");
-
-            day3=getIntent().getStringExtra("day3");
-
-            day33=day3.split(" ");
-
-            day4=getIntent().getStringExtra("day4");
-
-            day44=day4.split(" ");
-
-            day5=getIntent().getStringExtra("day5");
-
-            day55=day5.split(" ");
-
-                }
-
-        }
-
-public void retreiveF_M1(){
-
-    db = FirebaseFirestore.getInstance();
-    DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
-    documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-        @Override
-        public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-            force1= value.getString("force");
-            force11=force1.split(" ");
-
-            muscle1= value.getString("muscle");
-            muscle11=muscle1.split(" ");
-
-        }
-    });
-}
-
-    public void retreiveF_M2(){
+    public void retreiveF_M2() {
 
         db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day2");
@@ -1904,16 +1875,20 @@ public void retreiveF_M1(){
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                force2= value.getString("force");
-                force22=force2.split(" ");
+                day2 = value.getString("plan");
+                day22 = day2.split(" ");
 
-                muscle2= value.getString("muscle");
-                muscle22=muscle2.split(" ");
+                force2 = value.getString("force");
+                force22 = force2.split(" ");
+
+                muscle2 = value.getString("muscle");
+                muscle22 = muscle2.split(" ");
 
             }
         });
     }
-    public void retreiveF_M3(){
+
+    public void retreiveF_M3() {
 
         db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day3");
@@ -1921,16 +1896,20 @@ public void retreiveF_M1(){
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                force3= value.getString("force");
-                force33=force3.split(" ");
+                day3 = value.getString("plan");
+                day33 = day3.split(" ");
 
-                muscle3= value.getString("muscle");
-                muscle33=muscle3.split(" ");
+                force3 = value.getString("force");
+                force33 = force3.split(" ");
+
+                muscle3 = value.getString("muscle");
+                muscle33 = muscle3.split(" ");
 
             }
         });
     }
-    public void retreiveF_M4(){
+
+    public void retreiveF_M4() {
 
         db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day4");
@@ -1938,17 +1917,20 @@ public void retreiveF_M1(){
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                force4= value.getString("force");
-                force44=force4.split(" ");
+                day4 = value.getString("plan");
+                day44 = day4.split(" ");
 
-                muscle4= value.getString("muscle");
-                muscle44=muscle4.split(" ");
+                force4 = value.getString("force");
+                force44 = force4.split(" ");
+
+                muscle4 = value.getString("muscle");
+                muscle44 = muscle4.split(" ");
 
             }
         });
     }
 
-    public void retreiveF_M5(){
+    public void retreiveF_M5() {
 
         db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day5");
@@ -1956,15 +1938,33 @@ public void retreiveF_M1(){
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                force5= value.getString("force");
-                force55=force5.split(" ");
+                day5 = value.getString("plan");
+                day55 = day5.split(" ");
 
-                muscle5= value.getString("muscle");
-                muscle55=muscle5.split(" ");
+                force5 = value.getString("force");
+                force55 = force5.split(" ");
+
+                muscle5 = value.getString("muscle");
+                muscle55 = muscle5.split(" ");
 
             }
         });
     }
 
+    public void retriveProfile() {
+        db = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+//                SessionNo= value.getString("TrainingdaysNum");
+//                level=value.getString("level");
+
+
+            }
+        });
+
     }
+}
 

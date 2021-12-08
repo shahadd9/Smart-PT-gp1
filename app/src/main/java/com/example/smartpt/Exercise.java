@@ -9,6 +9,8 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,10 +32,19 @@ public class Exercise extends AppCompatActivity {
     private double tPlace;
     private int tP;
     private String equ;
+    private String level;
+    private String SessionNo;
+    private Button okBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SessionNo = getIntent().getStringExtra("SessionNo");
+        level = getIntent().getStringExtra("level");
+
+//        okBtn= (Button) findViewById(R.id.okBtn);
+
+
         setContentView(R.layout.activity_exercise);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -44,14 +55,69 @@ public class Exercise extends AppCompatActivity {
 //            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //                switch (item.getItemId()){
 //                    case R.id.home:
-//                        startActivity(new Intent(getApplicationContext(),PlanView.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+//                        Intent i = new Intent(Exercise.this, PlanView.class);
+//
+//                        if(SessionNo.equals("2")){
+//                            i.putExtra("sessionNo",SessionNo);
+//
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                            return true;
+//                        }
+//                        else if(SessionNo.equals("3")){
+//                            i.putExtra("sessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("4")){
+//                            i.putExtra("sessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("5")) {
+//                            i.putExtra("sessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
 //
 //                    case R.id.profile:
-//                        startActivity(new Intent(getApplicationContext(),updateProfile.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+//                        Intent intent = new Intent(Exercise.this, updateProfile.class);
+//
+//                        if (SessionNo.equals("2")) {
+//                            intent.putExtra("sessionNo", SessionNo);
+//
+//                            intent.putExtra("level", level);
+//                            startActivity(intent);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                            return true;
+//                        } else if (SessionNo.equals("3")) {
+//                            intent.putExtra("sessionNo", SessionNo);
+//                            intent.putExtra("level", level);
+//                            startActivity(intent);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("4")) {
+//                            intent.putExtra("sessionNo", SessionNo);
+//                            intent.putExtra("level", level);
+//                            startActivity(intent);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("5")) {
+//                            intent.putExtra("sessionNo", SessionNo);
+//                            intent.putExtra("level", level);
+//                            startActivity(intent);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
 ////
 ////                    case R.id.progress:
 ////                        startActivity(new Intent(getApplicationContext(),progress.class));
@@ -69,8 +135,8 @@ public class Exercise extends AppCompatActivity {
         duration=(TextView) findViewById(R.id.duration);
 //        equipment=(TextView) findViewById(R.id.equipment);
 //        target=(TextView) findViewById(R.id.target);
-        general=(TextView) findViewById(R.id.general);
-        mechanism=(TextView) findViewById(R.id.mchanism);
+        general=(TextView) findViewById(R.id.mchanism);
+//        mechanism=(TextView) findViewById(R.id.mchanism);
         force=(TextView) findViewById(R.id.force);
 //        execution=(TextView) findViewById(R.id.execution);
 //        tips=(TextView) findViewById(R.id.tips);
@@ -115,10 +181,10 @@ public class Exercise extends AppCompatActivity {
 
                 Res=value.getDouble("rest");
                 re=(int)Res;
-                rest.setText(re+"");
+                rest.setText(re+" sec");
 
                 durationDis=value.getString("duration");
-                duration.setText(durationDis);
+                duration.setText(durationDis+" min");
 
 //                tPlace= value.getDouble("trainingPlace");
 //                tP=(int)tPlace;
@@ -145,7 +211,40 @@ public class Exercise extends AppCompatActivity {
 
             }
         });
-
-
+//        okBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(Exercise.this, PlanView.class);
+//                startActivity(i);
+////                        if(SessionNo.equals("2")){
+////                            i.putExtra("SessionNo",SessionNo);
+////
+////                            i.putExtra("level",level);
+////                            startActivity(i);
+////                            finish();
+////                        }
+////                        else if(SessionNo.equals("3")){
+////                            i.putExtra("SessionNo",SessionNo);
+////                            i.putExtra("level",level);
+////                            startActivity(i);
+////                            finish();
+////                        }
+////                        else if(SessionNo.equals("4")){
+////                            i.putExtra("SessionNo",SessionNo);
+////                            i.putExtra("level",level);
+////                            startActivity(i);
+////                            finish();
+////                        }
+////                        else if(SessionNo.equals("5")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            startActivity(i);
+////                            finish();
+////                        }
+//
+//            }
+//        });
+//
     }
 }

@@ -48,7 +48,7 @@ public class TrainingDaysNum extends AppCompatActivity {
         r3= findViewById(R.id.r3);
         r4= findViewById(R.id.r4);
         time=findViewById(R.id.time);
-        //as default
+       //as default
         tDays.add("Sun");
         tDays.add("Tue");
         tDaysNo=2+"";
@@ -101,14 +101,14 @@ public class TrainingDaysNum extends AppCompatActivity {
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Tue");
-            tDays.add("Thur");
+            tDays.add("Thu");
         }
         else if(r3.isChecked()){
             tDaysNo=4+"";
             tDays.clear();
             tDays.add("Sun");
             tDays.add("Tue");
-            tDays.add("Thur");
+            tDays.add("Thu");
             tDays.add("Sat");
 
         }
@@ -118,7 +118,7 @@ public class TrainingDaysNum extends AppCompatActivity {
             tDays.add("Sun");
             tDays.add("Mon");
             tDays.add("Tue");
-            tDays.add("Thur");
+            tDays.add("Thu");
             tDays.add("Fri");
 
         }

@@ -88,6 +88,9 @@ public class LoadPa extends AppCompatActivity {
     private boolean dipMachine;
     private boolean cableMachine;
 
+    TextView loadLbl;
+    private String message;
+
 
 
     private CollectionReference plan = db.collection("userProfile");
@@ -98,6 +101,7 @@ public class LoadPa extends AppCompatActivity {
         setContentView(R.layout.activity_load_pa);
         getSupportActionBar().hide();
         logo= findViewById(R.id.imageView4);
+        loadLbl=findViewById(R.id.loadLbl);
         h=new Handler();
         SessionNo="0";
         rest=0;
@@ -110,6 +114,17 @@ public class LoadPa extends AppCompatActivity {
         stabilityBall=true;
         dipMachine=true;
         dumbbell=true;
+//        message=getIntent().getStringExtra("message");
+//
+//        if(message.length() == 0 || message == null){
+//
+//        }
+//        else {
+//            loadLbl.setText(message);
+//
+//        }
+
+
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -121,47 +136,35 @@ public class LoadPa extends AppCompatActivity {
 
             public void run() {
                 Intent i = new Intent(LoadPa.this, PlanView.class);
+//                startActivity(i);
+
 
                 if(SessionNo.equals("2")){
-                i.putExtra("sessionNo",SessionNo);
-                i.putExtra("day1",day1);
-                i.putExtra("day2",day2);
+                i.putExtra("SessionNo","2");
                 i.putExtra("level",level);
                 startActivity(i);
                 finish();
                 }
                else if(SessionNo.equals("3")){
-                    i.putExtra("sessionNo",SessionNo);
-                    i.putExtra("day1",day1);
-                    i.putExtra("day2",day2);
-                    i.putExtra("day3",day3);
+                    i.putExtra("SessionNo","3");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
                else if(SessionNo.equals("4")){
-                    i.putExtra("sessionNo",SessionNo);
-                    i.putExtra("day1",day1);
-                    i.putExtra("day2",day2);
-                    i.putExtra("day3",day3);
-                    i.putExtra("day4",day4);
+                    i.putExtra("SessionNo","4");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
                else if(SessionNo.equals("5")){
-                    i.putExtra("sessionNo",SessionNo);
-                    i.putExtra("day1",day1);
-                    i.putExtra("day2",day2);
-                    i.putExtra("day3",day3);
-                    i.putExtra("day4",day4);
-                    i.putExtra("day5",day5);
+                    i.putExtra("SessionNo","5");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
             }
-        }, 15000);
+        }, 1500);
     }
 
     public void retreiveInfo() {
@@ -260,7 +263,7 @@ public class LoadPa extends AppCompatActivity {
                 sets=4;
             }
         }
-        if(tP==0 && (equipmentList.equals(0)||equipmentList=="0"))  {
+        if(tP==0 && (equ.equals(0)||equ=="0"))  {
             bench=false;
             barbell=false;
             cableMachine=false;
@@ -554,6 +557,8 @@ public class LoadPa extends AppCompatActivity {
         planEx.put("plan",exercises);
         planEx.put("force",f);
         planEx.put("muscle",m);
+//        planEx.put("sessionNo",SessionNo);
+//        planEx.put("level",level);
 
 
 

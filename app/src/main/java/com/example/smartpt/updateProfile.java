@@ -50,7 +50,7 @@ public class updateProfile extends AppCompatActivity implements
     Button updateProfile;
     private FirebaseFirestore db;
     private String userIp;
-    private ArrayList<String> tDays;
+    private ArrayList<String> tDaysN;
     private String name;
     private String date;
     private String h;
@@ -66,11 +66,12 @@ public class updateProfile extends AppCompatActivity implements
     private double tDuration;
     private String level;
     private String SessionNo;
-    private String day1;
-    private String day2;
-    private String day3;
-    private String day4;
-    private String day5;
+
+    private static ArrayList<String> tDays;//    private String day2;
+//    private String day3;
+//    private String day4;
+//    private String day5;
+    private String dayss;
 
     private Map<String, Object> user = new HashMap<>();
 
@@ -78,75 +79,77 @@ public class updateProfile extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        SessionNo=getIntent().getStringExtra("sessionNo");
+        SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
+        tDaysN= new ArrayList<>();
+//        dayss="2";
 
-        if(SessionNo.equals("2")){
-
-            day1=getIntent().getStringExtra("day1");
-
-
-
-            day2=getIntent().getStringExtra("day2");
-
-
-
-
-        }
-        else if(SessionNo.equals("3")){
-
-            day1=getIntent().getStringExtra("day1");
-
-
-
-            day2=getIntent().getStringExtra("day2");
-
-
-
-            day3=getIntent().getStringExtra("day3");
-
-
-
-
-        }
-        else if(SessionNo.equals("4")){
-            day1=getIntent().getStringExtra("day1");
-
-
-            day2=getIntent().getStringExtra("day2");
-
-
-
-            day3=getIntent().getStringExtra("day3");
-
-
-
-            day4=getIntent().getStringExtra("day4");
-
-
-        }
-        else if(SessionNo.equals("5")){
-            day1=getIntent().getStringExtra("day1");
-
-
-
-            day2=getIntent().getStringExtra("day2");
-
-
-
-            day3=getIntent().getStringExtra("day3");
-
-
-
-            day4=getIntent().getStringExtra("day4");
-
-
-
-            day5=getIntent().getStringExtra("day5");
-
-
-
-        }
+//        if(SessionNo.equals("2")){
+//
+//            day1=getIntent().getStringExtra("day1");
+//
+//
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//
+//
+//
+//        }
+//        else if(SessionNo.equals("3")){
+//
+//            day1=getIntent().getStringExtra("day1");
+//
+//
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//
+//
+//
+//        }
+//        else if(SessionNo.equals("4")){
+//            day1=getIntent().getStringExtra("day1");
+//
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//
+//
+//            day4=getIntent().getStringExtra("day4");
+//
+//
+//        }
+//        else if(SessionNo.equals("5")){
+//            day1=getIntent().getStringExtra("day1");
+//
+//
+//
+//            day2=getIntent().getStringExtra("day2");
+//
+//
+//
+//            day3=getIntent().getStringExtra("day3");
+//
+//
+//
+//            day4=getIntent().getStringExtra("day4");
+//
+//
+//
+//            day5=getIntent().getStringExtra("day5");
+//
+//
+//
+//        }
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //(navigation bar)
@@ -160,9 +163,8 @@ public class updateProfile extends AppCompatActivity implements
                         Intent i = new Intent(updateProfile.this, PlanView.class);
 
                         if(SessionNo.equals("2")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
+                            i.putExtra("SessionNo",SessionNo);
+
                             i.putExtra("level",level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
@@ -170,33 +172,21 @@ public class updateProfile extends AppCompatActivity implements
                             return true;
                         }
                         else if(SessionNo.equals("3")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
-                            i.putExtra("day3",day3);
+                            i.putExtra("SessionNo",SessionNo);
                             i.putExtra("level",level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
                         }
                         else if(SessionNo.equals("4")){
-                            i.putExtra("sessionNo",SessionNo);
-                            i.putExtra("day1",day1);
-                            i.putExtra("day2",day2);
-                            i.putExtra("day3",day3);
-                            i.putExtra("day4",day4);
+                            i.putExtra("SessionNo",SessionNo);
                             i.putExtra("level",level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
                         }
                         else if(SessionNo.equals("5")) {
-                            i.putExtra("sessionNo", SessionNo);
-                            i.putExtra("day1", day1);
-                            i.putExtra("day2", day2);
-                            i.putExtra("day3", day3);
-                            i.putExtra("day4", day4);
-                            i.putExtra("day5", day5);
+                            i.putExtra("SessionNo", SessionNo);
                             i.putExtra("level", level);
                             startActivity(i);
                             overridePendingTransition(0, 0);
@@ -204,9 +194,9 @@ public class updateProfile extends AppCompatActivity implements
                         }
 
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), updateProfile.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+//                        startActivity(new Intent(getApplicationContext(), updateProfile.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
 //                      case R.id.progress:
 //                          startActivity(new Intent(getApplicationContext(),progress.class));
 //                          overridePendingTransition(0,0);
@@ -259,6 +249,7 @@ public class updateProfile extends AppCompatActivity implements
                 eHeight.setText(h);
                 w=value.getString("weight");
                 eWeight.setText(w);
+//                dayss=value.getString("TrainingdaysNum");
 
                 // update reminder and duration spinners
                 eReminder.setSelection(eReminderAdapter.getPosition(value.getString("TrainingTime")));
@@ -266,12 +257,11 @@ public class updateProfile extends AppCompatActivity implements
                 eTrainingDays.setSelection(eDaysAdapter.getPosition(value.getString("TrainingdaysNum")));
             }
         });
-//            /////////////////////////////////////////////////////////
-//        tDays=TrainingDays.gettDays();
-//        for(int i = 0; i<tDays.size();i++){
-//
-//            tDaysString=tDaysString+" "+ tDays.get(i);
-//        }
+            /////////////////////////////////////////////////////////
+//        tDaysN=TrainingDays.gettDays();
+
+
+
 //        eTrainingDays.setText(tDaysString);
 //        ///////////////////////////////////////////////////////////
 //        goal=Goal.focusArea;
@@ -326,8 +316,13 @@ public class updateProfile extends AppCompatActivity implements
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
 
-                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
-                                    Toast.LENGTH_LONG).show();
+//                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
+//                                    Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(updateProfile.this, LoadPa.class);
+                            i.putExtra("message","Updating Your Plan..");
+//                            i.putExtra("SessionNo",dayss);
+//                            i.putExtra("level",level);
+                            startActivity(i);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -425,7 +420,6 @@ public class updateProfile extends AppCompatActivity implements
 //                openDaysDialog();
 //            }
 //        });
-
 
     }
     public void openDB_Dialog() {
@@ -536,9 +530,42 @@ public class updateProfile extends AppCompatActivity implements
     }
 
     private void updateDays(String days) {
+
+        if(days.equals("2")){
+            tDaysN.add("Sun");
+            tDaysN.add("Tue");
+        }
+        else if(days.equals("3")){
+            tDaysN.add("Sun");
+            tDaysN.add("Tue");
+            tDaysN.add("Thu");
+        }
+        else if(days.equals("4")){
+            tDaysN.add("Sun");
+            tDaysN.add("Tue");
+            tDaysN.add("Thu");
+            tDaysN.add("Sat");
+        }
+        else if(days.equals("5")){
+            tDaysN.add("Sun");
+            tDaysN.add("Mon");
+            tDaysN.add("Tue");
+            tDaysN.add("Thu");
+            tDaysN.add("Fri");
+
+        }
+
+        for(int i = 0; i<tDaysN.size();i++){
+
+            tDaysString=tDaysString+" "+ tDaysN.get(i);
+        }
+
         user.put("TrainingdaysNum", days);
+        user.put("trainingDays", tDaysString);
 
     }
+
+
 
 }
 
