@@ -299,6 +299,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m1"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
             </TableRow>
 
         <TableRow
@@ -325,6 +341,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="57dp"
                 app:srcCompat="@drawable/start" />
+
+            <TextView
+                android:id="@+id/f2"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:visibility="invisible"
+
+                />
+
+            <TextView
+                android:id="@+id/m2"
+                android:layout_width="31dp"
+                android:layout_height="23dp"
+                android:visibility="invisible"
+
+                />
         </TableRow>
 
         <TableRow
@@ -350,6 +382,22 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+
+            <TextView
+                android:id="@+id/f3"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:visibility="invisible"
+
+                />
+
+            <TextView
+                android:id="@+id/m3"
+                android:layout_width="31dp"
+                android:layout_height="23dp"
+                android:visibility="invisible"
+
+                />
         </TableRow>
             <TableRow
                 android:id="@+id/exRow4"
@@ -376,6 +424,21 @@
                     android:layout_marginStart="57dp"
                     android:contentDescription="TODO"
                     app:srcCompat="@drawable/start" />
+                <TextView
+                    android:id="@+id/f4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m4"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
             </TableRow>
             <TableRow
                 android:id="@+id/exRow5"
@@ -402,6 +465,22 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m5"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
         </TableRow>
 
             <TableRow
@@ -429,6 +508,22 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m6"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
         </TableRow>
 
             <TableRow
@@ -456,6 +551,21 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+                <TextView
+                    android:id="@+id/f7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m7"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
         </TableRow>
             <TableRow
                 android:id="@+id/exRow8"
@@ -482,6 +592,21 @@
                     android:layout_marginStart="57dp"
                     android:contentDescription="TODO"
                     app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+
+                    />
+
+                <TextView
+                    android:id="@+id/m8"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
             </TableRow>
             <TableRow
                 android:id="@+id/exRow9"
@@ -506,6 +631,19 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+                <TextView
+                    android:id="@+id/f9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/m9"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
         </TableRow>
             <TableRow
                 android:id="@+id/exRow10"
@@ -533,6 +671,20 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/m10"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
         </TableRow>
 
             <TableRow
@@ -561,6 +713,19 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+                <TextView
+                    android:id="@+id/f11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/m11"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
         </TableRow>
 
             <TableRow
@@ -586,6 +751,20 @@
                 android:layout_marginStart="57dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/start" />
+
+                <TextView
+                    android:id="@+id/f12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/m12"
+                    android:layout_width="31dp"
+                    android:layout_height="23dp"
+                    android:visibility="invisible"
+                    />
         </TableRow>
 
     </LinearLayout>

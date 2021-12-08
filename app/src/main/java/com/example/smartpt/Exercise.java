@@ -91,14 +91,16 @@ public class Exercise extends AppCompatActivity {
                 name=getIntent().getStringExtra("name");
                 exName.setText(name);
 
+
+
 //                targetMuscle=value.getString("target");
 //                target.setText(targetMuscle);
 
-//                generalMuscle=value.getString("general");
-//                general.setText(generalMuscle);
+                generalMuscle=getIntent().getStringExtra("muscle");
+                general.setText(generalMuscle);
 //
-//                forc=value.getString("force");
-//                force.setText(forc);
+                forc=getIntent().getStringExtra("force");
+                force.setText(forc);
 //
 //                mecha=value.getString("mechanism");
 //                mechanism.setText(mecha);
