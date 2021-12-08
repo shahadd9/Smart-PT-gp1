@@ -238,52 +238,123 @@ def fiveDay(level,d):
    # return rs.to_numpy()
 
 def getfullbodyName():
-       return fullbodyname.to_numpy()
-   
-
+    str1 = " " 
+    
+    # traverse in the string  
+    arr=fullbodyname.to_numpy()
+    for ele in arr: 
+        str1 += ele
+        
+    return str1
+    
 def getfullbodyForce():
-       return fullbodyforce.to_numpy()
+    str1 = "" 
+    
+    arr=fullbodyforce.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1 
+       
 
 def getfullbodygeneralmuscle():
-       return fullbodygeneralmuscle.to_numpy()
+    str1 = "" 
+    
+    arr=fullbodygeneralmuscle.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
 
+    return str1 
+   
 
 
 
 
 def getupperName():
-       return upperbodyname.to_numpy()
+    str1 = "" 
+    
+    arr=upperbodyname.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1 
    
 
 def getupperForce():
-       return upperbodyforce.to_numpy()
+    str1 = "" 
+    
+    arr=upperbodyforce.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1    
 
 def getuppergeneralmuscle():
-       return upperbodygeneralmuscle.to_numpy()
+    str1 = "" 
+    
+    arr=upperbodygeneralmuscle.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1    
 
 
 
 def getlowerName():
-       return lowerbodyname.to_numpy()
+    str1 = "" 
+    
+    arr=lowerbodyname.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1    
    
 
 def getlowerForce():
-       return lowerbodyforce.to_numpy()
+    str1 = "" 
+    
+    arr=lowerbodyforce.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1
 
 def getlowergeneralmuscle():
-       return lowerbodygeneralmuscle.to_numpy()
+    str1 = "" 
+    
+    arr=lowerbodygeneralmuscle.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1
 
 
 
 
 
 def getfivedayName():
-       return fiveDayname.to_numpy()
-   
+    str1 = "" 
+    
+    arr=fiveDayname.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
 
+    return str1
+   
 def getfivedayForce():
-       return fiveDayforce.to_numpy()
+    str1 = "" 
+    
+    arr=fiveDayforce.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
+
+    return str1
 
 def getfivedaymuscle():
-       return fiveDaygeneralmuscle.to_numpy()
+    str1 = "" 
+    
+    arr=fiveDaygeneralmuscle.to_numpy()
+    for ele in arr: 
+        str1 += ele+"."
 
+    return str1
