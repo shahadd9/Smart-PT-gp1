@@ -413,6 +413,7 @@ public class PlanView extends AppCompatActivity {
                         day2();
                     }
 
+
                     ///     break;
 
                 } else {
@@ -472,6 +473,7 @@ public class PlanView extends AppCompatActivity {
                         day4();
 
                     }
+
 //                        if(SessionNo.equals("5")) {
 //                            day2();
 //                        }
@@ -618,6 +620,7 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
 
+
                     if (SessionNo.equals("2")) {
                         day2();
 
@@ -636,6 +639,7 @@ public class PlanView extends AppCompatActivity {
                         day3();
                     }
                     //        break;
+
 
                 } else {
 
@@ -696,7 +700,9 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
+
                     scrollView.setVisibility(View.VISIBLE);//
+
 
                      /*   if(SessionNo.equals("2")){
                             day2();
@@ -773,10 +779,11 @@ public class PlanView extends AppCompatActivity {
                     //    if(SessionNo.equals("2")){
 
 
+
                     //  }
                     if (SessionNo.equals("3")) {
 
-                        day3();
+
 
                     }
                     if (SessionNo.equals("4")) {
@@ -787,6 +794,7 @@ public class PlanView extends AppCompatActivity {
                         day4();
                     }
                     //       break;
+
 
                 } else {
 
@@ -849,6 +857,7 @@ public class PlanView extends AppCompatActivity {
                     if (SessionNo.equals("5")) {
                         day5();
                     }
+
 
                 } else {
 
@@ -1200,6 +1209,7 @@ public class PlanView extends AppCompatActivity {
             m7.setText(muscle11[6]);
 
 
+
         }
         if (level.equals("Intermediate")) {
 
@@ -1237,6 +1247,7 @@ public class PlanView extends AppCompatActivity {
             m8.setText(muscle11[7]);
             m9.setText(muscle11[8]);
             m10.setText(muscle11[9]);
+
 
         }
         if (level.equals("Professional")) {
@@ -1317,6 +1328,7 @@ public class PlanView extends AppCompatActivity {
             m7.setText(muscle22[6]);
 
 
+
         }
         if (level.equals("Intermediate")) {
 
@@ -1355,6 +1367,7 @@ public class PlanView extends AppCompatActivity {
             m8.setText(muscle22[7]);
             m9.setText(muscle22[8]);
             m10.setText(muscle22[9]);
+
 
 
         }
@@ -1436,6 +1449,7 @@ public class PlanView extends AppCompatActivity {
             m7.setText(muscle33[6]);
 
 
+
         }
         if (level.equals("Intermediate")) {
 
@@ -1474,6 +1488,7 @@ public class PlanView extends AppCompatActivity {
             m8.setText(muscle33[7]);
             m9.setText(muscle33[8]);
             m10.setText(muscle33[9]);
+
 
 
         }
@@ -1554,6 +1569,7 @@ public class PlanView extends AppCompatActivity {
             m7.setText(muscle44[6]);
 
 
+
         }
         if (level.equals("Intermediate")) {
 
@@ -1592,6 +1608,7 @@ public class PlanView extends AppCompatActivity {
             m8.setText(muscle44[7]);
             m9.setText(muscle44[8]);
             m10.setText(muscle44[9]);
+
 
 
         }
@@ -1673,6 +1690,7 @@ public class PlanView extends AppCompatActivity {
             m7.setText(muscle55[6]);
 
 
+
         }
         if (level.equals("Intermediate")) {
 
@@ -1711,6 +1729,7 @@ public class PlanView extends AppCompatActivity {
             m8.setText(muscle55[7]);
             m9.setText(muscle55[8]);
             m10.setText(muscle55[9]);
+
 
 
         }
