@@ -250,6 +250,7 @@ def getfullbodygeneralmuscle():
 
 
 
+
 def getupperName():
        return upperbodyname.to_numpy()
    
@@ -275,6 +276,7 @@ def getlowergeneralmuscle():
 
 
 
+
 def getfivedayName():
        return fiveDayname.to_numpy()
    
@@ -284,3 +286,4 @@ def getfivedayForce():
 
 def getfivedaymuscle():
        return fiveDaygeneralmuscle.to_numpy()
+
