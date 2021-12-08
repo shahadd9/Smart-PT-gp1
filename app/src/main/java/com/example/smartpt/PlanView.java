@@ -1858,33 +1858,23 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 day1 = value.getString("plan");
-                day11 = day1.split(" ");
+                day1=day1.substring(2,day1.length()-3);
+                day11 = day1.split("_");
 
                 force1 = value.getString("force");
-                force11 = force1.split(" ");
+                force1=force1.substring(2,force1.length()-3);
+                force11 = force1.split("_");
+
 
                 muscle1 = value.getString("muscle");
-                muscle11 = muscle1.split(" ");
+                muscle1=muscle1.substring(2,muscle1.length()-3);
+                muscle11 = muscle1.split("_");
+
 
             }
         });
     }
 
-//    public void retreiveSessionNum() {
-//
-//        db = FirebaseFirestore.getInstance();
-//        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//                SessionNo = value.getString("sessionNo");
-//                level=value.getString("level");
-//
-//
-//            }
-//        });
-//    }
 
     public void retreiveF_M2() {
 
@@ -1895,13 +1885,16 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 day2 = value.getString("plan");
-                day22 = day2.split(" ");
+                day2=day2.substring(2,day2.length()-3);
+                day22 = day2.split("_");
 
                 force2 = value.getString("force");
-                force22 = force2.split(" ");
+                force2=force2.substring(2,force2.length()-3);
+                force22 = force2.split("_");
 
                 muscle2 = value.getString("muscle");
-                muscle22 = muscle2.split(" ");
+                muscle2=muscle2.substring(2,muscle2.length()-3);
+                muscle22 = muscle2.split("_");
 
             }
         });
@@ -1916,13 +1909,16 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 day3 = value.getString("plan");
-                day33 = day3.split(" ");
+                day3=day3.substring(2,day3.length()-3);
+                day33 = day3.split("_");
 
                 force3 = value.getString("force");
-                force33 = force3.split(" ");
+                force3=force3.substring(2,force3.length()-3);
+                force33 = force3.split("_");
 
                 muscle3 = value.getString("muscle");
-                muscle33 = muscle3.split(" ");
+                muscle3=muscle3.substring(2,muscle3.length()-3);
+                muscle33 = muscle3.split("_");
 
             }
         });
@@ -1937,13 +1933,16 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 day4 = value.getString("plan");
-                day44 = day4.split(" ");
+                day4=day4.substring(2,day4.length()-3);
+                day44 = day4.split("_");
 
                 force4 = value.getString("force");
-                force44 = force4.split(" ");
+                force4=force4.substring(2,force4.length()-3);
+                force44 = force4.split("_");
 
                 muscle4 = value.getString("muscle");
-                muscle44 = muscle4.split(" ");
+                muscle4=muscle4.substring(2,muscle4.length()-3);
+                muscle44 = muscle4.split("_");
 
             }
         });
@@ -1958,13 +1957,16 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 day5 = value.getString("plan");
-                day55 = day5.split(" ");
+                day5=day5.substring(2,day5.length()-3);
+                day55 = day5.split("_");
 
                 force5 = value.getString("force");
-                force55 = force5.split(" ");
+                force5=force5.substring(2,force5.length()-3);
+                force55 = force5.split("_");
 
                 muscle5 = value.getString("muscle");
-                muscle55 = muscle5.split(" ");
+                muscle5=muscle5.substring(2,muscle5.length()-3);
+                muscle55 = muscle5.split("_");
 
             }
         });

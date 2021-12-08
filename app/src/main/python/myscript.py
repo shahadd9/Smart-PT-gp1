@@ -22,7 +22,7 @@ data = io.StringIO(dataDetails)
 
 dfDetails = pd.read_csv(data, sep=",")
 
-# print(dfDetails['id'])
+# print(dfDetails['isneedequipment'])
 
 eqEx=pd.DataFrame()
 
@@ -76,9 +76,9 @@ def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
         upper2=eqEx.loc[eqEx['generalmuscle'].isin(['arm'])]
         upper3=eqEx.loc[eqEx['generalmuscle'].isin(['shoulders'])]
         upper4=eqEx.loc[eqEx['generalmuscle'].isin(['back','back,arm'])]
-        lower=eqEx.loc[eqEx['generalmuscle'].isin(['core','legs-and-glutes'])]
+        lower=eqEx.loc[eqEx['generalmuscle'].isin(['core','legs and glutes'])]
         lower1=eqEx.loc[eqEx['generalmuscle'].isin(['core'])]
-        lower2=eqEx.loc[eqEx['generalmuscle'].isin(['legs-and-glutes'])]
+        lower2=eqEx.loc[eqEx['generalmuscle'].isin(['legs and glutes'])]
 
 
 
@@ -238,12 +238,12 @@ def fiveDay(level,d):
    # return rs.to_numpy()
 
 def getfullbodyName():
-    str1 = " " 
+    str1 = "" 
     
     # traverse in the string  
     arr=fullbodyname.to_numpy()
     for ele in arr: 
-        str1 += ele
+        str1 += ele+"_"
         
     return str1
     
@@ -252,7 +252,7 @@ def getfullbodyForce():
     
     arr=fullbodyforce.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1 
        
@@ -262,7 +262,7 @@ def getfullbodygeneralmuscle():
     
     arr=fullbodygeneralmuscle.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1 
    
@@ -275,7 +275,7 @@ def getupperName():
     
     arr=upperbodyname.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1 
    
@@ -285,7 +285,7 @@ def getupperForce():
     
     arr=upperbodyforce.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1    
 
@@ -294,7 +294,7 @@ def getuppergeneralmuscle():
     
     arr=upperbodygeneralmuscle.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1    
 
@@ -305,7 +305,7 @@ def getlowerName():
     
     arr=lowerbodyname.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1    
    
@@ -315,7 +315,7 @@ def getlowerForce():
     
     arr=lowerbodyforce.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1
 
@@ -324,7 +324,7 @@ def getlowergeneralmuscle():
     
     arr=lowerbodygeneralmuscle.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1
 
@@ -337,7 +337,7 @@ def getfivedayName():
     
     arr=fiveDayname.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1
    
@@ -346,7 +346,7 @@ def getfivedayForce():
     
     arr=fiveDayforce.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1
 
@@ -355,6 +355,6 @@ def getfivedaymuscle():
     
     arr=fiveDaygeneralmuscle.to_numpy()
     for ele in arr: 
-        str1 += ele+"."
+        str1 += ele+"_"
 
     return str1
