@@ -534,10 +534,10 @@ public class PlanView extends AppCompatActivity {
 
                 if (daySun) {
                     mon.setText("My Exercises for this day");
-                    if (SessionNo.equals("2")) {
-                        day1();
-
-                    }
+//                    if (SessionNo.equals("2")) {
+//                        day1();
+//
+//                    }
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);

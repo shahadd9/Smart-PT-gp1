@@ -40,7 +40,6 @@ import java.util.ArrayList;
 public class LoadPa extends AppCompatActivity {
     private ImageView logo;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ;
     private String level;
     private String userIp;
     private Handler h;
@@ -104,6 +103,7 @@ public class LoadPa extends AppCompatActivity {
         loadLbl=findViewById(R.id.loadLbl);
         h=new Handler();
         SessionNo="0";
+//        level="";
         rest=0;
         exNo=0;
         sets=0;
@@ -114,23 +114,56 @@ public class LoadPa extends AppCompatActivity {
         stabilityBall=true;
         dipMachine=true;
         dumbbell=true;
-//        message=getIntent().getStringExtra("message");
-//
-//        if(message.length() == 0 || message == null){
-//
-//        }
-//        else {
-//            loadLbl.setText(message);
-//
-//        }
 
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-        rotateAnimation();
+
         retreiveInfo();
+        rotateAnimation();
 
+
+
+    }
+
+    public void retreiveInfo() {
+    WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+    userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+    Map<String,Object> user = new HashMap<>();
+
+    DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        @Override
+        public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+            level= value.getString("level");
+            planSettings(level);
+            heightD=value.getString("height");
+            weightD= value.getString("weight");
+//                equ= value.getString("equpmtList");
+            tPlace= value.getDouble("trainingPlace");
+            SessionNo=value.getString("TrainingdaysNum");
+            tP=(int)tPlace;
+            if(tP==0) {
+                equ = value.getString("equpmtList");
+            }
+            height=Integer.parseInt(heightD);
+            weight=Integer.parseInt(weightD);
+            BMI= (weight/(height*height))*10000;
+            BMI(BMI,level);
+            addPlan();
+
+
+
+
+        }
+    });
+//
+    }
+
+    public void rotateAnimation() {
+
+        Animation rotate= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
+
+        logo.setAnimation(rotate);
         h.postDelayed(new Runnable() {
             @Override
 
@@ -140,78 +173,41 @@ public class LoadPa extends AppCompatActivity {
 
 
                 if(SessionNo.equals("2")){
-                i.putExtra("SessionNo","2");
-                i.putExtra("level",level);
-                startActivity(i);
-                finish();
+                    i.putExtra("SessionNo","2");
+                    i.putExtra("level",level);
+                    startActivity(i);
+                    finish();
                 }
-               else if(SessionNo.equals("3")){
+                else if(SessionNo.equals("3")){
                     i.putExtra("SessionNo","3");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
-               else if(SessionNo.equals("4")){
+                else if(SessionNo.equals("4")){
                     i.putExtra("SessionNo","4");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
-               else if(SessionNo.equals("5")){
+                else if(SessionNo.equals("5")){
                     i.putExtra("SessionNo","5");
                     i.putExtra("level",level);
                     startActivity(i);
                     finish();
                 }
             }
-        }, 1500);
+        }, 15000);
     }
 
-    public void retreiveInfo() {
-        Map<String,Object> user = new HashMap<>();
+    public void planSettings(String level){
 
-        DocumentReference documentReference = db.collection("userProfile").document(userIp);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                level= value.getString("level");
-                heightD=value.getString("height");
-                weightD= value.getString("weight");
-//                equ= value.getString("equpmtList");
-                tPlace= value.getDouble("trainingPlace");
-                SessionNo=value.getString("TrainingdaysNum");
-                tP=(int)tPlace;
-                if(tP==0) {
-                    equ = value.getString("equpmtList");
-                }
-                height=Integer.parseInt(heightD);
-                weight=Integer.parseInt(weightD);
-                BMI= (weight/(height*height))*10000;
-                Level(level);
-                //trainingDays=value.getString("trainingDays");
-                //TrainingDays(trainingdaysNum,trainingDays);
-                // equipmentList=value.getString("equpmtList");
-                //equipment(equipmentList);
-            }
-        });
-
-    }
-
-    public void rotateAnimation() {
-
-        Animation rotate= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
-
-        logo.setAnimation(rotate);
-    }
-
-    public void Level(String level){
-
-        if(level.equalsIgnoreCase("beginner")){
+        if(level.equalsIgnoreCase("Beginner")){
             rest=120;
             exNo=7;
             duration=30+"";
         }
-        else if(level.equalsIgnoreCase("intermediate")){
+        else if(level.equalsIgnoreCase("Intermediate")){
             rest=90;
             exNo=10;
             duration=45+"";
@@ -222,12 +218,11 @@ public class LoadPa extends AppCompatActivity {
             duration=60+"";
         }
 
-        BMI(BMI,level);
     }
 
     public void BMI(double BMI, String level){
 
-        if(level.equalsIgnoreCase("beginner")){
+        if(level.equalsIgnoreCase("Beginner")){
             if(BMI < 18.5){
                 sets =2;
 
@@ -239,7 +234,7 @@ public class LoadPa extends AppCompatActivity {
                 sets=2;
             }
         }
-        else if(level.equalsIgnoreCase("intermediate")){
+        else if(level.equalsIgnoreCase("Intermediate")){
             if(BMI < 18.5){
                 sets =3;
 
@@ -263,19 +258,24 @@ public class LoadPa extends AppCompatActivity {
                 sets=4;
             }
         }
-        if(tP==0 && (equ.equals(0)||equ=="0"))  {
+        if(tP==0)  {
+            if((equ.equals(0)||equ.equals("0")))
             bench=false;
             barbell=false;
             cableMachine=false;
             stabilityBall=false;
             dipMachine=false;
             dumbbell=false;
+//            addPlan();
             createWorkoutPlan();
         }
         else if (tP==0){
+//            addPlan();
             equipment();
         }
-        else {createWorkoutPlan();}
+        else {
+//            addPlan();
+            createWorkoutPlan();}
     }
     public void createWorkoutPlan(){
 
@@ -462,12 +462,6 @@ public class LoadPa extends AppCompatActivity {
         }
 
 
-//        //2
-//        //3
-
-
-
-        addPlan();
 
     }
 
@@ -523,25 +517,24 @@ public class LoadPa extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         Map<String,Object> planAdd = new HashMap<>();
+
         planAdd.put("sets",sets);
         planAdd.put("rest",rest);
         planAdd.put("reps",reps);
         planAdd.put("exNO",exNo);
         planAdd.put("duration",duration);
 
-//        planAdd.put("test",exercises);
-
-        plan.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-//                    Toast.makeText(LoadPa.this,"successful",Toast.LENGTH_SHORT);
+                    Toast.makeText(LoadPa.this,"successful",Toast.LENGTH_SHORT);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
+                Toast.makeText(LoadPa.this,"Faild",Toast.LENGTH_SHORT);
 
             }
         });

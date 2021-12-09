@@ -319,7 +319,7 @@ public class updateProfile extends AppCompatActivity implements
 //                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
 //                                    Toast.LENGTH_LONG).show();
                             Intent i = new Intent(updateProfile.this, LoadPa.class);
-                            i.putExtra("message","Updating Your Plan..");
+//                            i.putExtra("message","Updating Your Plan..");
 //                            i.putExtra("SessionNo",dayss);
 //                            i.putExtra("level",level);
                             startActivity(i);
@@ -532,21 +532,25 @@ public class updateProfile extends AppCompatActivity implements
     private void updateDays(String days) {
 
         if(days.equals("2")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
         }
         else if(days.equals("3")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
             tDaysN.add("Thu");
         }
         else if(days.equals("4")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
             tDaysN.add("Thu");
             tDaysN.add("Sat");
         }
         else if(days.equals("5")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Mon");
             tDaysN.add("Tue");
@@ -554,7 +558,7 @@ public class updateProfile extends AppCompatActivity implements
             tDaysN.add("Fri");
 
         }
-
+        tDaysString="";
         for(int i = 0; i<tDaysN.size();i++){
 
             tDaysString=tDaysString+" "+ tDaysN.get(i);
