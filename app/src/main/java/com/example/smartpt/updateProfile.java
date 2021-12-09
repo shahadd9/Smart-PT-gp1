@@ -318,7 +318,7 @@ public class updateProfile extends AppCompatActivity implements
 
 //                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
 //                                    Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(updateProfile.this, LoadPa.class);
+                            Intent i = new Intent(updateProfile.this, LoadPa2.class);
 //                            i.putExtra("message","Updating Your Plan..");
 //                            i.putExtra("SessionNo",dayss);
 //                            i.putExtra("level",level);

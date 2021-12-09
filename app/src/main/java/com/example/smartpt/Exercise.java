@@ -41,10 +41,16 @@ public class Exercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SessionNo = getIntent().getStringExtra("SessionNo");
         level = getIntent().getStringExtra("level");
+        name=getIntent().getStringExtra("name");
+        generalMuscle=getIntent().getStringExtra("muscle");
+        forc=getIntent().getStringExtra("force");
+
+
+
 
 //        okBtn= (Button) findViewById(R.id.okBtn);
 
-
+//
         setContentView(R.layout.activity_exercise);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -154,7 +160,6 @@ public class Exercise extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
 
-                name=getIntent().getStringExtra("name");
                 exName.setText(name);
 
 
@@ -162,10 +167,8 @@ public class Exercise extends AppCompatActivity {
 //                targetMuscle=value.getString("target");
 //                target.setText(targetMuscle);
 
-                generalMuscle=getIntent().getStringExtra("muscle");
                 general.setText(generalMuscle);
 //
-                forc=getIntent().getStringExtra("force");
                 force.setText(forc);
 //
 //                mecha=value.getString("mechanism");
