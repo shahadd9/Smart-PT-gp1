@@ -47,7 +47,7 @@ public class LoadPa extends AppCompatActivity {
     private String weightD;
     private int height;
     private int weight;
-    private double BMI;
+    private double bmi;
     private int rest;
     private String duration;
     private int exNo;
@@ -92,7 +92,7 @@ public class LoadPa extends AppCompatActivity {
 
 
 
-    private CollectionReference plan = db.collection("userProfile");
+//    private CollectionReference plan = db.collection("userProfile");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -126,11 +126,12 @@ public class LoadPa extends AppCompatActivity {
     }
 
     public void retreiveInfo() {
+        db = FirebaseFirestore.getInstance();
     WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
     userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
     Map<String,Object> user = new HashMap<>();
 
-    DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(userIp);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
         @Override
         public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -147,8 +148,8 @@ public class LoadPa extends AppCompatActivity {
             }
             height=Integer.parseInt(heightD);
             weight=Integer.parseInt(weightD);
-            BMI= (weight/(height*height))*10000;
-            BMI(BMI,level);
+            bmi= (weight/(height*height))*10000;
+            BMI(bmi,level);
             addPlan();
 
 
@@ -220,14 +221,14 @@ public class LoadPa extends AppCompatActivity {
 
     }
 
-    public void BMI(double BMI, String level){
+    public void BMI(double bmi, String level){
 
         if(level.equalsIgnoreCase("Beginner")){
-            if(BMI < 18.5){
+            if(bmi < 18.5){
                 sets =2;
 
             }
-            else if(BMI >=18.5 &&BMI<=24.9){
+            else if(bmi >=18.5 &&bmi<=24.9){
                 sets=3;
             }
             else{
@@ -235,11 +236,11 @@ public class LoadPa extends AppCompatActivity {
             }
         }
         else if(level.equalsIgnoreCase("Intermediate")){
-            if(BMI < 18.5){
+            if(bmi < 18.5){
                 sets =3;
 
             }
-            else if(BMI >=18.5 &&BMI<=24.9){
+            else if(bmi >=18.5 &&bmi<=bmi){
                 sets=4;
             }
             else{
@@ -247,11 +248,11 @@ public class LoadPa extends AppCompatActivity {
             }
         }
         else{
-            if(BMI < 18.5){
+            if(bmi < 18.5){
                 sets =4;
 
             }
-            else if(BMI >=18.5 &&BMI<=24.9){
+            else if(bmi >=18.5 &&bmi<=24.9){
                 sets=5;
             }
             else{
@@ -517,6 +518,7 @@ public class LoadPa extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         Map<String,Object> planAdd = new HashMap<>();
+        CollectionReference ex = db.collection("userProfile");
 
         planAdd.put("sets",sets);
         planAdd.put("rest",rest);
@@ -524,7 +526,7 @@ public class LoadPa extends AppCompatActivity {
         planAdd.put("exNO",exNo);
         planAdd.put("duration",duration);
 
-        db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+        ex.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
