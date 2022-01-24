@@ -66,6 +66,7 @@ public class updateProfile extends AppCompatActivity implements
     private double tDuration;
     private String level;
     private String SessionNo;
+    private Boolean flag = false;
 
     private static ArrayList<String> tDays;//    private String day2;
 //    private String day3;
@@ -318,11 +319,12 @@ public class updateProfile extends AppCompatActivity implements
 
 //                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
 //                                    Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(updateProfile.this, LoadPa.class);
-                            i.putExtra("message","Updating Your Plan..");
-//                            i.putExtra("SessionNo",dayss);
-//                            i.putExtra("level",level);
-                            startActivity(i);
+                            if(flag) {
+                                startActivity(new Intent(updateProfile.this, LoadPa2.class));
+                            }
+                            else {
+                                Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -374,6 +376,7 @@ public class updateProfile extends AppCompatActivity implements
                 if (height > 249 || height < 99) {
                     eHeight.setError("your height is out of range!");
                 } else {
+                    flag=true;
                     user.put("height", h);
                 }
 
@@ -388,6 +391,7 @@ public class updateProfile extends AppCompatActivity implements
                 if (weight > 249 || weight < 29) {
                     eWeight.setError("your weight is out of range!");
                 } else {
+                    flag=true;
                     user.put("weight", w);
                 }
 
@@ -522,31 +526,39 @@ public class updateProfile extends AppCompatActivity implements
     }
 
     private void updateReminder(String reminder) {
+//        flag=true;
         user.put("TrainingTime", reminder);
+
+
     }
 
     private void updateDuration(String duration) {
+//        flag=true;
         user.put("TrainingDuration", duration);
     }
 
     private void updateDays(String days) {
 
         if(days.equals("2")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
         }
         else if(days.equals("3")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
             tDaysN.add("Thu");
         }
         else if(days.equals("4")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Tue");
             tDaysN.add("Thu");
             tDaysN.add("Sat");
         }
         else if(days.equals("5")){
+            tDaysN.clear();
             tDaysN.add("Sun");
             tDaysN.add("Mon");
             tDaysN.add("Tue");
@@ -554,12 +566,11 @@ public class updateProfile extends AppCompatActivity implements
             tDaysN.add("Fri");
 
         }
-
+        tDaysString="";
         for(int i = 0; i<tDaysN.size();i++){
 
             tDaysString=tDaysString+" "+ tDaysN.get(i);
         }
-
         user.put("TrainingdaysNum", days);
         user.put("trainingDays", tDaysString);
 

@@ -82,6 +82,11 @@ public class PlanView extends AppCompatActivity {
     private TextView TextviewEx11;
     private TextView TextviewEx12;
 
+    private ImageView img8;
+    private ImageView img9;
+    private ImageView img10;
+    private ImageView img11;
+    private ImageView img12;
 
     private TextView m1;
     private TextView m2;
@@ -190,6 +195,12 @@ public class PlanView extends AppCompatActivity {
         TextviewEx10 = findViewById(R.id.textViewex10);
         TextviewEx11 = findViewById(R.id.textViewex11);
         TextviewEx12 = findViewById(R.id.textViewex12);
+
+        img8=findViewById(R.id.start8);
+        img9=findViewById(R.id.start9);
+        img10=findViewById(R.id.start10);
+        img11=findViewById(R.id.start11);
+        img12=findViewById(R.id.start12);
 
 
         f1 = findViewById(R.id.f1);
@@ -534,10 +545,10 @@ public class PlanView extends AppCompatActivity {
 
                 if (daySun) {
                     mon.setText("My Exercises for this day");
-                    if (SessionNo.equals("2")) {
-                        day1();
-
-                    }
+//                    if (SessionNo.equals("2")) {
+//                        day1();
+//
+//                    }
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -1192,6 +1203,12 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+            img8.setVisibility(View.GONE);
+            img9.setVisibility(View.GONE);
+            img10.setVisibility(View.GONE);
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
+
             f1.setText(force11[0]);
             f2.setText(force11[1]);
             f3.setText(force11[2]);
@@ -1225,6 +1242,10 @@ public class PlanView extends AppCompatActivity {
             TextviewEx10.setText(day11[9]);
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
+
+
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1310,6 +1331,12 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+            img8.setVisibility(View.GONE);
+            img9.setVisibility(View.GONE);
+            img10.setVisibility(View.GONE);
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
+
             f1.setText(force22[0]);
             f2.setText(force22[1]);
             f3.setText(force22[2]);
@@ -1344,6 +1371,10 @@ public class PlanView extends AppCompatActivity {
             TextviewEx10.setText(day22[9]);
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
+
+
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -1431,6 +1462,12 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+            img8.setVisibility(View.GONE);
+            img9.setVisibility(View.GONE);
+            img10.setVisibility(View.GONE);
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
+
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -1466,6 +1503,9 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -1551,6 +1591,12 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+            img8.setVisibility(View.GONE);
+            img9.setVisibility(View.GONE);
+            img10.setVisibility(View.GONE);
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
+
             f1.setText(force44[0]);
             f2.setText(force44[1]);
             f3.setText(force44[2]);
@@ -1586,6 +1632,10 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+
+
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
             f1.setText(force44[0]);
             f2.setText(force44[1]);
             f3.setText(force44[2]);
@@ -1672,6 +1722,12 @@ public class PlanView extends AppCompatActivity {
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
+            img8.setVisibility(View.GONE);
+            img9.setVisibility(View.GONE);
+            img10.setVisibility(View.GONE);
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
+
             f1.setText(force55[0]);
             f2.setText(force55[1]);
             f3.setText(force55[2]);
@@ -1706,6 +1762,10 @@ public class PlanView extends AppCompatActivity {
             TextviewEx10.setText(day55[9]);
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
+
+
+            img11.setVisibility(View.GONE);
+            img12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
