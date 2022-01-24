@@ -31,8 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoadPa2 extends AppCompatActivity {
-
+public class LoadPaP2 extends AppCompatActivity {
     private ImageView logo;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String level;
@@ -82,15 +81,16 @@ public class LoadPa2 extends AppCompatActivity {
     private boolean dipMachine;
     private boolean cableMachine;
 
+    private boolean r;
     TextView loadLbl;
     private String message;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_load_pa2);
+        setContentView(R.layout.activity_load_pa_p2);
         getSupportActionBar().hide();
+        r=false;
         logo= findViewById(R.id.imageView4);
         loadLbl=findViewById(R.id.loadLbl);
         h=new Handler();
@@ -109,10 +109,15 @@ public class LoadPa2 extends AppCompatActivity {
 
 
 
-
         retreiveInfo();
         rotateAnimation();
 
+//        if(r) {
+//            rotateAnimation();
+//        }
+//        else {
+//            retreiveInfo();
+//        }
 
 
     }
@@ -142,7 +147,8 @@ public class LoadPa2 extends AppCompatActivity {
                 weight=Integer.parseInt(weightD);
                 bmi= (weight/(height*height))*10000;
                 BMI(bmi,level);
-                addPlan();
+//            addPlan();
+                r=true;
 
 
 
@@ -161,7 +167,7 @@ public class LoadPa2 extends AppCompatActivity {
             @Override
 
             public void run() {
-                Intent i = new Intent(LoadPa2.this, PlanView.class);
+                Intent i = new Intent(LoadPaP2.this, PlanView.class);
 //                startActivity(i);
 
 
@@ -190,7 +196,7 @@ public class LoadPa2 extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 1500);
+        }, 15000);
     }
 
     public void planSettings(String level){
@@ -454,7 +460,7 @@ public class LoadPa2 extends AppCompatActivity {
 
         }
 
-
+        addPlan();
 
     }
 
@@ -522,13 +528,13 @@ public class LoadPa2 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(LoadPa2.this,"successful",Toast.LENGTH_SHORT);
+                    Toast.makeText(LoadPaP2.this,"successful",Toast.LENGTH_SHORT);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoadPa2.this,"Faild",Toast.LENGTH_SHORT);
+                Toast.makeText(LoadPaP2.this,"Faild",Toast.LENGTH_SHORT);
 
             }
         });
@@ -553,17 +559,18 @@ public class LoadPa2 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(LoadPa2.this,"successful",Toast.LENGTH_SHORT);
+                    Toast.makeText(LoadPaP2.this,"successful",Toast.LENGTH_SHORT);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoadPa2.this,"Faild",Toast.LENGTH_SHORT);
+                Toast.makeText(LoadPaP2.this,"Faild",Toast.LENGTH_SHORT);
 
             }
         });
 
     }
+
 
 }

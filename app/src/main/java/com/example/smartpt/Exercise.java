@@ -52,7 +52,7 @@ public class Exercise extends AppCompatActivity {
 
 //
         setContentView(R.layout.activity_exercise);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        BottomNavigationView bottomNavigationView= findViewById(R.id.bottom_nav);
 //        bottomNavigationView.setSelectedItemId(R.id.home);
