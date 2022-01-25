@@ -66,7 +66,11 @@ public class updateProfile extends AppCompatActivity implements
     private double tDuration;
     private String level;
     private String SessionNo;
-    private Boolean flag = false;
+    private Boolean flag;
+    private String durationA;
+    private String remind;
+    private String numDays;
+
 
     private static ArrayList<String> tDays;//    private String day2;
 //    private String day3;
@@ -83,7 +87,11 @@ public class updateProfile extends AppCompatActivity implements
         SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
         tDaysN= new ArrayList<>();
+        durationA="";
+        remind="";
+        numDays="";
 //        dayss="2";
+        flag=false;
 
 //        if(SessionNo.equals("2")){
 //
@@ -251,6 +259,9 @@ public class updateProfile extends AppCompatActivity implements
                 w=value.getString("weight");
                 eWeight.setText(w);
 //                dayss=value.getString("TrainingdaysNum");
+                remind = value.getString("TrainingTime");
+                durationA= value.getString("TrainingDuration");
+                numDays=value.getString("TrainingdaysNum");
 
                 // update reminder and duration spinners
                 eReminder.setSelection(eReminderAdapter.getPosition(value.getString("TrainingTime")));
@@ -526,15 +537,18 @@ public class updateProfile extends AppCompatActivity implements
     }
 
     private void updateReminder(String reminder) {
-//        flag=true;
+        if(!remind.equals(reminder)){
+        flag=true;
+        }
         user.put("TrainingTime", reminder);
 
 
     }
 
     private void updateDuration(String duration) {
-//        flag=true;
-        user.put("TrainingDuration", duration);
+        if(!durationA.equals(duration)){
+            flag=true;
+        }        user.put("TrainingDuration", duration);
     }
 
     private void updateDays(String days) {
@@ -570,6 +584,9 @@ public class updateProfile extends AppCompatActivity implements
         for(int i = 0; i<tDaysN.size();i++){
 
             tDaysString=tDaysString+" "+ tDaysN.get(i);
+        }
+        if(!numDays.equals(days)){
+            flag=true;
         }
         user.put("TrainingdaysNum", days);
         user.put("trainingDays", tDaysString);
