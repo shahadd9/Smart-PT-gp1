@@ -24,6 +24,7 @@ dfDetails = pd.read_csv(data, sep=",")
 
 # print(dfDetails['isneedequipment'])
 
+
 eqEx=pd.DataFrame()
 
 
