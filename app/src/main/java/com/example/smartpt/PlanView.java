@@ -894,6 +894,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",0);
                 startActivity(i);
 
             }
@@ -909,6 +910,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m2.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",1);
                 startActivity(i);
 
             }
@@ -924,6 +926,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m3.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",2);
                 startActivity(i);
 
             }
@@ -938,6 +941,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("force", f4.getText());
                 i.putExtra("muscle", m4.getText());
                 i.putExtra("SessionNo",SessionNo);
+                i.putExtra("index",3);
                 i.putExtra("level",level);
                 startActivity(i);
 
@@ -954,6 +958,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m5.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",4);
                 startActivity(i);
 
             }
@@ -969,6 +974,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m6.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",5);
                 startActivity(i);
 
             }
@@ -984,6 +990,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m7.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",6);
                 startActivity(i);
 
             }
@@ -999,6 +1006,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m8.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",7);
                 startActivity(i);
 
             }
@@ -1014,6 +1022,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m9.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",8);
                 startActivity(i);
 
             }
@@ -1030,6 +1039,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m10.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",9);
                 startActivity(i);
 
             }
@@ -1046,6 +1056,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m11.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",10);
                 startActivity(i);
 
             }
@@ -1062,6 +1073,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m12.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
+                i.putExtra("index",11);
                 startActivity(i);
 
             }
