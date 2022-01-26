@@ -3,6 +3,9 @@ import pandas as pd
 from os.path import dirname, join
 from io import StringIO
 import numpy as np
+import sklearn
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import linear_kernel
 
 
 
