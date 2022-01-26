@@ -26,7 +26,7 @@ public class Exercise extends AppCompatActivity {
     double set , rep, Res;
     private String durationDis;
     int s, r, re,d;
-    TextView exName, target,general, sets, reps, rest, equipment,duration, execution, tips,start, mechanism, force;
+    TextView alt, exName, target,general, sets, reps, rest, equipment,duration, execution, tips,start, mechanism, force;
     private FirebaseFirestore db;
     private String userIp;
     private double tPlace;
@@ -35,6 +35,7 @@ public class Exercise extends AppCompatActivity {
     private String level;
     private String SessionNo;
     private Button okBtn;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class Exercise extends AppCompatActivity {
         name=getIntent().getStringExtra("name");
         generalMuscle=getIntent().getStringExtra("muscle");
         forc=getIntent().getStringExtra("force");
+        index=getIntent().getIntExtra("index",-1);
+        alt=(TextView)findViewById(R.id.alternative);
 
 
 
@@ -214,6 +217,7 @@ public class Exercise extends AppCompatActivity {
 
             }
         });
+
 //        okBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -249,5 +253,14 @@ public class Exercise extends AppCompatActivity {
 //            }
 //        });
 //
+    }
+
+    public void goToAlt(View view) {
+                Intent i = new Intent(Exercise.this, Alternative.class);
+                i.putExtra("name",name);
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("index",index);
+                i.putExtra("level",level);
+                startActivity(i);
     }
 }
