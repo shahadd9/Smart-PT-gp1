@@ -34,6 +34,7 @@ public class Exercise extends AppCompatActivity {
     private String equ;
     private String level;
     private String SessionNo;
+    private String currDay;
     private Button okBtn;
     private int index;
 
@@ -46,6 +47,7 @@ public class Exercise extends AppCompatActivity {
         generalMuscle=getIntent().getStringExtra("muscle");
         forc=getIntent().getStringExtra("force");
         index=getIntent().getIntExtra("index",-1);
+        currDay=getIntent().getStringExtra("currDay");
         alt=(TextView)findViewById(R.id.alternative);
 
 
@@ -262,6 +264,7 @@ public class Exercise extends AppCompatActivity {
                 i.putExtra("index",index);
                 i.putExtra("level",level);
                 i.putExtra("generalMuscle",generalMuscle);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
     }
 }

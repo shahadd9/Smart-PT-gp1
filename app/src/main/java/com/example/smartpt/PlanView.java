@@ -169,7 +169,7 @@ public class PlanView extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
-    private String currDay="";
+    private String currDay;
 
 
     private String Wplan;
@@ -183,7 +183,7 @@ public class PlanView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
-        currDay="9";
+        currDay="0";
         TextviewEx1 = findViewById(R.id.textViewex1);
         TextviewEx2 = findViewById(R.id.textViewex2);
         TextviewEx3 = findViewById(R.id.textViewex3);
