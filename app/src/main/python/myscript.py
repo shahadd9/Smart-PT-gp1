@@ -116,53 +116,54 @@ def fullbody(level):
     global fullbodygeneralmuscle,fullbodyforce,fullbodyname
     ex1=upper1.sample()
     ex2=upper2.sample()
-    if(ex1.iat[0,0] == ex2.iat[0,0] ):
+
+    if(ex1.iat[0,1] == ex2.iat[0,1] ):
         fullbody(level)
     
     ex3=upper3.sample()
-    if(ex3.iat[0,0] == ex2.iat[0,0] or ex3.iat[0,0] == ex1.iat[0,0]):
+    if(ex3.iat[0,1] == ex2.iat[0,1] or ex3.iat[0,1] == ex1.iat[0,1]):
         fullbody(level)
         
     ex4=upper4.sample()
-    if(ex4.iat[0,0] == ex3.iat[0,0] or ex4.iat[0,0] == ex2.iat[0,0] or ex4.iat[0,0] == ex1.iat[0,0]):
+    if(ex4.iat[0,1] == ex3.iat[0,1] or ex4.iat[0,1] == ex2.iat[0,1] or ex4.iat[0,1] == ex1.iat[0,1]):
         fullbody(level)
         
     ex5=upper.sample()
-    if(ex5.iat[0,0] == ex4.iat[0,0] or ex5.iat[0,0] == ex3.iat[0,0] or ex5.iat[0,0] == ex2.iat[0,0] or ex5.iat[0,0] == ex1.iat[0,0]):
+    if(ex5.iat[0,1] == ex4.iat[0,1] or ex5.iat[0,1] == ex3.iat[0,1] or ex5.iat[0,1] == ex2.iat[0,1] or ex5.iat[0,1] == ex1.iat[0,1]):
         fullbody(level)
         
     ex6=lower1.sample()
-    if(ex6.iat[0,0] == ex5.iat[0,0] or ex6.iat[0,0] == ex4.iat[0,0] or ex6.iat[0,0] == ex3.iat[0,0] or ex6.iat[0,0] == ex2.iat[0,0] or ex6.iat[0,0] == ex1.iat[0,0]):
+    if(ex6.iat[0,1] == ex5.iat[0,1] or ex6.iat[0,1] == ex4.iat[0,1] or ex6.iat[0,1] == ex3.iat[0,1] or ex6.iat[0,1] == ex2.iat[0,1] or ex6.iat[0,1] == ex1.iat[0,1]):
         fullbody(level)
         
     ex7=lower2.sample()
-    if(ex7.iat[0,0] == ex6.iat[0,0] or ex7.iat[0,0] == ex5.iat[0,0] or ex7.iat[0,0] == ex4.iat[0,0] or ex7.iat[0,0] == ex3.iat[0,0] or ex7.iat[0,0] == ex2.iat[0,0] or ex7.iat[0,0] == ex1.iat[0,0]):
+    if(ex7.iat[0,1] == ex6.iat[0,1] or ex7.iat[0,1] == ex5.iat[0,1] or ex7.iat[0,1] == ex4.iat[0,1] or ex7.iat[0,1] == ex3.iat[0,1] or ex7.iat[0,1] == ex2.iat[0,1] or ex7.iat[0,1] == ex1.iat[0,1]):
         fullbody(level)
         
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
 
     if(level=="Intermediate" or level=="Professional"):
         ex8=upper.sample()
-        if(ex8.iat[0,0] == ex7.iat[0,0] or ex8.iat[0,0] == ex6.iat[0,0] or ex8.iat[0,0] == ex5.iat[0,0] or ex8.iat[0,0] == ex4.iat[0,0] or ex8.iat[0,0] == ex3.iat[0,0] or ex8.iat[0,0] == ex2.iat[0,0] or ex8.iat[0,0] == ex1.iat[0,0]):
+        if(ex8.iat[0,1] == ex7.iat[0,1] or ex8.iat[0,1] == ex6.iat[0,1] or ex8.iat[0,1] == ex5.iat[0,1] or ex8.iat[0,1] == ex4.iat[0,1] or ex8.iat[0,1] == ex3.iat[0,1] or ex8.iat[0,1] == ex2.iat[0,1] or ex8.iat[0,1] == ex1.iat[0,1]):
             fullbody(level) 
             
         ex9=upper.sample()
-        if(ex9.iat[0,0] == ex8.iat[0,0] or ex9.iat[0,0] == ex7.iat[0,0] or ex9.iat[0,0] == ex6.iat[0,0] or ex9.iat[0,0] == ex5.iat[0,0] or ex9.iat[0,0] == ex4.iat[0,0] or ex9.iat[0,0] == ex3.iat[0,0] or ex9.iat[0,0] == ex2.iat[0,0] or ex9.iat[0,0] == ex1.iat[0,0]):
+        if(ex9.iat[0,1] == ex8.iat[0,1] or ex9.iat[0,1] == ex7.iat[0,1] or ex9.iat[0,1] == ex6.iat[0,1] or ex9.iat[0,1] == ex5.iat[0,1] or ex9.iat[0,1] == ex4.iat[0,1] or ex9.iat[0,1] == ex3.iat[0,1] or ex9.iat[0,1] == ex2.iat[0,1] or ex9.iat[0,1] == ex1.iat[0,1]):
             fullbody(level) 
             
         ex10=lower.sample()
-        if(ex10.iat[0,0] == ex9.iat[0,0] or ex10.iat[0,0] == ex8.iat[0,0] or ex10.iat[0,0] == ex7.iat[0,0] or ex10.iat[0,0] == ex6.iat[0,0] or ex10.iat[0,0] == ex5.iat[0,0] or ex10.iat[0,0] == ex4.iat[0,0] or ex10.iat[0,0] == ex3.iat[0,0] or ex10.iat[0,0] == ex2.iat[0,0] or ex10.iat[0,0] == ex1.iat[0,0]):
+        if(ex10.iat[0,1] == ex9.iat[0,1] or ex10.iat[0,1] == ex8.iat[0,1] or ex10.iat[0,1] == ex7.iat[0,1] or ex10.iat[0,1] == ex6.iat[0,1] or ex10.iat[0,1] == ex5.iat[0,1] or ex10.iat[0,1] == ex4.iat[0,1] or ex10.iat[0,1] == ex3.iat[0,1] or ex10.iat[0,1] == ex2.iat[0,1] or ex10.iat[0,1] == ex1.iat[0,1]):
             fullbody(level) 
             
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
         
     if(level=="Professional"):
         ex11=upper.sample()
-        if(ex11.iat[0,0] == ex10.iat[0,0] or ex11.iat[0,0] == ex9.iat[0,0] or ex11.iat[0,0] == ex8.iat[0,0] or ex11.iat[0,0] == ex7.iat[0,0] or ex11.iat[0,0] == ex6.iat[0,0] or ex11.iat[0,0] == ex5.iat[0,0] or ex11.iat[0,0] == ex4.iat[0,0] or ex11.iat[0,0] == ex3.iat[0,0] or ex11.iat[0,0] == ex2.iat[0,0] or ex11.iat[0,0] == ex1.iat[0,0]):
+        if(ex11.iat[0,1] == ex10.iat[0,1] or ex11.iat[0,1] == ex9.iat[0,1] or ex11.iat[0,1] == ex8.iat[0,1] or ex11.iat[0,1] == ex7.iat[0,1] or ex11.iat[0,1] == ex6.iat[0,1] or ex11.iat[0,1] == ex5.iat[0,1] or ex11.iat[0,1] == ex4.iat[0,1] or ex11.iat[0,1] == ex3.iat[0,1] or ex11.iat[0,1] == ex2.iat[0,1] or ex11.iat[0,1] == ex1.iat[0,1]):
             fullbody(level) 
             
         ex12=lower.sample()
-        if(ex12.iat[0,0] == ex11.iat[0,0] or ex12.iat[0,0] == ex10.iat[0,0] or ex12.iat[0,0] == ex9.iat[0,0] or ex12.iat[0,0] == ex8.iat[0,0] or ex12.iat[0,0] == ex7.iat[0,0] or ex12.iat[0,0] == ex6.iat[0,0] or ex12.iat[0,0] == ex5.iat[0,0] or ex12.iat[0,0] == ex4.iat[0,0] or ex12.iat[0,0] == ex3.iat[0,0] or ex12.iat[0,0] == ex2.iat[0,0] or ex12.iat[0,0] == ex1.iat[0,0]):
+        if(ex12.iat[0,1] == ex11.iat[0,1] or ex12.iat[0,1] == ex10.iat[0,1] or ex12.iat[0,1] == ex9.iat[0,1] or ex12.iat[0,1] == ex8.iat[0,1] or ex12.iat[0,1] == ex7.iat[0,1] or ex12.iat[0,1] == ex6.iat[0,1] or ex12.iat[0,1] == ex5.iat[0,1] or ex12.iat[0,1] == ex4.iat[0,1] or ex12.iat[0,1] == ex3.iat[0,1] or ex12.iat[0,1] == ex2.iat[0,1] or ex12.iat[0,1] == ex1.iat[0,1]):
             fullbody(level) 
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     fullbodyname=rs.copy()
@@ -180,53 +181,53 @@ def upperbody(level):
     ex1=upper1.sample()
     ex2=upper2.sample()
     
-    if(ex1.iat[0,0] == ex2.iat[0,0] ):
+    if(ex1.iat[0,1] == ex2.iat[0,1] ):
       upperbody(level)    
     
     ex3=upper3.sample()
-    if(ex3.iat[0,0] == ex2.iat[0,0] or ex3.iat[0,0] == ex1.iat[0,0]):
+    if(ex3.iat[0,1] == ex2.iat[0,1] or ex3.iat[0,1] == ex1.iat[0,1]):
       upperbody(level)    
     
     ex4=upper4.sample()
-    if(ex4.iat[0,0] == ex3.iat[0,0] or ex4.iat[0,0] == ex2.iat[0,0] or ex4.iat[0,0] == ex1.iat[0,0]):
+    if(ex4.iat[0,1] == ex3.iat[0,1] or ex4.iat[0,1] == ex2.iat[0,1] or ex4.iat[0,1] == ex1.iat[0,1]):
       upperbody(level)
     
     ex5=upper1.sample()
-    if(ex5.iat[0,0] == ex4.iat[0,0] or ex5.iat[0,0] == ex3.iat[0,0] or ex5.iat[0,0] == ex2.iat[0,0] or ex5.iat[0,0] == ex1.iat[0,0]):
+    if(ex5.iat[0,1] == ex4.iat[0,1] or ex5.iat[0,1] == ex3.iat[0,1] or ex5.iat[0,1] == ex2.iat[0,1] or ex5.iat[0,1] == ex1.iat[0,1]):
       upperbody(level)
     
     ex6=upper2.sample()
-    if(ex6.iat[0,0] == ex5.iat[0,0] or ex6.iat[0,0] == ex4.iat[0,0] or ex6.iat[0,0] == ex3.iat[0,0] or ex6.iat[0,0] == ex2.iat[0,0] or ex6.iat[0,0] == ex1.iat[0,0]):
+    if(ex6.iat[0,1] == ex5.iat[0,1] or ex6.iat[0,1] == ex4.iat[0,1] or ex6.iat[0,1] == ex3.iat[0,1] or ex6.iat[0,1] == ex2.iat[0,1] or ex6.iat[0,1] == ex1.iat[0,1]):
       upperbody(level)
     
     ex7=upper3.sample()
-    if(ex7.iat[0,0] == ex6.iat[0,0] or ex7.iat[0,0] == ex5.iat[0,0] or ex7.iat[0,0] == ex4.iat[0,0] or ex7.iat[0,0] == ex3.iat[0,0] or ex7.iat[0,0] == ex2.iat[0,0] or ex7.iat[0,0] == ex1.iat[0,0]):
+    if(ex7.iat[0,1] == ex6.iat[0,1] or ex7.iat[0,1] == ex5.iat[0,1] or ex7.iat[0,1] == ex4.iat[0,1] or ex7.iat[0,1] == ex3.iat[0,1] or ex7.iat[0,1] == ex2.iat[0,1] or ex7.iat[0,1] == ex1.iat[0,1]):
       upperbody(level)    
 
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
 
     if(level=="Intermediate" or level=="Professional"):
         ex8=upper4.sample()
-        if(ex8.iat[0,0] == ex7.iat[0,0] or ex8.iat[0,0] == ex6.iat[0,0] or ex8.iat[0,0] == ex5.iat[0,0] or ex8.iat[0,0] == ex4.iat[0,0] or ex8.iat[0,0] == ex3.iat[0,0] or ex8.iat[0,0] == ex2.iat[0,0] or ex8.iat[0,0] == ex1.iat[0,0]):
+        if(ex8.iat[0,1] == ex7.iat[0,1] or ex8.iat[0,1] == ex6.iat[0,1] or ex8.iat[0,1] == ex5.iat[0,1] or ex8.iat[0,1] == ex4.iat[0,1] or ex8.iat[0,1] == ex3.iat[0,1] or ex8.iat[0,1] == ex2.iat[0,1] or ex8.iat[0,1] == ex1.iat[0,1]):
          upperbody(level)
         
         ex9=upper.sample()
-        if(ex9.iat[0,0] == ex8.iat[0,0] or ex9.iat[0,0] == ex7.iat[0,0] or ex9.iat[0,0] == ex6.iat[0,0] or ex9.iat[0,0] == ex5.iat[0,0] or ex9.iat[0,0] == ex4.iat[0,0] or ex9.iat[0,0] == ex3.iat[0,0] or ex9.iat[0,0] == ex2.iat[0,0] or ex9.iat[0,0] == ex1.iat[0,0]):
+        if(ex9.iat[0,1] == ex8.iat[0,1] or ex9.iat[0,1] == ex7.iat[0,1] or ex9.iat[0,1] == ex6.iat[0,1] or ex9.iat[0,1] == ex5.iat[0,1] or ex9.iat[0,1] == ex4.iat[0,1] or ex9.iat[0,1] == ex3.iat[0,1] or ex9.iat[0,1] == ex2.iat[0,1] or ex9.iat[0,1] == ex1.iat[0,1]):
          upperbody(level) 
             
         ex10=upper.sample()
-        if(ex10.iat[0,0] == ex9.iat[0,0] or ex10.iat[0,0] == ex8.iat[0,0] or ex10.iat[0,0] == ex7.iat[0,0] or ex10.iat[0,0] == ex6.iat[0,0] or ex10.iat[0,0] == ex5.iat[0,0] or ex10.iat[0,0] == ex4.iat[0,0] or ex10.iat[0,0] == ex3.iat[0,0] or ex10.iat[0,0] == ex2.iat[0,0] or ex10.iat[0,0] == ex1.iat[0,0]):
+        if(ex10.iat[0,1] == ex9.iat[0,1] or ex10.iat[0,1] == ex8.iat[0,1] or ex10.iat[0,1] == ex7.iat[0,1] or ex10.iat[0,1] == ex6.iat[0,1] or ex10.iat[0,1] == ex5.iat[0,1] or ex10.iat[0,1] == ex4.iat[0,1] or ex10.iat[0,1] == ex3.iat[0,1] or ex10.iat[0,1] == ex2.iat[0,1] or ex10.iat[0,1] == ex1.iat[0,1]):
          upperbody(level) 
             
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
 
     if(level=="Professional"):
         ex11=upper.sample()
-        if(ex11.iat[0,0] == ex10.iat[0,0] or ex11.iat[0,0] == ex9.iat[0,0] or ex11.iat[0,0] == ex8.iat[0,0] or ex11.iat[0,0] == ex7.iat[0,0] or ex11.iat[0,0] == ex6.iat[0,0] or ex11.iat[0,0] == ex5.iat[0,0] or ex11.iat[0,0] == ex4.iat[0,0] or ex11.iat[0,0] == ex3.iat[0,0] or ex11.iat[0,0] == ex2.iat[0,0] or ex11.iat[0,0] == ex1.iat[0,0]):
+        if(ex11.iat[0,1] == ex10.iat[0,1] or ex11.iat[0,1] == ex9.iat[0,1] or ex11.iat[0,1] == ex8.iat[0,1] or ex11.iat[0,1] == ex7.iat[0,1] or ex11.iat[0,1] == ex6.iat[0,1] or ex11.iat[0,1] == ex5.iat[0,1] or ex11.iat[0,1] == ex4.iat[0,1] or ex11.iat[0,1] == ex3.iat[0,1] or ex11.iat[0,1] == ex2.iat[0,1] or ex11.iat[0,1] == ex1.iat[0,1]):
             upperbody(level) 
             
         ex12=upper.sample()
-        if(ex12.iat[0,0] == ex11.iat[0,0] or ex12.iat[0,0] == ex10.iat[0,0] or ex12.iat[0,0] == ex9.iat[0,0] or ex12.iat[0,0] == ex8.iat[0,0] or ex12.iat[0,0] == ex7.iat[0,0] or ex12.iat[0,0] == ex6.iat[0,0] or ex12.iat[0,0] == ex5.iat[0,0] or ex12.iat[0,0] == ex4.iat[0,0] or ex12.iat[0,0] == ex3.iat[0,0] or ex12.iat[0,0] == ex2.iat[0,0] or ex12.iat[0,0] == ex1.iat[0,0]):
+        if(ex12.iat[0,1] == ex11.iat[0,1] or ex12.iat[0,1] == ex10.iat[0,1] or ex12.iat[0,1] == ex9.iat[0,1] or ex12.iat[0,1] == ex8.iat[0,1] or ex12.iat[0,1] == ex7.iat[0,1] or ex12.iat[0,1] == ex6.iat[0,1] or ex12.iat[0,1] == ex5.iat[0,1] or ex12.iat[0,1] == ex4.iat[0,1] or ex12.iat[0,1] == ex3.iat[0,1] or ex12.iat[0,1] == ex2.iat[0,1] or ex12.iat[0,1] == ex1.iat[0,1]):
          upperbody(level)     
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
 
@@ -242,30 +243,30 @@ def upperbody(level):
 
 def lowerbody(level):
     global lowerbodygeneralmuscle,lowerbodyforce,lowerbodyname
-    ex1=lower1.sample()
-    ex2=lower2.sample()
-    if(ex1.iat[0,0] == ex2.iat[0,0] ):
+    ex1=lower.sample()
+    ex2=lower.sample()
+    if(ex1.iat[0,1] == ex2.iat[0,1] ):
         lowerbody(level)
     
-    ex3=lower1.sample()
-    if(ex3.iat[0,0] == ex2.iat[0,0] or ex3.iat[0,0] == ex1.iat[0,0]):
+    ex3=lower.sample()
+    if(ex3.iat[0,1] == ex2.iat[0,1] or ex3.iat[0,1] == ex1.iat[0,1]):
         lowerbody(level)
         
-    ex4=lower2.sample()
-    if(ex4.iat[0,0] == ex3.iat[0,0] or ex4.iat[0,0] == ex2.iat[0,0] or ex4.iat[0,0] == ex1.iat[0,0]):
+    ex4=lower.sample()
+    if(ex4.iat[0,1] == ex3.iat[0,1] or ex4.iat[0,1] == ex2.iat[0,1] or ex4.iat[0,1] == ex1.iat[0,1]):
         lowerbody(level)
         
-    ex5=lower1.sample()
-    if(ex5.iat[0,0] == ex4.iat[0,0] or ex5.iat[0,0] == ex3.iat[0,0] or ex5.iat[0,0] == ex2.iat[0,0] or ex5.iat[0,0] == ex1.iat[0,0]):
-        lowerbody(level)
+    ex5=lower.sample()
+    #if(ex5.iat[0,1] == ex4.iat[0,1] or ex5.iat[0,1] == ex3.iat[0,1] or ex5.iat[0,1] == ex2.iat[0,1] or ex5.iat[0,1] == ex1.iat[0,1]):
+    #    lowerbody(level)
         
     
-    ex6=lower2.sample()
-    if(ex6.iat[0,0] == ex5.iat[0,0] or ex6.iat[0,0] == ex4.iat[0,0] or ex6.iat[0,0] == ex3.iat[0,0] or ex6.iat[0,0] == ex2.iat[0,0] or ex6.iat[0,0] == ex1.iat[0,0]):
+    ex6=lower.sample()
+    if(ex6.iat[0,1] == ex5.iat[0,1] or ex6.iat[0,1] == ex4.iat[0,1] or ex6.iat[0,1] == ex3.iat[0,1] or ex6.iat[0,1] == ex2.iat[0,1] or ex6.iat[0,1] == ex1.iat[0,1]):
         lowerbody(level)
     
     ex7=lower.sample()
-    if(ex7.iat[0,0] == ex6.iat[0,0] or ex7.iat[0,0] == ex5.iat[0,0] or ex7.iat[0,0] == ex4.iat[0,0] or ex7.iat[0,0] == ex3.iat[0,0] or ex7.iat[0,0] == ex2.iat[0,0] or ex7.iat[0,0] == ex1.iat[0,0]):
+    if(ex7.iat[0,1] == ex6.iat[0,1] or ex7.iat[0,1] == ex5.iat[0,1] or ex7.iat[0,1] == ex4.iat[0,1] or ex7.iat[0,1] == ex3.iat[0,1] or ex7.iat[0,1] == ex2.iat[0,1] or ex7.iat[0,1] == ex1.iat[0,1]):
         lowerbody(level)
         
         
@@ -273,26 +274,26 @@ def lowerbody(level):
 
     if(level=="Intermediate" or level=="Professional"):
         ex8=lower.sample()
-        if(ex8.iat[0,0] == ex7.iat[0,0] or ex8.iat[0,0] == ex6.iat[0,0] or ex8.iat[0,0] == ex5.iat[0,0] or ex8.iat[0,0] == ex4.iat[0,0] or ex8.iat[0,0] == ex3.iat[0,0] or ex8.iat[0,0] == ex2.iat[0,0] or ex8.iat[0,0] == ex1.iat[0,0]):
-            lowerbody(level) 
+        #if(ex8.iat[0,1] == ex7.iat[0,1] or ex8.iat[0,1] == ex6.iat[0,1] or ex8.iat[0,1] == ex5.iat[0,1] or ex8.iat[0,1] == ex4.iat[0,1] or ex8.iat[0,1] == ex3.iat[0,1] or ex8.iat[0,1] == ex2.iat[0,1] or ex8.iat[0,1] == ex1.iat[0,1]):
+        #    lowerbody(level) 
             
         ex9=lower.sample()
-        if(ex9.iat[0,0] == ex8.iat[0,0] or ex9.iat[0,0] == ex7.iat[0,0] or ex9.iat[0,0] == ex6.iat[0,0] or ex9.iat[0,0] == ex5.iat[0,0] or ex9.iat[0,0] == ex4.iat[0,0] or ex9.iat[0,0] == ex3.iat[0,0] or ex9.iat[0,0] == ex2.iat[0,0] or ex9.iat[0,0] == ex1.iat[0,0]):
+        if(ex9.iat[0,1] == ex8.iat[0,1] or ex9.iat[0,1] == ex7.iat[0,1] or ex9.iat[0,1] == ex6.iat[0,1] or ex9.iat[0,1] == ex5.iat[0,1] or ex9.iat[0,1] == ex4.iat[0,1] or ex9.iat[0,1] == ex3.iat[0,1] or ex9.iat[0,1] == ex2.iat[0,1] or ex9.iat[0,1] == ex1.iat[0,1]):
             lowerbody(level) 
             
         ex10=lower.sample()
-        if(ex10.iat[0,0] == ex9.iat[0,0] or ex10.iat[0,0] == ex8.iat[0,0] or ex10.iat[0,0] == ex7.iat[0,0] or ex10.iat[0,0] == ex6.iat[0,0] or ex10.iat[0,0] == ex5.iat[0,0] or ex10.iat[0,0] == ex4.iat[0,0] or ex10.iat[0,0] == ex3.iat[0,0] or ex10.iat[0,0] == ex2.iat[0,0] or ex10.iat[0,0] == ex1.iat[0,0]):
-            lowerbody(level) 
+        #if(ex10.iat[0,1] == ex9.iat[0,1] or ex10.iat[0,1] == ex8.iat[0,1] or ex10.iat[0,1] == ex7.iat[0,1] or ex10.iat[0,1] == ex6.iat[0,1] or ex10.iat[0,1] == ex5.iat[0,1] or ex10.iat[0,1] == ex4.iat[0,1] or ex10.iat[0,1] == ex3.iat[0,1] or ex10.iat[0,1] == ex2.iat[0,1] or ex10.iat[0,1] == ex1.iat[0,1]):
+        #    lowerbody(level) 
             
         rs=pd.concat([ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     if(level=="Professional"):
         ex11=lower.sample()
-        if(ex11.iat[0,0] == ex10.iat[0,0] or ex11.iat[0,0] == ex9.iat[0,0] or ex11.iat[0,0] == ex8.iat[0,0] or ex11.iat[0,0] == ex7.iat[0,0] or ex11.iat[0,0] == ex6.iat[0,0] or ex11.iat[0,0] == ex5.iat[0,0] or ex11.iat[0,0] == ex4.iat[0,0] or ex11.iat[0,0] == ex3.iat[0,0] or ex11.iat[0,0] == ex2.iat[0,0] or ex11.iat[0,0] == ex1.iat[0,0]):
+        if(ex11.iat[0,1] == ex10.iat[0,1] or ex11.iat[0,1] == ex9.iat[0,1] or ex11.iat[0,1] == ex8.iat[0,1] or ex11.iat[0,1] == ex7.iat[0,1] or ex11.iat[0,1] == ex6.iat[0,1] or ex11.iat[0,1] == ex5.iat[0,1] or ex11.iat[0,1] == ex4.iat[0,1] or ex11.iat[0,1] == ex3.iat[0,1] or ex11.iat[0,1] == ex2.iat[0,1] or ex11.iat[0,1] == ex1.iat[0,1]):
             lowerbody(level) 
             
         ex12=lower.sample()
-        if(ex12.iat[0,0] == ex11.iat[0,0] or ex12.iat[0,0] == ex10.iat[0,0] or ex12.iat[0,0] == ex9.iat[0,0] or ex12.iat[0,0] == ex8.iat[0,0] or ex12.iat[0,0] == ex7.iat[0,0] or ex12.iat[0,0] == ex6.iat[0,0] or ex12.iat[0,0] == ex5.iat[0,0] or ex12.iat[0,0] == ex4.iat[0,0] or ex12.iat[0,0] == ex3.iat[0,0] or ex12.iat[0,0] == ex2.iat[0,0] or ex12.iat[0,0] == ex1.iat[0,0]):
-            lowerbody(level) 
+        #if(ex12.iat[0,1] == ex11.iat[0,1] or ex12.iat[0,1] == ex10.iat[0,1] or ex12.iat[0,1] == ex9.iat[0,1] or ex12.iat[0,1] == ex8.iat[0,1] or ex12.iat[0,1] == ex7.iat[0,1] or ex12.iat[0,1] == ex6.iat[0,1] or ex12.iat[0,1] == ex5.iat[0,1] or ex12.iat[0,1] == ex4.iat[0,1] or ex12.iat[0,1] == ex3.iat[0,1] or ex12.iat[0,1] == ex2.iat[0,1] or ex12.iat[0,1] == ex1.iat[0,1]):
+        #    lowerbody(level) 
         rs=pd.concat([ex12,ex11,ex10, ex9,ex8,ex7, ex6,ex5, ex4,ex3, ex2,ex1])
     lowerbodyname=rs.copy()
     lowerbodyforce=rs.copy()
@@ -550,3 +551,9 @@ def altEqpmnt(exName):
     else:
         eqList= 'No equipment'
     return eqList
+
+
+exercises (True,True,True,True,True,True)
+upperbody("Intermediate")
+lowerbody("Intermediate")
+
