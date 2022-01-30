@@ -261,6 +261,7 @@ public class Exercise extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("index",index);
                 i.putExtra("level",level);
+                i.putExtra("generalMuscle",generalMuscle);
                 startActivity(i);
     }
 }

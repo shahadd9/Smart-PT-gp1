@@ -38,8 +38,9 @@ public class Alternative extends AppCompatActivity {
 //    private TextView test1,test2,test3,test4, back;
     private TextView lbl1,exName1,exName2, equ1,equ2, back;
     private Button exBtn1,exBtn2;
-    private String name, SessionNo,level,exercise1,eqName1,exercise2, excName1,excName2,ex1String,ex2String,force1,muscle1,force2,muscle2,day,force,muscle,dday,fforce,mmuscle;
+    private String name,generalMuscle,currDay,SessionNo,level,exercise1,eqName1,eqName2,exercise2, excName1,excName2,ex1String,ex2String,force1,muscle1,force2,muscle2,day,force,muscle,dday,fforce,mmuscle;
     private int index;
+    ;
     String ex1[] = new String[4];
     String ex2[] = new String[4];
     String dayAr[]=new String[100];
@@ -95,18 +96,22 @@ public class Alternative extends AppCompatActivity {
         SessionNo = getIntent().getStringExtra("SessionNo");
         name=getIntent().getStringExtra("name");
         level=getIntent().getStringExtra("level");
+        currDay=getIntent().getStringExtra("currDay");
+        generalMuscle=getIntent().getStringExtra("generalMuscle");
 
 
         //////////////////////////////////////////////////
 
         lbl1.setText(name+" Exercise Alternatives:");
+//        lbl1.setText(index+"_"+currDay);
+
         ////////////////////////////////////////////////////
         findAlternative(name);
 
 //        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
 //        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 //        db = FirebaseFirestore.getInstance();
-//        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(index+1));
+//        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay+1));
 //        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
 //            @Override
 //            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -212,13 +217,16 @@ public class Alternative extends AppCompatActivity {
         // creating python object
         PyObject pyObj= py.getModule("myscript"); // call the python file
 
-        PyObject alt1 = pyObj.callAttr("findAlternative1",name,1); // call the alt1 method in python
+        PyObject alt1 = pyObj.callAttr("findAlternative1",name,1,generalMuscle); // call the alt1 method in python
         exercise1 = alt1.toString();//retrieve  output
-        ex1String=exercise1.substring(1,exercise1.length()-3);
-        ex1= ex1String.split("_");
+//        ex1String=exercise1.substring(1,exercise1.length()-3);
+        ex1= exercise1.split("_");
         excName1=ex1[0].substring(1,ex1[0].length());
         force1=ex1[1].substring(3,ex1[1].length());
         muscle1=ex1[2].substring(3,ex1[2].length());
+        excName1=ex1[0];
+        force1=ex1[1];
+        muscle1=ex1[2];
         exName1.setText(excName1);
         PyObject eq1 = pyObj.callAttr("altEqpmnt",excName1); // call the altEqpmnt method in python to return the exercise needed equipment
         eqName1 = eq1.toString();//retrieve  output
@@ -226,14 +234,17 @@ public class Alternative extends AppCompatActivity {
 
 
         ///
-        PyObject alt2 = pyObj.callAttr("findAlternative1",name,2); // call the alt2 method in python
+        PyObject alt2 = pyObj.callAttr("findAlternative1",name,2,generalMuscle); // call the alt2 method in python
         exercise2 = alt2.toString();//retrieve
-        ex2String=exercise2.substring(1,exercise2.length()-3);
-        ex2= ex2String.split("_");
-        excName2=ex2[0].substring(1,ex2[0].length());
-        force2=ex2[1].substring(3,ex2[1].length());
-        muscle2=ex2[2].substring(3,ex2[2].length());
+//        ex2String=exercise2.substring(1,exercise2.length()-3);
+        ex2= exercise2.split("_");
+        excName2=ex2[0];
+        force2=ex2[1];
+        muscle2=ex2[2];
         exName2.setText(excName2);
+        PyObject eq2 = pyObj.callAttr("altEqpmnt",excName2); // call the altEqpmnt method in python to return the exercise needed equipment
+        eqName2 = eq2.toString();//retrieve  output
+        equ2.setText(eqName2);
 
 
 //        ex2String=exercise2.substring(2,exercise2.length()-3);

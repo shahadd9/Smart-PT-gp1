@@ -482,7 +482,7 @@ tfidf_matrix = tfidf.fit_transform(df['targetedmuscle'])
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 indices = pd.Series(df.index, index=df['exercisename']).drop_duplicates()
 
-def findAlternative1(exName,num,cosine_sim=cosine_sim):
+def findAlternative1(exName,num,muscle,cosine_sim=cosine_sim):
     idx = indices[exName]
 
     sim_scores = list(enumerate(cosine_sim[idx]))
@@ -498,10 +498,20 @@ def findAlternative1(exName,num,cosine_sim=cosine_sim):
 
     for i in range(leng):
         ex[i]=ex_indices[i]+1
+
     if num==1:
         alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==1)]
-    else:
+        if not alt.empty:
+            alt=alt.iloc[0]
+
+    elif num==2:
         alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==0)]
+        if not alt.empty:
+            alt=alt.iloc[0]
+
+    if alt.empty:
+        alt=df.loc[(df['exercisename']!=exName)&(df['generalmuscle']==muscle)]
+        alt=alt.iloc[0]
 
 
     
