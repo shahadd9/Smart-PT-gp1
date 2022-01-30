@@ -19,11 +19,7 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".LoadPaP2"
@@ -108,7 +104,12 @@
             android:name=".Home"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SmartPT.NoActionBar" />
+            android:theme="@style/Theme.SmartPT.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
     </application>
 
 </manifest>
