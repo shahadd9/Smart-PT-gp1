@@ -499,19 +499,23 @@ def findAlternative1(exName,num,muscle,cosine_sim=cosine_sim):
     for i in range(leng):
         ex[i]=ex_indices[i]+1
 
-    if num==1:
-        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==1)]
+    if num==0:
+        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==0) & (df['generalmuscle']==muscle)]
         if not alt.empty:
             alt=alt.iloc[0]
 
-    elif num==2:
-        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==0)]
+    if num==1:
+        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==1) & (df['generalmuscle']==muscle)]
         if not alt.empty:
             alt=alt.iloc[0]
 
     if alt.empty:
-        alt=df.loc[(df['exercisename']!=exName)&(df['generalmuscle']==muscle)]
-        alt=alt.iloc[0]
+        alt=df.loc[(df['id'].isin(ex)) & (df['exercisename']!=exName)&(df['generalmuscle']==muscle)&(df['isneedequipment']==num)]
+        if not alt.empty:
+           alt=alt.iloc[0]
+        if alt.empty:
+           alt=df.loc[(df['exercisename']!=exName)&(df['generalmuscle']==muscle)]
+           alt=alt.iloc[1]
 
 
     
