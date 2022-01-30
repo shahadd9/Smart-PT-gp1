@@ -169,6 +169,7 @@ public class PlanView extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
+    private String currDay="";
 
 
     private String Wplan;
@@ -182,7 +183,7 @@ public class PlanView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
-
+        currDay="9";
         TextviewEx1 = findViewById(R.id.textViewex1);
         TextviewEx2 = findViewById(R.id.textViewex2);
         TextviewEx3 = findViewById(R.id.textViewex3);
@@ -236,7 +237,6 @@ public class PlanView extends AppCompatActivity {
         level = getIntent().getStringExtra("level");
         TT = findViewById(R.id.WeeklytextView);
 
-//        SessionNo="";
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
@@ -421,6 +421,7 @@ public class PlanView extends AppCompatActivity {
 
 //                        }
                     if (SessionNo.equals("5")) {
+                        currDay="2";
                         day2();
                     }
 
@@ -481,6 +482,7 @@ public class PlanView extends AppCompatActivity {
 //
 //                        }
                     if (SessionNo.equals("4")) {
+                        currDay="4";
                         day4();
 
                     }
@@ -555,20 +557,23 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
                     if (SessionNo.equals("2")) {
-
+                        currDay="1";
                         day1();
 
                     }
                     if (SessionNo.equals("3")) {
+                        currDay="1";
                         day1();
 
 
                     }
                     if (SessionNo.equals("4")) {
+                        currDay="1";
                         day1();
 
                     }
                     if (SessionNo.equals("5")) {
+                        currDay="1";
                         day1();
                     }
                     //     break;
@@ -633,20 +638,24 @@ public class PlanView extends AppCompatActivity {
 
 
                     if (SessionNo.equals("2")) {
+                        currDay="2";
                         day2();
 
 
                     }
                     if (SessionNo.equals("3")) {
+                        currDay="2";
                         day2();
 
 
                     }
                     if (SessionNo.equals("4")) {
+                        currDay="2";
                         day2();
 
                     }
                     if (SessionNo.equals("5")) {
+                        currDay="3";
                         day3();
                     }
                     //        break;
@@ -798,10 +807,12 @@ public class PlanView extends AppCompatActivity {
 
                     }
                     if (SessionNo.equals("4")) {
+                        currDay="3";
                         day3();
 
                     }
                     if (SessionNo.equals("5")) {
+                        currDay="4";
                         day4();
                     }
                     //       break;
@@ -866,6 +877,7 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
                     //   break;
                     if (SessionNo.equals("5")) {
+                        currDay="5";
                         day5();
                     }
 
@@ -895,6 +907,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
 
             }
@@ -911,6 +924,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",1);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
 
             }
@@ -927,6 +941,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",2);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
 
             }
@@ -943,6 +958,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("index",3);
                 i.putExtra("level",level);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
 
             }
@@ -959,6 +975,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",4);
+                i.putExtra("currDay",currDay);
                 startActivity(i);
 
             }
@@ -975,6 +992,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",5);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -991,6 +1010,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",6);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -1007,6 +1028,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",7);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -1023,6 +1046,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",8);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -1040,6 +1065,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",9);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -1057,6 +1084,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",10);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
@@ -1074,6 +1103,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",11);
+                i.putExtra("currDay",currDay);
+
                 startActivity(i);
 
             }
