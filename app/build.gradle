@@ -22,6 +22,7 @@ android {
             buildPython "C:/Windows/py.exe", "-3.8"
             pip{
                 install "pandas"
+                install "sklearn"
             }
         }
     }

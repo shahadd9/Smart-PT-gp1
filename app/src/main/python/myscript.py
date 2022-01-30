@@ -4,6 +4,9 @@ import pandas as pd
 from os.path import dirname, join
 from io import StringIO
 import numpy as np
+import sklearn
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import linear_kernel
 
 
 
@@ -23,11 +26,11 @@ data = io.StringIO(dataDetails)
 
 dfDetails = pd.read_csv(data, sep=",")
 
-# print(dfDetails['isneedequipment'])
+# print(df['exercisename'])
+
 
 
 eqEx=pd.DataFrame()
-
 
 planlist = []
 def exercises (bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine):
@@ -465,5 +468,71 @@ def getfivedaymuscle():
 
     return str1
 
-exercises (TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
-fiveDay("Intermediate",1)
+# exercises (TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)
+# fiveDay("Intermediate",1)
+
+#Define a TF-IDF Vectorizer Object. Remove all english stop words such as 'the', 'a'
+tfidf = TfidfVectorizer(stop_words='english')
+
+#Replace NaN with an empty string
+df['targetedmuscle'] = df['targetedmuscle'].fillna('')
+
+#Construct the required TF-IDF matrix by fitting and transforming the data
+tfidf_matrix = tfidf.fit_transform(df['targetedmuscle'])
+cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+indices = pd.Series(df.index, index=df['exercisename']).drop_duplicates()
+
+def findAlternative1(exName,num,cosine_sim=cosine_sim):
+    idx = indices[exName]
+
+    sim_scores = list(enumerate(cosine_sim[idx]))
+
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+
+    sim_scores = sim_scores[1:11]
+
+    ex_indices = [i[0] for i in sim_scores]
+    leng=len(ex_indices)
+
+    ex = np.empty(len(ex_indices), dtype = int)
+
+    for i in range(leng):
+        ex[i]=ex_indices[i]+1
+    if num==1:
+        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==1)]
+    else:
+        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==0)]
+
+
+    
+    alt=alt[['exercisename','force','generalmuscle']] #,,'bench''dumbbell','barbell','stability ball','dip machine','pull-up bar','cable machine'
+    alt=alt.to_numpy()
+    str1 = ""
+    for ele in alt: 
+
+        str1 += ele+"_"
+
+    return str1
+
+def altEqpmnt(exName):
+    eqList=''
+    dfeq=df.loc[df['exercisename'] == exName]
+    dfeq=dfeq[['bench','dumbbell','barbell','stability ball','dip machine','pull-up bar','cable machine']]
+    dfeq=dfeq.values.tolist()
+    if dfeq[0][0]==1:
+       return('Bench')
+    elif dfeq[0][1]==1:
+       eqList=eqList+'Dumbbell'
+    elif dfeq[0][2]==1:
+       eqList=eqList+'Barbell'
+    elif dfeq[0][3]==1:
+       eqList=eqList+'Stability Ball'
+    elif dfeq[0][4]==1:
+       eqList=eqList+'Dip Machine'
+    elif dfeq[0][5]==1:
+       eqList=eqList+'Pull-up Bar'
+    elif dfeq[0][6]==1:
+       eqList=eqList+'Cable Machine'
+    else:
+        eqList= 'No equipment'
+    return eqList
