@@ -7,26 +7,27 @@ import numpy as np
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 
 
 filename = join(dirname(__file__), "dataset.csv")
 with open(filename, 'r', encoding='utf8', errors="ignore") as fin:
     data1=fin.read().lower()
-
 data = io.StringIO(data1)
-
 df = pd.read_csv(data, sep=",") # here i read our dataset as dataframe, you can use it as normal
 
-filename1 = join(dirname(__file__), "details.csv")
+filename1 = join(dirname(__file__), "matrix.csv")
 with open(filename1, 'r', encoding='utf8', errors="ignore") as fin:
-    dataDetails=fin.read().lower()
+    data2=fin.read().lower()
 
-data = io.StringIO(dataDetails)
+data3 = io.StringIO(data2)
 
-dfDetails = pd.read_csv(data, sep=",")
-
-# print(df['exercisename'])
+df1 = pd.read_csv(data3, sep=",")
+df1 = df1.iloc[: , 2:]
+# df1=pd.read_csv('matrix.csv')
+# print(df1)
 
 
 
@@ -482,52 +483,68 @@ df['targetedmuscle'] = df['targetedmuscle'].fillna('')
 tfidf_matrix = tfidf.fit_transform(df['targetedmuscle'])
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 indices = pd.Series(df.index, index=df['exercisename']).drop_duplicates()
+df1=cosine_similarity(df1)
+cos_sim_data = pd.DataFrame(cosine_similarity(df1))
 
-def findAlternative1(exName,num,muscle,cosine_sim=cosine_sim):
-    idx = indices[exName]
+def findAlternative1(exName,num,muscle,repeated,cosine_sim=cosine_sim):
+#     idx = indices[exName]
+#     sim_scores = list(enumerate(cosine_sim[idx]))
+#     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+#     sim_scores = sim_scores[1:11]
+#     ex_indices = [i[0] for i in sim_scores]
+#     leng=len(ex_indices)
+#     ex = np.empty(len(ex_indices), dtype = int)
+#     for i in range(leng):
+#         ex[i]=ex_indices[i]+1
+  index=df.index[df['exercisename']==exName]
+  index=index[0] #exercise index to find its alternatives 
+  ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[1:10]
+  movies_recomm =  df['exercisename'].loc[ex].values
+  for i in range(9):
+    ex[i]=ex[i]+1
+  RecommendedList=[]
+  j=1
+  for movie in movies_recomm:
+      k=df.index[df['exercisename'] == movie].tolist()
+      k=k[0]
+      RecommendedList.append([j,movie,df.at[k,'force'],df.at[k,'generalmuscle'],df.at[k,'isneedequipment']])
+      j=j+1
+#       print('The number %i recommended movie is this one: %s \n'%(k,movie))
 
-    sim_scores = list(enumerate(cosine_sim[idx]))
+  RecommendedList = pd.DataFrame(RecommendedList, columns=['id','exercisename','force','generalmuscle','isneedequipment'])
+    # print(RecommendedList)
 
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-
-    sim_scores = sim_scores[1:11]
-
-    ex_indices = [i[0] for i in sim_scores]
-    leng=len(ex_indices)
-
-    ex = np.empty(len(ex_indices), dtype = int)
-
-    for i in range(leng):
-        ex[i]=ex_indices[i]+1
-
-    if num==0:
-        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==0) & (df['generalmuscle']==muscle)]
+  if num==0:
+        alt=RecommendedList.loc[(RecommendedList['exercisename']!=exName)&(RecommendedList['exercisename']!=repeated) & (RecommendedList['isneedequipment']==0) & (RecommendedList['generalmuscle']==muscle)]
         if not alt.empty:
             alt=alt.iloc[0]
 
-    if num==1:
-        alt=df.loc[(df['id'].isin(ex))& (df['exercisename']!=exName) & (df['isneedequipment']==1) & (df['generalmuscle']==muscle)]
+  if num==1:
+        alt=RecommendedList.loc[(RecommendedList['exercisename']!=exName) &(RecommendedList['exercisename']!=repeated)& (RecommendedList['isneedequipment']==1) & (RecommendedList['generalmuscle']==muscle)]
         if not alt.empty:
             alt=alt.iloc[0]
 
-    if alt.empty:
-        alt=df.loc[(df['id'].isin(ex)) & (df['exercisename']!=exName)&(df['generalmuscle']==muscle)&(df['isneedequipment']==num)]
+  if alt.empty:
+        alt=RecommendedList.loc[(RecommendedList['exercisename']!=exName)&(RecommendedList['exercisename']!=repeated)&(RecommendedList['generalmuscle']==muscle)]
         if not alt.empty:
            alt=alt.iloc[0]
-        if alt.empty:
-           alt=df.loc[(df['exercisename']!=exName)&(df['generalmuscle']==muscle)]
-           alt=alt.iloc[1]
+#            if repeated==alt['exercisename']:
+#                alt=RecommendedList.loc[(RecommendedList['exercisename']!=exName)&(RecommendedList['generalmuscle']==muscle)]
+#                alt=alt.iloc[1]
+
+#         if alt.empty:
+#            alt=df.loc[(df['id'].isin(ex)) &(df['exercisename']!=exName)]#&(df['generalmuscle']==muscle)
+#            alt=alt.iloc[3]
 
 
     
-    alt=alt[['exercisename','force','generalmuscle']] #,,'bench''dumbbell','barbell','stability ball','dip machine','pull-up bar','cable machine'
-    alt=alt.to_numpy()
-    str1 = ""
-    for ele in alt: 
+  alt=alt[['exercisename','force','generalmuscle']] #,,'bench''dumbbell','barbell','stability ball','dip machine','pull-up bar','cable machine'
+  alt=alt.to_numpy()
+  str1 = ""
+  for ele in alt: 
+    str1 += ele+"_"
 
-        str1 += ele+"_"
-
-    return str1
+  return str1
 
 def altEqpmnt(exName):
     eqList=''
