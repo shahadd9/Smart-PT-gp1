@@ -289,7 +289,7 @@ public class Alternative extends AppCompatActivity {
         // creating python object
         PyObject pyObj= py.getModule("myscript"); // call the python file
 
-        PyObject alt1 = pyObj.callAttr("findAlternative1",name,0,generalMuscle); // call the alt1 method in python
+        PyObject alt1 = pyObj.callAttr("findAlternative1",name,0,generalMuscle,"repeated"); // call the alt1 method in python
         exercise1 = alt1.toString();//retrieve  output
 //        ex1String=exercise1.substring(1,exercise1.length()-3);
         ex1= exercise1.split("_");
@@ -306,7 +306,7 @@ public class Alternative extends AppCompatActivity {
 
 
         ///
-        PyObject alt2 = pyObj.callAttr("findAlternative1",name,1,generalMuscle); // call the alt2 method in python
+        PyObject alt2 = pyObj.callAttr("findAlternative1",name,1,generalMuscle,excName1); // call the alt2 method in python
         exercise2 = alt2.toString();//retrieve
 //        ex2String=exercise2.substring(1,exercise2.length()-3);
         ex2= exercise2.split("_");
