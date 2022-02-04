@@ -499,17 +499,17 @@ def findAlternative1(exName,num,muscle,repeated,cosine_sim=cosine_sim):
   index=df.index[df['exercisename']==exName]
   index=index[0] #exercise index to find its alternatives 
   ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[1:10]
-  movies_recomm =  df['exercisename'].loc[ex].values
+  ex_recomm =  df['exercisename'].loc[ex].values
   for i in range(9):
     ex[i]=ex[i]+1
   RecommendedList=[]
   j=1
-  for movie in movies_recomm:
-      k=df.index[df['exercisename'] == movie].tolist()
+  for exercise in ex_recomm:
+      k=df.index[df['exercisename'] == exercise].tolist()
       k=k[0]
-      RecommendedList.append([j,movie,df.at[k,'force'],df.at[k,'generalmuscle'],df.at[k,'isneedequipment']])
+      RecommendedList.append([j,exercise,df.at[k,'force'],df.at[k,'generalmuscle'],df.at[k,'isneedequipment']])
       j=j+1
-#       print('The number %i recommended movie is this one: %s \n'%(k,movie))
+#       print('The number %i recommended exercises is this one: %s \n'%(k,exercise))
 
   RecommendedList = pd.DataFrame(RecommendedList, columns=['id','exercisename','force','generalmuscle','isneedequipment'])
     # print(RecommendedList)
@@ -569,8 +569,4 @@ def altEqpmnt(exName):
         eqList= 'No equipment'
     return eqList
 
-
-exercises (True,True,True,True,True,True)
-upperbody("Intermediate")
-lowerbody("Intermediate")
 
