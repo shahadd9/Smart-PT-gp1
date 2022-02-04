@@ -269,7 +269,6 @@ public class PlanView extends AppCompatActivity {
                 });
 
 
-//        retreiveTDays();
         call_E_F_M();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);

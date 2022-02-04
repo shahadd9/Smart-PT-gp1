@@ -501,7 +501,7 @@ def findAlternative1(exName,num,muscle,repeated,cosine_sim=cosine_sim):
   ex_recomm =  df['exercisename'].loc[ex].values
   for i in range(9):
     ex[i]=ex[i]+1
-  RecommendedList=[]
+  RecommendedList=[]#append
   j=1
   for exercise in ex_recomm:
       k=df.index[df['exercisename'] == exercise].tolist()
