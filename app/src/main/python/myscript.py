@@ -508,7 +508,7 @@ def findAlternative1(exName,num,muscle,repeated,cosine_sim=cosine_sim):
       k=k[0]
       RecommendedList.append([j,exercise,df.at[k,'force'],df.at[k,'generalmuscle'],df.at[k,'isneedequipment']])
       j=j+1
-#       print('The number %i recommended movie is this one: %s \n'%(k,movie))
+#       print('The number %i recommended exercises is this one: %s \n'%(k,exercise))
 
   RecommendedList = pd.DataFrame(RecommendedList, columns=['id','exercisename','force','generalmuscle','isneedequipment'])
     # print(RecommendedList)
