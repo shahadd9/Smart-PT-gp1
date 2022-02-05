@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.MenuItem;
@@ -906,7 +907,221 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
+        butAlrt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+        butAlrt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+
+        butAlrt5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
+
+        butAlrt12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(PlanView.this, Exercise.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("level",level);
+                i.putExtra("index",0);
+                i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","methodAlt");
+
+                startActivity(i);
+            }
+        });
 
         TextviewEx1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -921,6 +1136,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",0);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
                 startActivity(i);
 
             }
@@ -938,6 +1154,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",1);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
+
                 startActivity(i);
 
             }
@@ -955,6 +1173,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",2);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
                 startActivity(i);
 
             }
@@ -972,6 +1191,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("index",3);
                 i.putExtra("level",level);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
                 startActivity(i);
 
             }
@@ -989,6 +1209,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",4);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
                 startActivity(i);
 
             }
@@ -1006,6 +1227,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",5);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1024,6 +1246,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",6);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1042,6 +1265,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",7);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1060,6 +1284,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",8);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1079,6 +1304,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",9);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1098,6 +1324,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",10);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
@@ -1117,6 +1344,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("index",11);
                 i.putExtra("currDay",currDay);
+                i.putExtra("butAlt","no");
 
                 startActivity(i);
 
