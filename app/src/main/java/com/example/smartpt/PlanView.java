@@ -935,7 +935,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",1);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -952,7 +952,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",2);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -970,7 +970,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",3);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -989,7 +989,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",4);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1007,7 +1007,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",5);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1025,7 +1025,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",6);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1043,7 +1043,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",7);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1061,7 +1061,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",8);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1079,7 +1079,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",9);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1097,7 +1097,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",10);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
@@ -1115,7 +1115,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("muscle", m1.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
-                i.putExtra("index",0);
+                i.putExtra("index",11);
                 i.putExtra("currDay",currDay);
                 i.putExtra("butAlt","methodAlt");
 
