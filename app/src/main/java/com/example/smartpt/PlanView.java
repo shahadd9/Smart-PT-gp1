@@ -230,6 +230,18 @@ public class PlanView extends AppCompatActivity {
         m10 = findViewById(R.id.m10);
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
+        ImageView butAlrt1 =(ImageView) findViewById(R.id.alrt1);
+        ImageView butAlrt2 =(ImageView) findViewById(R.id.alrt2);
+        ImageView butAlrt3 =(ImageView) findViewById(R.id.alrt3);
+        ImageView butAlrt4 =(ImageView) findViewById(R.id.alrt4);
+        ImageView butAlrt5 =(ImageView) findViewById(R.id.alrt5);
+        ImageView butAlrt6 =(ImageView) findViewById(R.id.alrt6);
+        ImageView butAlrt7 =(ImageView) findViewById(R.id.alrt7);
+        ImageView butAlrt8 =(ImageView) findViewById(R.id.alrt8);
+        ImageView butAlrt9 =(ImageView) findViewById(R.id.alrt9);
+        ImageView butAlrt10 =(ImageView) findViewById(R.id.alrt10);
+        ImageView butAlrt11 =(ImageView) findViewById(R.id.alrt11);
+        ImageView butAlrt12 =(ImageView) findViewById(R.id.alrt12);
 
 
         //ondata();
@@ -893,6 +905,7 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
+
 
 
         TextviewEx1.setOnClickListener(new View.OnClickListener() {
