@@ -88,4 +88,5 @@ public class TrainingTime extends AppCompatActivity {
         else { tTime= (String) ev.getText();}
 
     }
+
 }

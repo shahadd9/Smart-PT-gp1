@@ -50,6 +50,10 @@ public class Exercise extends AppCompatActivity {
         currDay=getIntent().getStringExtra("currDay");
         alt=(TextView)findViewById(R.id.alternative);
 
+        if (getIntent().getStringExtra("butAlt").equals("methodAlt")){
+            goToAlt(null);
+        }
+
 
 
 
