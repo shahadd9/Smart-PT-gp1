@@ -262,12 +262,12 @@ def lowerbody(level):
         
     
     ex6=lower2.sample()
-    if(ex6.iat[0,0] == ex5.iat[0,0] or ex6.iat[0,0] == ex4.iat[0,0] or ex6.iat[0,0] == ex3.iat[0,0] or ex6.iat[0,0] == ex2.iat[0,0] or ex6.iat[0,0] == ex1.iat[0,0]):
-        lowerbody(level)
+#     if(ex6.iat[0,0] == ex5.iat[0,0] or ex6.iat[0,0] == ex4.iat[0,0] or ex6.iat[0,0] == ex3.iat[0,0] or ex6.iat[0,0] == ex2.iat[0,0] or ex6.iat[0,0] == ex1.iat[0,0]):
+#         lowerbody(level)
     
     ex7=lower.sample()
-    if(ex7.iat[0,0] == ex6.iat[0,0] or ex7.iat[0,0] == ex5.iat[0,0] or ex7.iat[0,0] == ex4.iat[0,0] or ex7.iat[0,0] == ex3.iat[0,0] or ex7.iat[0,0] == ex2.iat[0,0] or ex7.iat[0,0] == ex1.iat[0,0]):
-        lowerbody(level)
+#     if(ex7.iat[0,0] == ex6.iat[0,0] or ex7.iat[0,0] == ex5.iat[0,0] or ex7.iat[0,0] == ex4.iat[0,0] or ex7.iat[0,0] == ex3.iat[0,0] or ex7.iat[0,0] == ex2.iat[0,0] or ex7.iat[0,0] == ex1.iat[0,0]):
+#         lowerbody(level)
         
         
     rs=pd.concat([ex7, ex6,ex5, ex4,ex3, ex2,ex1])
@@ -473,19 +473,20 @@ def getfivedaymuscle():
 # fiveDay("Intermediate",1)
 
 #Define a TF-IDF Vectorizer Object. Remove all english stop words such as 'the', 'a'
-tfidf = TfidfVectorizer(stop_words='english')
+# tfidf = TfidfVectorizer(stop_words='english')
+#
+# #Replace NaN with an empty string
+# df['targetedmuscle'] = df['targetedmuscle'].fillna('')
+#
+# #Construct the required TF-IDF matrix by fitting and transforming the data
+# tfidf_matrix = tfidf.fit_transform(df['targetedmuscle'])
+# cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+# indices = pd.Series(df.index, index=df['exercisename']).drop_duplicates()
 
-#Replace NaN with an empty string
-df['targetedmuscle'] = df['targetedmuscle'].fillna('')
-
-#Construct the required TF-IDF matrix by fitting and transforming the data
-tfidf_matrix = tfidf.fit_transform(df['targetedmuscle'])
-cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
-indices = pd.Series(df.index, index=df['exercisename']).drop_duplicates()
-df1=cosine_similarity(df1)
+# df1=cosine_similarity(df1)
 cos_sim_data = pd.DataFrame(cosine_similarity(df1))
 
-def findAlternative1(exName,num,muscle,repeated,cosine_sim=cosine_sim):
+def findAlternative1(exName,num,muscle,repeated): #,cosine_sim=cosine_sim
 #     idx = indices[exName]
 #     sim_scores = list(enumerate(cosine_sim[idx]))
 #     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
@@ -565,5 +566,5 @@ def altEqpmnt(exName):
     elif dfeq[0][6]==1:
        eqList=eqList+'Cable Machine'
     else:
-        eqList= 'No equipment'
+        eqList= 'No Equipment'
     return eqList
