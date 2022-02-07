@@ -315,17 +315,16 @@
 
                 <ImageView
                     android:id="@+id/start1"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/start_new" />
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt1"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt" />
 
 
                 <TextView
@@ -366,15 +365,16 @@
 
             <ImageView
                 android:id="@+id/start2"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/start_new" />
+                app:srcCompat="@drawable/startex" />
             <ImageView
                 android:id="@+id/alrt2"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                app:srcCompat="@drawable/alrt" />
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-110dp"
+                app:srcCompat="@drawable/findalt"  />
 
             <TextView
                 android:id="@+id/f2"
@@ -412,16 +412,16 @@
 
             <ImageView
                 android:id="@+id/start3"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
             <ImageView
                 android:id="@+id/alrt3"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                app:srcCompat="@drawable/alrt" />
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-110dp"
+                app:srcCompat="@drawable/findalt" />
 
             <TextView
                 android:id="@+id/f3"
@@ -460,16 +460,16 @@
 
                 <ImageView
                     android:id="@+id/start4"
-                    android:layout_width="35dp"                    android:layout_height="wrap_content"
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="57dp"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/start_new" />
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt4"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"   />
                 <TextView
                     android:id="@+id/f4"
                     android:layout_width="wrap_content"
@@ -507,16 +507,16 @@
 
             <ImageView
                 android:id="@+id/start5"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt5"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f5"
                     android:layout_width="wrap_content"
@@ -555,17 +555,17 @@
 
             <ImageView
                 android:id="@+id/start6"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
 
                 <ImageView
                     android:id="@+id/alrt6"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
 
                 <TextView
                     android:id="@+id/f6"
@@ -605,16 +605,16 @@
 
             <ImageView
                 android:id="@+id/start7"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt7"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f7"
                     android:layout_width="wrap_content"
@@ -651,17 +651,17 @@
 
                 <ImageView
                     android:id="@+id/start8"
-                    android:layout_width="35dp"                    android:layout_height="wrap_content"
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="57dp"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/start_new" />
+                    app:srcCompat="@drawable/startex" />
 
                 <ImageView
                     android:id="@+id/alrt8"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
 
                 <TextView
                     android:id="@+id/f8"
@@ -697,16 +697,16 @@
 
             <ImageView
                 android:id="@+id/start9"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt9"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f9"
                     android:layout_width="wrap_content"
@@ -743,17 +743,17 @@
 
             <ImageView
                 android:id="@+id/start10"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
 
                 <ImageView
                     android:id="@+id/alrt10"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
 
                 <TextView
                     android:id="@+id/f10"
@@ -792,16 +792,16 @@
 
             <ImageView
                 android:id="@+id/start11"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
                 <ImageView
                     android:id="@+id/alrt11"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f11"
                     android:layout_width="wrap_content"
@@ -836,17 +836,17 @@
 
             <ImageView
                 android:id="@+id/start12"
-                android:layout_width="35dp"                android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="57dp"
+                    app:srcCompat="@drawable/startex" />
 
                 <ImageView
                     android:id="@+id/alrt12"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-70dp"
-                    app:srcCompat="@drawable/alrt" />
+                    android:layout_width="54dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-110dp"
+                    app:srcCompat="@drawable/findalt"  />
 
 
                 <TextView
@@ -905,7 +905,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:srcCompat="@drawable/start_new" />
+                app:srcCompat="@drawable/startex" />
         </TableRow>
 
         <TableRow
@@ -934,7 +934,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:srcCompat="@drawable/start_new" />
+                app:srcCompat="@drawable/startex" />
         </TableRow>
 
         <TableRow
@@ -963,7 +963,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:contentDescription="TODO"
-                app:srcCompat="@drawable/start_new" />
+                app:srcCompat="@drawable/startex" />
         </TableRow>
 
     </LinearLayout>
