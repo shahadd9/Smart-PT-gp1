@@ -87,10 +87,9 @@
             android:padding="15dp"
             android:text="Weekly Active Days"
             android:textColor="#ffff"
-            android:textStyle="bold"
             android:textSize="17dp"
-            android:translationZ="100dip"
-             />
+            android:textStyle="bold"
+            android:translationZ="100dip" />
 
         <TextView
             android:id="@+id/sessionText"
@@ -230,23 +229,40 @@
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/ExercisesView"
-        android:layout_width="388dp"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/viewim"
 
-        android:layout_above="@+id/ScrollFrame"
-        android:layout_below="@+id/WeeklyFrame"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="-388dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="330dp"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:layout_width="396dp"
+        android:layout_height="383dp"
+        android:layout_marginTop="280dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ExercisesView"
+            android:layout_width="388dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/viewim"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="30dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/restimg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-300dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="-700px"
+            app:srcCompat="@drawable/relax"
+            android:visibility="invisible"/>
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/ScrollFrame"
@@ -263,11 +279,12 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:visibility="visible"
-
+        android:fadeScrollbars="false"
         >
 
         <!--android:id="@+id/ExFrame"-->
         <LinearLayout
+            android:id="@+id/exlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
         android:layout_below="@+id/WeeklyFrame"
@@ -292,7 +309,9 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="13dp" />
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    />
 
                 <ImageView
                     android:id="@+id/start1"
@@ -341,8 +360,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp" />
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/start2"
@@ -385,8 +405,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -433,7 +454,8 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="13dp"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                     />
 
                 <ImageView
@@ -478,8 +500,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -525,8 +548,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -574,8 +598,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -621,8 +646,8 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="13dp"
-                    />
+                    android:textSize="14dp"
+                    android:textStyle="bold"                    />
 
                 <ImageView
                     android:id="@+id/start8"
@@ -665,8 +690,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -709,8 +735,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
 
                 />
 
@@ -758,8 +785,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -801,8 +829,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                 />
 
             <ImageView
@@ -867,8 +896,9 @@
                 android:id="@+id/textViewex1"
                 android:layout_width="240dp"                android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="7dp"                android:textColor="@color/black"
-                android:textSize="13dp" />
+                android:layout_marginBottom="7dp"                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/start1"
@@ -895,8 +925,9 @@
                 android:layout_width="240dp"                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="7dp"                android:textColor="@color/black"
-                android:textSize="13dp" />
+                android:layout_marginBottom="7dp"                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/start2"
@@ -922,8 +953,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                android:textColor="@color/black"
-                android:textSize="13dp" />
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/start3"

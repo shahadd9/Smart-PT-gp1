@@ -3,11 +3,13 @@ package com.example.smartpt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -360,6 +362,10 @@ public class PlanView extends AppCompatActivity {
         });
 
 
+        ImageView restimg=(ImageView) findViewById(R.id.restimg);
+
+        
+
         buttonMon = (Button) findViewById(R.id.buttonMon);
         buttonSat = (Button) findViewById(R.id.buttonSat);
         buttonSun = (Button) findViewById(R.id.buttonSun);
@@ -416,23 +422,11 @@ public class PlanView extends AppCompatActivity {
                 //   String day =days.get(i);
                 if (dayMon) {
                     mon.setText("My Exercises for this day");
-//                        loadEx1(v);
-//                        loadEx2(v);
-//                        loadEx3(v);
+                    restimg.setVisibility(View.INVISIBLE);
+                    
                     scrollView.setVisibility(View.VISIBLE);
 
-//                        if(SessionNo.equals("2")){
-//
-//
-//                        }
-//                        if(SessionNo.equals("3")){
-//
-//
-//                        }
-//                        if(SessionNo.equals("4")){
-//                          day2();
-
-//                        }
+// 
                     if (SessionNo.equals("5")) {
                         currDay="2";
                         day2();
@@ -443,8 +437,10 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+
                 }
 
                 //}// end for
@@ -481,6 +477,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (daySat) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -507,9 +504,16 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+
+                    //  mon.setCompoundDrawablesWithIntrinsicBounds(
+                    //       0, 0, 0,  R.drawable.relax);
+
+
                 }
+
 
                 //}/// end for
 
@@ -560,6 +564,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (daySun) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                    if (SessionNo.equals("2")) {
 //                        day1();
 //
@@ -593,7 +598,8 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
                 }
 
@@ -644,6 +650,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (dayTue) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -676,7 +683,8 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
                 }
 
@@ -730,6 +738,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (dayWed) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -752,7 +761,8 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
                 }
 
@@ -803,6 +813,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (dayThu) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -833,7 +844,8 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
                 }
 
@@ -884,6 +896,7 @@ public class PlanView extends AppCompatActivity {
 
                 if (dayFri) {
                     mon.setText("My Exercises for this day");
+                    restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
@@ -897,7 +910,8 @@ public class PlanView extends AppCompatActivity {
 
                 } else {
 
-                    mon.setText("There is no exercises for this day");
+                    mon.setText("Rest Day\n");
+                    restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
                 }
 
