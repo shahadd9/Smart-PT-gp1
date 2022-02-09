@@ -87,7 +87,7 @@ date="6/10/1921";
 
 
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.YEAR, -100);
+        calendar.add(Calendar.YEAR, -64);
         Calendar calendar2 = Calendar.getInstance();
 
         calendar2.add(Calendar.YEAR, -18);
