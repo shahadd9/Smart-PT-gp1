@@ -501,7 +501,7 @@ def findAlternative1(exName,num,muscle,repeated): #,cosine_sim=cosine_sim
 #         ex[i]=ex_indices[i]+1
   index=df.index[df['exercisename']==exName]
   index=index[0] #exercise index to find its alternatives 
-  ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[1:10]
+  ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[0:10]
   ex_recomm =  df['exercisename'].loc[ex].values
   for i in range(9):
     ex[i]=ex[i]+1
