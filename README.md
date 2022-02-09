@@ -19,6 +19,13 @@ So, this will help people to exercise the time and the place they prefer with a 
 and track their progress easily and efficiently, 
 thus helping them to improve their fitness and gain strength.
 
+# Application Functions
+the user can do the following functions in this application:
+- Create a Profile 
+- Update a Profile
+- Generate a Workout Plan
+- Find an Alternative Exercise
+
 # Libraries And API
 - Chaquopy
 - Pandas
