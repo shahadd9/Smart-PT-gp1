@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlanView">
+    <!--android:background="#FBF8F1"-->
 
     <FrameLayout
         android:id="@+id/alertFrame"
@@ -273,7 +274,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="-300dp"
+        android:layout_marginTop="-350dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="102dp"
         android:layout_weight="1"
@@ -293,13 +294,17 @@
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
         android:orientation="vertical"
+
             >
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:id="@+id/exRow1"
+                android:background="@drawable/border"
                 >
+
+
 
 
                 <TextView
@@ -311,6 +316,7 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+
                     />
 
                 <ImageView
@@ -348,6 +354,7 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:id="@+id/exRow2"
+            android:background="@drawable/border"
 
             >
 
@@ -397,6 +404,8 @@
             android:id="@+id/exRow3"
             android:layout_width="match_parent"
             android:layout_height="67dp"
+            android:background="@drawable/border"
+
             >
 
             <TextView
@@ -442,7 +451,9 @@
             <TableRow
                 android:id="@+id/exRow4"
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -489,7 +500,9 @@
             <TableRow
                 android:id="@+id/exRow5"
                 android:layout_width="match_parent"
-            android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -537,7 +550,9 @@
             <TableRow
                 android:id="@+id/exRow6"
                 android:layout_width="match_parent"
-            android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -587,7 +602,9 @@
             <TableRow
                 android:id="@+id/exRow7"
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -634,7 +651,9 @@
             <TableRow
                 android:id="@+id/exRow8"
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -681,7 +700,9 @@
             <TableRow
                 android:id="@+id/exRow9"
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
             <TextView
@@ -724,7 +745,9 @@
             <TableRow
                 android:id="@+id/exRow10"
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -774,7 +797,9 @@
                 android:id="@+id/exRow11"
 
                 android:layout_width="match_parent"
-                android:layout_height="67dp">
+                android:layout_height="67dp"
+                android:background="@drawable/border"
+                >
 
 
 
@@ -821,6 +846,8 @@
                 android:id="@+id/exRow12"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
+                android:background="@drawable/border"
+
                 >
 
             <TextView
