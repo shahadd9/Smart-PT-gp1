@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".StartSession"
+            android:exported="true" />
+        <activity
             android:name=".SessionView"
             android:exported="true" />
         <activity
