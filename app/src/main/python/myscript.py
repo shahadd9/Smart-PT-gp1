@@ -11,20 +11,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 
-
+#execl1
 filename = join(dirname(__file__), "dataset.csv")
 with open(filename, 'r', encoding='utf8', errors="ignore") as fin:
     data1=fin.read().lower()
 data = io.StringIO(data1)
 df = pd.read_csv(data, sep=",") # here i read our dataset as dataframe, you can use it as normal
-
+#excel2
 filename1 = join(dirname(__file__), "matrix.csv")
 with open(filename1, 'r', encoding='utf8', errors="ignore") as fin:
     data2=fin.read().lower()
-
 data3 = io.StringIO(data2)
-
 df1 = pd.read_csv(data3, sep=",")
+
+#excel3
+filename3 = join(dirname(__file__), "instructions.csv")
+with open(filename3, 'r', encoding='utf8', errors="ignore") as fin:
+    data3=fin.read().lower()
+data4 = io.StringIO(data3)
+inst1 = pd.read_csv(data4, sep=",")
+
 df1 = df1.iloc[: , 2:]
 # df1=pd.read_csv('matrix.csv')
 # print(df1)
@@ -571,5 +577,14 @@ def altEqpmnt(exName):
     else:
         eqList= 'No Equipment'
     return eqList
+
+def retreiveInstructions(exName):
+    inst=inst1.loc[inst1['exercisename']=='diamond push-up']
+    s1=inst['pos1'][0]
+    s2=inst['pos2'][0]
+    s3=inst['pos3'][0]
+    s4=inst['pos4'][0]
+    return s1+'_'+s2+'_'+s3+'_'+s4
+
 
 

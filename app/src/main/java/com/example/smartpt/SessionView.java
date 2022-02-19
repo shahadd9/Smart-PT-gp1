@@ -16,6 +16,9 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -29,10 +32,12 @@ public class SessionView extends AppCompatActivity {
     ProgressDialog pd;
     private FirebaseFirestore db;
     private String userIp;
-    double set , Res;
-    int s, re, i,sIndex;
-    TextView sets;
-    Button nextbtn;
+    private double set , Res;
+    private int s, re, i,sIndex;
+    private TextView sets, instTxt;
+    private Button nextbtn;
+    private String inst;
+    String instArray[] = new String[5];
 
 
     @Override
@@ -40,6 +45,7 @@ public class SessionView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_view);
         sets=(TextView) findViewById(R.id.sets); //Done
+        instTxt=(TextView) findViewById(R.id.instTxt);
         v= (VideoView)findViewById(R.id.video);
         nextbtn =(Button)findViewById(R.id.nextbtn);
         i=1;
@@ -53,7 +59,7 @@ public class SessionView extends AppCompatActivity {
         MediaController mediaController= new MediaController(this);
         v.setMediaController(mediaController);
         mediaController.setAnchorView(v);
-        v.start();
+//        v.start();
         v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -109,7 +115,7 @@ public class SessionView extends AppCompatActivity {
                 }
             }
         });
-
+        retreiveInstructions();
 
     }
     public void nextExercise(){
@@ -119,4 +125,33 @@ public class SessionView extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+   public void retreiveInstructions(){
+       if (! Python.isStarted()) {
+           Python.start(new AndroidPlatform(this));
+       }
+       Python py = Python.getInstance();
+       // creating python object
+       PyObject pyObj= py.getModule("myscript"); // call the python file
+       PyObject instructions = pyObj.callAttr("retreiveInstructions","diamond push-up"); // call the  method in python
+       inst = instructions.toString();//retrieve  output
+       instArray=inst.split("_");
+       inst="";
+       if((!instArray[0].equals(0))||instArray[0]!="0"){
+           inst=inst+instArray[0]+"\n\n";
+       }
+       if((!instArray[1].equals(0))||instArray[1]!="0"){
+           inst=inst+instArray[1]+"\n\n";
+       }
+       if((!instArray[2].equals(0))||instArray[2]!="0"){
+           inst=inst+instArray[2]+"\n\n";
+       }
+       if((!instArray[3].equals(0))||instArray[3]!="0"){
+           inst=inst+instArray[3]+"\n\n";
+       }
+
+       instTxt.setText(inst);
+
+
+   }
 }
