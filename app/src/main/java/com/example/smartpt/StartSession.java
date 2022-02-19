@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Message;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +15,7 @@ public class StartSession extends AppCompatActivity {
     private int rest;
     private String restText;
     int countDown;
-    private TextView counter,counterMessage;
+    private TextView counter,counterMessage,txt1,txt2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,16 +23,28 @@ public class StartSession extends AppCompatActivity {
 
         counter = findViewById(R.id.timer);
         counterMessage=findViewById(R.id.counterMessage);
+        txt1=findViewById(R.id.txt1);
+        txt2=findViewById(R.id.txt2);
 
         rest = getIntent().getIntExtra("rest",0);
         restText=getIntent().getStringExtra("restText");
 
         if(rest ==0){
-
+            txt1.setVisibility(View.INVISIBLE);
+            txt2.setVisibility(View.INVISIBLE);
             countDown=5000;
             restText="Starts in:";
-        }else {
 
+        }
+        else if(rest ==-1){
+            restText="";
+            countDown=5000;
+            txt1.setVisibility(View.VISIBLE);
+            txt2.setVisibility(View.VISIBLE);
+        }
+        else {
+            txt1.setVisibility(View.VISIBLE);
+            txt2.setVisibility(View.VISIBLE);
             countDown=rest*1000;
         }
 
