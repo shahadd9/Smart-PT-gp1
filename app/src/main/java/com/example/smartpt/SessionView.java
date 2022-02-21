@@ -3,7 +3,9 @@ package com.example.smartpt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -13,6 +15,7 @@ import android.text.format.Formatter;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,18 +33,20 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class SessionView extends AppCompatActivity {
 
     VideoView v;
-    String url="https://im.ezgif.com/tmp/ezgif-1-08e77a9bb3.mp4";
+    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private String userIp;
     private double set , Res;
     private int s, re, i,sIndex;
     private TextView sets, instTxt;
+    private ImageView exist;
     private Button nextbtn,skipbtn;
     private String inst;
     String instArray[] = new String[5];
     private int prog;
     private ProgressBar progress_bar;
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -56,6 +61,8 @@ public class SessionView extends AppCompatActivity {
         v= (VideoView)findViewById(R.id.video);
         nextbtn =(Button)findViewById(R.id.nextbtn);
         skipbtn =(Button)findViewById(R.id.skipbtn);
+        exist =(ImageView) findViewById(R.id.exist);
+        builder= new AlertDialog.Builder(this);
 
 
         i=0;
@@ -125,6 +132,7 @@ public class SessionView extends AppCompatActivity {
 //                    sets.setText("done");
                     sets.setText(i+1+"/"+s);
                     prog+=(100/s);
+                    prog=0;
                     updteProgressBar();
                     nextExercise(re);
 
@@ -139,6 +147,27 @@ public class SessionView extends AppCompatActivity {
                 }
             }
         });
+
+        exist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                builder.setTitle("").setMessage("Are you sure you want to end the session?").setCancelable(true)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        endSession();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                }).show();
+            }
+        });
+
         retreiveInstructions();
 
     }
@@ -151,6 +180,13 @@ public class SessionView extends AppCompatActivity {
         Intent intent= new Intent(this, StartSession.class);
         intent.putExtra("rest",re);
         intent.putExtra("restText","Rest");
+        startActivity(intent);
+
+    }
+    public void endSession(){
+        Intent intent= new Intent(this, PlanView.class);
+        intent.putExtra("SessionNo",2);
+//        intent.putExtra("","Rest");
         startActivity(intent);
 
     }

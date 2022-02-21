@@ -27,34 +27,38 @@
 
         <FrameLayout
             android:id="@+id/frameLayout"
-            android:layout_width="414dp"
-            android:layout_height="312dp"
+            android:layout_width="411dp"
+            android:layout_height="255dp"
+            android:layout_marginTop="44dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <VideoView
-                android:id="@+id/video"
-                android:layout_width="382dp"
-                android:layout_height="266dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
+                <VideoView
+                    android:id="@+id/video"
+                    android:layout_width="360dp"
+                    android:layout_height="221dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="-7dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
         </FrameLayout>
 
         <Button
             android:id="@+id/nextbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#48D0FE"
+            android:background="@drawable/weekly_textstyle"
             android:text="Next"
             android:textSize="20dp"
-            app:cornerRadius="6sp"
+            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.889"
+            app:layout_constraintHorizontal_bias="0.919"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.975" />
@@ -63,30 +67,30 @@
             android:id="@+id/pausebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#48D0FE"
+            android:background="@drawable/weekly_textstyle"
             android:text="Pause"
             android:textSize="17dp"
-            app:cornerRadius="6sp"
+            app:cornerRadius="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.138"
+            app:layout_constraintHorizontal_bias="0.103"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.975" />
+            app:layout_constraintVertical_bias="0.976" />
 
         <Button
             android:id="@+id/skipbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#48D0FE"
-            android:text="skip"
-            android:textSize="20dp"
-            app:cornerRadius="6sp"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
+            android:background="@drawable/weekly_textstyle"
+            android:text="skip Exercise "
+            android:textSize="15dp"
+            app:cornerRadius="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.975" />
+            app:layout_constraintVertical_bias="0.985" />
 
         <View
             android:id="@+id/divider"
@@ -163,7 +167,7 @@
             android:layout_height="wrap_content"
             android:text="Instructions:"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -188,6 +192,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.862" />
 
+<!--        <TextView-->
+<!--            android:id="@+id/exist"-->
+<!--            android:layout_width="29dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_marginStart="372dp"-->
+<!--            android:text="x"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="35dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/exist"
+            android:layout_width="46dp"
+            android:layout_height="49dp"
+            android:layout_gravity="right"
+            android:layout_marginStart="340dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.007"
+            app:srcCompat="@drawable/close" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,12 +10,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
 public class StartSession extends AppCompatActivity {
 
     private int rest;
     private String restText;
     int countDown;
     private TextView counter,counterMessage,txt1,txt2;
+    private long duration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,12 @@ public class StartSession extends AppCompatActivity {
         new CountDownTimer(countDown + 100, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                counter.setText(String.valueOf(millisUntilFinished/1000));
+                String eDuration = String.format(Locale.ENGLISH,"%02d : %02d"
+                , TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                ,TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+                counter.setText(eDuration);
+//                counter.setText(String.valueOf(millisUntilFinished/1000));
 
             }
 
