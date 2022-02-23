@@ -946,6 +946,8 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("name", TextviewEx1.getText());
                 i.putExtra("force", f1.getText());
                 i.putExtra("muscle", m1.getText());
+                i.putExtra("level",level);
+                i.putExtra("currDay",currDay);
                 i.putExtra("SessionNo",SessionNo);
                 startActivity(i);
             }

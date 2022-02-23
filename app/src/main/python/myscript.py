@@ -27,9 +27,9 @@ df1 = pd.read_csv(data3, sep=",")
 #excel3
 filename3 = join(dirname(__file__), "instructions.csv")
 with open(filename3, 'r', encoding='utf8', errors="ignore") as fin:
-    data3=fin.read().lower()
-data4 = io.StringIO(data3)
-inst1 = pd.read_csv(data4, sep=",")
+    data4=fin.read()
+data5 = io.StringIO(data4)
+inst1 = pd.read_csv(data5, sep=",")
 
 df1 = df1.iloc[: , 2:]
 # df1=pd.read_csv('matrix.csv')
@@ -579,12 +579,17 @@ def altEqpmnt(exName):
     return eqList
 
 def retreiveInstructions(exName):
-    inst=inst1.loc[inst1['exercisename']=='diamond push-up']
-    s1=inst['pos1'][0]
-    s2=inst['pos2'][0]
-    s3=inst['pos3'][0]
-    s4=inst['pos4'][0]
+    inst=inst1.loc[inst1['exerciseName'].str.lower()==exName]
+#     return exName
+    s1=inst.iloc[0,2]
+    s2=inst.iloc[0,3]
+    s3=inst.iloc[0,4]
+    s4=inst.iloc[0,5]
     return s1+'_'+s2+'_'+s3+'_'+s4
+
+def retreiveVideo(exName):
+    inst2=inst1.loc[inst1['exerciseName'].str.lower()==exName]
+    return inst2.iloc[0,6]
 
 
 

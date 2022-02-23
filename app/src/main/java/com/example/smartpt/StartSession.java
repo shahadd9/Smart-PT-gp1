@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class StartSession extends AppCompatActivity {
 
-    private int rest;
-    private String restText;
+    private int rest,count;
+    private String restText , SessionNo, level, currDay,nextEx;
     int countDown;
     private TextView counter,counterMessage,txt1,txt2;
     private long duration;
@@ -32,6 +32,11 @@ public class StartSession extends AppCompatActivity {
 
         rest = getIntent().getIntExtra("rest",0);
         restText=getIntent().getStringExtra("restText");
+        SessionNo=getIntent().getStringExtra("SessionNo");
+        level =getIntent().getStringExtra("level");
+        currDay=getIntent().getStringExtra("currDay");
+        count=getIntent().getIntExtra("counter",0);
+        nextEx=getIntent().getStringExtra("nextEx");
 
         if(rest ==0){
             txt1.setVisibility(View.INVISIBLE);
@@ -45,10 +50,12 @@ public class StartSession extends AppCompatActivity {
             countDown=5000;
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
+            txt2.setText(nextEx);
         }
         else {
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
+            txt2.setText(nextEx);
             countDown=rest*1000;
         }
 
@@ -68,7 +75,7 @@ public class StartSession extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                counter.setText("0");
+                counter.setText("00 : 00");
                 startSession();
 /*
                 intent.start
@@ -84,6 +91,10 @@ public class StartSession extends AppCompatActivity {
 
     public void startSession(){
         Intent intent= new Intent(this, SessionView.class);
+        intent.putExtra("SessionNo",SessionNo);
+        intent.putExtra("level",level);
+        intent.putExtra("currDay",currDay);
+        intent.putExtra("counter",count);
         startActivity(intent);
 
     }
