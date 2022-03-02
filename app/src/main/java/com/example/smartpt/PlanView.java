@@ -173,7 +173,7 @@ public class PlanView extends AppCompatActivity {
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
-
+    private int c;
 
     private String Wplan;
 //    private String SessionNo;
@@ -252,6 +252,8 @@ public class PlanView extends AppCompatActivity {
         //ondata();
         SessionNo = getIntent().getStringExtra("SessionNo");
         level = getIntent().getStringExtra("level");
+        c = getIntent().getIntExtra("c",0);
+
         TT = findViewById(R.id.WeeklytextView);
 
 
@@ -949,6 +951,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("currDay",currDay);
                 i.putExtra("SessionNo",SessionNo);
+                i.putExtra("counter",c);
                 startActivity(i);
             }
         });

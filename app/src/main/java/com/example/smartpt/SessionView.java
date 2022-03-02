@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 public class SessionView extends AppCompatActivity {
 
     VideoView v;
-    String url="https://i.imgur.com/HOfLu88.mp4";
+//    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private String userIp;
@@ -147,7 +147,7 @@ public class SessionView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(nextbtn.getText().equals("Finish")){
-                    endSession();
+                    endSession(99);
                 }
                 else if(i+1==s){
 //                    sets.setText("done");
@@ -201,7 +201,7 @@ public class SessionView extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        endSession();
+                        endSession(0);
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -213,6 +213,14 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
+        pausebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                endSession(counter);
+
+            }
+        });
 //        retreiveInstructions(exName);
 //        exerciseName.setText(exName);
 
@@ -234,10 +242,11 @@ public class SessionView extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public void endSession(){
+    public void endSession(int c){
         Intent intent= new Intent(this, PlanView.class);
         intent.putExtra("SessionNo",SessionNo);
         intent.putExtra("level",level);
+        intent.putExtra("c",c);
         startActivity(intent);
 
     }
