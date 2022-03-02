@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="213dp"
-        android:layout_height="121dp"
+        android:layout_width="353dp"
+        android:layout_height="114dp"
         android:gravity="center"
         android:text="5"
         android:textColor="@color/black"
@@ -36,4 +36,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.393" />
+
+    <TextView
+        android:id="@+id/txt1"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Exercise is:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.701" />
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="######"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.793" />
 </androidx.constraintlayout.widget.ConstraintLayout>

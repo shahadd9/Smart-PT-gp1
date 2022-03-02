@@ -173,7 +173,7 @@ public class PlanView extends AppCompatActivity {
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
-
+    private int c;
 
     private String Wplan;
 //    private String SessionNo;
@@ -234,6 +234,8 @@ public class PlanView extends AppCompatActivity {
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
         ImageView butAlrt1 =(ImageView) findViewById(R.id.alrt1);
+        ImageView butstart1 =(ImageView) findViewById(R.id.start1);
+
         ImageView butAlrt2 =(ImageView) findViewById(R.id.alrt2);
         ImageView butAlrt3 =(ImageView) findViewById(R.id.alrt3);
         ImageView butAlrt4 =(ImageView) findViewById(R.id.alrt4);
@@ -250,6 +252,8 @@ public class PlanView extends AppCompatActivity {
         //ondata();
         SessionNo = getIntent().getStringExtra("SessionNo");
         level = getIntent().getStringExtra("level");
+        c = getIntent().getIntExtra("c",0);
+
         TT = findViewById(R.id.WeeklytextView);
 
 
@@ -937,15 +941,28 @@ public class PlanView extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        butstart1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PlanView.this, StartSession.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("level",level);
+                i.putExtra("currDay",currDay);
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("counter",c);
+                startActivity(i);
+            }
+        });
         butAlrt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx2.getText());
+                i.putExtra("force", f2.getText());
+                i.putExtra("muscle", m2.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",1);
@@ -960,9 +977,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx3.getText());
+                i.putExtra("force", f3.getText());
+                i.putExtra("muscle", m3.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",2);
@@ -978,9 +995,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx4.getText());
+                i.putExtra("force", f4.getText());
+                i.putExtra("muscle", m4.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",3);
@@ -997,9 +1014,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx5.getText());
+                i.putExtra("force", f5.getText());
+                i.putExtra("muscle", m5.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",4);
@@ -1015,9 +1032,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx6.getText());
+                i.putExtra("force", f6.getText());
+                i.putExtra("muscle", m6.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",5);
@@ -1033,9 +1050,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx7.getText());
+                i.putExtra("force", f7.getText());
+                i.putExtra("muscle", m7.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",6);
@@ -1051,9 +1068,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx8.getText());
+                i.putExtra("force", f8.getText());
+                i.putExtra("muscle", m8.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",7);
@@ -1069,9 +1086,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx9.getText());
+                i.putExtra("force", f9.getText());
+                i.putExtra("muscle", m9.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",8);
@@ -1087,9 +1104,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx10.getText());
+                i.putExtra("force", f10.getText());
+                i.putExtra("muscle", m10.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",9);
@@ -1105,9 +1122,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx11.getText());
+                i.putExtra("force", f11.getText());
+                i.putExtra("muscle", m11.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",10);
@@ -1123,9 +1140,9 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(PlanView.this, Exercise.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
+                i.putExtra("name", TextviewEx12.getText());
+                i.putExtra("force", f12.getText());
+                i.putExtra("muscle", m12.getText());
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("level",level);
                 i.putExtra("index",11);

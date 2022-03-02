@@ -109,7 +109,6 @@
             android:translationZ="100dip" />
 
 
-
         <Button
             android:id="@+id/buttonSat"
             android:layout_width="50dp"
