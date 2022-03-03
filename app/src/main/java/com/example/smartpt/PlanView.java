@@ -59,8 +59,11 @@ public class PlanView extends AppCompatActivity {
 
     // data base
     private FirebaseFirestore db;
+    private FirebaseFirestore db2;
     private String userIp;
 
+    private int  FBindex;
+    private double FBindexD;
     private String SessionNo;
     private Button buttonSat;
     private Button buttonSun;
@@ -116,12 +119,15 @@ public class PlanView extends AppCompatActivity {
     private TextView f10;
     private TextView f11;
     private TextView f12;
-
+    private int week;
+    private Double weekD;
 
     private TextView TT;
     private String name;
     private String level;
     static String namedays = new String();
+
+    private String isItOne;
 
     private static final String TAG = "PlanView";
 
@@ -173,7 +179,7 @@ public class PlanView extends AppCompatActivity {
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
-    private int c;
+//    private int c;
 
     private String Wplan;
 //    private String SessionNo;
@@ -252,7 +258,7 @@ public class PlanView extends AppCompatActivity {
         //ondata();
         SessionNo = getIntent().getStringExtra("SessionNo");
         level = getIntent().getStringExtra("level");
-        c = getIntent().getIntExtra("c",0);
+//        c = getIntent().getIntExtra("counter",0);
 
         TT = findViewById(R.id.WeeklytextView);
 
@@ -261,31 +267,49 @@ public class PlanView extends AppCompatActivity {
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         db = FirebaseFirestore.getInstance();
+        db2=FirebaseFirestore.getInstance();
+
+        callweek();
 
 
-        db.collection("userProfile").document(userIp).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            String test = documentSnapshot.getString(KEY_T);
-                            namedays = test;
-                            currentDay();
+         DocumentReference documentReference =  db.collection("userProfile").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (value.exists()) {
+                    String test = value.getString(KEY_T);
+                    namedays = test;
+                    currentDay();
 
-                        } else {
-                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
-                        }
+                } else {
+                    Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                }
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-
-                    }
-                });
+            }
+        });
+//        db.collection("userProfile").document(userIp).get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                        if (documentSnapshot.exists()) {
+//                            String test = documentSnapshot.getString(KEY_T);
+//                            namedays = test;
+//                            currentDay();
+//
+//                        } else {
+//                            Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(PlanView.this, "Error!", Toast.LENGTH_SHORT).show();
+//                        Log.d(TAG, e.toString());
+//
+//                    }
+//                });
 
 
         call_E_F_M();
@@ -944,6 +968,9 @@ public class PlanView extends AppCompatActivity {
         butstart1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                FBindex=getExIndex();
+
                 Intent i = new Intent(PlanView.this, StartSession.class);
                 i.putExtra("name", TextviewEx1.getText());
                 i.putExtra("force", f1.getText());
@@ -951,7 +978,14 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("currDay",currDay);
                 i.putExtra("SessionNo",SessionNo);
-                i.putExtra("counter",c);
+                i.putExtra("week",weekD);
+//                if(2 == -1) {
+//                    i.putExtra("counter", 0);
+//                }
+//                else{
+//                    i.putExtra("counter", FBindex);
+//
+//                }
                 startActivity(i);
             }
         });
@@ -1384,6 +1418,28 @@ public class PlanView extends AppCompatActivity {
 //        call_E_F_M();
     }
 
+    private void callweek() {
+
+        DocumentReference documentReference = db2.collection("Progress").document(userIp).collection("index").document("weeks");
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (value != null) {
+                    if (value.exists()) {
+//                        exists
+                        weekD= value.getDouble("week");
+//                        week=(int)weekD;
+                        isItOne=value.getString("isItOne");
+                    } else {
+                        //doesn't exist
+                    }
+                }
+
+            }
+        });
+
+    }
+
 
     public void ondata() {
         FirebaseUser uid = FirebaseAuth.getInstance().getCurrentUser();
@@ -1412,12 +1468,15 @@ public class PlanView extends AppCompatActivity {
 
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
+            nextWeek();
+//            updateFlag();
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
+//            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
             buttonThu.performClick();
         } else if (dayOfTheWeek.contains("Tuesday")) {
@@ -1425,6 +1484,147 @@ public class PlanView extends AppCompatActivity {
         } else if (dayOfTheWeek.contains("Wednesday")) {
             buttonWed.performClick();
         }
+    }
+
+    private void nextWeek() {
+
+//        DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//
+//                isItOne=value.getString("isItOne");
+//
+//            }
+//        });
+
+        Map<String,Object> weeks = new HashMap<>();
+
+        if(isItOne=="0"|| isItOne.equals("0")) {
+            weeks.put("week", ++weekD);
+            weeks.put("isItOne", "1");
+            generateNextWeek(weekD);
+        }
+        else {
+            weeks.put("week", weekD);
+            weeks.put("isItOne", "1");
+        }
+        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
+    }
+
+    private void generateNextWeek(double weekD) {
+        Map<String,Object> user = new HashMap<>();
+        Map<String,Object> week = new HashMap<>();
+
+        user.put("exerciseIndex",0);
+//        week.put("week",weekD);
+//        week.put("isItOne","0");
+//
+//        db.collection("Progress").document(userIp).collection("index").document("weeks").update(week).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//
+//            }
+//        });
+
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+    }
+
+    private void updateFlag() {
+
+
+
+        Map<String,Object> weeks = new HashMap<>();
+
+            weeks.put("isItOne", "0");
+        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
     }
 
 
@@ -2346,20 +2546,33 @@ public class PlanView extends AppCompatActivity {
         });
     }
 
-    public void retriveProfile() {
-        db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-//                SessionNo= value.getString("TrainingdaysNum");
-//                level=value.getString("level");
-
-
-            }
-        });
-
-    }
+//    public int getExIndex() {
+//        DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("day"+currDay);
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//
+////                        set=value.getDouble("sets");
+////                        s=(int)set;
+////                        sets.setText(""+s+"");
+//
+////                        rep=value.getDouble("reps");
+////                        r=(int)rep;
+////                        reps.setText(r+"");
+//
+//                FBindexD= value.getDouble("exerciseIndex");
+////                FBindex=(int)FBindexD;
+//                FBindex=5;
+//
+//
+//
+//
+//            }
+//        });
+//
+//        return FBindex;
+//
+//    }
 }
 
