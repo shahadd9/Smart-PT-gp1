@@ -1,5 +1,6 @@
 package com.example.smartpt;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,45 +21,59 @@ import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class SessionView extends AppCompatActivity {
 
+//    Timer timer;
     VideoView v;
 //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
+    private Double week;
+    private double weekD;
+
     private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
-    private TextView sets, instTxt,exerciseName,counterTxt,rest;
+    private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
     private ImageView exist;
     private Button nextbtn,skipbtn,pausebtn;
     private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink;
     String instArray[] = new String[5];
     String dayAr[];
-
     private int prog;
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
+    private TimerTask timerTask;
+    private Double time=0.0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_view);
+//        timer=new Timer();
         prog=0;
         dayAr=new String[50];
         exName="";
@@ -71,6 +86,7 @@ public class SessionView extends AppCompatActivity {
         instTxt=(TextView) findViewById(R.id.instTxt);
         rest=(TextView) findViewById(R.id.rest);
         v= (VideoView)findViewById(R.id.video);
+        timertxt=(TextView)findViewById(R.id.timertxt);
         nextbtn =(Button)findViewById(R.id.nextbtn);
         skipbtn =(Button)findViewById(R.id.skipbtn);
         pausebtn =(Button)findViewById(R.id.pausebtn);
@@ -79,36 +95,15 @@ public class SessionView extends AppCompatActivity {
         SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
         currDay=getIntent().getStringExtra("currDay");
+
         retrieveExerciseName();
 
+//        startTimer();
 
 
         i=0;
         sIndex=0;
-//        pd=new ProgressDialog(SessionView.this);
-//        pd.setMessage("loading");
-//        pd.show();
-//        Uri uri = Uri.parse(retreiveVideo(exName));
-//        v.setVideoURI(uri);
-//        MediaController mediaController= new MediaController(this);
-//        v.setMediaController(mediaController);
-//        mediaController.setAnchorView(v);
-//        v.start();
-//        v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-////                pd.dismiss();
-//            }
-//        });
-//        v.setVideoURI(uri);
-//        v.setMediaController(new MediaController(this));
-//
-//        v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mp.setLooping(true);
-//            }
-//        });
+
 
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -135,28 +130,50 @@ public class SessionView extends AppCompatActivity {
 
             }
         });
+
+         documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+
+                weekD= value.getDouble("week");
+                week=weekD;
+
+            }
+        });
+
         skipbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 prog=0;
-                updteProgressBar();
-            nextExercise(-1);
+
+                if(skipbtn.getText().equals("Finish")){
+                    endSession(99);
+                }
+                else {
+                    updteProgressBar();
+                    nextExercise(-1);
+                }
             }
         });
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nextbtn.getText().equals("Finish")){
-                    endSession(99);
-                }
-                else if(i+1==s){
+
+                if(i+1==s){
 //                    sets.setText("done");
-                    sets.setText(i+1+"/"+s);
+                    i++;
+                    sets.setText(i+"/"+s);
                     prog+=(100/s);
                     prog=0;
                     updteProgressBar();
-                    nextExercise(re);
-
+                    if(skipbtn.getText().equals("Finish")){
+                        endSession(99);
+                    }
+                    else {
+                        nextExercise(re);
+                    }
                 }
                 else{
                     sets.setText(i+1+"/"+s);
@@ -231,22 +248,79 @@ public class SessionView extends AppCompatActivity {
 
     }
     public void nextExercise(int re){
+
+        counter = counter+1;
+        Map<String,Object> user = new HashMap<>();
+        user.put("exerciseIndex",counter);
+//        user.put("duration",timer);
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(SessionView.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SessionView.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
+        user.put("sets",i);
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("progressDay"+currDay).document("exercise"+(counter-1)).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
         Intent intent= new Intent(this, StartSession.class);
         intent.putExtra("rest",re);
         intent.putExtra("restText","Rest");
         intent.putExtra("SessionNo",SessionNo);
         intent.putExtra("level",level);
-        intent.putExtra("counter",++counter);
+        intent.putExtra("counter",counter);
         intent.putExtra("currDay",currDay);
         intent.putExtra("nextEx",nextExercise);
+        intent.putExtra("week",week);
         startActivity(intent);
 
     }
     public void endSession(int c){
+
+        c=c;
+        Map<String,Object> user = new HashMap<>();
+        user.put("exerciseIndex",c);
+        user.put("duration",time);
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+            }
+        });
+
         Intent intent= new Intent(this, PlanView.class);
         intent.putExtra("SessionNo",SessionNo);
         intent.putExtra("level",level);
-        intent.putExtra("c",c);
+        intent.putExtra("counter",c);
         startActivity(intent);
 
     }
@@ -339,8 +413,8 @@ public class SessionView extends AppCompatActivity {
 
                 if(counter==dayAr.length-1 || counter==dayAr.length+1  || counter==dayAr.length){
                     nextExercise="finish";
-                    nextbtn.setText("Finish");
-                    skipbtn.setVisibility(View.INVISIBLE);
+                    skipbtn.setText("Finish");
+//                    skipbtn.setVisibility(View.INVISIBLE);
                 }
                 else {
                     nextExercise = dayAr[counter + 1];
@@ -348,6 +422,37 @@ public class SessionView extends AppCompatActivity {
 
             }
         });
+    }
+
+//    private void startTimer(){
+//
+//        timerTask=new TimerTask() {
+//            @Override
+//            public void run() {
+//
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        time++;
+//                        timertxt.setText(getTimertxt());
+//                    }
+//                });
+//
+//
+//
+//            }
+//        };
+//        timer.scheduleAtFixedRate(timerTask,0,1000);
+//    }
+
+    private String getTimertxt() {
+
+        int rounded = (int) Math.round(time);
+        int second=((rounded % 86400)%3600)%60;
+        int min=((rounded % 86400)%3600)/60;
+        int hours=((rounded % 86400)/3600);
+
+        return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
     }
 
 }

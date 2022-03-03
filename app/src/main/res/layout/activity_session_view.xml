@@ -250,6 +250,20 @@
             app:layout_constraintTop_toTopOf="@+id/counter"
             app:layout_constraintVertical_bias="0.223" />
 
+        <TextView
+            android:id="@+id/timertxt"
+            android:layout_width="113dp"
+            android:layout_height="27dp"
+            android:text="0.00"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,34 +1,55 @@
 package com.example.smartpt;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Message;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class StartSession extends AppCompatActivity {
-
+    Timer timer;
+    private TimerTask timerTask;
+    private Double time;
+    private FirebaseFirestore db;
+    private int  FBindex ;
+    private double week;
+    private Double FBindexD,weekD;
     private int rest,count;
-    private String restText , SessionNo, level, currDay,nextEx;
+    private String userIp;
+    private String restText , SessionNo, level, currDay,nextEx,weekSt;
     int countDown;
-    private TextView counter,counterMessage,txt1,txt2;
-    private long duration;
+    private TextView counter,counterMessage,txt1,txt2,timertxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_session);
+        timer=new Timer();
 
+//        weekD=-1;
+        week= getIntent().getDoubleExtra("week",0);
         counter = findViewById(R.id.timer);
         counterMessage=findViewById(R.id.counterMessage);
         txt1=findViewById(R.id.txt1);
         txt2=findViewById(R.id.txt2);
+        timertxt=(TextView)findViewById(R.id.timertxt);
 
         rest = getIntent().getIntExtra("rest",0);
         restText=getIntent().getStringExtra("restText");
@@ -37,6 +58,29 @@ public class StartSession extends AppCompatActivity {
         currDay=getIntent().getStringExtra("currDay");
         count=getIntent().getIntExtra("counter",0);
         nextEx=getIntent().getStringExtra("nextEx");
+
+        db = FirebaseFirestore.getInstance();
+
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+//        whatWeek();
+
+        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
+        d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+
+                FBindexD= value.getDouble("exerciseIndex");
+                FBindex=(int)Math.round(FBindexD);
+//                FBindex=5;
+
+
+            }
+        });
+
+//        startTimer();
 
         if(rest ==0){
             txt1.setVisibility(View.INVISIBLE);
@@ -51,6 +95,7 @@ public class StartSession extends AppCompatActivity {
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
             txt2.setText(nextEx);
+
         }
         else {
             txt1.setVisibility(View.VISIBLE);
@@ -59,7 +104,7 @@ public class StartSession extends AppCompatActivity {
             countDown=rest*1000;
         }
 
-        counterMessage.setText(restText);
+        counterMessage.setText(restText); //////////////////////////////////////////////
 
         new CountDownTimer(countDown + 100, 1000) {
             @Override
@@ -90,12 +135,60 @@ public class StartSession extends AppCompatActivity {
     }
 
     public void startSession(){
+
         Intent intent= new Intent(this, SessionView.class);
         intent.putExtra("SessionNo",SessionNo);
         intent.putExtra("level",level);
         intent.putExtra("currDay",currDay);
-        intent.putExtra("counter",count);
+        intent.putExtra("counter",FBindex);
+        intent.putExtra("week",week);
         startActivity(intent);
 
+    }
+
+//    private void whatWeek() {
+//
+//       DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//
+//                weekD= value.getDouble("week");
+//                week=(int)weekD;
+//
+//            }
+//        });
+//    }
+
+//    private void startTimer(){
+//
+//        timerTask=new TimerTask() {
+//            @Override
+//            public void run() {
+//
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        time++;
+//                        timertxt.setText(getTimertxt());
+//                    }
+//                });
+//
+//
+//
+//            }
+//        };
+//        timer.scheduleAtFixedRate(timerTask,0,1000);
+//    }
+
+    private String getTimertxt() {
+
+        int rounded = (int) Math.round(time);
+        int second=((rounded % 86400)%3600)%60;
+        int min=((rounded % 86400)%3600)/60;
+        int hours=((rounded % 86400)/3600);
+
+        return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
     }
 }

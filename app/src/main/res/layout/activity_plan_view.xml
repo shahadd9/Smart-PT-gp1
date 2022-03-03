@@ -239,6 +239,8 @@
         android:layout_marginTop="280dp"
         android:orientation="vertical">
 
+
+
         <TextView
             android:id="@+id/ExercisesView"
             android:layout_width="388dp"
@@ -264,6 +266,10 @@
             android:layout_marginBottom="-700px"
             app:srcCompat="@drawable/relax"
             android:visibility="invisible"/>
+
+
+
+
     </LinearLayout>
 
     <ScrollView
@@ -897,6 +903,8 @@
 
 
     </ScrollView>
+
+
 
   <!-- <LinearLayout
         android:id="@+id/ExFrame"

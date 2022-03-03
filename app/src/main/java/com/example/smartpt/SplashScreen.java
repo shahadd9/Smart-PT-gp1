@@ -25,7 +25,9 @@ public class SplashScreen extends AppCompatActivity {
     FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
     private String SessionNo;
     private String level;
-
+    private FirebaseFirestore db;
+    private int  FBindex;
+    private double FBindexD;
 
     @Override
 
@@ -35,6 +37,8 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         SessionNo="";
         level="";
+        db = FirebaseFirestore.getInstance();
+
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
@@ -42,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
         /////////////////////////////////////////////////////////
-        DocumentReference documentReference = rootRef.collection("userProfile").document(userIp);
+        DocumentReference  documentReference = rootRef.collection("userProfile").document(userIp);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -70,9 +74,13 @@ public class SplashScreen extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+
+
+//                        ret();
                         Intent i = new Intent(SplashScreen.this, PlanView.class);
                         i.putExtra("SessionNo",session);
                         i.putExtra("level", lvl);
+//                        i.putExtra("counter",FBindex);
                         startActivity(i);
 
                     } else {
@@ -83,6 +91,31 @@ public class SplashScreen extends AppCompatActivity {
                     Intent i = new Intent(SplashScreen.this, Gender.class);
                     startActivity(i);
                 }
+            }
+        });
+
+    }
+
+    public void ret(){
+
+        DocumentReference documentReference = db.collection("Progress").document(userIp);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+
+//                        set=value.getDouble("sets");
+//                        s=(int)set;
+//                        sets.setText(""+s+"");
+
+//                        rep=value.getDouble("reps");
+//                        r=(int)rep;
+//                        reps.setText(r+"");
+
+                FBindexD= value.getDouble("exerciseIndex");
+                FBindex=(int)FBindexD;
+
+
             }
         });
 
