@@ -74,7 +74,7 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1.0").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1.0").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -104,7 +104,7 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1.0").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -119,7 +119,7 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1.0").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -134,7 +134,7 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1.0").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

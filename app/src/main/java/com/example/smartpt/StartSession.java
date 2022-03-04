@@ -33,7 +33,7 @@ public class StartSession extends AppCompatActivity {
     private Double time;
     private FirebaseFirestore db;
     private int  FBindex ;
-    private double week;
+    private int week;
     private Double FBindexD,weekD;
     private int rest,count;
     private String userIp;
@@ -49,21 +49,21 @@ public class StartSession extends AppCompatActivity {
         String audioUrl = "https://od.lk/s/NzVfMzI5OTExNzNf/start.mp3";
         startAudio = new MediaPlayer();
 
-        startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-        try {
-            startAudio.setDataSource(audioUrl);
-            // below line is use to prepare
-            // and start our media player.
-            startAudio.prepare();
-            startAudio.start();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//        try {
+//            startAudio.setDataSource(audioUrl);
+//            // below line is use to prepare
+//            // and start our media player.
+//            startAudio.prepare();
+//            startAudio.start();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 //        weekD=-1;
-        week= getIntent().getDoubleExtra("week",0);
+        week= getIntent().getIntExtra("week",0);
         counter = findViewById(R.id.timer);
         counterMessage=findViewById(R.id.counterMessage);
         txt1=findViewById(R.id.txt1);
@@ -106,6 +106,19 @@ public class StartSession extends AppCompatActivity {
             txt2.setVisibility(View.INVISIBLE);
             countDown=5000;
             restText="Starts in:";
+            startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+            try {
+                startAudio.setDataSource(audioUrl);
+                // below line is use to prepare
+                // and start our media player.
+                startAudio.prepare();
+                startAudio.start();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
         else if(rest ==-1){
