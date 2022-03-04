@@ -2,6 +2,7 @@ package com.example.smartpt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -88,7 +89,7 @@ public class Audio extends AppCompatActivity {
         String text = textEnt.getText().toString();
         float pitch = 5;
         if (pitch < 0.1) pitch = 0.1f;
-        float speed = 0.1f;
+        float speed = 0.9f;
         if (speed < 0.1) speed = 0.1f;
 
         mTTS.setPitch(pitch);
@@ -109,7 +110,7 @@ public class Audio extends AppCompatActivity {
 
 
     public void play(android.view.View view) {
-        if (player == null) {
+       /* if (player == null) {
             player = MediaPlayer.create(this, R.raw.test);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -117,9 +118,33 @@ public class Audio extends AppCompatActivity {
                     stopPlayer();
                 }
             });
-        }
+        }*/
 
-        player.start();
+        String audioUrl = "https://od.lk/s/NzVfMzI4MzI4MDhf/test.mp3";
+
+        // initializing media player
+        player = new MediaPlayer();
+
+        // below line is use to set the audio
+        // stream type for our media player.
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        // below line is use to set our
+        // url to our media player.
+        try {
+            player.setDataSource(audioUrl);
+            // below line is use to prepare
+            // and start our media player.
+            player.prepare();
+            player.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // below line is use to display a toast message.
+        Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
+
+
     }
 
     public void pause(android.view.View view) {

@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -36,6 +37,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -45,9 +47,9 @@ import java.util.concurrent.TimeUnit;
 
 public class SessionView extends AppCompatActivity {
 
-//    Timer timer;
+    //    Timer timer;
     VideoView v;
-//    String url="https://i.imgur.com/HOfLu88.mp4";
+    //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private Double week;
@@ -59,7 +61,7 @@ public class SessionView extends AppCompatActivity {
     private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
     private ImageView exist;
     private Button nextbtn,skipbtn,pausebtn;
-    private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink;
+    private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink,audioLink;
     String instArray[] = new String[5];
     String dayAr[];
     private int prog;
@@ -67,8 +69,7 @@ public class SessionView extends AppCompatActivity {
     AlertDialog.Builder builder;
     private TimerTask timerTask;
     private Double time=0.0;
-
-
+    private MediaPlayer player,restAudio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,7 +132,7 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
-         documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+        documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -160,6 +161,24 @@ public class SessionView extends AppCompatActivity {
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+
+                restAudio = new MediaPlayer();
+
+                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+                try {
+                    restAudio.setDataSource(audioUrl);
+                    // below line is use to prepare
+                    // and start our media player.
+                    restAudio.prepare();
+                    restAudio.start();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 if(i+1==s){
 //                    sets.setText("done");
@@ -216,11 +235,11 @@ public class SessionView extends AppCompatActivity {
 
                 builder.setTitle("").setMessage("Are you sure you want to end the session?").setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        endSession(0);
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                endSession(0);
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -325,61 +344,88 @@ public class SessionView extends AppCompatActivity {
 
     }
 
-   public void retreiveInstructions(String exName){
-       if (! Python.isStarted()) {
-           Python.start(new AndroidPlatform(this));
-       }
-       Python py = Python.getInstance();
-       // creating python object
-       PyObject pyObj= py.getModule("myscript"); // call the python file
-       PyObject instructions = pyObj.callAttr("retreiveInstructions",exName); // call the  method in python
-       PyObject video = pyObj.callAttr("retreiveVideo",exName); // call the  method in python
+    public void retreiveInstructions(String exName) throws IOException {
+        if (! Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+        Python py = Python.getInstance();
+        // creating python object
+        PyObject pyObj= py.getModule("myscript"); // call the python file
+        PyObject instructions = pyObj.callAttr("retreiveInstructions",exName); // call the  method in python
+        PyObject video = pyObj.callAttr("retreiveVideo",exName); // call the  method in python
+        PyObject audio = pyObj.callAttr("retreiveAudio",exName); // call the  method in python
 
-       videoLink = video.toString();
+        videoLink = video.toString();
 
-       inst = instructions.toString();//retrieve  output
-       instArray=inst.split("_");
-       inst="";
-       if(!instArray[0].equals("0")){
-           inst=inst+"1. "+instArray[0]+"\n\n";
-       }
-       if(!instArray[1].equals("0")){
-           inst=inst+"2. "+instArray[1]+"\n\n";
-       }
-       if(!instArray[2].equals("0")){
-           inst=inst+"3. "+instArray[2]+"\n\n";
-       }
-       if(!instArray[3].equals("0")){
-           inst=inst+"4. "+instArray[3]+"\n\n";
-       }
+        inst = instructions.toString();//retrieve  output
+        instArray=inst.split("_");
+        inst="";
+        if(!instArray[0].equals("0")){
+            inst=inst+"1. "+instArray[0]+"\n\n";
+        }
+        if(!instArray[1].equals("0")){
+            inst=inst+"2. "+instArray[1]+"\n\n";
+        }
+        if(!instArray[2].equals("0")){
+            inst=inst+"3. "+instArray[2]+"\n\n";
+        }
+        if(!instArray[3].equals("0")){
+            inst=inst+"4. "+instArray[3]+"\n\n";
+        }
 
-           instTxt.setText(inst);
+        instTxt.setText(inst);
 
-       instTxt.setMovementMethod(new ScrollingMovementMethod());
+        instTxt.setMovementMethod(new ScrollingMovementMethod());
 
-       Uri uri = Uri.parse(videoLink);
-       v.setVideoURI(uri);
-       MediaController mediaController= new MediaController(this);
-       v.setMediaController(mediaController);
-       mediaController.setAnchorView(v);
-       v.start();
-       v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-           @Override
-           public void onPrepared(MediaPlayer mp) {
+        Uri uri = Uri.parse(videoLink);
+        v.setVideoURI(uri);
+        MediaController mediaController= new MediaController(this);
+        v.setMediaController(mediaController);
+        mediaController.setAnchorView(v);
+        v.start();
+        v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
 //                pd.dismiss();
-           }
-       });
-       v.setVideoURI(uri);
-       v.setMediaController(new MediaController(this));
+            }
+        });
+        v.setVideoURI(uri);
+        v.setMediaController(new MediaController(this));
 
-       v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-           @Override
-           public void onPrepared(MediaPlayer mp) {
-               mp.setLooping(true);
-           }
-       });
+        v.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
 
-   }
+        audioLink=audio.toString();
+
+        // initializing media player
+        player = new MediaPlayer();
+
+        // below line is use to set the audio
+        // stream type for our media player.
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        // below line is use to set our
+        // url to our media player.
+        player.setDataSource(audioLink);
+        // below line is use to prepare
+        // and start our media player.
+        player.prepare();
+        player.start();
+        float pitch = 5;
+        if (pitch < 0.1) pitch = 0.1f;
+        float speed = 0.9f;
+        if (speed < 0.1) speed = 0.1f;
+
+       // player.setPitch(pitch);
+        //player.setSpeechRate(speed);
+        // below line is use to display a toast message.
+        //Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
+
+    }
 
 //    public String  retreiveVideo(String exName){
 //        if (! Python.isStarted()) {
@@ -409,7 +455,11 @@ public class SessionView extends AppCompatActivity {
 //                exName= dayAr[counter];
 
                 exerciseName.setText(dayAr[counter]);
-                retreiveInstructions(dayAr[counter]);
+                try {
+                    retreiveInstructions(dayAr[counter]);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 if(counter==dayAr.length-1 || counter==dayAr.length+1  || counter==dayAr.length){
                     nextExercise="finish";

@@ -244,7 +244,7 @@
         <TextView
             android:id="@+id/ExercisesView"
             android:layout_width="388dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_below="@+id/viewim"
 
             android:layout_marginStart="10dp"
@@ -257,11 +257,18 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/start100"
+            android:layout_width="54dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="-90dp"
+            android:layout_marginStart="325dp"
+            app:srcCompat="@drawable/startex" />
+
+        <ImageView
             android:id="@+id/restimg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="390dp"
+            android:layout_height="330dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="-300dp"
             android:layout_marginEnd="13dp"
             android:layout_marginBottom="-700px"
             app:srcCompat="@drawable/relax"

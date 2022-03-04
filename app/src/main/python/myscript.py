@@ -591,5 +591,8 @@ def retreiveVideo(exName):
     inst2=inst1.loc[inst1['exerciseName'].str.lower()==exName]
     return inst2.iloc[0,6]
 
+def retreiveAudio(exName):
+    audio=inst1.loc[inst1['exerciseName'].str.lower()==exName]
+    return audio.iloc[0,7]
 
 
