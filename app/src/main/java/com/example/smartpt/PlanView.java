@@ -1519,7 +1519,7 @@ public class PlanView extends AppCompatActivity {
 
     }
 
-    private void generateNextWeek(double weekD) {
+    private void generateNextWeek(int weekD) {
         Map<String,Object> user = new HashMap<>();
         Map<String,Object> week = new HashMap<>();
 
@@ -1534,7 +1534,7 @@ public class PlanView extends AppCompatActivity {
 //            }
 //        });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1549,7 +1549,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1564,7 +1564,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1579,7 +1579,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1594,7 +1594,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){

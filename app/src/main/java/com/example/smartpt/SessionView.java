@@ -47,14 +47,15 @@ import java.util.concurrent.TimeUnit;
 
 public class SessionView extends AppCompatActivity {
 
-    //    Timer timer;
+        Timer timer;
     VideoView v;
     //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private int week;
     private Double weekD;
-
+    private int  FBindex ;
+    private Double FBindexD;
     private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
@@ -68,13 +69,13 @@ public class SessionView extends AppCompatActivity {
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
     private TimerTask timerTask;
-    private Double time=0.0;
+    private Double time;
     private MediaPlayer player,restAudio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_view);
-//        timer=new Timer();
+        timer=new Timer();
         prog=0;
         dayAr=new String[50];
         exName="";
@@ -96,10 +97,12 @@ public class SessionView extends AppCompatActivity {
         SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
         currDay=getIntent().getStringExtra("currDay");
+        time= getIntent().getDoubleExtra("duration",-1);
+
+
 
         retrieveExerciseName();
 
-//        startTimer();
 
         updteProgressBar();
 
@@ -211,7 +214,23 @@ public class SessionView extends AppCompatActivity {
                                 skipbtn.setVisibility(View.INVISIBLE);
                                 pausebtn.setVisibility(View.INVISIBLE);
                                 counterTxt.setText(String.valueOf(millisUntilFinished/1000));
-
+//                                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+//
+//                                restAudio = new MediaPlayer();
+//
+//                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//                                try {
+//                                    restAudio.setDataSource(audioUrl);
+//                                    // below line is use to prepare
+//                                    // and start our media player.
+//                                    restAudio.prepare();
+//                                    restAudio.start();
+//
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
                             }
 
                             @Override
@@ -227,23 +246,7 @@ public class SessionView extends AppCompatActivity {
                             }
                         }.start();
 
-                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
 
-                        restAudio = new MediaPlayer();
-
-                        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-                        try {
-                            restAudio.setDataSource(audioUrl);
-                            // below line is use to prepare
-                            // and start our media player.
-                            restAudio.prepare();
-                            restAudio.start();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
             }
@@ -280,6 +283,37 @@ public class SessionView extends AppCompatActivity {
 //        retreiveInstructions(exName);
 //        exerciseName.setText(exName);
 
+//        if(counter>0){
+//            DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
+//            d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//
+//                    FBindexD= value.getDouble("duration");
+//                    FBindex=(int)Math.round(FBindexD);
+//                    time=FBindexD+0.0;
+//                    startTimer();
+//
+//
+//                }
+//            });
+//        }
+//        else {
+//            time=0.0;
+//            startTimer();
+//
+//        }
+
+        if(time==-1){
+            time=0.0;
+            startTimer();
+        }
+        else{
+            startTimer();
+        }
+
+
     }
     public void updteProgressBar(){
 
@@ -291,7 +325,7 @@ public class SessionView extends AppCompatActivity {
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
-//        user.put("duration",timer);
+        user.put("duration",time);
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -332,6 +366,7 @@ public class SessionView extends AppCompatActivity {
         intent.putExtra("currDay",currDay);
         intent.putExtra("nextEx",nextExercise);
         intent.putExtra("week",week);
+        intent.putExtra("duration",time);
         startActivity(intent);
 
     }
@@ -494,26 +529,26 @@ public class SessionView extends AppCompatActivity {
         });
     }
 
-//    private void startTimer(){
-//
-//        timerTask=new TimerTask() {
-//            @Override
-//            public void run() {
-//
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        time++;
-//                        timertxt.setText(getTimertxt());
-//                    }
-//                });
-//
-//
-//
-//            }
-//        };
-//        timer.scheduleAtFixedRate(timerTask,0,1000);
-//    }
+    private void startTimer(){
+
+        timerTask=new TimerTask() {
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        time++;
+                        timertxt.setText(getTimertxt());
+                    }
+                });
+
+
+
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask,0,1000);
+    }
 
     private String getTimertxt() {
 

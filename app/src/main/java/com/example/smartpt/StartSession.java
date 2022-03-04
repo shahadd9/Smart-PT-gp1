@@ -70,6 +70,7 @@ public class StartSession extends AppCompatActivity {
         txt2=findViewById(R.id.txt2);
         timertxt=(TextView)findViewById(R.id.timertxt);
 
+        time = getIntent().getDoubleExtra("duration",-1);
         rest = getIntent().getIntExtra("rest",0);
         restText=getIntent().getStringExtra("restText");
         SessionNo=getIntent().getStringExtra("SessionNo");
@@ -127,13 +128,16 @@ public class StartSession extends AppCompatActivity {
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
             txt2.setText(nextEx);
-
+            time=time+5;
         }
         else {
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
             txt2.setText(nextEx);
             countDown=rest*1000;
+            time=time+rest;
+
+            //////////////////////////
         }
 
         counterMessage.setText(restText); //////////////////////////////////////////////
@@ -174,6 +178,7 @@ public class StartSession extends AppCompatActivity {
         intent.putExtra("currDay",currDay);
         intent.putExtra("counter",FBindex);
         intent.putExtra("week",week);
+        intent.putExtra("duration",time);
         startActivity(intent);
 
     }
@@ -192,7 +197,7 @@ public class StartSession extends AppCompatActivity {
 //            }
 //        });
 //    }
-
+//
 //    private void startTimer(){
 //
 //        timerTask=new TimerTask() {
@@ -213,14 +218,14 @@ public class StartSession extends AppCompatActivity {
 //        };
 //        timer.scheduleAtFixedRate(timerTask,0,1000);
 //    }
-
-    private String getTimertxt() {
-
-        int rounded = (int) Math.round(time);
-        int second=((rounded % 86400)%3600)%60;
-        int min=((rounded % 86400)%3600)/60;
-        int hours=((rounded % 86400)/3600);
-
-        return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
-    }
+//
+//    private String getTimertxt() {
+//
+//        int rounded = (int) Math.round(time);
+//        int second=((rounded % 86400)%3600)%60;
+//        int min=((rounded % 86400)%3600)/60;
+//        int hours=((rounded % 86400)/3600);
+//
+//        return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
+//    }
 }
