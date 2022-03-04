@@ -978,7 +978,7 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("level",level);
                 i.putExtra("currDay",currDay);
                 i.putExtra("SessionNo",SessionNo);
-                i.putExtra("week",weekD);
+                i.putExtra("week",week);
 //                if(2 == -1) {
 //                    i.putExtra("counter", 0);
 //                }
@@ -1428,7 +1428,7 @@ public class PlanView extends AppCompatActivity {
                     if (value.exists()) {
 //                        exists
                         weekD= value.getDouble("week");
-//                        week=(int)weekD;
+                        week=(int)Math.round(weekD);
                         isItOne=value.getString("isItOne");
                     } else {
                         //doesn't exist
@@ -1502,12 +1502,12 @@ public class PlanView extends AppCompatActivity {
         Map<String,Object> weeks = new HashMap<>();
 
         if(isItOne=="0"|| isItOne.equals("0")) {
-            weeks.put("week", ++weekD);
+            weeks.put("week", ++week);
             weeks.put("isItOne", "1");
-            generateNextWeek(weekD);
+            generateNextWeek(week);
         }
         else {
-            weeks.put("week", weekD);
+            weeks.put("week", week);
             weeks.put("isItOne", "1");
         }
         db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -1534,7 +1534,7 @@ public class PlanView extends AppCompatActivity {
 //            }
 //        });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1549,7 +1549,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1564,7 +1564,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1579,7 +1579,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1594,7 +1594,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){

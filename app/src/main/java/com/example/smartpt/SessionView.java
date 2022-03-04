@@ -52,8 +52,8 @@ public class SessionView extends AppCompatActivity {
     //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
-    private Double week;
-    private double weekD;
+    private int week;
+    private Double weekD;
 
     private String userIp;
     private double set , Res;
@@ -101,6 +101,7 @@ public class SessionView extends AppCompatActivity {
 
 //        startTimer();
 
+        updteProgressBar();
 
         i=0;
         sIndex=0;
@@ -139,7 +140,8 @@ public class SessionView extends AppCompatActivity {
 
 
                 weekD= value.getDouble("week");
-                week=weekD;
+                week=(int)Math.round(weekD);
+                ;
 
             }
         });
@@ -162,23 +164,23 @@ public class SessionView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
-
-                restAudio = new MediaPlayer();
-
-                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-                try {
-                    restAudio.setDataSource(audioUrl);
-                    // below line is use to prepare
-                    // and start our media player.
-                    restAudio.prepare();
-                    restAudio.start();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+//
+//                restAudio = new MediaPlayer();
+//
+//                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//                try {
+//                    restAudio.setDataSource(audioUrl);
+//                    // below line is use to prepare
+//                    // and start our media player.
+//                    restAudio.prepare();
+//                    restAudio.start();
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
 
                 if(i+1==s){
 //                    sets.setText("done");
@@ -224,6 +226,24 @@ public class SessionView extends AppCompatActivity {
 
                             }
                         }.start();
+
+                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+
+                        restAudio = new MediaPlayer();
+
+                        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+                        try {
+                            restAudio.setDataSource(audioUrl);
+                            // below line is use to prepare
+                            // and start our media player.
+                            restAudio.prepare();
+                            restAudio.start();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
