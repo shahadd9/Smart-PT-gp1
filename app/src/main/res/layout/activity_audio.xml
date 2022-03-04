@@ -61,7 +61,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="265dp"
         android:layout_marginBottom="306dp"
-        android:text="Test the text to speech" />
+        android:text="Diamond push-up"
+        android:textColor="@color/black"
+        />
 
     <Button
         android:id="@+id/buttonspeech"

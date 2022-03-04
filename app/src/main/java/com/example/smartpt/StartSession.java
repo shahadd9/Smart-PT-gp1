@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,12 +40,28 @@ public class StartSession extends AppCompatActivity {
     private String restText , SessionNo, level, currDay,nextEx,weekSt;
     int countDown;
     private TextView counter,counterMessage,txt1,txt2,timertxt;
+    private MediaPlayer startAudio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_session);
         timer=new Timer();
+        String audioUrl = "https://od.lk/s/NzVfMzI5OTExNzNf/start.mp3";
+        startAudio = new MediaPlayer();
 
+        startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+        try {
+            startAudio.setDataSource(audioUrl);
+            // below line is use to prepare
+            // and start our media player.
+            startAudio.prepare();
+            startAudio.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //        weekD=-1;
         week= getIntent().getDoubleExtra("week",0);
         counter = findViewById(R.id.timer);
