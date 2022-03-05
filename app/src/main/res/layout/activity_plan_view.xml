@@ -256,13 +256,7 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/start100"
-            android:layout_width="54dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="-90dp"
-            android:layout_marginStart="325dp"
-            app:srcCompat="@drawable/startex" />
+
 
         <ImageView
             android:id="@+id/restimg"
@@ -333,17 +327,17 @@
 
                     />
 
-                <ImageView
-                    android:id="@+id/start1"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/start1"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt1"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt" />
 
 
@@ -384,17 +378,17 @@
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/start2"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start2"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="57dp"-->
+<!--                app:srcCompat="@drawable/startex" />-->
             <ImageView
                 android:id="@+id/alrt2"
                 android:layout_width="54dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="-110dp"
+                android:layout_marginStart="57dp"
                 app:srcCompat="@drawable/findalt"  />
 
             <TextView
@@ -433,17 +427,17 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start3"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start3"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
             <ImageView
                 android:id="@+id/alrt3"
                 android:layout_width="54dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="-110dp"
+                android:layout_marginStart="57dp"
                 app:srcCompat="@drawable/findalt" />
 
             <TextView
@@ -483,17 +477,17 @@
                     android:textStyle="bold"
                     />
 
-                <ImageView
-                    android:id="@+id/start4"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/start4"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt4"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"   />
                 <TextView
                     android:id="@+id/f4"
@@ -532,17 +526,17 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start5"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start5"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt5"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f5"
@@ -582,18 +576,18 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start6"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start6"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
 
                 <ImageView
                     android:id="@+id/alrt6"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
 
                 <TextView
@@ -634,17 +628,17 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start7"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start7"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt7"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f7"
@@ -682,18 +676,18 @@
                     android:textSize="14dp"
                     android:textStyle="bold"                    />
 
-                <ImageView
-                    android:id="@+id/start8"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/start8"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
 
                 <ImageView
                     android:id="@+id/alrt8"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
 
                 <TextView
@@ -730,17 +724,17 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start9"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start9"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt9"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f9"
@@ -778,18 +772,18 @@
 
                 />
 
-            <ImageView
-                android:id="@+id/start10"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start10"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
 
                 <ImageView
                     android:id="@+id/alrt10"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
 
                 <TextView
@@ -829,17 +823,17 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start11"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start11"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
                 <ImageView
                     android:id="@+id/alrt11"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
                 <TextView
                     android:id="@+id/f11"
@@ -875,18 +869,18 @@
                     android:textStyle="bold"
                 />
 
-            <ImageView
-                android:id="@+id/start12"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/startex" />
+<!--            <ImageView-->
+<!--                android:id="@+id/start12"-->
+<!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    app:srcCompat="@drawable/startex" />-->
 
                 <ImageView
                     android:id="@+id/alrt12"
                     android:layout_width="54dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="-110dp"
+                    android:layout_marginStart="57dp"
                     app:srcCompat="@drawable/findalt"  />
 
 
@@ -911,107 +905,120 @@
 
     </ScrollView>
 
-
-
-  <!-- <LinearLayout
-        android:id="@+id/ExFrame"
-        android:layout_width="388dp"
-        android:layout_height="200dp"
-        android:layout_below="@+id/WeeklyFrame"
+    <ImageView
+        android:id="@+id/start100"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/ScrollFrame"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-300dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="102dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="67dp">
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="36dp"
+        app:srcCompat="@drawable/startbtn" />
 
 
 
-            <TextView
-                android:id="@+id/textViewex1"
-                android:layout_width="240dp"                android:layout_marginStart="20dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="7dp"                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/start1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                app:srcCompat="@drawable/startex" />
-        </TableRow>
+    <!-- <LinearLayout
+          android:id="@+id/ExFrame"
+          android:layout_width="388dp"
+          android:layout_height="200dp"
+          android:layout_below="@+id/WeeklyFrame"
+          android:layout_alignParentStart="true"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentBottom="true"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="-300dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="102dp"
+          android:layout_weight="1"
+          android:orientation="vertical"
+          android:visibility="invisible">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="67dp"
+          <TableRow
+              android:layout_width="match_parent"
+              android:layout_height="67dp">
 
-            >
 
-            <ImageView
-                android:id="@+id/imageViewex2"
-                android:layout_width="107dp"
-                android:layout_height="match_parent"
-                />
 
-            <TextView
-                android:id="@+id/textViewex2"
-                android:layout_width="240dp"                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="7dp"                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+              <TextView
+                  android:id="@+id/textViewex1"
+                  android:layout_width="240dp"                android:layout_marginStart="20dp"
+                  android:layout_marginTop="4dp"
+                  android:layout_marginBottom="7dp"                    android:textColor="@color/black"
+                      android:textSize="14dp"
+                      android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/start2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                app:srcCompat="@drawable/startex" />
-        </TableRow>
+              <ImageView
+                  android:id="@+id/start1"
+                  android:layout_width="60dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  app:srcCompat="@drawable/startex" />
+          </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="67dp">
+          <TableRow
+              android:layout_width="match_parent"
+              android:layout_height="67dp"
 
-            <ImageView
-                android:id="@+id/imageViewex3"
-                android:layout_width="107dp"
-                android:layout_height="match_parent"
-                 />
+              >
 
-            <TextView
-                android:id="@+id/textViewex3"
-                android:layout_width="240dp"                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+              <ImageView
+                  android:id="@+id/imageViewex2"
+                  android:layout_width="107dp"
+                  android:layout_height="match_parent"
+                  />
 
-            <ImageView
-                android:id="@+id/start3"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:contentDescription="TODO"
-                app:srcCompat="@drawable/startex" />
-        </TableRow>
+              <TextView
+                  android:id="@+id/textViewex2"
+                  android:layout_width="240dp"                android:layout_height="match_parent"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="4dp"
+                  android:layout_marginBottom="7dp"                    android:textColor="@color/black"
+                      android:textSize="14dp"
+                      android:textStyle="bold" />
 
-    </LinearLayout>
+              <ImageView
+                  android:id="@+id/start2"
+                  android:layout_width="60dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  app:srcCompat="@drawable/startex" />
+          </TableRow>
 
-    -->
+          <TableRow
+              android:layout_width="match_parent"
+              android:layout_height="67dp">
+
+              <ImageView
+                  android:id="@+id/imageViewex3"
+                  android:layout_width="107dp"
+                  android:layout_height="match_parent"
+                   />
+
+              <TextView
+                  android:id="@+id/textViewex3"
+                  android:layout_width="240dp"                android:layout_height="match_parent"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="4dp"
+                  android:layout_marginBottom="7dp"
+                      android:textColor="@color/black"
+                      android:textSize="14dp"
+                      android:textStyle="bold" />
+
+              <ImageView
+                  android:id="@+id/start3"
+                  android:layout_width="60dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:contentDescription="TODO"
+                  app:srcCompat="@drawable/startex" />
+          </TableRow>
+
+      </LinearLayout>
+
+      -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
