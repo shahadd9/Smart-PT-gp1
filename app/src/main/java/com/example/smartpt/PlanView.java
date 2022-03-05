@@ -1490,7 +1490,7 @@ public class PlanView extends AppCompatActivity {
 
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
-            nextWeek();
+//            GeneratenextWeek();
 //            updateFlag();
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
@@ -1498,6 +1498,9 @@ public class PlanView extends AppCompatActivity {
             buttonSun.performClick();
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
+//            GeneratenextWeek();
+            updateFlag();
+
 //            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
             buttonThu.performClick();
@@ -1508,18 +1511,9 @@ public class PlanView extends AppCompatActivity {
         }
     }
 
-    private void nextWeek() {
+    private void GeneratenextWeek() {
 
-//        DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//
-//                isItOne=value.getString("isItOne");
-//
-//            }
-//        });
+
 
         Map<String,Object> weeks = new HashMap<>();
 
