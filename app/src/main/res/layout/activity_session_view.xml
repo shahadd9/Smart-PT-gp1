@@ -175,6 +175,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.681" />
 
+        <ImageView
+            android:id="@+id/buttonSpeaker"
+            android:layout_width="25dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/instTxt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toEndOf="@+id/instructions"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseName"
+            app:layout_constraintVertical_bias="0.952"
+            app:srcCompat="@drawable/speaker"
+            tools:ignore="MissingConstraints"
+            android:onClick="testspeaker"/>
+
         <TextView
             android:id="@+id/instTxt"
             android:layout_width="379dp"

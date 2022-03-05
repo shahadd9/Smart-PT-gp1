@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,15 +19,12 @@
         <activity
             android:name=".SessionView"
             android:exported="true" />
-
         <activity
             android:name=".Audio"
             android:exported="true" />
-
         <activity
             android:name=".Alternative"
             android:exported="true" />
-
         <activity
             android:name=".LoadPaP2"
             android:exported="true" />
@@ -112,9 +108,7 @@
             android:name=".Home"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SmartPT.NoActionBar"/>
-        <!--        </activity>-->
-
+            android:theme="@style/Theme.SmartPT.NoActionBar" /> <!-- </activity> -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
