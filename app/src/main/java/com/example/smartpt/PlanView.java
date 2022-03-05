@@ -272,7 +272,7 @@ public class PlanView extends AppCompatActivity {
         callweek();
 
 
-         DocumentReference documentReference =  db.collection("userProfile").document(userIp);
+        DocumentReference documentReference =  db.collection("userProfile").document(userIp);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -391,7 +391,7 @@ public class PlanView extends AppCompatActivity {
 
         ImageView restimg=(ImageView) findViewById(R.id.restimg);
 
-        
+
 
         buttonMon = (Button) findViewById(R.id.buttonMon);
         buttonSat = (Button) findViewById(R.id.buttonSat);
@@ -450,7 +450,7 @@ public class PlanView extends AppCompatActivity {
                 if (dayMon) {
                     mon.setText("My Exercises for this day");
                     restimg.setVisibility(View.INVISIBLE);
-                    
+
                     scrollView.setVisibility(View.VISIBLE);
 
 // 
@@ -1617,7 +1617,7 @@ public class PlanView extends AppCompatActivity {
 
         Map<String,Object> weeks = new HashMap<>();
 
-            weeks.put("isItOne", "0");
+        weeks.put("isItOne", "0");
         db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -2575,4 +2575,3 @@ public class PlanView extends AppCompatActivity {
 //
 //    }
 }
-

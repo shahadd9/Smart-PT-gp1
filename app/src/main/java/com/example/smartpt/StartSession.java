@@ -146,9 +146,9 @@ public class StartSession extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 String eDuration = String.format(Locale.ENGLISH,"%02d : %02d"
-                , TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
-                ,TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+                        , TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                        ,TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+                                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
                 counter.setText(eDuration);
 //                counter.setText(String.valueOf(millisUntilFinished/1000));
 

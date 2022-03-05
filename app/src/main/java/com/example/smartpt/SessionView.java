@@ -14,10 +14,8 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.speech.tts.TextToSpeech;
 import android.text.format.Formatter;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,19 +47,20 @@ import java.util.concurrent.TimeUnit;
 
 public class SessionView extends AppCompatActivity {
 
-    //    Timer timer;
+    Timer timer;
     VideoView v;
     //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private int week;
     private Double weekD;
-
+    private int  FBindex ;
+    private Double FBindexD;
     private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
     private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
-    private ImageView exist,buttonSpeaker;
+    private ImageView exist;
     private Button nextbtn,skipbtn,pausebtn;
     private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink,audioLink;
     String instArray[] = new String[5];
@@ -70,16 +69,13 @@ public class SessionView extends AppCompatActivity {
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
     private TimerTask timerTask;
-    private Double time=0.0;
+    private Double time;
     private MediaPlayer player,restAudio;
-    private TextToSpeech mTTS;
-    public boolean isSpeak;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_view);
-//        timer=new Timer();
+        timer=new Timer();
         prog=0;
         dayAr=new String[50];
         exName="";
@@ -101,12 +97,12 @@ public class SessionView extends AppCompatActivity {
         SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
         currDay=getIntent().getStringExtra("currDay");
-        buttonSpeaker=findViewById(R.id.buttonSpeaker);
-        isSpeak=false;
+        time= getIntent().getDoubleExtra("duration",-1);
+
+
 
         retrieveExerciseName();
 
-//        startTimer();
 
         updteProgressBar();
 
@@ -218,7 +214,23 @@ public class SessionView extends AppCompatActivity {
                                 skipbtn.setVisibility(View.INVISIBLE);
                                 pausebtn.setVisibility(View.INVISIBLE);
                                 counterTxt.setText(String.valueOf(millisUntilFinished/1000));
-
+//                                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+//
+//                                restAudio = new MediaPlayer();
+//
+//                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//                                try {
+//                                    restAudio.setDataSource(audioUrl);
+//                                    // below line is use to prepare
+//                                    // and start our media player.
+//                                    restAudio.prepare();
+//                                    restAudio.start();
+//
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
                             }
 
                             @Override
@@ -234,23 +246,7 @@ public class SessionView extends AppCompatActivity {
                             }
                         }.start();
 
-                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
 
-                        restAudio = new MediaPlayer();
-
-                        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-                        try {
-                            restAudio.setDataSource(audioUrl);
-                            // below line is use to prepare
-                            // and start our media player.
-                            restAudio.prepare();
-                            restAudio.start();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
             }
@@ -284,33 +280,39 @@ public class SessionView extends AppCompatActivity {
 
             }
         });
-
-        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    int result = mTTS.setLanguage(Locale.CANADA);
-
-                    if (result == TextToSpeech.LANG_MISSING_DATA
-                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "Language not supported");
-                    } else {
-                        buttonSpeaker.setEnabled(true);
-                    }
-                } else {
-                    Log.e("TTS", "Initialization failed");
-                }
-            }
-        });
-
-        /*T2S= new TextToSpeech(testApp.getInstance().getApplicationContext(), this, "com.google.android.tts");
-    Set<String> a=new HashSet<>();
-    a.add("male");//here you can give male if you want to select male voice.
-    Voice v=new Voice("en-us-x-sfg#male_2-local",new Locale("en","US"),400,200,true,a);
-    T2S.setVoice(v);
-    T2S.setSpeechRate(0.8f);*/
 //        retreiveInstructions(exName);
 //        exerciseName.setText(exName);
+
+//        if(counter>0){
+//            DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
+//            d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//
+//                    FBindexD= value.getDouble("duration");
+//                    FBindex=(int)Math.round(FBindexD);
+//                    time=FBindexD+0.0;
+//                    startTimer();
+//
+//
+//                }
+//            });
+//        }
+//        else {
+//            time=0.0;
+//            startTimer();
+//
+//        }
+
+        if(time==-1){
+            time=0.0;
+            startTimer();
+        }
+        else{
+            startTimer();
+        }
+
 
     }
     public void updteProgressBar(){
@@ -323,7 +325,7 @@ public class SessionView extends AppCompatActivity {
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
-//        user.put("duration",timer);
+        user.put("duration",time);
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -364,6 +366,7 @@ public class SessionView extends AppCompatActivity {
         intent.putExtra("currDay",currDay);
         intent.putExtra("nextEx",nextExercise);
         intent.putExtra("week",week);
+        intent.putExtra("duration",time);
         startActivity(intent);
 
     }
@@ -472,7 +475,7 @@ public class SessionView extends AppCompatActivity {
         float speed = 0.9f;
         if (speed < 0.1) speed = 0.1f;
 
-       // player.setPitch(pitch);
+        // player.setPitch(pitch);
         //player.setSpeechRate(speed);
         // below line is use to display a toast message.
         //Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
@@ -526,26 +529,26 @@ public class SessionView extends AppCompatActivity {
         });
     }
 
-//    private void startTimer(){
-//
-//        timerTask=new TimerTask() {
-//            @Override
-//            public void run() {
-//
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        time++;
-//                        timertxt.setText(getTimertxt());
-//                    }
-//                });
-//
-//
-//
-//            }
-//        };
-//        timer.scheduleAtFixedRate(timerTask,0,1000);
-//    }
+    private void startTimer(){
+
+        timerTask=new TimerTask() {
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        time++;
+                        timertxt.setText(getTimertxt());
+                    }
+                });
+
+
+
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask,0,1000);
+    }
 
     private String getTimertxt() {
 
@@ -555,39 +558,6 @@ public class SessionView extends AppCompatActivity {
         int hours=((rounded % 86400)/3600);
 
         return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
-    }
-
-    private void speak() {
-        float pitch = 5;
-        if (pitch < 0.1) pitch = 0.1f;
-        float speed = 0.9f;
-        if (speed < 0.1) speed = 0.1f;
-
-        mTTS.setPitch(pitch);
-        mTTS.setSpeechRate(speed);
-
-        mTTS.speak(inst, TextToSpeech.QUEUE_FLUSH, null);
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (mTTS != null) {
-            mTTS.stop();
-            mTTS.shutdown();
-        }
-
-        super.onDestroy();
-    }
-
-    public void testspeaker(View view){
-        if (isSpeak==false){
-            speak();
-        }
-        if (isSpeak==true){
-            onDestroy();
-        }
-
-
     }
 
 }
