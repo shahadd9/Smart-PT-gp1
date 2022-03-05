@@ -206,11 +206,11 @@ public class PlanView extends AppCompatActivity {
         TextviewEx11 = findViewById(R.id.textViewex11);
         TextviewEx12 = findViewById(R.id.textViewex12);
 
-        img8=findViewById(R.id.start8);
-        img9=findViewById(R.id.start9);
-        img10=findViewById(R.id.start10);
-        img11=findViewById(R.id.start11);
-        img12=findViewById(R.id.start12);
+//        img8=findViewById(R.id.start8);
+//        img9=findViewById(R.id.start9);
+//        img10=findViewById(R.id.start10);
+//        img11=findViewById(R.id.start11);
+//        img12=findViewById(R.id.start12);
 
 
         f1 = findViewById(R.id.f1);
@@ -240,7 +240,7 @@ public class PlanView extends AppCompatActivity {
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
         ImageView butAlrt1 =(ImageView) findViewById(R.id.alrt1);
-        ImageView butstart1 =(ImageView) findViewById(R.id.start1);
+        ImageView butstart1 =(ImageView) findViewById(R.id.start100);
 
         ImageView butAlrt2 =(ImageView) findViewById(R.id.alrt2);
         ImageView butAlrt3 =(ImageView) findViewById(R.id.alrt3);
@@ -450,6 +450,7 @@ public class PlanView extends AppCompatActivity {
                 if (dayMon) {
                     mon.setText("My Exercises for this day");
                     restimg.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.VISIBLE);
 
                     scrollView.setVisibility(View.VISIBLE);
 
@@ -467,6 +468,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
 
                 }
 
@@ -508,6 +511,8 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
+                    butstart1.setVisibility(View.VISIBLE);
+
                     scrollView.setVisibility(View.VISIBLE);
 
 //                        if(SessionNo.equals("2")){
@@ -534,7 +539,7 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
-
+                    butstart1.setVisibility(View.INVISIBLE);
                     //  mon.setCompoundDrawablesWithIntrinsicBounds(
                     //       0, 0, 0,  R.drawable.relax);
 
@@ -599,6 +604,8 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx1(v);
 //                        loadEx2(v);
 //                        loadEx3(v);
+                    butstart1.setVisibility(View.VISIBLE);
+
                     scrollView.setVisibility(View.VISIBLE);
 
                     if (SessionNo.equals("2")) {
@@ -628,6 +635,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
                 }
 
                 //}// end for
@@ -682,6 +691,7 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx2(v);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
+                    butstart1.setVisibility(View.VISIBLE);
 
 
                     if (SessionNo.equals("2")) {
@@ -713,6 +723,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
                 }
 
                 //  }// end for
@@ -771,6 +783,7 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx3(v);
 
                     scrollView.setVisibility(View.VISIBLE);//
+                    butstart1.setVisibility(View.VISIBLE);
 
 
                      /*   if(SessionNo.equals("2")){
@@ -791,6 +804,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
                 }
 
                 //    }// end for
@@ -845,6 +860,7 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx2(v);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
+                    butstart1.setVisibility(View.VISIBLE);
 
 
                     //    if(SessionNo.equals("2")){
@@ -874,6 +890,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
                 }
 
                 //  }// end for
@@ -928,6 +946,8 @@ public class PlanView extends AppCompatActivity {
 //                        loadEx2(v);
 //                        loadEx3(v);
                     scrollView.setVisibility(View.VISIBLE);
+                    butstart1.setVisibility(View.VISIBLE);
+
                     //   break;
                     if (SessionNo.equals("5")) {
                         currDay="5";
@@ -940,6 +960,8 @@ public class PlanView extends AppCompatActivity {
                     mon.setText("Rest Day\n");
                     restimg.setVisibility(View.VISIBLE);
                     scrollView.setVisibility(View.INVISIBLE);
+                    butstart1.setVisibility(View.INVISIBLE);
+
                 }
 
                 // }// end for

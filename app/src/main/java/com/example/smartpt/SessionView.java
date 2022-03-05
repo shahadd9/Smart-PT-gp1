@@ -14,8 +14,10 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.text.format.Formatter;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,12 +62,16 @@ public class SessionView extends AppCompatActivity {
     private double set , Res;
     private int s, re, i,sIndex,counter;
     private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
-    private ImageView exist;
+    private ImageView exist,buttonSpeaker;
     private Button nextbtn,skipbtn,pausebtn;
     private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink,audioLink;
     String instArray[] = new String[5];
     String dayAr[];
     private int prog;
+
+    private TextToSpeech mTTS;
+    public boolean isSpeak;
+
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
     private TimerTask timerTask;
@@ -98,8 +104,30 @@ public class SessionView extends AppCompatActivity {
         level =getIntent().getStringExtra("level");
         currDay=getIntent().getStringExtra("currDay");
         time= getIntent().getDoubleExtra("duration",-1);
+        buttonSpeaker=findViewById(R.id.buttonSpeaker);
 
 
+
+        //##########################################################################################
+//        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+//            @Override
+//            public void onInit(int status) {
+//                if (status == TextToSpeech.SUCCESS) {
+//                    int result = mTTS.setLanguage(Locale.CANADA);
+//
+//                    if (result == TextToSpeech.LANG_MISSING_DATA
+//                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+//                        Log.e("TTS", "Language not supported");
+//                    } else {
+//                        buttonSpeaker.setEnabled(true);
+//                    }
+//                } else {
+//                    Log.e("TTS", "Initialization failed");
+//                }
+//            }
+//        });
+
+        //############################################################################################
 
         retrieveExerciseName();
 
@@ -205,6 +233,23 @@ public class SessionView extends AppCompatActivity {
                     if(prog<=90){
                         prog+=(100/s);
                         updteProgressBar();
+                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+
+                                restAudio = new MediaPlayer();
+
+                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+                                try {
+                                    restAudio.setDataSource(audioUrl);
+                                    // below line is use to prepare
+                                    // and start our media player.
+                                    restAudio.prepare();
+                                    restAudio.start();
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                         new CountDownTimer(10000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
@@ -559,5 +604,36 @@ public class SessionView extends AppCompatActivity {
 
         return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
     }
+//    private void speak() {
+//        float pitch = 5;
+//        if (pitch < 0.1) pitch = 0.1f;
+//        float speed = 0.9f;
+//        if (speed < 0.1) speed = 0.1f;
+//
+//        mTTS.setPitch(pitch);
+//        mTTS.setSpeechRate(speed);
+//
+//        mTTS.speak(inst, TextToSpeech.QUEUE_FLUSH, null);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        if (mTTS != null) {
+//            mTTS.stop();
+//        }
+//
+//        super.onDestroy();
+//    }
+//
+//    public void testspeaker(View view){
+//        if (isSpeak==false){
+//            speak();
+//        }
+//        if (isSpeak==true){
+//            onDestroy();
+//        }
+//
+//
+//    }
 
 }
