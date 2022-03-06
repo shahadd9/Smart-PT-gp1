@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
-            android:name=".feedback"
-            android:exported="false" />
-        <activity
             android:name=".StartSession"
             android:exported="true" />
         <activity
@@ -28,9 +25,6 @@
         <activity
             android:name=".Alternative"
             android:exported="true" />
-        <activity
-            android:name=".SplashScreen"
-            android:exported="true"></activity>
         <activity
             android:name=".LoadPaP2"
             android:exported="true" />
@@ -66,6 +60,9 @@
             android:exported="true" />
         <activity
             android:name=".updateProfile"
+            android:exported="true" />
+        <activity
+            android:name=".feedback"
             android:exported="true" />
         <activity
             android:name=".Birthdate"
@@ -114,7 +111,10 @@
             android:name=".Home"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SmartPT.NoActionBar">
+            android:theme="@style/Theme.SmartPT.NoActionBar" /> <!-- </activity> -->
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
