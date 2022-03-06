@@ -126,7 +126,6 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
-
         //############################################################################################
 
         retrieveExerciseName();

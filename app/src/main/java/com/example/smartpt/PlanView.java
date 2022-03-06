@@ -884,7 +884,7 @@ AlertDialog.Builder builder;
 
 
 
-                    //  }   
+                    //  }
                     if (SessionNo.equals("3")) {
                         currDay="3";
                         day3();
