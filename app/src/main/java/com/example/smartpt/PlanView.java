@@ -92,11 +92,11 @@ public class PlanView extends AppCompatActivity {
     private TextView TextviewEx11;
     private TextView TextviewEx12;
 
-    private ImageView img8;
-    private ImageView img9;
-    private ImageView img10;
-    private ImageView img11;
-    private ImageView img12;
+//    private ImageView img8;
+//    private ImageView img9;
+//    private ImageView img10;
+//    private ImageView img11;
+//    private ImageView img12;
 
     private TextView m1;
     private TextView m2;
@@ -276,7 +276,6 @@ AlertDialog.Builder builder;
         db2=FirebaseFirestore.getInstance();
 
         callweek();
-
 
 
         DocumentReference documentReference =  db.collection("userProfile").document(userIp);
@@ -464,6 +463,8 @@ AlertDialog.Builder builder;
 // 
                     if (SessionNo.equals("5")) {
                         currDay="2";
+                        getExIndex(currDay,week);
+
                         day2();
                     }
 
@@ -532,6 +533,7 @@ AlertDialog.Builder builder;
 //                        }
                     if (SessionNo.equals("4")) {
                         currDay="4";
+                        getExIndex(currDay,week);
                         day4();
 
                     }
@@ -617,22 +619,26 @@ AlertDialog.Builder builder;
 
                     if (SessionNo.equals("2")) {
                         currDay="1";
+                        getExIndex(currDay,week);
                         day1();
 
                     }
                     if (SessionNo.equals("3")) {
                         currDay="1";
+                        getExIndex(currDay,week);
                         day1();
 
 
                     }
                     if (SessionNo.equals("4")) {
+                        getExIndex(currDay,week);
                         currDay="1";
                         day1();
 
                     }
                     if (SessionNo.equals("5")) {
                         currDay="1";
+                        getExIndex(currDay,week);
                         day1();
                     }
                     //     break;
@@ -703,23 +709,27 @@ AlertDialog.Builder builder;
 
                     if (SessionNo.equals("2")) {
                         currDay="2";
+                        getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("3")) {
                         currDay="2";
+                        getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("4")) {
                         currDay="2";
+                        getExIndex(currDay,week);
                         day2();
 
                     }
                     if (SessionNo.equals("5")) {
                         currDay="3";
+                        getExIndex(currDay,week);
                         day3();
                     }
                     //        break;
@@ -876,7 +886,8 @@ AlertDialog.Builder builder;
 
                     //  }
                     if (SessionNo.equals("3")) {
-
+                        currDay="3";
+                        day3();
 
 
                     }
@@ -958,6 +969,7 @@ AlertDialog.Builder builder;
                     //   break;
                     if (SessionNo.equals("5")) {
                         currDay="5";
+                        getExIndex(currDay,week);
                         day5();
                     }
 
@@ -1437,38 +1449,30 @@ AlertDialog.Builder builder;
                     i.putExtra("currDay",currDay);
                     i.putExtra("SessionNo",SessionNo);
                     i.putExtra("week",week);
-//                    getExIndex(currDay,week);
 
-//                if(2 == -1) {
-//                    i.putExtra("counter", 0);
-//                }
-//                else{
-//                    i.putExtra("counter", FBindex);
-//
-//                }
-//                if(FBindex<50){
-//                    TextviewEx1.setText(FBindex+"");
+                if(FBindex<99){
+//                    TextviewEx1.setText(FBindex+"_"+currDay);
 
                     startActivity(i);
 
+                }
+                else{
+                    builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
 
+                                }
+                            }).show();
 
-//                }
-//                else{
-//                    builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
-//                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.cancel();
-//
-//                                }
-//                            }).show();
-//
-//                }
+                }
 
 
             }
         });
+
+
 
     }
 
@@ -1523,15 +1527,15 @@ AlertDialog.Builder builder;
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
 //            GeneratenextWeek();
-//            updateFlag();
+            updateFlag();
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
-//            GeneratenextWeek();
-            updateFlag();
+            GeneratenextWeek();
+//            updateFlag();
 
 //            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
@@ -1572,15 +1576,8 @@ AlertDialog.Builder builder;
         Map<String,Object> week = new HashMap<>();
 
         user.put("exerciseIndex",0);
-//        week.put("week",weekD);
-//        week.put("isItOne","0");
-//
-//        db.collection("Progress").document(userIp).collection("index").document("weeks").update(week).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//
-//            }
-//        });
+        user.put("duration",0.0);
+
 
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -1765,11 +1762,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img8.setVisibility(View.GONE);
+//            img9.setVisibility(View.GONE);
+//            img10.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1806,8 +1803,8 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1893,11 +1890,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img8.setVisibility(View.GONE);
+//            img9.setVisibility(View.GONE);
+//            img10.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -1935,8 +1932,8 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -2024,11 +2021,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img8.setVisibility(View.GONE);
+//            img9.setVisibility(View.GONE);
+//            img10.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force33[0]);
             f2.setText(force33[1]);
@@ -2066,8 +2063,8 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -2153,11 +2150,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img8.setVisibility(View.GONE);
+//            img9.setVisibility(View.GONE);
+//            img10.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force44[0]);
             f2.setText(force44[1]);
@@ -2195,9 +2192,9 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
             f1.setText(force44[0]);
             f2.setText(force44[1]);
             f3.setText(force44[2]);
@@ -2284,11 +2281,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//            img8.setVisibility(View.GONE);
+//            img9.setVisibility(View.GONE);
+//            img10.setVisibility(View.GONE);
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
@@ -2325,9 +2322,9 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+//
+//            img11.setVisibility(View.GONE);
+//            img12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
