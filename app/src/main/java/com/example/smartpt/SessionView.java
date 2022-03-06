@@ -107,7 +107,6 @@ public class SessionView extends AppCompatActivity {
         buttonSpeaker=findViewById(R.id.buttonSpeaker);
 
 
-
         //##########################################################################################
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -137,6 +136,15 @@ public class SessionView extends AppCompatActivity {
 
         i=0;
         sIndex=0;
+
+        if(time==-1||time ==0){
+            time=0.0;
+            startTimer();
+        }
+        else{
+            time=time;
+            startTimer();
+        }
 
 
 
@@ -173,10 +181,13 @@ public class SessionView extends AppCompatActivity {
 
                 weekD= value.getDouble("week");
                 week=(int)Math.round(weekD);
-                ;
+//                getDuration(week, currDay);
+
 
             }
         });
+
+
 
         skipbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -351,14 +362,29 @@ public class SessionView extends AppCompatActivity {
 //
 //        }
 
-        if(time==-1){
-            time=0.0;
-            startTimer();
-        }
-        else{
-            startTimer();
-        }
+//        if(time==-1) {
+//
+//            userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//            DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week" + week).document("day" + currDay);
+//            d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//
+//                    time = value.getDouble("duration");
+//                    startTimer();
+//
+//
+//                }
+//            });
+//        }
+//        else{
 
+//        }
+
+
+
+
+//        startTimer();
 
     }
     public void updteProgressBar(){
@@ -541,18 +567,7 @@ public class SessionView extends AppCompatActivity {
 
     }
 
-//    public String  retreiveVideo(String exName){
-//        if (! Python.isStarted()) {
-//            Python.start(new AndroidPlatform(this));
-//        }
-//        Python py = Python.getInstance();
-//        // creating python object
-//        PyObject pyObj= py.getModule("myscript"); // call the python file
-//        PyObject video = pyObj.callAttr("retreiveVideo",exName); // call the  method in python
-//        videoLink = video.toString();
-//        return videoLink;
-//
-//    }
+
 
     public void retrieveExerciseName() {
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -589,6 +604,8 @@ public class SessionView extends AppCompatActivity {
     }
 
     private void startTimer(){
+
+
 
         timerTask=new TimerTask() {
             @Override
@@ -643,5 +660,21 @@ public class SessionView extends AppCompatActivity {
 
     }
 
+
+//    private void getDuration(int wee, String curr){
+////
+////        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day"+currDay);
+////        d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+////            @Override
+////            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+////
+//////                String v = value.getString("exerciseIndex")+"";
+////                time= value.getDouble("duration");
+////                timertxt.setText(time+""+week+" "+currDay+" "+v);
+////
+////
+////            }
+////        });
+//    }
 
 }

@@ -94,6 +94,7 @@ public class StartSession extends AppCompatActivity {
 
                 FBindexD= value.getDouble("exerciseIndex");
                 FBindex=(int)Math.round(FBindexD);
+                time= value.getDouble("duration");
 //                FBindex=5;
 
 
@@ -125,6 +126,7 @@ public class StartSession extends AppCompatActivity {
         else if(rest ==-1){
             restText="";
             countDown=5000;
+            rest=5;
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
             txt2.setText(nextEx);
@@ -178,7 +180,7 @@ public class StartSession extends AppCompatActivity {
         intent.putExtra("currDay",currDay);
         intent.putExtra("counter",FBindex);
         intent.putExtra("week",week);
-        intent.putExtra("duration",time);
+        intent.putExtra("duration",time+rest);
         startActivity(intent);
 
     }
@@ -198,34 +200,5 @@ public class StartSession extends AppCompatActivity {
 //        });
 //    }
 //
-//    private void startTimer(){
-//
-//        timerTask=new TimerTask() {
-//            @Override
-//            public void run() {
-//
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        time++;
-//                        timertxt.setText(getTimertxt());
-//                    }
-//                });
-//
-//
-//
-//            }
-//        };
-//        timer.scheduleAtFixedRate(timerTask,0,1000);
-//    }
-//
-//    private String getTimertxt() {
-//
-//        int rounded = (int) Math.round(time);
-//        int second=((rounded % 86400)%3600)%60;
-//        int min=((rounded % 86400)%3600)/60;
-//        int hours=((rounded % 86400)/3600);
-//
-//        return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
-//    }
+
 }

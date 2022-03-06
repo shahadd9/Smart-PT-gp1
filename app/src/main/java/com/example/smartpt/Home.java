@@ -64,6 +64,7 @@ public class Home extends AppCompatActivity {
                 Map<String,Object> week = new HashMap<>();
 
                 user.put("exerciseIndex",0);
+                user.put("duration",0.0);
                 week.put("week",1);
                 week.put("isItOne","0");
 
