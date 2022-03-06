@@ -418,6 +418,8 @@ public class SessionView extends AppCompatActivity {
     public void endSession(int c){
 
         c=c;
+
+
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",c);
         user.put("duration",time);
@@ -436,11 +438,22 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
-        Intent intent= new Intent(this, PlanView.class);
-        intent.putExtra("SessionNo",SessionNo);
-        intent.putExtra("level",level);
-        intent.putExtra("counter",c);
-        startActivity(intent);
+        if(c==99){
+            Intent intent= new Intent(this, feedback.class);
+            intent.putExtra("SessionNo", SessionNo);
+            intent.putExtra("level", level);
+            intent.putExtra("counter", c);
+            intent.putExtra("currDay",currDay);
+            intent.putExtra("week",week);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(this, PlanView.class);
+            intent.putExtra("SessionNo", SessionNo);
+            intent.putExtra("level", level);
+            intent.putExtra("counter", c);
+            startActivity(intent);
+        }
 
     }
 

@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -63,7 +65,7 @@ public class PlanView extends AppCompatActivity {
     private String userIp;
 
     private int  FBindex;
-    private double FBindexD;
+    private Double FBindexD;
     private String SessionNo;
     private Button buttonSat;
     private Button buttonSun;
@@ -73,6 +75,8 @@ public class PlanView extends AppCompatActivity {
     private Button buttonFri;
     private Button buttonThu;
     private Button buttonALeart;
+
+    private String finished;
 
 
     private TextView TextviewEx1;
@@ -183,6 +187,7 @@ public class PlanView extends AppCompatActivity {
 
     private String Wplan;
 //    private String SessionNo;
+AlertDialog.Builder builder;
 
 
     private ArrayList<String> days = TrainingDaysNum.gettDays();
@@ -254,6 +259,7 @@ public class PlanView extends AppCompatActivity {
         ImageView butAlrt11 =(ImageView) findViewById(R.id.alrt11);
         ImageView butAlrt12 =(ImageView) findViewById(R.id.alrt12);
 
+        builder= new AlertDialog.Builder(this);
 
         //ondata();
         SessionNo = getIntent().getStringExtra("SessionNo");
@@ -270,6 +276,7 @@ public class PlanView extends AppCompatActivity {
         db2=FirebaseFirestore.getInstance();
 
         callweek();
+
 
 
         DocumentReference documentReference =  db.collection("userProfile").document(userIp);
@@ -987,30 +994,7 @@ public class PlanView extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        butstart1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-//                FBindex=getExIndex();
-
-                Intent i = new Intent(PlanView.this, StartSession.class);
-                i.putExtra("name", TextviewEx1.getText());
-                i.putExtra("force", f1.getText());
-                i.putExtra("muscle", m1.getText());
-                i.putExtra("level",level);
-                i.putExtra("currDay",currDay);
-                i.putExtra("SessionNo",SessionNo);
-                i.putExtra("week",week);
-//                if(2 == -1) {
-//                    i.putExtra("counter", 0);
-//                }
-//                else{
-//                    i.putExtra("counter", FBindex);
-//
-//                }
-                startActivity(i);
-            }
-        });
         butAlrt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1438,6 +1422,54 @@ public class PlanView extends AppCompatActivity {
         });
 
 //        call_E_F_M();
+//        getExIndex(currDay,week);
+
+        butstart1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                    Intent i = new Intent(PlanView.this, StartSession.class);
+                    i.putExtra("name", TextviewEx1.getText());
+                    i.putExtra("force", f1.getText());
+                    i.putExtra("muscle", m1.getText());
+                    i.putExtra("level",level);
+                    i.putExtra("currDay",currDay);
+                    i.putExtra("SessionNo",SessionNo);
+                    i.putExtra("week",week);
+//                    getExIndex(currDay,week);
+
+//                if(2 == -1) {
+//                    i.putExtra("counter", 0);
+//                }
+//                else{
+//                    i.putExtra("counter", FBindex);
+//
+//                }
+//                if(FBindex<50){
+//                    TextviewEx1.setText(FBindex+"");
+
+                    startActivity(i);
+
+
+
+//                }
+//                else{
+//                    builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
+//                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.cancel();
+//
+//                                }
+//                            }).show();
+//
+//                }
+
+
+            }
+        });
+
     }
 
     private void callweek() {
@@ -2562,32 +2594,22 @@ public class PlanView extends AppCompatActivity {
         });
     }
 
-//    public int getExIndex() {
-//        DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("day"+currDay);
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//
-////                        set=value.getDouble("sets");
-////                        s=(int)set;
-////                        sets.setText(""+s+"");
-//
-////                        rep=value.getDouble("reps");
-////                        r=(int)rep;
-////                        reps.setText(r+"");
-//
-//                FBindexD= value.getDouble("exerciseIndex");
-////                FBindex=(int)FBindexD;
+    public void getExIndex(String curr,int wee) {
+        db = FirebaseFirestore.getInstance();
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
+        d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                FBindexD= value.getDouble("exerciseIndex");
+                FBindex=(int)Math.round(FBindexD);
 //                FBindex=5;
-//
-//
-//
-//
-//            }
-//        });
-//
-//        return FBindex;
-//
-//    }
+
+
+            }
+        });
+
+    }
 }
