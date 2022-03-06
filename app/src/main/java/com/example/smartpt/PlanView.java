@@ -92,11 +92,7 @@ public class PlanView extends AppCompatActivity {
     private TextView TextviewEx11;
     private TextView TextviewEx12;
 
-    private ImageView img8;
-    private ImageView img9;
-    private ImageView img10;
-    private ImageView img11;
-    private ImageView img12;
+
 
     private TextView m1;
     private TextView m2;
@@ -1765,11 +1761,7 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1806,8 +1798,7 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1893,11 +1884,6 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -1935,8 +1921,6 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -2024,12 +2008,6 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
-
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -2066,8 +2044,7 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -2153,11 +2130,6 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
 
             f1.setText(force44[0]);
             f2.setText(force44[1]);
@@ -2196,8 +2168,7 @@ AlertDialog.Builder builder;
 
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+
             f1.setText(force44[0]);
             f2.setText(force44[1]);
             f3.setText(force44[2]);
@@ -2284,11 +2255,7 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-            img8.setVisibility(View.GONE);
-            img9.setVisibility(View.GONE);
-            img10.setVisibility(View.GONE);
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
+
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
@@ -2326,8 +2293,6 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-            img11.setVisibility(View.GONE);
-            img12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
