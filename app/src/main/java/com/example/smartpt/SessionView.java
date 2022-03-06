@@ -108,23 +108,24 @@ public class SessionView extends AppCompatActivity {
 
 
         //##########################################################################################
-//        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int status) {
-//                if (status == TextToSpeech.SUCCESS) {
-//                    int result = mTTS.setLanguage(Locale.CANADA);
-//
-//                    if (result == TextToSpeech.LANG_MISSING_DATA
-//                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-//                        Log.e("TTS", "Language not supported");
-//                    } else {
-//                        buttonSpeaker.setEnabled(true);
-//                    }
-//                } else {
-//                    Log.e("TTS", "Initialization failed");
-//                }
-//            }
-//        });
+        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = mTTS.setLanguage(Locale.CANADA);
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "Language not supported");
+                    } else {
+                        buttonSpeaker.setEnabled(true);
+                    }
+                } else {
+                    Log.e("TTS", "Initialization failed");
+                }
+            }
+        });
+
 
         //############################################################################################
 
@@ -634,37 +635,31 @@ public class SessionView extends AppCompatActivity {
 
         return String.format("%02d",hours)+" : "+String.format("%02d",min)+" : "+String.format("%02d",second);
     }
-//    private void speak() {
-//        float pitch = 5;
-//        if (pitch < 0.1) pitch = 0.1f;
-//        float speed = 0.9f;
-//        if (speed < 0.1) speed = 0.1f;
-//
-//        mTTS.setPitch(pitch);
-//        mTTS.setSpeechRate(speed);
-//
-//        mTTS.speak(inst, TextToSpeech.QUEUE_FLUSH, null);
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        if (mTTS != null) {
-//            mTTS.stop();
-//        }
-//
-//        super.onDestroy();
-//    }
-//
-//    public void testspeaker(View view){
-//        if (isSpeak==false){
-//            speak();
-//        }
-//        if (isSpeak==true){
-//            onDestroy();
-//        }
-//
-//
-//    }
+    private void speak() {
+
+        mTTS.setSpeechRate(0.8f);
+
+        mTTS.speak(inst, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void pause(long duration){
+        mTTS.playSilence(duration, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+
+
+    public void testspeaker(View view){
+        if (isSpeak==false){
+            speak();
+            isSpeak=true;
+        }else {
+            pause(10);
+            isSpeak=false;
+
+        }
+
+    }
+
 
 //    private void getDuration(int wee, String curr){
 ////
