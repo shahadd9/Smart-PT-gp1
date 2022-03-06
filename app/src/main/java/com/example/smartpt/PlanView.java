@@ -460,7 +460,7 @@ AlertDialog.Builder builder;
 
                     scrollView.setVisibility(View.VISIBLE);
 
-// 
+//
                     if (SessionNo.equals("5")) {
                         currDay="2";
                         getExIndex(currDay,week);
@@ -884,7 +884,7 @@ AlertDialog.Builder builder;
 
 
 
-                    //  }
+                    //  }   
                     if (SessionNo.equals("3")) {
                         currDay="3";
                         day3();
