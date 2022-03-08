@@ -241,6 +241,10 @@ public class SessionView extends AppCompatActivity {
                 else{
                     sets.setText(i+1+"/"+s);
                     i=i+1;
+                    String sessionComp="Gooood you complete "+i+"set";
+                    mTTS.setSpeechRate(1+sessionComp.length()/200 );
+                    mTTS.speak(sessionComp, TextToSpeech.QUEUE_FLUSH, null);
+
                     if(prog<=90){
                         prog+=(100/s);
                         updteProgressBar();
@@ -249,6 +253,7 @@ public class SessionView extends AppCompatActivity {
                                 restAudio = new MediaPlayer();
 
                                 restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
 
 
                                 try {
@@ -270,23 +275,8 @@ public class SessionView extends AppCompatActivity {
                                 skipbtn.setVisibility(View.INVISIBLE);
                                 pausebtn.setVisibility(View.INVISIBLE);
                                 counterTxt.setText(String.valueOf(millisUntilFinished/1000));
-//                                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
-//
-//                                restAudio = new MediaPlayer();
-//
-//                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//
-//
-//                                try {
-//                                    restAudio.setDataSource(audioUrl);
-//                                    // below line is use to prepare
-//                                    // and start our media player.
-//                                    restAudio.prepare();
-//                                    restAudio.start();
-//
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
+
+
                             }
 
                             @Override
@@ -296,6 +286,7 @@ public class SessionView extends AppCompatActivity {
                                 nextbtn.setVisibility(View.VISIBLE);
                                 skipbtn.setVisibility(View.VISIBLE);
                                 pausebtn.setVisibility(View.VISIBLE);
+
 
 
 
