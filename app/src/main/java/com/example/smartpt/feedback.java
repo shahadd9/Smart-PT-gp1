@@ -43,7 +43,6 @@ public class feedback extends AppCompatActivity {
     private int week;
   private String userIp;
   private String SessionNo,level;
-  private boolean flag;
   private Map<String, Object> user = new HashMap<>();
     private String date;
     private String q1List[]={"How did you find your session?","How was the session?","How do you rate the overall session?"};//answers: from Great to Terrible
@@ -89,43 +88,38 @@ public class feedback extends AppCompatActivity {
             @Override
             public void onSmileySelected(SmileyRating.Type type) {
                 SmileyRating.Type smiley = feedback1.getSelectedSmiley();
-                if (SmileyRating.Type.GREAT == type) {
-                    Toast.makeText(feedback.this, "Great", Toast.LENGTH_SHORT).show();
-//                    answer1="Great";
-                }
-
-                if (SmileyRating.Type.GOOD == type) {
-                    Toast.makeText(feedback.this, "Good", Toast.LENGTH_SHORT).show();
-//                    answer1="Good";
-                }
-
-                if (SmileyRating.Type.OKAY == type) {
-                    Toast.makeText(feedback.this, "Okay", Toast.LENGTH_SHORT).show();
-//                    answer1="Okay";
-                }
-
-                if (SmileyRating.Type.BAD == type) {
-                    Toast.makeText(feedback.this, "Bad", Toast.LENGTH_SHORT).show();
-//                    answer1="Bad";
-                }
-
-                if (SmileyRating.Type.TERRIBLE == type) {
-                    Toast.makeText(feedback.this, "Terrible", Toast.LENGTH_SHORT).show();
-//                    answer1="Terrible";
-                }
+//                if (SmileyRating.Type.GREAT == type) {
+//                    Toast.makeText(feedback.this, "Great", Toast.LENGTH_SHORT).show();
+////                    answer1="Great";
+//                }
+//
+//                if (SmileyRating.Type.GOOD == type) {
+//                    Toast.makeText(feedback.this, "Good", Toast.LENGTH_SHORT).show();
+////                    answer1="Good";
+//                }
+//
+//                if (SmileyRating.Type.OKAY == type) {
+//                    Toast.makeText(feedback.this, "Okay", Toast.LENGTH_SHORT).show();
+////                    answer1="Okay";
+//                }
+//
+//                if (SmileyRating.Type.BAD == type) {
+//                    Toast.makeText(feedback.this, "Bad", Toast.LENGTH_SHORT).show();
+////                    answer1="Bad";
+//                }
+//
+//                if (SmileyRating.Type.TERRIBLE == type) {
+//                    Toast.makeText(feedback.this, "Terrible", Toast.LENGTH_SHORT).show();
+////                    answer1="Terrible";
+//                }
                 answer1=type.toString();
                 rating1 = type.getRating();
 //######## Database #########
                 user.put("answer1", answer1);
                 user.put("date", date);
 
-                if(rating1 != -1 && rating2 != -1){
-                    flag=true;
-                    submitFeedback.setEnabled(true);
 
-                }
-
-//                submitFeedback.setEnabled(rating1 != -1 && rating2 != -1);
+                submitFeedback.setEnabled(rating1 != -1 && rating2 != -1);
             }
         });
 
@@ -134,27 +128,27 @@ public class feedback extends AppCompatActivity {
             public void onSmileySelected(SmileyRating.Type type) {
                 SmileyRating.Type smiley = feedback2.getSelectedSmiley();
                 if (SmileyRating.Type.GREAT == type) {
-                    Toast.makeText(feedback.this, "very easy", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(feedback.this, "very easy", Toast.LENGTH_SHORT).show();
                     answer2="VERY EASY";
                 }
 
                 if (SmileyRating.Type.GOOD == type) {
-                    Toast.makeText(feedback.this, "easy", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(feedback.this, "easy", Toast.LENGTH_SHORT).show();
                     answer2="EASY";
                 }
 
                 if (SmileyRating.Type.OKAY == type) {
-                    Toast.makeText(feedback.this, "normal", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(feedback.this, "normal", Toast.LENGTH_SHORT).show();
                     answer2="NORMAL";
                 }
 
                 if (SmileyRating.Type.BAD == type) {
-                    Toast.makeText(feedback.this, "hard", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(feedback.this, "hard", Toast.LENGTH_SHORT).show();
                     answer2="HARD";
                 }
 
                 if (SmileyRating.Type.TERRIBLE == type) {
-                    Toast.makeText(feedback.this, "very hard", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(feedback.this, "very hard", Toast.LENGTH_SHORT).show();
                     answer2="VERY HARD";
                 }
                 rating2=type.getRating();
