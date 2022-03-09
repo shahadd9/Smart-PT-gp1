@@ -51,7 +51,6 @@ public class SessionView extends AppCompatActivity {
 
     Timer timer;
     VideoView v;
-    //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private int week;
