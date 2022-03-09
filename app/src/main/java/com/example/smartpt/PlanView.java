@@ -179,6 +179,23 @@ public class PlanView extends AppCompatActivity {
     private String muscle5;
     String muscle55[] = new String[200];
 
+
+
+
+    ImageView butAlrt1 ;
+    ImageView butstart1;
+    ImageView butAlrt2 ;
+    ImageView butAlrt3 ;
+    ImageView butAlrt4 ;
+    ImageView butAlrt5 ;
+    ImageView butAlrt6 ;
+    ImageView butAlrt7 ;
+    ImageView butAlrt8 ;
+    ImageView butAlrt9 ;
+    ImageView butAlrt10;
+    ImageView butAlrt11;
+    ImageView butAlrt12;
+
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
@@ -186,8 +203,8 @@ public class PlanView extends AppCompatActivity {
 //    private int c;
 
     private String Wplan;
-//    private String SessionNo;
-AlertDialog.Builder builder;
+    //    private String SessionNo;
+    AlertDialog.Builder builder;
 
 
     private ArrayList<String> days = TrainingDaysNum.gettDays();
@@ -244,20 +261,19 @@ AlertDialog.Builder builder;
         m10 = findViewById(R.id.m10);
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
-        ImageView butAlrt1 =(ImageView) findViewById(R.id.alrt1);
-        ImageView butstart1 =(ImageView) findViewById(R.id.start100);
-
-        ImageView butAlrt2 =(ImageView) findViewById(R.id.alrt2);
-        ImageView butAlrt3 =(ImageView) findViewById(R.id.alrt3);
-        ImageView butAlrt4 =(ImageView) findViewById(R.id.alrt4);
-        ImageView butAlrt5 =(ImageView) findViewById(R.id.alrt5);
-        ImageView butAlrt6 =(ImageView) findViewById(R.id.alrt6);
-        ImageView butAlrt7 =(ImageView) findViewById(R.id.alrt7);
-        ImageView butAlrt8 =(ImageView) findViewById(R.id.alrt8);
-        ImageView butAlrt9 =(ImageView) findViewById(R.id.alrt9);
-        ImageView butAlrt10 =(ImageView) findViewById(R.id.alrt10);
-        ImageView butAlrt11 =(ImageView) findViewById(R.id.alrt11);
-        ImageView butAlrt12 =(ImageView) findViewById(R.id.alrt12);
+         butAlrt1 =(ImageView) findViewById(R.id.alrt1);
+         butstart1 =(ImageView) findViewById(R.id.start100);
+         butAlrt2 =(ImageView) findViewById(R.id.alrt2);
+         butAlrt3 =(ImageView) findViewById(R.id.alrt3);
+         butAlrt4 =(ImageView) findViewById(R.id.alrt4);
+         butAlrt5 =(ImageView) findViewById(R.id.alrt5);
+         butAlrt6 =(ImageView) findViewById(R.id.alrt6);
+         butAlrt7 =(ImageView) findViewById(R.id.alrt7);
+         butAlrt8 =(ImageView) findViewById(R.id.alrt8);
+         butAlrt9 =(ImageView) findViewById(R.id.alrt9);
+         butAlrt10 =(ImageView) findViewById(R.id.alrt10);
+         butAlrt11 =(ImageView) findViewById(R.id.alrt11);
+         butAlrt12 =(ImageView) findViewById(R.id.alrt12);
 
         builder= new AlertDialog.Builder(this);
 
@@ -1441,14 +1457,14 @@ AlertDialog.Builder builder;
             public void onClick(View v) {
 
 
-                    Intent i = new Intent(PlanView.this, StartSession.class);
-                    i.putExtra("name", TextviewEx1.getText());
-                    i.putExtra("force", f1.getText());
-                    i.putExtra("muscle", m1.getText());
-                    i.putExtra("level",level);
-                    i.putExtra("currDay",currDay);
-                    i.putExtra("SessionNo",SessionNo);
-                    i.putExtra("week",week);
+                Intent i = new Intent(PlanView.this, StartSession.class);
+                i.putExtra("name", TextviewEx1.getText());
+                i.putExtra("force", f1.getText());
+                i.putExtra("muscle", m1.getText());
+                i.putExtra("level",level);
+                i.putExtra("currDay",currDay);
+                i.putExtra("SessionNo",SessionNo);
+                i.putExtra("week",week);
 
                 if(FBindex<99){
 //                    TextviewEx1.setText(FBindex+"_"+currDay);
@@ -1762,11 +1778,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//            img8.setVisibility(View.GONE);
-//            img9.setVisibility(View.GONE);
-//            img10.setVisibility(View.GONE);
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+            butAlrt8.setVisibility(View.GONE);
+            butAlrt9.setVisibility(View.GONE);
+            butAlrt10.setVisibility(View.GONE);
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1803,8 +1819,9 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1890,11 +1907,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//            img8.setVisibility(View.GONE);
-//            img9.setVisibility(View.GONE);
-//            img10.setVisibility(View.GONE);
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+            butAlrt8.setVisibility(View.GONE);
+            butAlrt9.setVisibility(View.GONE);
+            butAlrt10.setVisibility(View.GONE);
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -1932,8 +1949,9 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -2021,11 +2039,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//            img8.setVisibility(View.GONE);
-//            img9.setVisibility(View.GONE);
-//            img10.setVisibility(View.GONE);
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+            butAlrt8.setVisibility(View.GONE);
+            butAlrt9.setVisibility(View.GONE);
+            butAlrt10.setVisibility(View.GONE);
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force33[0]);
             f2.setText(force33[1]);
@@ -2063,8 +2081,10 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
+
             f1.setText(force33[0]);
             f2.setText(force33[1]);
             f3.setText(force33[2]);
@@ -2150,11 +2170,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//            img8.setVisibility(View.GONE);
-//            img9.setVisibility(View.GONE);
-//            img10.setVisibility(View.GONE);
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+            butAlrt8.setVisibility(View.GONE);
+            butAlrt9.setVisibility(View.GONE);
+            butAlrt10.setVisibility(View.GONE);
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force44[0]);
             f2.setText(force44[1]);
@@ -2192,9 +2212,10 @@ AlertDialog.Builder builder;
             TextviewEx12.setVisibility(View.GONE);
 
 
-//
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
+
             f1.setText(force44[0]);
             f2.setText(force44[1]);
             f3.setText(force44[2]);
@@ -2281,11 +2302,11 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//            img8.setVisibility(View.GONE);
-//            img9.setVisibility(View.GONE);
-//            img10.setVisibility(View.GONE);
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+            butAlrt8.setVisibility(View.GONE);
+            butAlrt9.setVisibility(View.GONE);
+            butAlrt10.setVisibility(View.GONE);
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
@@ -2322,9 +2343,9 @@ AlertDialog.Builder builder;
             TextviewEx11.setVisibility(View.GONE);
             TextviewEx12.setVisibility(View.GONE);
 
-//
-//            img11.setVisibility(View.GONE);
-//            img12.setVisibility(View.GONE);
+
+            butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);

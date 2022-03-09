@@ -51,7 +51,6 @@ public class SessionView extends AppCompatActivity {
 
     Timer timer;
     VideoView v;
-    //    String url="https://i.imgur.com/HOfLu88.mp4";
     ProgressDialog pd;
     private FirebaseFirestore db;
     private int week;
@@ -322,8 +321,19 @@ public class SessionView extends AppCompatActivity {
         pausebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                builder.setTitle("Pause the session").setMessage("Are you sure you want to pause the session and complete it later ?").setCancelable(true)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                endSession(counter);
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                endSession(counter);
+                        dialog.cancel();
+                    }
+                }).show();
 
             }
         });
