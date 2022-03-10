@@ -92,22 +92,6 @@
             android:textStyle="bold"
             android:translationZ="100dip" />
 
-        <TextView
-            android:id="@+id/sessionText"
-            android:layout_width="83dp"
-            android:layout_height="46dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginBottom="148dp"
-            android:text="0/Session"
-            android:textColor="#fff"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:translationZ="100dip" />
-
 
         <Button
             android:id="@+id/buttonSat"
@@ -233,11 +217,13 @@
 
     <LinearLayout
         android:id="@+id/viewim"
-
         android:layout_width="396dp"
         android:layout_height="383dp"
-        android:layout_marginTop="280dp"
-        android:orientation="vertical">
+        android:layout_marginTop="-420dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/WeeklyFrame"
+
+        >
 
 
         <TextView
@@ -313,12 +299,13 @@
 
                 <TextView
                     android:id="@+id/textViewex1"
-                    android:layout_width="240dp"
+                                        android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
                     android:textStyle="bold"
 
                     />
@@ -373,7 +360,9 @@
                 android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
-                    android:textStyle="bold" />
+                android:layout_gravity="center_vertical"
+
+                android:textStyle="bold" />
 
 <!--            <ImageView-->
 <!--                android:id="@+id/start2"-->
@@ -420,7 +409,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                android:layout_gravity="center_vertical"
+
+                android:textSize="14dp"
                     android:textStyle="bold"
                 />
 
@@ -465,12 +456,13 @@
 
                 <TextView
                     android:id="@+id/textViewex4"
-                    android:layout_width="240dp"
+                                        android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
                     android:textStyle="bold"
                     />
 
@@ -520,7 +512,9 @@
                 android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
-                    android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
+                android:textStyle="bold"
                 />
 
 <!--            <ImageView-->
@@ -571,6 +565,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
                 />
 
 <!--            <ImageView-->
@@ -623,6 +619,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
                 />
 
 <!--            <ImageView-->
@@ -665,12 +663,13 @@
 
                 <TextView
                     android:id="@+id/textViewex8"
-                    android:layout_width="240dp"
+                                        android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
+                    android:layout_gravity="center_vertical"
                     android:textStyle="bold"                    />
 
 <!--                <ImageView-->
@@ -719,6 +718,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
                 />
 
 <!--            <ImageView-->
@@ -766,6 +767,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
 
                 />
 
@@ -818,6 +821,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
                 />
 
 <!--            <ImageView-->
@@ -864,6 +869,8 @@
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+
                 />
 
 <!--            <ImageView-->
