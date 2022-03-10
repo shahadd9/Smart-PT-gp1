@@ -289,7 +289,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject fullBody= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN1= pyObj.callAttr("getfullbodyName");
             PyObject fullBodyF1= pyObj.callAttr("getfullbodyForce");
-            PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralmuscle");
+            PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralMuscle");
 
 
             day1 = fullBodyN1.toString();
@@ -300,7 +300,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject fullBody2= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN2= pyObj.callAttr("getfullbodyName");
             PyObject fullBodyF2= pyObj.callAttr("getfullbodyForce");
-            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralmuscle");
+            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralMuscle");
 
 
             day2 = fullBodyN2.toString();
@@ -315,7 +315,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject fullBody= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN1= pyObj.callAttr("getfullbodyName");
             PyObject fullBodyF1= pyObj.callAttr("getfullbodyForce");
-            PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralmuscle");
+            PyObject fullBodyM1= pyObj.callAttr("getfullbodygeneralMuscle");
 
 
             day1 = fullBodyN1.toString();
@@ -326,7 +326,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject fullBody2= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN2= pyObj.callAttr("getfullbodyName");
             PyObject fullBodyF2= pyObj.callAttr("getfullbodyForce");
-            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralmuscle");
+            PyObject fullBodyM2= pyObj.callAttr("getfullbodygeneralMuscle");
 
 
             day2 = fullBodyN2.toString();
@@ -337,7 +337,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject fullBody3= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN3= pyObj.callAttr("getfullbodyName");
             PyObject fullBodyF3= pyObj.callAttr("getfullbodyForce");
-            PyObject fullBodyM3= pyObj.callAttr("getfullbodygeneralmuscle");
+            PyObject fullBodyM3= pyObj.callAttr("getfullbodygeneralMuscle");
 
 
             day3 = fullBodyN3.toString();
@@ -353,7 +353,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject upperbody= pyObj.callAttr("upperbody",level);
             PyObject fullBodyN1= pyObj.callAttr("getupperName");
             PyObject fullBodyF1= pyObj.callAttr("getupperForce");
-            PyObject fullBodyM1= pyObj.callAttr("getuppergeneralmuscle");
+            PyObject fullBodyM1= pyObj.callAttr("getuppergeneralMuscle");
 
             day1 = fullBodyN1.toString();
             force1=fullBodyF1.toString();
@@ -363,7 +363,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject lowerbody= pyObj.callAttr("lowerbody",level);
             PyObject fullBodyN2= pyObj.callAttr("getlowerName");
             PyObject fullBodyF2= pyObj.callAttr("getlowerForce");
-            PyObject fullBodyM2= pyObj.callAttr("getlowergeneralmuscle");
+            PyObject fullBodyM2= pyObj.callAttr("getlowergeneralMuscle");
 
 
             day2 = fullBodyN2.toString();
@@ -374,7 +374,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject upperbody2= pyObj.callAttr("upperbody",level);
             PyObject fullBodyN3= pyObj.callAttr("getupperName");
             PyObject fullBodyF3= pyObj.callAttr("getupperForce");
-            PyObject fullBodyM3= pyObj.callAttr("getuppergeneralmuscle");
+            PyObject fullBodyM3= pyObj.callAttr("getuppergeneralMuscle");
 
 
             day3 = fullBodyN3.toString();
@@ -386,7 +386,7 @@ public class LoadPa2 extends AppCompatActivity {
             PyObject lowerbody2= pyObj.callAttr("lowerbody",level);
             PyObject fullBodyN4= pyObj.callAttr("getlowerName");
             PyObject fullBodyF4= pyObj.callAttr("getlowerForce");
-            PyObject fullBodyM4= pyObj.callAttr("getlowergeneralmuscle");
+            PyObject fullBodyM4= pyObj.callAttr("getlowergeneralMuscle");
 
 
             day4 = fullBodyN4.toString();
