@@ -292,6 +292,8 @@
                 android:layout_height="67dp"
                 android:id="@+id/exRow1"
                 android:background="@drawable/border"
+                android:visibility="visible"
+
                 >
 
 
@@ -299,7 +301,7 @@
 
                 <TextView
                     android:id="@+id/textViewex1"
-                                        android:layout_width="240dp"
+                    android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
@@ -346,7 +348,8 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:id="@+id/exRow2"
-            android:background="@drawable/border"
+                            android:background="@drawable/border"     
+                android:visibility="visible"
 
             >
 
@@ -398,7 +401,8 @@
             android:id="@+id/exRow3"
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            android:background="@drawable/border"
+                            android:background="@drawable/border"     
+                android:visibility="visible"
 
             >
 
@@ -448,7 +452,8 @@
                 android:id="@+id/exRow4"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -458,7 +463,7 @@
                     android:id="@+id/textViewex4"
                                         android:layout_width="240dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="14dp"
@@ -498,7 +503,8 @@
                 android:id="@+id/exRow5"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -550,7 +556,8 @@
                 android:id="@+id/exRow6"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -604,7 +611,8 @@
                 android:id="@+id/exRow7"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -655,7 +663,8 @@
                 android:id="@+id/exRow8"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -705,7 +714,8 @@
                 android:id="@+id/exRow9"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -752,7 +762,8 @@
                 android:id="@+id/exRow10"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -806,7 +817,8 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:background="@drawable/border"
+                                android:background="@drawable/border"     
+                android:visibility="visible"
                 >
 
 
@@ -857,6 +869,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:background="@drawable/border"
+                android:visibility="visible"
+
 
                 >
 
@@ -919,7 +933,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="-100dp"
         android:layout_marginEnd="36dp"
-        app:srcCompat="@drawable/exercisingbtn" />
+        app:srcCompat="@drawable/start2" />
 
 
 

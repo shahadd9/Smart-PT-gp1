@@ -24,6 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Arrays;
@@ -195,6 +196,19 @@ public class PlanView extends AppCompatActivity {
     ImageView butAlrt10;
     ImageView butAlrt11;
     ImageView butAlrt12;
+    TableRow exRow1;
+    TableRow exRow2;
+    TableRow exRow3;
+    TableRow exRow4;
+    TableRow exRow5;
+    TableRow exRow6;
+    TableRow exRow7;
+    TableRow exRow8;
+    TableRow exRow9;
+    TableRow exRow10;
+    TableRow exRow11;
+    TableRow exRow12;
+
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
     Date date = new Date();
@@ -274,6 +288,19 @@ public class PlanView extends AppCompatActivity {
          butAlrt10 =(ImageView) findViewById(R.id.alrt10);
          butAlrt11 =(ImageView) findViewById(R.id.alrt11);
          butAlrt12 =(ImageView) findViewById(R.id.alrt12);
+
+        exRow1 =findViewById(R.id.exRow1);
+        exRow2 =findViewById(R.id.exRow2);
+        exRow3 =findViewById(R.id.exRow3);
+        exRow4 =findViewById(R.id.exRow4);
+        exRow5 =findViewById(R.id.exRow5);
+        exRow6 =findViewById(R.id.exRow6);
+        exRow7 =findViewById(R.id.exRow7);
+        exRow8 =findViewById(R.id.exRow8);
+        exRow9 =findViewById(R.id.exRow9);
+        exRow10 =findViewById(R.id.exRow10);
+        exRow11 =findViewById(R.id.exRow11);
+        exRow12 =findViewById(R.id.exRow12);
 
         builder= new AlertDialog.Builder(this);
 
@@ -1772,17 +1799,23 @@ public class PlanView extends AppCompatActivity {
             TextviewEx5.setText(day11[4]);
             TextviewEx6.setText(day11[5]);
             TextviewEx7.setText(day11[6]);
-            TextviewEx8.setVisibility(View.GONE);
-            TextviewEx9.setVisibility(View.GONE);
-            TextviewEx10.setVisibility(View.GONE);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+//            TextviewEx8.setVisibility(View.GONE);
+//           TextviewEx9.setVisibility(View.GONE);
+//             TextviewEx10.setVisibility(View.GONE);
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
-            butAlrt8.setVisibility(View.GONE);
+/*            butAlrt8.setVisibility(View.GONE);
             butAlrt9.setVisibility(View.GONE);
             butAlrt10.setVisibility(View.GONE);
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+            exRow8.setVisibility(View.GONE);
+            exRow9.setVisibility(View.GONE);
+            exRow10.setVisibility(View.GONE);
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1815,13 +1848,18 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day11[7]);
             TextviewEx9.setText(day11[8]);
             TextviewEx10.setText(day11[9]);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+        
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
 
 
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force11[0]);
             f2.setText(force11[1]);
@@ -1901,17 +1939,22 @@ public class PlanView extends AppCompatActivity {
             TextviewEx5.setText(day22[4]);
             TextviewEx6.setText(day22[5]);
             TextviewEx7.setText(day22[6]);
-            TextviewEx8.setVisibility(View.GONE);
-            TextviewEx9.setVisibility(View.GONE);
-            TextviewEx10.setVisibility(View.GONE);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
-
-            butAlrt8.setVisibility(View.GONE);
+//            TextviewEx8.setVisibility(View.GONE);
+//           TextviewEx9.setVisibility(View.GONE);
+//             TextviewEx10.setVisibility(View.GONE);
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
+/*            butAlrt8.setVisibility(View.GONE);
             butAlrt9.setVisibility(View.GONE);
             butAlrt10.setVisibility(View.GONE);
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+            exRow8.setVisibility(View.GONE);
+            exRow9.setVisibility(View.GONE);
+            exRow10.setVisibility(View.GONE);
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -1945,13 +1988,18 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day22[7]);
             TextviewEx9.setText(day22[8]);
             TextviewEx10.setText(day22[9]);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+        
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
 
 
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force22[0]);
             f2.setText(force22[1]);
@@ -2033,17 +2081,22 @@ public class PlanView extends AppCompatActivity {
             TextviewEx5.setText(day33[4]);
             TextviewEx6.setText(day33[5]);
             TextviewEx7.setText(day33[6]);
-            TextviewEx8.setVisibility(View.GONE);
-            TextviewEx9.setVisibility(View.GONE);
-            TextviewEx10.setVisibility(View.GONE);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
-
-            butAlrt8.setVisibility(View.GONE);
+//            TextviewEx8.setVisibility(View.GONE);
+//           TextviewEx9.setVisibility(View.GONE);
+//             TextviewEx10.setVisibility(View.GONE);
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
+/*            butAlrt8.setVisibility(View.GONE);
             butAlrt9.setVisibility(View.GONE);
             butAlrt10.setVisibility(View.GONE);
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+            exRow8.setVisibility(View.GONE);
+            exRow9.setVisibility(View.GONE);
+            exRow10.setVisibility(View.GONE);
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force33[0]);
             f2.setText(force33[1]);
@@ -2077,13 +2130,18 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day33[7]);
             TextviewEx9.setText(day33[8]);
             TextviewEx10.setText(day33[9]);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+        
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
 
 
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force33[0]);
             f2.setText(force33[1]);
@@ -2164,17 +2222,22 @@ public class PlanView extends AppCompatActivity {
             TextviewEx5.setText(day44[4]);
             TextviewEx6.setText(day44[5]);
             TextviewEx7.setText(day44[6]);
-            TextviewEx8.setVisibility(View.GONE);
-            TextviewEx9.setVisibility(View.GONE);
-            TextviewEx10.setVisibility(View.GONE);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
-
-            butAlrt8.setVisibility(View.GONE);
+//            TextviewEx8.setVisibility(View.GONE);
+//           TextviewEx9.setVisibility(View.GONE);
+//             TextviewEx10.setVisibility(View.GONE);
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
+/*            butAlrt8.setVisibility(View.GONE);
             butAlrt9.setVisibility(View.GONE);
             butAlrt10.setVisibility(View.GONE);
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+            exRow8.setVisibility(View.GONE);
+            exRow9.setVisibility(View.GONE);
+            exRow10.setVisibility(View.GONE);
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force44[0]);
             f2.setText(force44[1]);
@@ -2208,13 +2271,18 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day44[7]);
             TextviewEx9.setText(day44[8]);
             TextviewEx10.setText(day44[9]);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+        
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
 
 
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force44[0]);
             f2.setText(force44[1]);
@@ -2296,17 +2364,22 @@ public class PlanView extends AppCompatActivity {
             TextviewEx5.setText(day55[4]);
             TextviewEx6.setText(day55[5]);
             TextviewEx7.setText(day55[6]);
-            TextviewEx8.setVisibility(View.GONE);
-            TextviewEx9.setVisibility(View.GONE);
-            TextviewEx10.setVisibility(View.GONE);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
-
-            butAlrt8.setVisibility(View.GONE);
+//            TextviewEx8.setVisibility(View.GONE);
+//           TextviewEx9.setVisibility(View.GONE);
+//             TextviewEx10.setVisibility(View.GONE);
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
+/*            butAlrt8.setVisibility(View.GONE);
             butAlrt9.setVisibility(View.GONE);
             butAlrt10.setVisibility(View.GONE);
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+            exRow8.setVisibility(View.GONE);
+            exRow9.setVisibility(View.GONE);
+            exRow10.setVisibility(View.GONE);
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
@@ -2340,12 +2413,17 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day55[7]);
             TextviewEx9.setText(day55[8]);
             TextviewEx10.setText(day55[9]);
-            TextviewEx11.setVisibility(View.GONE);
-            TextviewEx12.setVisibility(View.GONE);
+        
+//             TextviewEx11.setVisibility(View.GONE);
+//             TextviewEx12.setVisibility(View.GONE);
 
 
-            butAlrt11.setVisibility(View.GONE);
-            butAlrt12.setVisibility(View.GONE);
+/*         butAlrt11.setVisibility(View.GONE);
+            butAlrt12.setVisibility(View.GONE);*/
+
+
+            exRow11.setVisibility(View.GONE);
+            exRow12.setVisibility(View.GONE);
 
             f1.setText(force55[0]);
             f2.setText(force55[1]);
