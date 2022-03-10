@@ -205,23 +205,6 @@ public class SessionView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
-//
-//                restAudio = new MediaPlayer();
-//
-//                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//
-//
-//                try {
-//                    restAudio.setDataSource(audioUrl);
-//                    // below line is use to prepare
-//                    // and start our media player.
-//                    restAudio.prepare();
-//                    restAudio.start();
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
 
                 if(i+1==s){
 //                    sets.setText("done");
@@ -393,7 +376,22 @@ public class SessionView extends AppCompatActivity {
 
     }
     public void nextExercise(int re){
+        String readyAudio = "https://od.lk/s/NzVfMzMwMTYzNjlf/next.mp3";
 
+        restAudio = new MediaPlayer();
+
+        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+
+        try {
+            restAudio.setDataSource(readyAudio);
+            restAudio.prepare();
+            restAudio.start();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
@@ -543,27 +541,37 @@ public class SessionView extends AppCompatActivity {
 
         // initializing media player
         player = new MediaPlayer();
-
+        MediaPlayer test =new MediaPlayer();
         // below line is use to set the audio
         // stream type for our media player.
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        test.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         // below line is use to set our
         // url to our media player.
         player.setDataSource(audioLink);
+        test.setDataSource(audioLink);
         // below line is use to prepare
         // and start our media player.
         player.prepare();
-        player.start();
+        test.prepare();
+        //player.start();
         float pitch = 5;
         if (pitch < 0.1) pitch = 0.1f;
         float speed = 0.9f;
         if (speed < 0.1) speed = 0.1f;
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
-        // player.setPitch(pitch);
-        //player.setSpeechRate(speed);
-        // below line is use to display a toast message.
-        //Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
+            @Override
+            public void onCompletion(MediaPlayer player) {
+                player.stop();
+               // test.start();
+
+            }
+
+        });
+        player.start();
+
 
     }
 
@@ -640,6 +648,7 @@ public class SessionView extends AppCompatActivity {
         mTTS.setSpeechRate(0.8f);
 
         mTTS.speak(inst, TextToSpeech.QUEUE_FLUSH, null);
+
     }
 
     public void pause(long duration){
@@ -652,6 +661,7 @@ public class SessionView extends AppCompatActivity {
         if (isSpeak==false){
             speak();
             isSpeak=true;
+
         }else {
             pause(10);
             isSpeak=false;
