@@ -13,11 +13,22 @@
         tools:layout_editor_absoluteX="65dp"
         tools:layout_editor_absoluteY="-103dp">
 
+        <ImageView
+            android:id="@+id/topView"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:background="@drawable/wavee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/tWeight"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Weight"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -32,7 +43,8 @@
             android:id="@+id/tHeight"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Height"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -49,7 +61,8 @@
             android:layout_width="99dp"
             android:layout_height="53dp"
             android:layout_marginTop="2dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Gender"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -65,7 +78,8 @@
             android:id="@+id/tName"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Name"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -81,7 +95,8 @@
             android:id="@+id/tBD"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Birthday "
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -112,7 +127,8 @@
         <!--            android:id="@+id/editFocusArea"-->
         <!--            android:layout_width="281dp"-->
         <!--            android:layout_height="53dp"-->
-        <!--            android:background="#E3E0E0"-->
+        <!--            android:background="#ebe6f7"
+            android:padding="10dp"-->
         <!--            android:clickable="true"-->
         <!--            android:onClick="onClick"-->
         <!--            android:textAlignment="viewEnd"-->
@@ -128,12 +144,13 @@
             android:id="@+id/editName"
             android:layout_width="281dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
             android:hint="please enter your name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
+            android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
@@ -146,7 +163,8 @@
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:layout_marginTop="24dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +179,8 @@
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:layout_marginTop="20dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:clickable="true"
             android:onClick="onClick"
             android:textAlignment="viewEnd"
@@ -179,7 +198,8 @@
             android:layout_width="281dp"
             android:layout_height="53dp"
             android:layout_marginTop="25dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:hint="please enter your Height"
             android:inputType="number"
             android:textAlignment="viewEnd"
@@ -195,7 +215,8 @@
             android:id="@+id/editWeight"
             android:layout_width="281dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:hint="please enter your Weight"
             android:inputType="number"
             android:textAlignment="viewEnd"
@@ -211,7 +232,8 @@
             android:id="@+id/editReminder2"
             android:layout_width="281dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -225,7 +247,8 @@
             android:id="@+id/editTrainingDays"
             android:layout_width="281dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -239,7 +262,8 @@
             android:id="@+id/editDuration"
             android:layout_width="281dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:textAlignment="viewEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -253,7 +277,8 @@
             android:id="@+id/tDuratinon"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="6dp"
             android:text="Training days "
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -269,7 +294,8 @@
             android:id="@+id/tReminer"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Reminder"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -285,7 +311,8 @@
             android:id="@+id/tTrainingDays"
             android:layout_width="99dp"
             android:layout_height="53dp"
-            android:background="#E3E0E0"
+            android:background="#E6E6FA"
+            android:padding="10dp"
             android:text="Duration"
             android:textAlignment="viewStart"
             android:textColor="#000000"
@@ -301,7 +328,8 @@
         <!--            android:id="@+id/tFocusArea2"-->
         <!--            android:layout_width="99dp"-->
         <!--            android:layout_height="53dp"-->
-        <!--            android:background="#E3E0E0"-->
+        <!--            android:background="#ebe6f7"
+            android:padding="10dp"-->
         <!--            android:text="Focus Areas"-->
         <!--            android:textAlignment="viewStart"-->
         <!--            android:textColor="#000000"-->
