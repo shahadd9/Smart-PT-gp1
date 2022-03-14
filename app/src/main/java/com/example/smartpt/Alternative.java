@@ -34,13 +34,19 @@ import java.util.Map;
 public class Alternative extends AppCompatActivity {
 
     private FirebaseFirestore db;
-//lbl1,exName1,exName2, equ2, back,
-//    private TextView test1,test2,test3,test4, back;
-    private TextView lbl1,exName1,exName2, equ1,equ2, back;
-    private Button exBtn1,exBtn2;
+    private TextView lbl1,back;
     private String name,generalMuscle,currDay,SessionNo,level,exercise1,eqName1,eqName2,exercise2, excName1,excName2,ex1String,ex2String,force1,muscle1,force2,muscle2,day,force,muscle,dday,fforce,mmuscle;
     private int index;
-    ;
+    TextView exName[] = new TextView[4];
+    TextView exEqu[] = new TextView[4];
+    Button btn[]=new Button[4];
+
+    String muscleA[] =new String[4];
+    String forceA[] =new String[4];
+    String nameA[] =new String[4];
+
+
+
     String ex1[] = new String[4];
     String ex2[] = new String[4];
     String dayAr[]=new String[100];
@@ -78,17 +84,26 @@ public class Alternative extends AppCompatActivity {
         //declare xml elements
 
         lbl1=findViewById(R.id.lbl1);
-        exName1=findViewById(R.id.exName1);
-        exName2=findViewById(R.id.exName2);
-        equ1=findViewById(R.id.Equ1);
-        equ2=findViewById(R.id.Equ2);
         back=findViewById(R.id.back);
-        exBtn1=findViewById(R.id.exbtn1);
-        exBtn2=findViewById(R.id.exbtn2);
-//        test1=findViewById(R.id.test1);
-//        test2=findViewById(R.id.test2);
-//        test3=findViewById(R.id.test3);
-//        test4=findViewById(R.id.test4);
+
+        // get exercise name textView
+        exName[0]=findViewById(R.id.exName1);
+        exName[1]=findViewById(R.id.exName2);
+        exName[2]=findViewById(R.id.exName3);
+        exName[3]=findViewById(R.id.exName4);
+
+        // get exercise equipment name textView
+        exEqu[0]=findViewById(R.id.equName1);
+        exEqu[1]=findViewById(R.id.equName2);
+        exEqu[2]=findViewById(R.id.equName3);
+        exEqu[3]=findViewById(R.id.equName4);
+
+        // get Buttons
+        btn[0]=findViewById(R.id.exbtn1);
+        btn[1]=findViewById(R.id.exbtn2);
+        btn[2]=findViewById(R.id.exbtn3);
+        btn[3]=findViewById(R.id.exbtn4);
+
 
         //get values from intent
 
@@ -145,31 +160,24 @@ public class Alternative extends AppCompatActivity {
         });
 
 
-        exBtn1.setOnClickListener(new View.OnClickListener() {
+        btn[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dday="";
                 fforce="";
                 mmuscle="";
-//                lbl1.setText(force1);
-                dayAr[index]=excName1;
-                forceAr[index]=force1;
-                muscleAr[index]=muscle1;
+                dayAr[index]=nameA[0];
+                forceAr[index]=forceA[0];
+                muscleAr[index]=muscleA[0];
                 for (int i = 0; i < dayAr.length; i++) {
                     dday+=dayAr[i]+ "_";
                     fforce+=forceAr[i]+"_";
                     mmuscle+=muscleAr[i]+"_";
                 }
-//                test1.setText(dday);
-//                test2.setText(fforce);
 
                 dday="['"+dday+"']";
                 fforce="['"+fforce+"']";
                 mmuscle="['"+mmuscle+"']";
-//                test3.setText(mmuscle);
-//                test1.setText(dday);
-//                test2.setText(fforce);
-
 
 
 
@@ -183,8 +191,7 @@ public class Alternative extends AppCompatActivity {
                 planEx.put("plan",dday);
                 planEx.put("force",fforce);
                 planEx.put("muscle",mmuscle);
-//        planEx.put("sessionNo",SessionNo);
-//        planEx.put("level",level);
+
 
 
 
@@ -212,30 +219,24 @@ public class Alternative extends AppCompatActivity {
             }
         });
 
-        exBtn2.setOnClickListener(new View.OnClickListener() {
+        btn[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dday="";
                 fforce="";
                 mmuscle="";
-//                lbl1.setText(muscle2);
-                dayAr[index]=excName2;
-                forceAr[index]=force2;
-                muscleAr[index]=muscle2;
+                dayAr[index]=nameA[1];
+                forceAr[index]=forceA[1];
+                muscleAr[index]=muscleA[1];
                 for (int i = 0; i < dayAr.length; i++) {
                     dday+=dayAr[i]+ "_";
                     fforce+=forceAr[i]+"_";
                     mmuscle+=muscleAr[i]+"_";
                 }
-//                test1.setText(dday);
-//                test2.setText(fforce);
-
                 dday="['"+dday+"']";
                 fforce="['"+fforce+"']";
                 mmuscle="['"+mmuscle+"']";
-//                test3.setText(mmuscle);
-//                test1.setText(dday);
-//                test2.setText(fforce);
+
 
 
 
@@ -250,8 +251,124 @@ public class Alternative extends AppCompatActivity {
                 planEx.put("plan",dday);
                 planEx.put("force",fforce);
                 planEx.put("muscle",mmuscle);
-//        planEx.put("sessionNo",SessionNo);
-//        planEx.put("level",level);
+
+
+
+
+                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Intent i = new Intent(Alternative.this, PlanView.class);
+                            i.putExtra("SessionNo",SessionNo);
+                            i.putExtra("level",level);
+
+                            startActivity(i);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(LoadPa2.this,"Faild",Toast.LENGTH_SHORT);
+
+                    }
+                });
+//
+//
+//
+            }
+        });
+        btn[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dday="";
+                fforce="";
+                mmuscle="";
+                dayAr[index]=nameA[2];
+                forceAr[index]=forceA[2];
+                muscleAr[index]=muscleA[2];
+                for (int i = 0; i < dayAr.length; i++) {
+                    dday+=dayAr[i]+ "_";
+                    fforce+=forceAr[i]+"_";
+                    mmuscle+=muscleAr[i]+"_";
+                }
+                dday="['"+dday+"']";
+                fforce="['"+fforce+"']";
+                mmuscle="['"+mmuscle+"']";
+
+
+
+
+
+                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                db = FirebaseFirestore.getInstance();
+                CollectionReference ex = db.collection("userProfile");
+
+                String s="day"+(currDay);
+                Map<String,Object> planEx = new HashMap<>();
+                planEx.put("plan",dday);
+                planEx.put("force",fforce);
+                planEx.put("muscle",mmuscle);
+
+
+
+
+                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Intent i = new Intent(Alternative.this, PlanView.class);
+                            i.putExtra("SessionNo",SessionNo);
+                            i.putExtra("level",level);
+
+                            startActivity(i);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(LoadPa2.this,"Faild",Toast.LENGTH_SHORT);
+
+                    }
+                });
+//
+//
+//
+            }
+        });
+
+        btn[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dday="";
+                fforce="";
+                mmuscle="";
+                dayAr[index]=nameA[3];
+                forceAr[index]=forceA[3];
+                muscleAr[index]=muscleA[3];
+                for (int i = 0; i < dayAr.length; i++) {
+                    dday+=dayAr[i]+ "_";
+                    fforce+=forceAr[i]+"_";
+                    mmuscle+=muscleAr[i]+"_";
+                }
+                dday="['"+dday+"']";
+                fforce="['"+fforce+"']";
+                mmuscle="['"+mmuscle+"']";
+
+
+
+                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                db = FirebaseFirestore.getInstance();
+                CollectionReference ex = db.collection("userProfile");
+
+                String s="day"+(currDay);
+                Map<String,Object> planEx = new HashMap<>();
+                planEx.put("plan",dday);
+                planEx.put("force",fforce);
+                planEx.put("muscle",mmuscle);
+
 
 
 
@@ -289,38 +406,45 @@ public class Alternative extends AppCompatActivity {
         // creating python object
         PyObject pyObj= py.getModule("myscript"); // call the python file
 
-        PyObject alt1 = pyObj.callAttr("findAlternative1",name,0,generalMuscle,"repeated"); // call the alt1 method in python
-        exercise1 = alt1.toString();//retrieve  output
-//        ex1String=exercise1.substring(1,exercise1.length()-3);
-        ex1= exercise1.split("_");
-//        excName1=ex1[0].substring(1,ex1[0].length());
-//        force1=ex1[1].substring(3,ex1[1].length());
-//        muscle1=ex1[2].substring(3,ex1[2].length());
-        excName1=ex1[0];
-        force1=ex1[1];
-        muscle1=ex1[2];
-        exName1.setText(excName1);
-        PyObject eq1 = pyObj.callAttr("altEqpmnt",excName1); // call the altEqpmnt method in python to return the exercise needed equipment
-        eqName1 = eq1.toString();//retrieve  output
-        equ1.setText(eqName1);
+//        PyObject alt1 = pyObj.callAttr("findAlternative1",name,0,generalMuscle,"repeated"); // call the alt1 method in python
+//        exercise1 = alt1.toString();//retrieve  output
+//        ex1= exercise1.split("_");
+//        excName1=ex1[0];
+//        force1=ex1[1];
+//        muscle1=ex1[2];
+//        exName1.setText(excName1);
+//        PyObject eq1 = pyObj.callAttr("altEqpmnt",excName1); // call the altEqpmnt method in python to return the exercise needed equipment
+//        eqName1 = eq1.toString();//retrieve  output
+//        equ1.setText(eqName1);
+//
+//
+//        ///
+//        PyObject alt2 = pyObj.callAttr("findAlternative1",name,1,generalMuscle,excName1); // call the alt2 method in python
+//        exercise2 = alt2.toString();//retrieve
+//        ex2= exercise2.split("_");
+//        excName2=ex2[0];
+//        force2=ex2[1];
+//        muscle2=ex2[2];
+//        exName2.setText(excName2);
+//        PyObject eq2 = pyObj.callAttr("altEqpmnt",excName2); // call the altEqpmnt method in python to return the exercise needed equipment
+//        eqName2 = eq2.toString();//retrieve  output
+//        equ2.setText(eqName2);
 
+        // ________________________________##########################################______________________________________-
 
-        ///
-        PyObject alt2 = pyObj.callAttr("findAlternative1",name,1,generalMuscle,excName1); // call the alt2 method in python
-        exercise2 = alt2.toString();//retrieve
-//        ex2String=exercise2.substring(1,exercise2.length()-3);
-        ex2= exercise2.split("_");
-        excName2=ex2[0];
-        force2=ex2[1];
-        muscle2=ex2[2];
-        exName2.setText(excName2);
-        PyObject eq2 = pyObj.callAttr("altEqpmnt",excName2); // call the altEqpmnt method in python to return the exercise needed equipment
-        eqName2 = eq2.toString();//retrieve  output
-        equ2.setText(eqName2);
+        for(int i =0; i<4;i++) {
+            PyObject alt1 = pyObj.callAttr("findAlternative1", name,i); // call the alt1 method in python
+            exercise1 = alt1.toString();//retrieve  output
+            ex1 = exercise1.split("_");
+            nameA[i] = ex1[0];
+            forceA[i] = ex1[1];
+            muscleA[i] = ex1[2];
+            exName[i].setText(nameA[i]);
+            PyObject eq1 = pyObj.callAttr("altEqpmnt", nameA[i]); // call the altEqpmnt method in python to return the exercise needed equipment
+            eqName1 = eq1.toString();//retrieve  output
+            exEqu[i].setText(eqName1);
 
-
-//        ex2String=exercise2.substring(2,exercise2.length()-3);
-//        ex2= ex2String.split("_");
+        }
 
     }
 

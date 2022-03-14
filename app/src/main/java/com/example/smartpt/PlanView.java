@@ -111,6 +111,7 @@ public class PlanView extends AppCompatActivity {
     private TextView m10;
     private TextView m11;
     private TextView m12;
+    private TextView userNamep;
 
     private TextView f1;
     private TextView f2;
@@ -128,7 +129,7 @@ public class PlanView extends AppCompatActivity {
     private Double weekD;
 
     private TextView TT;
-    private String name;
+    private String traineeName;
     private String level;
     static String namedays = new String();
 
@@ -241,6 +242,7 @@ public class PlanView extends AppCompatActivity {
         TextviewEx10 = findViewById(R.id.textViewex10);
         TextviewEx11 = findViewById(R.id.textViewex11);
         TextviewEx12 = findViewById(R.id.textViewex12);
+        userNamep=findViewById(R.id.userNamep);
 
 //        img8=findViewById(R.id.start8);
 //        img9=findViewById(R.id.start9);
@@ -327,6 +329,9 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (value.exists()) {
                     String test = value.getString(KEY_T);
+                    traineeName=value.getString("name");
+                    userNamep.setText("Welcome "+traineeName+" !");
+                    SessionNo=value.getString("TrainingdaysNum");
                     namedays = test;
                     currentDay();
 
