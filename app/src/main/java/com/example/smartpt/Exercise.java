@@ -169,7 +169,7 @@ public class Exercise extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
 
-                exName.setText(name);
+                exName.setText(name+" exercise details");
 
 
 

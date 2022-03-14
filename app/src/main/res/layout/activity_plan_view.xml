@@ -76,21 +76,36 @@
         android:background="@drawable/weekly_textstyle"
         android:weightSum="10">
 
-
         <TextView
-            android:id="@+id/WeeklytextView"
-            android:layout_width="252dp"
-            android:layout_height="77dp"
+            android:id="@+id/userNamep"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
-            android:text="Weekly Active Days"
+            android:text="Welcome"
             android:textColor="#ffff"
             android:textSize="17dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
+
+        <TextView
+            android:id="@+id/WeeklytextView"
+            android:layout_width="298dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="148dp"
+            android:padding="15dp"
+            android:text="Here Is Your Weekly Active Days"
+            android:textColor="#ffff"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:translationZ="100dip" />
+
 
 
         <Button
