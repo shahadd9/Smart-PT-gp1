@@ -90,6 +90,20 @@
             android:textSize="17dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
+        <TextView
+            android:id="@+id/weekNo"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="148dp"
+            android:padding="15dp"
+            android:text="week"
+            android:textColor="#ffff"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:translationZ="100dip" />
 
         <TextView
             android:id="@+id/WeeklytextView"
@@ -226,6 +240,8 @@
 
 
             android:textStyle="bold" />
+
+
 
 
     </FrameLayout>

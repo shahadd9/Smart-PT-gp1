@@ -68,6 +68,7 @@ public class SessionView extends AppCompatActivity {
     String dayAr[];
     private int prog;
 
+    private int end;
     private TextToSpeech mTTS;
     public boolean isSpeak;
 
@@ -82,6 +83,7 @@ public class SessionView extends AppCompatActivity {
         setContentView(R.layout.activity_session_view);
         timer=new Timer();
         prog=0;
+        end=0;
         dayAr=new String[50];
         exName="";
         counter=getIntent().getIntExtra("counter",0);
@@ -230,24 +232,24 @@ public class SessionView extends AppCompatActivity {
                     if(prog<=90){
                         prog+=(100/s);
                         updteProgressBar();
-                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
-
-                                restAudio = new MediaPlayer();
-
-                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-
-                                try {
-                                    restAudio.setDataSource(audioUrl);
-                                    // below line is use to prepare
-                                    // and start our media player.
-                                    restAudio.prepare();
-                                    restAudio.start();
-
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+//                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+//
+//                                restAudio = new MediaPlayer();
+//
+//                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//
+//                                try {
+//                                    restAudio.setDataSource(audioUrl);
+//                                    // below line is use to prepare
+//                                    // and start our media player.
+//                                    restAudio.prepare();
+//                                    restAudio.start();
+//
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
                         new CountDownTimer(10000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
@@ -289,7 +291,9 @@ public class SessionView extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                end=1;
                                 endSession(0);
+
                             }
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -376,22 +380,22 @@ public class SessionView extends AppCompatActivity {
 
     }
     public void nextExercise(int re){
-        String readyAudio = "https://od.lk/s/NzVfMzMwMTYzNjlf/next.mp3";
-
-        restAudio = new MediaPlayer();
-
-        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-
-
-        try {
-            restAudio.setDataSource(readyAudio);
-            restAudio.prepare();
-            restAudio.start();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String readyAudio = "https://od.lk/s/NzVfMzMwMTYzNjlf/next.mp3";
+//
+//        restAudio = new MediaPlayer();
+//
+//        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//
+//
+//
+//        try {
+//            restAudio.setDataSource(readyAudio);
+//            restAudio.prepare();
+//            restAudio.start();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
@@ -447,7 +451,12 @@ public class SessionView extends AppCompatActivity {
 
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",c);
-        user.put("duration",time);
+        if(c==0 && end==1){
+            user.put("duration",0);
+        }
+        else {
+            user.put("duration", time);
+        }
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
