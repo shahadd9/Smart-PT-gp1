@@ -112,6 +112,7 @@ public class PlanView extends AppCompatActivity {
     private TextView m11;
     private TextView m12;
     private TextView userNamep;
+    private TextView weekNo;
 
     private TextView f1;
     private TextView f2;
@@ -243,6 +244,8 @@ public class PlanView extends AppCompatActivity {
         TextviewEx11 = findViewById(R.id.textViewex11);
         TextviewEx12 = findViewById(R.id.textViewex12);
         userNamep=findViewById(R.id.userNamep);
+        weekNo=findViewById(R.id.weekNo);
+
 
 //        img8=findViewById(R.id.start8);
 //        img9=findViewById(R.id.start9);
@@ -1574,8 +1577,11 @@ public class PlanView extends AppCompatActivity {
 
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
-//            GeneratenextWeek();
-            updateFlag();
+//            updateFlag();
+            GeneratenextWeek();
+            weekNo.setText("Week"+week);
+
+
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
         } else if (dayOfTheWeek.contains("Sunday")) {
@@ -1583,7 +1589,6 @@ public class PlanView extends AppCompatActivity {
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
             GeneratenextWeek();
-//            updateFlag();
 
 //            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
@@ -1624,7 +1629,7 @@ public class PlanView extends AppCompatActivity {
         Map<String,Object> week = new HashMap<>();
 
         user.put("exerciseIndex",0);
-        user.put("duration",0.0);
+        user.put("duration",0);
 
 
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
