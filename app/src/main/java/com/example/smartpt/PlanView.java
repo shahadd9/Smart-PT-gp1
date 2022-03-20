@@ -413,11 +413,51 @@ public class PlanView extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                         }
-//
-//                    case R.id.progress:
-//                        startActivity(new Intent(getApplicationContext(),progress.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+
+                    case R.id.progress:
+                         i = new Intent(PlanView.this, UserProgress.class);
+                        i.putExtra("SessionNo", SessionNo);
+                            i.putExtra("level", level);
+                            i.putExtra("week",week);
+                            i.putExtra("currDay",currDay);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+//                        if (SessionNo.equals("2")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            i.putExtra("week",week);
+//                            i.putExtra("currDay",currDay);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                            return true;
+//                        } else if (SessionNo.equals("3")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            i.putExtra("week",week);
+//                            i.putExtra("currDay",currDay);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("4")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            i.putExtra("week",week);
+//                            i.putExtra("currDay",currDay);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("5")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            i.putExtra("week",week);
+//                            i.putExtra("currDay",currDay);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
                 }
                 return false;
             }
@@ -1584,19 +1624,31 @@ public class PlanView extends AppCompatActivity {
 
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
+            weekNo.setText("Week"+week);
+
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
+            weekNo.setText("Week"+week);
+
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
             GeneratenextWeek();
+            weekNo.setText("Week"+week);
+
 
 //            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
             buttonThu.performClick();
+            weekNo.setText("Week"+week);
+
         } else if (dayOfTheWeek.contains("Tuesday")) {
             buttonTue.performClick();
+            weekNo.setText("Week"+week);
+
         } else if (dayOfTheWeek.contains("Wednesday")) {
             buttonWed.performClick();
+            weekNo.setText("Week"+week);
+
         }
     }
 
