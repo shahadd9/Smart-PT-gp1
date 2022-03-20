@@ -14,4 +14,25 @@
 <color name="butt">#f1f3fa</color>
 <color name="textbut">#d1d4dd</color>
 
-    </resources>
+    <!--Track user progress-->
+    <color name="Reps">#FFA726</color>
+    <color name="Weight">#66BB6A</color>
+    <color name="RED">#EF5350</color>
+    <color name="Sets">#29B6F6</color>
+
+
+    <color name="colorPrimary1">#9C27B0</color>
+    <color name="colorPrimaryDark1">#7B1FA2</color>
+    <color name="colorAccent1">#03A9F4</color>
+
+
+    <color name="color_one">#fb7268</color>
+    <color name="color_white">#ededf2</color>
+    <color name="color_two">#E3E0E0</color>
+
+    <color name="colorPrimary">#024265</color>
+    <color name="colorPrimaryDark">#024265</color>
+    <color name="colorAccent">#05af9b</color>
+
+
+</resources>

@@ -203,13 +203,15 @@ public class updateProfile extends AppCompatActivity implements
                         }
 
                     case R.id.profile:
-//                        startActivity(new Intent(getApplicationContext(), updateProfile.class));
-//                        overridePendingTransition(0, 0);
-//                        return true;
-//                      case R.id.progress:
-//                          startActivity(new Intent(getApplicationContext(),progress.class));
-//                          overridePendingTransition(0,0);
-//                          return true;
+                        i = new Intent(updateProfile.this, UserProgress.class);
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+//                        i.putExtra("week",week);
+//                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
                 }
                 return false;
             }

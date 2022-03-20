@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".UserProgress"
+            android:exported="true" />
+        <activity
             android:name=".feedback"
             android:exported="true" />
         <activity
