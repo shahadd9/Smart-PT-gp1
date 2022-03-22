@@ -26,6 +26,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +39,9 @@ public class Home extends AppCompatActivity {
     private ImageView imageInHome;
     private FirebaseFirestore db;
     private String userIp;
+    private String todaytDate;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
 //    private TextView textSmartPT;
 
 
@@ -49,6 +54,9 @@ public class Home extends AppCompatActivity {
         userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         setContentView(R.layout.activity_home);
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        todaytDate = dateFormat.format(calendar.getTime());
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         textWelcome = findViewById(R.id.welcome);
@@ -66,7 +74,9 @@ public class Home extends AppCompatActivity {
                 user.put("exerciseIndex",0);
                 user.put("duration",0.0);
                 week.put("week",1);
-                week.put("isItOne","0");
+                week.put("isItOne","1"); // if it is 1 then dont generate next week
+                week.put("startDateWeek1",todaytDate);
+
 
                 db.collection("Progress").document(userIp).collection("index").document("weeks").set(week).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

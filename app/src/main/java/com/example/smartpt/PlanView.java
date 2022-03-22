@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
+import java.text.SimpleDateFormat;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,6 +51,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +80,8 @@ public class PlanView extends AppCompatActivity {
 
     private String finished;
 
+
+   private  int Curweek;
 
     private TextView TextviewEx1;
     private TextView TextviewEx2;
@@ -139,6 +142,11 @@ public class PlanView extends AppCompatActivity {
     private static final String TAG = "PlanView";
 
     private static final String KEY_T = "trainingDays";
+
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+
+    private int weekPassedNum;
 
     boolean daySat;
     boolean daySun;
@@ -210,6 +218,12 @@ public class PlanView extends AppCompatActivity {
     TableRow exRow10;
     TableRow exRow11;
     TableRow exRow12;
+    private String startDate;
+    String startDateAr[] = new String[4];
+    private String todaytDate;
+    String todaytDateAr[] = new String[4];
+
+
 
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
@@ -306,6 +320,11 @@ public class PlanView extends AppCompatActivity {
         exRow10 =findViewById(R.id.exRow10);
         exRow11 =findViewById(R.id.exRow11);
         exRow12 =findViewById(R.id.exRow12);
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        todaytDate = dateFormat.format(calendar.getTime());
+
+
 
         builder= new AlertDialog.Builder(this);
 
@@ -1579,6 +1598,7 @@ public class PlanView extends AppCompatActivity {
                         weekD= value.getDouble("week");
                         week=(int)Math.round(weekD);
                         isItOne=value.getString("isItOne");
+                        startDate=value.getString("startDateWeek"+week);
                     } else {
                         //doesn't exist
                     }
@@ -1618,31 +1638,31 @@ public class PlanView extends AppCompatActivity {
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
 //            updateFlag();
-            GeneratenextWeek();
+//            GeneratenextWeek();
             weekNo.setText("Week"+week);
-
 
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
             weekNo.setText("Week"+week);
+            updateFlag();
 
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
+            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
-            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
-
-//            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
             buttonThu.performClick();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Tuesday")) {
             buttonTue.performClick();
+
+
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Wednesday")) {
@@ -1654,18 +1674,43 @@ public class PlanView extends AppCompatActivity {
 
     private void GeneratenextWeek() {
 
+        Curweek=0;
 
 
         Map<String,Object> weeks = new HashMap<>();
 
         if(isItOne=="0"|| isItOne.equals("0")) {
-            weeks.put("week", ++week);
+            try{
+                Date date1;
+                Date date2;
+
+                date1=dateFormat.parse(startDate);
+                date2=dateFormat.parse("24/04/2022");
+
+                long difference = Math.abs(date2.getTime() - date1.getTime());
+                long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+                weekPassedNum= (int)differenceDates/7;
+                if (weekPassedNum==0){
+                    weekPassedNum=1;
+                }
+                Curweek= week+weekPassedNum-1;
+
+            } catch (Exception exception) {
+                Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+            }
+            weeks.put("week", ++Curweek);
             weeks.put("isItOne", "1");
-            generateNextWeek(week);
+            weeks.put("startDateWeek"+Curweek,todaytDate);
+            generateNextWeek(Curweek);
+
+
+
         }
         else {
             weeks.put("week", week);
             weeks.put("isItOne", "1");
+//            weeks.put("startDateWeek"+week,todaytDate);
         }
         db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -2762,6 +2807,7 @@ public class PlanView extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 FBindexD= value.getDouble("exerciseIndex");
+                if(FBindexD !=null)
                 FBindex=(int)Math.round(FBindexD);
 //                FBindex=5;
 
