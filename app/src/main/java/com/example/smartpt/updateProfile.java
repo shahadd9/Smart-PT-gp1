@@ -71,6 +71,8 @@ public class updateProfile extends AppCompatActivity implements
     private String remind;
     private String numDays;
 
+    private int week;
+    private String currDay;
 
     private static ArrayList<String> tDays;//    private String day2;
 //    private String day3;
@@ -86,6 +88,8 @@ public class updateProfile extends AppCompatActivity implements
         setContentView(R.layout.activity_update_profile);
         SessionNo=getIntent().getStringExtra("SessionNo");
         level =getIntent().getStringExtra("level");
+        currDay=getIntent().getStringExtra("currDay");
+        week=getIntent().getIntExtra("week",0);
         tDaysN= new ArrayList<>();
         durationA="";
         remind="";
@@ -168,46 +172,47 @@ public class updateProfile extends AppCompatActivity implements
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+
                     case R.id.home:
                         Intent i = new Intent(updateProfile.this, PlanView.class);
-
-                        if(SessionNo.equals("2")){
-                            i.putExtra("SessionNo",SessionNo);
-
-                            i.putExtra("level",level);
+//                        if(SessionNo.equals("2")){
+                            i.putExtra("SessionNo", SessionNo);
+                            i.putExtra("level", level);
+//                            i.putExtra("week",week);
+//                            i.putExtra("currDay",currDay);
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
                             return true;
-                        }
-                        else if(SessionNo.equals("3")){
-                            i.putExtra("SessionNo",SessionNo);
-                            i.putExtra("level",level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-                        else if(SessionNo.equals("4")){
-                            i.putExtra("SessionNo",SessionNo);
-                            i.putExtra("level",level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-                        else if(SessionNo.equals("5")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
+//                        }
+//                        else if(SessionNo.equals("3")){
+//                            i.putExtra("SessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("4")){
+//                            i.putExtra("SessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("5")) {
+//                             i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
 
-                    case R.id.profile:
+                    case R.id.progress:
                         i = new Intent(updateProfile.this, UserProgress.class);
                         i.putExtra("SessionNo", SessionNo);
                         i.putExtra("level", level);
-//                        i.putExtra("week",week);
-//                        i.putExtra("currDay",currDay);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
                         startActivity(i);
                         overridePendingTransition(0, 0);
                         finish();
