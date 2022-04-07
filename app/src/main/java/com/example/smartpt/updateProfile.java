@@ -200,7 +200,7 @@ public class updateProfile extends AppCompatActivity implements
 //                            finish();
 //                        }
 //                        else if(SessionNo.equals("5")) {
-//                            i.putExtra("SessionNo", SessionNo);
+//                             i.putExtra("SessionNo", SessionNo);
 //                            i.putExtra("level", level);
 //                            startActivity(i);
 //                            overridePendingTransition(0, 0);
