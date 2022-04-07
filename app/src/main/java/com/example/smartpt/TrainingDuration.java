@@ -10,6 +10,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,6 +60,8 @@ public class TrainingDuration extends AppCompatActivity {
 
 
             public void onClick(View v) {
+
+
 
                 Map<String,Object> user = new HashMap<>();
                 user.put("TrainingDuration",tDuration);

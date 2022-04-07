@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -60,7 +61,7 @@ public class SessionView extends AppCompatActivity {
     private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
-    private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
+    private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt,exeNum;
     private ImageView exist,buttonSpeaker;
     private Button nextbtn,skipbtn,pausebtn;
     private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink,audioLink;
@@ -71,12 +72,14 @@ public class SessionView extends AppCompatActivity {
     private int end;
     private TextToSpeech mTTS;
     public boolean isSpeak;
-
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
     private TimerTask timerTask;
     private Double time;
     private MediaPlayer player,restAudio;
+    public final static String shared="sharedPrefs";
+    private int done;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +99,7 @@ public class SessionView extends AppCompatActivity {
         rest=(TextView) findViewById(R.id.rest);
         v= (VideoView)findViewById(R.id.video);
         timertxt=(TextView)findViewById(R.id.timertxt);
+        exeNum=(TextView)findViewById(R.id.exNum);
         nextbtn =(Button)findViewById(R.id.nextbtn);
         skipbtn =(Button)findViewById(R.id.skipbtn);
         pausebtn =(Button)findViewById(R.id.pausebtn);
@@ -107,7 +111,8 @@ public class SessionView extends AppCompatActivity {
         time= getIntent().getDoubleExtra("duration",-1);
         buttonSpeaker=findViewById(R.id.buttonSpeaker);
 
-
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        done= sharedPreferences.getInt("sessionDone",0);
         //##########################################################################################
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -133,6 +138,7 @@ public class SessionView extends AppCompatActivity {
 
 
         updteProgressBar();
+
 
         i=0;
         sIndex=0;
@@ -395,7 +401,14 @@ public class SessionView extends AppCompatActivity {
 //
 //        } catch (IOException e) {
 //            e.printStackTrace();
+//
 //        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("duration",time+"");
+        editor.apply();
+
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
@@ -446,6 +459,11 @@ public class SessionView extends AppCompatActivity {
     }
     public void endSession(int c){
 
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("duration",time+"");
+        editor.apply();
+
         c=c;
 
 
@@ -455,6 +473,8 @@ public class SessionView extends AppCompatActivity {
             user.put("duration",0);
         }
         else {
+            editor.putInt("sessionDone",done+1);
+            editor.apply();
             user.put("duration", time);
         }
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -599,6 +619,7 @@ public class SessionView extends AppCompatActivity {
                 day = day.substring(2, day.length() - 3);
                 dayAr = day.split("_");
 //                exName= dayAr[counter];
+                exeNum.setText("Exercise: "+(counter+1));
 
                 exerciseName.setText(dayAr[counter]);
                 try {

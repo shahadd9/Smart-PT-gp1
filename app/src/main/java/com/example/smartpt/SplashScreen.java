@@ -53,6 +53,10 @@ public class SplashScreen extends AppCompatActivity {
 
                 SessionNo=value.getString("TrainingdaysNum");
                 level= value.getString("level");
+                if(SessionNo == null || level ==null){
+                    goTO(SessionNo, level);
+
+                }
                 if(SessionNo != "" && level !=""){
 
                     goTO(SessionNo, level);
@@ -73,9 +77,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-
-
+                    if (document.exists() && document != null) {
 //                        ret();
                         Intent i = new Intent(SplashScreen.this, PlanView.class);
                         i.putExtra("SessionNo",session);

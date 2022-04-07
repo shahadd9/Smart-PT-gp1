@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import java.text.SimpleDateFormat;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -65,6 +67,7 @@ public class PlanView extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseFirestore db2;
     private String userIp;
+    private ProgressDialog pd;
 
     private int  FBindex;
     private Double FBindexD;
@@ -95,6 +98,9 @@ public class PlanView extends AppCompatActivity {
     private TextView TextviewEx10;
     private TextView TextviewEx11;
     private TextView TextviewEx12;
+
+    public final static String shared="sharedPrefs";
+    private int done;
 
 //    private ImageView img8;
 //    private ImageView img9;
@@ -403,35 +409,34 @@ public class PlanView extends AppCompatActivity {
 //                     (update profile activity)
                     case R.id.profile:
                         Intent i = new Intent(PlanView.this, updateProfile.class);
-
-
-
-                        if (SessionNo.equals("2")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
+//                        if (SessionNo.equals("2")) {
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
                             return true;
-                        } else if (SessionNo.equals("3")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("4")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("5")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
+//                        } else if (SessionNo.equals("3")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("4")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("5")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
 
                     case R.id.progress:
                          i = new Intent(PlanView.this, UserProgress.class);
@@ -1551,6 +1556,7 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                pd= new ProgressDialog(PlanView.this);
                 Intent i = new Intent(PlanView.this, StartSession.class);
                 i.putExtra("name", TextviewEx1.getText());
                 i.putExtra("force", f1.getText());
@@ -1562,9 +1568,10 @@ public class PlanView extends AppCompatActivity {
 
                 if(FBindex<99){
 //                    TextviewEx1.setText(FBindex+"_"+currDay);
-
+//                    pd.show();
                     startActivity(i);
-
+                    finish();
+//                    pd.dismiss();
                 }
                 else{
                     builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
@@ -1661,8 +1668,6 @@ public class PlanView extends AppCompatActivity {
 
         } else if (dayOfTheWeek.contains("Tuesday")) {
             buttonTue.performClick();
-
-
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Wednesday")) {
@@ -1676,7 +1681,30 @@ public class PlanView extends AppCompatActivity {
 
         Curweek=0;
 
+        String update="0";
+        try{
+            Date date1;
+            Date date2;
 
+            date1=dateFormat.parse(startDate);
+            date2=dateFormat.parse(todaytDate);
+
+            long difference = Math.abs(date2.getTime() - date1.getTime());
+            long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+            weekPassedNum= (int)differenceDates/7;
+            if (weekPassedNum==0){
+                weekPassedNum=1;
+            }
+            Curweek= week+weekPassedNum-1;
+
+            if(differenceDates>=7){
+                updateFlag();
+                isItOne=update;
+            }
+        } catch (Exception exception) {
+            Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+        }
         Map<String,Object> weeks = new HashMap<>();
 
         if(isItOne=="0"|| isItOne.equals("0")) {
@@ -1685,7 +1713,7 @@ public class PlanView extends AppCompatActivity {
                 Date date2;
 
                 date1=dateFormat.parse(startDate);
-                date2=dateFormat.parse("24/04/2022");
+                date2=dateFormat.parse( currDay);
 
                 long difference = Math.abs(date2.getTime() - date1.getTime());
                 long differenceDates = difference / (24 * 60 * 60 * 1000);
@@ -1722,6 +1750,12 @@ public class PlanView extends AppCompatActivity {
     }
 
     private void generateNextWeek(int weekD) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putInt("sessionDone",0);
+        editor.apply();
+
         Map<String,Object> user = new HashMap<>();
         Map<String,Object> week = new HashMap<>();
 

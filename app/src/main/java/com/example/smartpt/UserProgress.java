@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -66,7 +67,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     int s, r, re,d;
 
     private FirebaseFirestore db;
-
+    public final static String shared="sharedPrefs";
     private String SessionNo;
     private String numDays,level;
     private int finalDuartion;
@@ -76,6 +77,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private String durationA,currDay;
 //    int finishedDuration=20;
     private Double time;
+
+    private int durationInt;
 
     TextView pcM1, pcM2, pcM3, pcM4,finishedSession, sessionText, DurationText,test;
     PieChart pieChart, WeekpieChart;
@@ -186,68 +189,72 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+
                     case R.id.home:
                         Intent i = new Intent(UserProgress.this, PlanView.class);
 
-                        if(SessionNo.equals("2")){
-                            i.putExtra("SessionNo",SessionNo);
-
-                            i.putExtra("level",level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            return true;
-                        }
-                        else if(SessionNo.equals("3")){
-                            i.putExtra("SessionNo",SessionNo);
-                            i.putExtra("level",level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-                        else if(SessionNo.equals("4")){
-                            i.putExtra("SessionNo",SessionNo);
-                            i.putExtra("level",level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-                        else if(SessionNo.equals("5")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
+//                        if(SessionNo.equals("2")){
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
+//                        }
+//                        else if(SessionNo.equals("3")){
+//                            i.putExtra("SessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("4")){
+//                            i.putExtra("SessionNo",SessionNo);
+//                            i.putExtra("level",level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
+//                        else if(SessionNo.equals("5")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
                     case R.id.profile:
                          i = new Intent(UserProgress.this, updateProfile.class);
 
-                        if (SessionNo.equals("2")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            return true;
-                        } else if (SessionNo.equals("3")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("4")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("5")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
+//                        if (SessionNo.equals("2")) {
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
+//                        } else if (SessionNo.equals("3")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("4")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        } else if (SessionNo.equals("5")) {
+//                            i.putExtra("SessionNo", SessionNo);
+//                            i.putExtra("level", level);
+//                            startActivity(i);
+//                            overridePendingTransition(0, 0);
+//                            finish();
+//                        }
 
                     case R.id.progress:
 
@@ -268,19 +275,21 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 //        pcM1.setText(30+"");//NEED MODIFY
 //NEED MODIFY
 //        pcM2.setText(30+"");
-        int f= finalDuartion;
-        test.setText(f+"");
-        pcM1.setText(f+"");//NEED MODIFY
-        pcM2.setText(30+"");
+
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        time= Double.parseDouble(sharedPreferences.getString("duration","0"));
+        test.setText(time+"");
+        pcM1.setText(durationInt+"");//NEED MODIFY
+        pcM2.setText(time/60+"");
         pieChart.addPieSlice(
                 new PieModel(
                         "",
-                        Integer.parseInt(pcM1.getText().toString()),
+                        Float.parseFloat(pcM1.getText().toString()),
                         Color.parseColor("#66BB6A")));
         pieChart.addPieSlice(
                 new PieModel(
                         "",
-                        Integer.parseInt(pcM2.getText().toString()),
+                        Float.parseFloat(pcM2.getText().toString()),
                         Color.parseColor("#D3C6B4")));
 
         pieChart.startAnimation();
@@ -573,8 +582,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
                 FBindexD= value.getDouble("exerciseIndex");
                 FBindex=(int)Math.round(FBindexD);
-                time= value.getDouble("duration");
-                time=time/60;
+//                time= value.getDouble("duration");
 
             }
         });
@@ -605,19 +613,19 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                 r=(int)rep;
 
                 durationDis=value.getString("duration");
-                int durationInInt = Integer.parseInt(durationDis);
+                durationInt = Integer.parseInt(durationDis);
                 DurationText.setText(durationDis+" Min");
-                test.setText("rep"+rep+"set"+set+durationDis+currDay+week);
+//                test.setText("rep"+rep+"set"+set+durationDis+currDay+week+time);
 
 //                finalDuartion= (int) (30*100/43);
-                finalDuartion=100;
+//                finalDuartion=100;
 //                pcM1.setText(finalDuartion+"");//NEED MODIFY
-                pcM1.setText(2+"");//NEED MODIFY
-                double remi=30-finalDuartion;//NEED MODIFY
-//                pcM2.setText(remi+"");
-//                pcM2.setText(1+"");
-                pcM1.setText(100+"");
-                pcM2.setText(60+"");
+//                pcM1.setText(2+"");//NEED MODIFY
+//                double remi=30-finalDuartion;//NEED MODIFY
+////                pcM2.setText(remi+"");
+////                pcM2.setText(1+"");
+//                pcM1.setText(100+"");
+//                pcM2.setText(60+"");
             }
         });
     }

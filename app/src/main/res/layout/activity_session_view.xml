@@ -50,33 +50,33 @@
 
         <Button
             android:id="@+id/nextbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
             android:background="@drawable/weekly_textstyle"
             android:text="Next"
             android:textSize="20dp"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.919"
+            app:layout_constraintHorizontal_bias="0.951"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.975" />
+            app:layout_constraintVertical_bias="0.985" />
 
         <Button
             android:id="@+id/pausebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
             android:background="@drawable/weekly_textstyle"
             android:text="Pause"
             android:textSize="17dp"
             app:cornerRadius="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976" />
+            app:layout_constraintVertical_bias="0.985" />
 
         <Button
             android:id="@+id/skipbtn"
@@ -179,6 +179,7 @@
             android:id="@+id/buttonSpeaker"
             android:layout_width="25dp"
             android:layout_height="40dp"
+            android:onClick="testspeaker"
             app:layout_constraintBottom_toTopOf="@+id/instTxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
@@ -186,8 +187,7 @@
             app:layout_constraintTop_toBottomOf="@+id/exerciseName"
             app:layout_constraintVertical_bias="0.952"
             app:srcCompat="@drawable/speaker"
-            tools:ignore="MissingConstraints"
-            android:onClick="testspeaker"/>
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/instTxt"
@@ -274,6 +274,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <TextView
+            android:id="@+id/exNum"
+            android:layout_width="113dp"
+            android:layout_height="27dp"
+            android:text="Exercise:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.022" />
