@@ -50,7 +50,7 @@
 
         <Button
             android:id="@+id/nextbtn"
-            android:layout_width="123dp"
+            android:layout_width="110dp"
             android:layout_height="55dp"
             android:background="@drawable/weekly_textstyle"
             android:text="Next"
@@ -58,14 +58,14 @@
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintHorizontal_bias="0.916"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.985" />
 
         <Button
             android:id="@+id/pausebtn"
-            android:layout_width="123dp"
+            android:layout_width="110dp"
             android:layout_height="55dp"
             android:background="@drawable/weekly_textstyle"
             android:text="Pause"
@@ -73,14 +73,14 @@
             app:cornerRadius="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintHorizontal_bias="0.053"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.985" />
 
         <Button
             android:id="@+id/skipbtn"
-            android:layout_width="123dp"
+            android:layout_width="110dp"
             android:layout_height="55dp"
             android:background="@drawable/weekly_textstyle"
             android:text="skip Exercise "
@@ -88,6 +88,7 @@
             app:cornerRadius="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.985" />

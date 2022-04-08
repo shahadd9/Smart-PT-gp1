@@ -1,6 +1,7 @@
 package com.example.smartpt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
@@ -43,6 +44,8 @@ public class Home extends AppCompatActivity {
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
 //    private TextView textSmartPT;
+public final static String shared="sharedPrefs";
+
 
 
     @Override
@@ -63,6 +66,11 @@ public class Home extends AppCompatActivity {
         startbtn = findViewById(R.id.getStarted);
         imageInHome = findViewById(R.id.homeImage);
 //        textSmartPT = findViewById(R.id.aboutSmartPT);
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putInt("sessionDone",0);
+        editor.putString("duration","0.0");
+        editor.apply();
 
         startbtn.setOnClickListener(new View.OnClickListener() {
             @Override

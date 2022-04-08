@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".UserProgress">-->
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,472 +7,716 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+<ScrollView
+android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-        <RelativeLayout
+    <RelativeLayout
 
-            android:id="@+id/userProgress"
+        android:id="@+id/userProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        tools:context=".UserProgress">
+
+
+        <!--            calendar-->
+        <!--            <devs.mulham.horizontalcalendar.HorizontalCalendarView-->
+        <!--                android:id="@+id/calendarView"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                app:selectorColor="@android:color/holo_red_dark"-->
+        <!--                app:textColorNormal="@color/purple_200"-->
+        <!--                app:textColorSelected="@color/purple_200" />-->
+
+
+        <!--on below line we are creating our calendar view
+            selector color is use as a indicator for selected date
+            text color normal is use to give text color to unselected date
+            text color selected is use to give text color to selected date-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCalendar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_white"
-            tools:context=".MainActivity">
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#B85D5D"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+
+            <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:selectorColor="@color/colorPrimary"
+                app:textColorNormal="@color/teal_200"
+                app:textColorSelected="@color/teal_700" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!--Pie chart to display the data-->
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/piechartdate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="2"
+                    android:padding="1dp"
+
+                    />
 
 
-            <!--            calendar-->
-            <!--            <devs.mulham.horizontalcalendar.HorizontalCalendarView-->
-            <!--                android:id="@+id/calendarView"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                app:selectorColor="@android:color/holo_red_dark"-->
-            <!--                app:textColorNormal="@color/purple_200"-->
-            <!--                app:textColorSelected="@color/purple_200" />-->
+            </LinearLayout>
 
 
-            <!--on below line we are creating our calendar view
-                selector color is use as a indicator for selected date
-                text color normal is use to give text color to unselected date
-                text color selected is use to give text color to selected date-->
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="51dp"
+                android:text="Date"
+                android:textAlignment="center"
+                android:textSize="45dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.219" />
+
+            <Button
+                android:id="@+id/btngocalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="300dp"
+                android:backgroundTint="#FFFFFF"
+                android:textAlignment="center"
+                app:icon="@android:drawable/ic_menu_today"
+
+                app:iconSize="5mm"
+                app:iconTint="#000000"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp" />
+
+        </androidx.cardview.widget.CardView>
 
 
+        <!--     Card view for displaying the - -->
+        <!-- Pie chart and details of pie chart -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewGraph"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
 
-            <!--     Card view for displaying the - -->
-            <!-- Pie chart and details of pie chart -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewGraph"
+
+            <!--        Linear layout to display pie chart - -->
+            <!-- and details of pie chart-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Today:"
+                android:textSize="24sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/editDuration"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="290dp"
+                android:backgroundTint="#C9DCDCDC"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="#77A806"
+                app:cornerRadius="15dp">
+
+            </Button>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!--Pie chart to display the data-->
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="2"
+                    android:padding="6dp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/DurationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="85dp"
+                android:text="30 Min"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="90dp">
+
+                <!--View to display the yellow color icon-->
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:background="#66BB6A" />
+
+                <!--Text view to display R -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Done" />
+
+            </LinearLayout>
+
+            <!--Linear layout to display Python-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="90dp">
+
+                <!--View to display the green color icon-->
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:background="#D3C6B4" />
+
+                <!--Text view to display python text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Residual" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--     Card view for displaying the - -->
+        <!-- Pie chart and details of pie chart -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewGraph2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="860dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="100dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+
+
+            <!--        Linear layout to display pie chart - -->
+            <!-- and details of pie chart-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="This week:"
+                android:textSize="24sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/editSession"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="290dp"
+                android:backgroundTint="#C9DCDCDC"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="#77A806"
+                app:cornerRadius="15dp">
+
+            </Button>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="20dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
+                <!--Pie chart to display the data-->
 
-                <!--        Linear layout to display pie chart - -->
-                <!-- and details of pie chart-->
-
-                <TextView
-                    android:id="@+id/Teest"
-                    android:layout_width="match_parent"
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/Weekpiechart"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Today:"
-                    android:textSize="24sp"
-                    android:textStyle="bold">
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="2"
+                    android:padding="6dp">
 
-                </TextView>
 
-                <Button
-                    android:id="@+id/editDuration"
+                </org.eazegraph.lib.charts.PieChart>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/FinishDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:text="3 of 4 days"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="20sp"></TextView>
+
+            <TextView
+                android:id="@+id/sessionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="210dp"
+                android:text="You're almost to your goal! Let's do this."
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="18sp">
+
+            </TextView>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Line Graph to display reps, sets and weight-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewGraph3"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="80dp"
+                tools:context=".UserProgress">
+
+
+                <!--                    &lt;!&ndash;line graph view where we will-->
+                <!--            be displaying our data&ndash;&gt;-->
+                <!--                    <com.jjoe64.graphview.GraphView-->
+                <!--                        android:id="@+id/idGraphView"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="250dp"-->
+                <!--                        android:layout_alignParentTop="true"-->
+                <!--                        android:layout_marginTop="55dp" />-->
+
+                <lecho.lib.hellocharts.view.LineChartView
+                    android:id="@+id/chartReps"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+                <lecho.lib.hellocharts.view.LineChartView
+                    android:id="@+id/chartSets"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+                <lecho.lib.hellocharts.view.LineChartView
+                    android:id="@+id/chartWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/editSRW"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="290dp"
+                android:backgroundTint="#C9DCDCDC"
+                android:text="Edit"
+                android:textAlignment="center"
+                android:textColor="#77A806"
+                app:cornerRadius="15dp">
+
+            </Button>
+
+
+            <TextView
+                android:id="@+id/txtVw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:text="Select exercise:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txtVw"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@+id/txtVw" />
+
+
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_margin="20dp"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintRight_toRightOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+            <!--                    <AutoCompleteTextView-->
+            <!--                        android:id="@+id/autoCompleteTextView"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_weight="1"-->
+            <!--                        android:inputType="none"-->
+            <!--                        android:text="Choose Programming language"-->
+            <!--                        />-->
+            <!--                    <Spinner-->
+            <!--                        android:id="@+id/exe_spinner"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content" />-->
+            <!--                    -->
+
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="190dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CardWeight"
                     android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="290dp"
-                    android:backgroundTint="#C9DCDCDC"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="#77A806"
-                    app:cornerRadius="15dp">
-
-                </Button>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <!--Pie chart to display the data-->
-
-                    <org.eazegraph.lib.charts.PieChart
-                        android:id="@+id/piechart"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="2"
-                        android:padding="6dp"
-
-                        />
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/DurationText"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="85dp"
-                    android:text="30 Min"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="90dp">
-
-                    <!--View to display the yellow color icon-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="#66BB6A" />
-
-                    <!--Text view to display R -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Done" />
-
-                </LinearLayout>
-
-                <!--Linear layout to display Python-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="90dp">
+                    android:background="@color/Weight"
+                    android:backgroundTint="@color/Weight">
 
                     <!--View to display the green color icon-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="#D3C6B4" />
-
-                    <!--Text view to display python text -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Residual" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <!--     Card view for displaying the - -->
-            <!-- Pie chart and details of pie chart -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewGraph2"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="830dp"
-                android:layout_marginRight="20dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp"
-                android:layout_marginBottom="100dp"
-                >
-
-
-                <!--        Linear layout to display pie chart - -->
-                <!-- and details of pie chart-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="This week:"
-                    android:textSize="24sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-                <Button
-                    android:id="@+id/editSession"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="290dp"
-                    android:backgroundTint="#C9DCDCDC"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="#77A806"
-                    app:cornerRadius="15dp">
-
-                </Button>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <!--Pie chart to display the data-->
-
-                    <org.eazegraph.lib.charts.PieChart
-                        android:id="@+id/Weekpiechart"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="2"
-                        android:padding="6dp">
-                    </org.eazegraph.lib.charts.PieChart>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/FinishDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="180dp"
-                    android:text="3 of 4 days"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textSize="20sp"></TextView>
-
-                <TextView
-                    android:id="@+id/sessionText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="210dp"
-                    android:text="You're almost to your goal! Let's do this."
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textSize="18sp">
-
-                </TextView>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <!--Line Graph to display reps, sets and weight-->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewGraph3"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="440dp"
-                android:layout_marginRight="20dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp">
-
-                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_marginTop="55dp"
-                    tools:context=".MainActivity">
-
-                    <!--                    &lt;!&ndash;line graph view where we will-->
-                    <!--            be displaying our data&ndash;&gt;-->
-                    <!--                    <com.jjoe64.graphview.GraphView-->
-                    <!--                        android:id="@+id/idGraphView"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="250dp"-->
-                    <!--                        android:layout_alignParentTop="true"-->
-                    <!--                        android:layout_marginTop="55dp" />-->
-
-                    <lecho.lib.hellocharts.view.LineChartView
-                        android:id="@+id/chart"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </RelativeLayout>
-
-
-                <Button
-                    android:id="@+id/editSRW"
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="290dp"
-                    android:backgroundTint="#C9DCDCDC"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="#77A806"
-                    app:cornerRadius="15dp">
-
-                </Button>
-
-
-                <TextView
-                    android:id="@+id/txtVw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Selected exercise:"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/txtVw"
-                    android:layout_marginLeft="160dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_toRightOf="@+id/txtVw" />
-
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_margin="20dp"-->
-                <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-                <!--                    app:layout_constraintRight_toRightOf="parent"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent">-->
-
-                <!--                    <AutoCompleteTextView-->
-                <!--                        android:id="@+id/autoCompleteTextView"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="match_parent"-->
-                <!--                        android:layout_weight="1"-->
-                <!--                        android:inputType="none"-->
-                <!--                        android:text="Choose Programming language"-->
-                <!--                        />-->
-                <!--                    <Spinner-->
-                <!--                        android:id="@+id/exe_spinner"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content" />-->
-                <!--                    -->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="160dp"
-                    android:layout_marginTop="155dp">
-
-                    <!--View to display the green color icon-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/Weight" />
+                    <!--                    <View-->
+                    <!--                        android:id="@+id/ViewWeight"-->
+                    <!--                        android:layout_width="15dp"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:background="@color/Weight" />-->
 
                     <!--Text view to display Height text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Height" />
+                        android:paddingLeft="15dp"
+                        android:text="Weight" />
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="155dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="190dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CardReps"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Reps"
+                    android:backgroundTint="@color/Reps">
 
                     <!--View to display the yellow color icon-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/Reps" />
+                    <!--                    <View-->
+                    <!--                        android:id="@+id/ViewReps"-->
+                    <!--                        android:layout_width="15dp"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:background="@color/Reps" />-->
 
                     <!--Text view to display Reps -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="20dp"
                         android:text="Reps" />
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
 
-                <!--Linear layout to display Sets-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="155dp">
+            <!--Linear layout to display Sets-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="190dp">
 
-                    <!--View to display the red color icon-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/Sets" />
+                <!--View to display the red color icon-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CardSets"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Sets"
+                    android:backgroundTint="@color/Sets"
+                    android:foregroundTint="#451515">
+
+                    <!--                        <View-->
+                    <!--                            android:id="@+id/ViewSets"-->
+                    <!--                            android:layout_width="15dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:background="@color/Sets" />-->
 
                     <!--Text view to display Sets text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:text="Sets" />
+                        android:paddingLeft="20dp"
+                        android:text="Sets"
+                        android:textAlignment="center" />
 
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <!--            NEED TO REMOVE-->
-
-            <TextView
-                android:id="@+id/pcM1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="@color/color_two"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
 
 
-            <TextView
-                android:id="@+id/pcM2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="@color/color_two"
-                android:textSize="8sp"
-                android:textStyle="bold" />
+            </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/pcDay1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="@color/color_two"
-                android:textSize="8sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/pcDay2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:fontFamily="sans-serif-light"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="@color/color_two"
-                android:textSize="8sp"
-                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
 
 
+        <!--            NEED TO REMOVE-->
+
+        <TextView
+            android:id="@+id/pcM1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
+        <TextView
+            android:id="@+id/pcM2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pcM3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pcM4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pcDay1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pcDay2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pcDay3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
+        <TextView
+            android:id="@+id/pcDay4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
+        <TextView
+            android:id="@+id/pcDay5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif-light"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_one"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        </RelativeLayout>
 
-    </LinearLayout>
-    </ScrollView>
+        <!--            <RelativeLayout-->
+        <!--                xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="20dp"-->
+        <!--                android:background="#62def8">-->
+
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_centerInParent="true"-->
+        <!--                    android:layout_margin="30dp"-->
+        <!--                    android:textSize="22sp"-->
+        <!--                    android:text="This is a popup window."/>-->
+
+        <!--            </RelativeLayout>.-->
+
+
+        <!--            firebase-->
+
+        <!--            &lt;!&ndash;Edittext for getting course Name&ndash;&gt;-->
+        <!--            <EditText-->
+        <!--                android:id="@+id/idEdtCourseName"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:layout_marginTop="20dp"-->
+        <!--                android:layout_marginEnd="10dp"-->
+        <!--                android:hint="Course Name"-->
+        <!--                android:importantForAutofill="no"-->
+        <!--                android:inputType="text" />-->
+
+        <!--            &lt;!&ndash;Edittext for getting course Duration&ndash;&gt;-->
+        <!--            <EditText-->
+        <!--                android:id="@+id/idEdtCourseDuration"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:layout_marginTop="20dp"-->
+        <!--                android:layout_marginEnd="10dp"-->
+        <!--                android:hint="Course Duration in min"-->
+        <!--                android:importantForAutofill="no"-->
+        <!--                android:inputType="time" />-->
+
+        <!--            &lt;!&ndash;Edittext for getting course Description&ndash;&gt;-->
+        <!--            <EditText-->
+        <!--                android:id="@+id/idEdtCourseDescription"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:layout_marginTop="20dp"-->
+        <!--                android:layout_marginEnd="10dp"-->
+        <!--                android:hint="Course Description"-->
+        <!--                android:importantForAutofill="no"-->
+        <!--                android:inputType="text" />-->
+
+        <!--            &lt;!&ndash;Button for adding your course to Firebase&ndash;&gt;-->
+        <!--            <Button-->
+        <!--                android:id="@+id/idBtnSubmitCourse"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="10dp"-->
+        <!--                android:text="Submit Course Details"-->
+        <!--                android:textAllCaps="false" />-->
+
+
+    </RelativeLayout>
+</LinearLayout>
+
+</ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

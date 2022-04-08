@@ -165,6 +165,7 @@ public class updateProfile extends AppCompatActivity implements
 //        }
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //(navigation bar)
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.profile);
