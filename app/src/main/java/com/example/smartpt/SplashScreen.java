@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.format.Formatter;
@@ -28,6 +29,7 @@ public class SplashScreen extends AppCompatActivity {
     private FirebaseFirestore db;
     private int  FBindex;
     private double FBindexD;
+
 
     @Override
 

@@ -473,8 +473,7 @@ public class SessionView extends AppCompatActivity {
             user.put("duration",0);
         }
         else {
-            editor.putInt("sessionDone",done+1);
-            editor.apply();
+
             user.put("duration", time);
         }
         db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -493,6 +492,8 @@ public class SessionView extends AppCompatActivity {
         });
 
         if(c==99){
+            editor.putInt("sessionDone",done+1);
+            editor.apply();
             Intent intent= new Intent(this, feedback.class);
             intent.putExtra("SessionNo", SessionNo);
             intent.putExtra("level", level);

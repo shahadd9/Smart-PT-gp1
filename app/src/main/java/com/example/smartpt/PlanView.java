@@ -237,6 +237,8 @@ public class PlanView extends AppCompatActivity {
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
 //    private int c;
+    private  Intent inProg;
+
 
     private String Wplan;
     //    private String SessionNo;
@@ -396,60 +398,34 @@ public class PlanView extends AppCompatActivity {
 
         call_E_F_M();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-//                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+        inProg = new Intent(PlanView.this, UserProgress.class);
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.home:
+////                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+////                        overridePendingTransition(0, 0);
+////                        return true;
+////                     (update profile activity)
+//                    case R.id.profile:
+//                        Intent i = new Intent(PlanView.this, updateProfile.class);
+////                        if (SessionNo.equals("2")) {
+//                        i.putExtra("SessionNo", SessionNo);
+//                        i.putExtra("level", level);
+//                        i.putExtra("week",week);
+//                        i.putExtra("currDay",currDay);
+//                        startActivity(i);
 //                        overridePendingTransition(0, 0);
-//                        return true;
-//                     (update profile activity)
-                    case R.id.profile:
-                        Intent i = new Intent(PlanView.this, updateProfile.class);
-//                        if (SessionNo.equals("2")) {
-                        i.putExtra("SessionNo", SessionNo);
-                        i.putExtra("level", level);
-                        i.putExtra("week",week);
-                        i.putExtra("currDay",currDay);
-                        startActivity(i);
-                        overridePendingTransition(0, 0);
-                        finish();
-                            return true;
-//                        } else if (SessionNo.equals("3")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("4")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("5")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
-
-                    case R.id.progress:
-                         i = new Intent(PlanView.this, UserProgress.class);
-                        i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            i.putExtra("week",week);
-                            i.putExtra("currDay",currDay);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            return true;
-//                        if (SessionNo.equals("2")) {
-//                            i.putExtra("SessionNo", SessionNo);
+//                        finish();
+//                            return true;
+//
+//
+//                    case R.id.progress:
+//                         i = new Intent(PlanView.this, UserProgress.class);
+//                        i.putExtra("SessionNo", SessionNo);
 //                            i.putExtra("level", level);
 //                            i.putExtra("week",week);
 //                            i.putExtra("currDay",currDay);
@@ -457,35 +433,44 @@ public class PlanView extends AppCompatActivity {
 //                            overridePendingTransition(0, 0);
 //                            finish();
 //                            return true;
-//                        } else if (SessionNo.equals("3")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("4")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("5")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
-                }
-                return false;
-            }
-        });
+////                        if (SessionNo.equals("2")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                            return true;
+////                        } else if (SessionNo.equals("3")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        } else if (SessionNo.equals("4")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        } else if (SessionNo.equals("5")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        }
+//                }
+//                return false;
+//            }
+//        });
 
         // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
@@ -576,8 +561,10 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
 //
+
                     if (SessionNo.equals("5")) {
                         currDay="2";
+                        inProg.putExtra("currDay",currDay);
                         getExIndex(currDay,week);
 
                         day2();
@@ -648,6 +635,7 @@ public class PlanView extends AppCompatActivity {
 //                        }
                     if (SessionNo.equals("4")) {
                         currDay="4";
+                        inProg.putExtra("currDay",currDay);
                         getExIndex(currDay,week);
                         day4();
 
@@ -733,26 +721,30 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
                     if (SessionNo.equals("2")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
 
                     }
                     if (SessionNo.equals("3")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        getExIndex(currDay,week);
+                        getExIndex(currDay,week);                        inProg.putExtra("currDay",currDay);
+
                         currDay="1";
                         day1();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
                     }
@@ -823,27 +815,31 @@ public class PlanView extends AppCompatActivity {
 
 
                     if (SessionNo.equals("2")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("3")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day3();
                     }
@@ -1001,18 +997,21 @@ public class PlanView extends AppCompatActivity {
 
                     //  }
                     if (SessionNo.equals("3")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         day3();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         day3();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="4";
+                        currDay="4";                        inProg.putExtra("currDay",currDay);
+
                         day4();
                     }
                     //       break;
@@ -1083,7 +1082,8 @@ public class PlanView extends AppCompatActivity {
 
                     //   break;
                     if (SessionNo.equals("5")) {
-                        currDay="5";
+                        currDay="5";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day5();
                     }
@@ -1103,6 +1103,8 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         butAlrt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1589,7 +1591,46 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
+//                     (update profile activity)
+                    case R.id.profile:
+                        Intent i = new Intent(PlanView.this, updateProfile.class);
+//                        if (SessionNo.equals("2")) {
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
 
+
+                    case R.id.progress:
+                        inProg.putExtra("SessionNo", SessionNo);
+                        inProg.putExtra("level", level);
+                        inProg.putExtra("week",week);
+                        inProg.putExtra("currDay",currDay);
+                        startActivity(inProg);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
+
+
+                }
+                return false;
+            }
+        });
 
     }
 
