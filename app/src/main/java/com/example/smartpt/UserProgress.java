@@ -43,6 +43,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -109,7 +110,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     // SHAHAD DECLARATIONS
     private int week;
-    private String SessionNo, level,currDay,duration;
+    private String SessionNo, level,currDay,duration,day;
     private Double time;
     public final static String shared="sharedPrefs";
     private FirebaseFirestore db;
@@ -117,6 +118,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private int durationInt;
     private int done;
     private boolean exist;
+    String dayAr[];
+
 
 
 
@@ -233,24 +236,43 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                     exist=true;
                     read();
                 }else{
-
-
                     time=0.0;
                     todayChart();
-                    lineChart();
+//                    lineChart();
                     weekChart();
                 }
             }
         });
 
+            DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay));
+            d.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists() && document != null) {
+
+                        exist=true;
+                        //calling linechart method
+                        readExerciseName();
+                    }else{
+
+                        // this is rest day
+                    }
+
+                }
+            });
 
 
 
-        spin = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(adapter);
-        spin.setOnItemSelectedListener(this);
+
+//
+//
+//        spin = (Spinner) findViewById(R.id.spinner1);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dayAr);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spin.setAdapter(adapter);
+//        spin.setOnItemSelectedListener(this);
 
 
         //line chart
@@ -278,7 +300,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     //
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-        Toast.makeText(getApplicationContext(), "Selected User: "+users[position] ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Selected User: "+dayAr[position] ,Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
@@ -342,8 +364,9 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     public void lineChart (){
 
+
         Spinner spin = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dayAr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(this);
@@ -566,34 +589,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
         }else {
-//            if(done==1){
                 pcDay1.setText(Integer.toString(20));
-//            }
-//            if (done == 2) {
-//                pcDay1.setText(Integer.toString(20));
-//                pcDay2.setText(Integer.toString(20));
-//            }
-//            if(done==3){
-//                pcDay1.setText(Integer.toString(20));
-//                pcDay2.setText(Integer.toString(20));
-//                pcDay3.setText(Integer.toString(20));
-//
-//            }
-//            if(done==4){
-//                pcDay1.setText(Integer.toString(20));
-//                pcDay2.setText(Integer.toString(20));
-//                pcDay3.setText(Integer.toString(20));
-//                pcDay4.setText(Integer.toString(20));
-//            }
-//            if(done==5){
-//                pcDay1.setText(Integer.toString(20));
-//                pcDay2.setText(Integer.toString(20));
-//                pcDay3.setText(Integer.toString(20));
-//                pcDay2.setText(Integer.toString(20));
-//                pcDay5.setText(Integer.toString(20));
-//
-//            }
-//            pcDay1=pcDay2=pcDay3=pcDay4=pcDay5=20;
+
 
 
         }
@@ -674,7 +671,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                 time = value.getDouble("duration");
 
                 todayChart();
-                lineChart();
+//                lineChart();
                 weekChart();
 
 
@@ -682,5 +679,22 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
+    public void readExerciseName(){
+        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay));
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                day = value.getString("plan");
+                day = day.substring(2, day.length() - 3);
+                dayAr = day.split("_");
+
+                lineChart();
+
+
+            }
+        });
+
+    }
 
 }
