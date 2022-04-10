@@ -166,8 +166,8 @@ public final static String shared="sharedPrefs";
 //
 //                    }
 //                });
-
-                Intent intent = new Intent(Home.this, Name.class);
+                //for login code
+                Intent intent = new Intent(Home.this, Login.class);
                 startActivity(intent);
             }
 

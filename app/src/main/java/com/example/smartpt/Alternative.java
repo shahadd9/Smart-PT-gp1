@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,6 +36,8 @@ import java.util.Map;
 public class Alternative extends AppCompatActivity {
 
     private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String id;
     private TextView lbl1,back;
     private String name,generalMuscle,currDay,SessionNo,level,exercise1,eqName1,eqName2,exercise2, excName1,excName2,ex1String,ex2String,force1,muscle1,force2,muscle2,day,force,muscle,dday,fforce,mmuscle;
     private int index;
@@ -123,10 +127,14 @@ public class Alternative extends AppCompatActivity {
         ////////////////////////////////////////////////////
         findAlternative(name);
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay));
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -181,8 +189,12 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                //to get user email
+                uAuth = FirebaseAuth.getInstance();
+                FirebaseUser curUser = uAuth.getCurrentUser();
+                id = curUser.getEmail();
                 db = FirebaseFirestore.getInstance();
                 CollectionReference ex = db.collection("userProfile");
 
@@ -195,7 +207,7 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                ex.document(id).collection("WorkoutPlan").document(id).collection(id).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -241,8 +253,12 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                //to get user email
+                uAuth = FirebaseAuth.getInstance();
+                FirebaseUser curUser = uAuth.getCurrentUser();
+                id = curUser.getEmail();
                 db = FirebaseFirestore.getInstance();
                 CollectionReference ex = db.collection("userProfile");
 
@@ -255,7 +271,7 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                ex.document(id).collection("WorkoutPlan").document(id).collection(id).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -300,8 +316,12 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                //to get user email
+                uAuth = FirebaseAuth.getInstance();
+                FirebaseUser curUser = uAuth.getCurrentUser();
+                id = curUser.getEmail();
                 db = FirebaseFirestore.getInstance();
                 CollectionReference ex = db.collection("userProfile");
 
@@ -314,7 +334,7 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                ex.document(id).collection("WorkoutPlan").document(id).collection(id).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -358,8 +378,12 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//                String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+                //to get user email
+                uAuth = FirebaseAuth.getInstance();
+                FirebaseUser curUser = uAuth.getCurrentUser();
+                id = curUser.getEmail();
                 db = FirebaseFirestore.getInstance();
                 CollectionReference ex = db.collection("userProfile");
 
@@ -372,7 +396,7 @@ public class Alternative extends AppCompatActivity {
 
 
 
-                ex.document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
+                ex.document(id).collection("WorkoutPlan").document(id).collection(id).document(s).set(planEx).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

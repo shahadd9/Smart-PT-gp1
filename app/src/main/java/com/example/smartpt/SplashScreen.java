@@ -22,8 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class SplashScreen extends AppCompatActivity {
-    private String userIp;
+//    private String userIp;
     FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private FirebaseAuth uAuth;
+    private String id;
     private String SessionNo;
     private String level;
     private FirebaseFirestore db;
@@ -32,47 +34,71 @@ public class SplashScreen extends AppCompatActivity {
 
 
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        SessionNo="";
-        level="";
+        SessionNo = "";
+        level = "";
         db = FirebaseFirestore.getInstance();
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
 
 
-
-
+        if (curUser==null) {
+            Intent i = new Intent(SplashScreen.this, Home.class);
+            startActivity(i);
+        }else{
         /////////////////////////////////////////////////////////
-        DocumentReference  documentReference = rootRef.collection("userProfile").document(userIp);
+            id = curUser.getEmail();
+            DocumentReference documentReference = rootRef.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                SessionNo=value.getString("TrainingdaysNum");
-                level= value.getString("level");
-                if(SessionNo == null || level ==null){
+                SessionNo = value.getString("TrainingdaysNum");
+                level = value.getString("level");
+                if (SessionNo == null || level == null) {
                     goTO(SessionNo, level);
 
                 }
-                if(SessionNo != "" && level !=""){
+                if (SessionNo != "" && level != "") {
 
                     goTO(SessionNo, level);
                 }
 
             }
         });
+    }// end else
         //////////////////////////////////////////////////////////
 
 
     }
 
+    //*************** for log in *******************
+    // to check if user logged in or not
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currUser=uAuth.getCurrentUser();
+//        if(currUser==null){
+//            startActivity(new Intent(SplashScreen.this,Home.class));
+//        }else{
+//            startActivity(new Intent(SplashScreen.this,PlanView.class));
+//
+//        }
+//    }
+
+
+
+
     private void goTO(String session, String lvl){
-        DocumentReference docIdRef = rootRef.collection("userProfile").document(userIp);
+        DocumentReference docIdRef = rootRef.collection("userProfile").document(id);
 
         docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -107,7 +133,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public void ret(){
 
-        DocumentReference documentReference = db.collection("Progress").document(userIp);
+        DocumentReference documentReference = db.collection("Progress").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

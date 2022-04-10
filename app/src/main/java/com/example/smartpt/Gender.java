@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
@@ -56,15 +58,21 @@ public class Gender extends AppCompatActivity {
     private TextView errGender;
     public static int gen=0;
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gender);
 //        btnBackToName= findViewById(R.id.backToName);
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         female= findViewById(R.id.female);
         male= findViewById(R.id.male);
         btnToBirthdate= findViewById(R.id.toBirthdate);
@@ -97,7 +105,7 @@ public class Gender extends AppCompatActivity {
                     }
                     Map<String,Object> user = new HashMap<>();
                     user.put("gender",gen);
-                    db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

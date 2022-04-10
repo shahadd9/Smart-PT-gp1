@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -32,11 +34,13 @@ public class StartSession extends AppCompatActivity {
     private TimerTask timerTask;
     private Double time;
     private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String id;
     private int  FBindex ;
     private int week;
     private Double FBindexD,weekD;
     private int rest,count;
-    private String userIp;
+//    private String userIp;
     private String restText , SessionNo, level, currDay,nextEx,weekSt;
     int countDown;
     private TextView counter,counterMessage,txt1,txt2,timertxt;
@@ -80,13 +84,17 @@ public class StartSession extends AppCompatActivity {
         nextEx=getIntent().getStringExtra("nextEx");
 
         db = FirebaseFirestore.getInstance();
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
 //        whatWeek();
 
-        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
+        DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

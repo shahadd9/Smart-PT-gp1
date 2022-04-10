@@ -31,6 +31,8 @@ import androidx.navigation.ui.NavigationUI;
 
 //import com.example.smartpt.databinding.ActivityHeightandWeightBinding;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kevalpatel2106.rulerpicker.RulerValuePicker;
 import com.kevalpatel2106.rulerpicker.RulerValuePickerListener;
@@ -51,7 +53,9 @@ public class HeightandWeight extends AppCompatActivity {
     private String wUnit = "kg";
     private String hUnit = "cm";
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
     public static  String h;
     public static String  w;
 
@@ -68,8 +72,12 @@ public class HeightandWeight extends AppCompatActivity {
         heightValue=findViewById(R.id.heightValue);
         weightValue=findViewById(R.id.weightValue);
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 h=156+"";
 w=55+"";
 //        backToBirthdate=findViewById(R.id.backToBirthdate);
@@ -135,7 +143,7 @@ w=55+"";
                 Map<String,Object> user = new HashMap<>();
                 user.put("height",h);
                 user.put("weight",w);
-                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

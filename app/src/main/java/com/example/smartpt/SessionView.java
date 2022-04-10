@@ -34,6 +34,8 @@ import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -54,11 +56,13 @@ public class SessionView extends AppCompatActivity {
     VideoView v;
     ProgressDialog pd;
     private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String id;
     private int week;
     private Double weekD;
     private int  FBindex ;
     private Double FBindexD;
-    private String userIp;
+//    private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
     private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt,exeNum;
@@ -154,12 +158,16 @@ public class SessionView extends AppCompatActivity {
 
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -179,7 +187,7 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
-        documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+        documentReference = db.collection("Progress").document(id).collection("index").document("weeks");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -413,7 +421,7 @@ public class SessionView extends AppCompatActivity {
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
         user.put("duration",time);
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -429,7 +437,7 @@ public class SessionView extends AppCompatActivity {
         });
 
         user.put("sets",i);
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("progressDay"+currDay).document("exercise"+(counter-1)).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("progressDay"+currDay).document("exercise"+(counter-1)).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -476,7 +484,7 @@ public class SessionView extends AppCompatActivity {
 
             user.put("duration", time);
         }
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -608,10 +616,14 @@ public class SessionView extends AppCompatActivity {
 
 
     public void retrieveExerciseName() {
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay));
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

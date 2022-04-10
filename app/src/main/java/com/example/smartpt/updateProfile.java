@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -42,6 +45,7 @@ public class updateProfile extends AppCompatActivity implements
         DB_Dialog.DialogListener, AdapterView.OnItemSelectedListener {
     EditText eName, eHeight, eWeight;
     TextView eDB;
+    ImageView logout;
     Spinner eGender, eReminder, eDuration, eTrainingDays;
     ArrayAdapter<String> eGenderAdapter;
     ArrayAdapter<String> eDurationAdapter;
@@ -81,6 +85,8 @@ public class updateProfile extends AppCompatActivity implements
     private String dayss;
 
     private Map<String, Object> user = new HashMap<>();
+    private FirebaseAuth uAuth;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +100,11 @@ public class updateProfile extends AppCompatActivity implements
         durationA="";
         remind="";
         numDays="";
-//        dayss="2";
         flag=false;
+
+        uAuth= FirebaseAuth.getInstance();
+        FirebaseUser curUser=uAuth.getCurrentUser();
+        id=curUser.getEmail();
 
 //        if(SessionNo.equals("2")){
 //
@@ -234,6 +243,7 @@ public class updateProfile extends AppCompatActivity implements
         eDuration = (Spinner) findViewById(R.id.editDuration);
         eTrainingDays = (Spinner) findViewById(R.id.editTrainingDays);
         updateProfile = (Button) findViewById(R.id.updateProfileB);
+        logout=(ImageView)findViewById(R.id.logout);
 
 
         initializeDropdownData();
@@ -243,7 +253,7 @@ public class updateProfile extends AppCompatActivity implements
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -330,7 +340,7 @@ public class updateProfile extends AppCompatActivity implements
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
 
                     public void onComplete(@NonNull Task<Void> task) {
@@ -444,7 +454,20 @@ public class updateProfile extends AppCompatActivity implements
 //            }
 //        });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 logout();
+            }
+        });
+
     }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(updateProfile.this,Login.class));
+    }
+
     public void openDB_Dialog() {
         DB_Dialog eDB = new DB_Dialog();
         eDB.show(getSupportFragmentManager(), "DB");
