@@ -1,6 +1,7 @@
 package com.example.smartpt;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,11 +15,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth uAuth;
     private EditText email , pass;
     private TextView register,login,forgot;
+    private String id;
+    FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private String SessionNo;
+    private String level;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +84,37 @@ public class Login extends AppCompatActivity {
                     if(task.isSuccessful()) {
 
                         Toast.makeText(Login.this, "Login success ", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login.this, PlanView.class));
+
+                        getSessionLevel();
+//                        startActivity(new Intent(Login.this, PlanView.class));
                     }else{
-                        Toast.makeText(Login.this, "Login failed "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Login failed "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
+    }
+
+    public void getSessionLevel(){
+        String user=email.getText().toString().trim();
+        DocumentReference documentReference =  rootRef.collection("userProfile").document(user);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (value.exists()) {
+                    level=value.getString("level");
+                    SessionNo=value.getString("TrainingdaysNum");
+                    Intent i = new Intent(Login.this, PlanView.class);
+                    i.putExtra("SessionNo", SessionNo);
+                    i.putExtra("level", level);
+                    startActivity(i);
+
+                } else {
+                    Toast.makeText(Login.this, "Document not exist", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
     }

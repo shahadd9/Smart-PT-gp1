@@ -229,6 +229,7 @@ public class PlanView extends AppCompatActivity {
     String startDateAr[] = new String[4];
     private String todaytDate;
     String todaytDateAr[] = new String[4];
+    private String id;
 
 
 
@@ -257,7 +258,7 @@ public class PlanView extends AppCompatActivity {
         //to get user email
         uAuth= FirebaseAuth.getInstance();
         FirebaseUser curUser=uAuth.getCurrentUser();
-        String id=curUser.getEmail();
+        id=curUser.getEmail();
 
         currDay="0";
         TextviewEx1 = findViewById(R.id.textViewex1);
@@ -351,8 +352,7 @@ public class PlanView extends AppCompatActivity {
         TT = findViewById(R.id.WeeklytextView);
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
 
         db = FirebaseFirestore.getInstance();
         db2=FirebaseFirestore.getInstance();
@@ -360,7 +360,7 @@ public class PlanView extends AppCompatActivity {
         callweek();
 
 
-        DocumentReference documentReference =  db.collection("userProfile").document(userIp);
+        DocumentReference documentReference =  db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -1643,7 +1643,7 @@ public class PlanView extends AppCompatActivity {
 
     private void callweek() {
 
-        DocumentReference documentReference = db2.collection("Progress").document(userIp).collection("index").document("weeks");
+        DocumentReference documentReference = db2.collection("Progress").document(id).collection("index").document("weeks");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -1788,7 +1788,7 @@ public class PlanView extends AppCompatActivity {
             weeks.put("isItOne", "1");
 //            weeks.put("startDateWeek"+week,todaytDate);
         }
-        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -1811,7 +1811,7 @@ public class PlanView extends AppCompatActivity {
         user.put("duration",0);
 
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1826,7 +1826,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1841,7 +1841,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1856,7 +1856,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1871,7 +1871,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1895,7 +1895,7 @@ public class PlanView extends AppCompatActivity {
         Map<String,Object> weeks = new HashMap<>();
 
         weeks.put("isItOne", "0");
-        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -1912,7 +1912,7 @@ public class PlanView extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day" + i);
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day" + i);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2759,7 +2759,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M1() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day1");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2786,7 +2786,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M2() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day2");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day2");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2810,7 +2810,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M3() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day3");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day3");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2834,7 +2834,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M4() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day4");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day4");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2858,7 +2858,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M5() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day5");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day5");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2883,7 +2883,8 @@ public class PlanView extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
+
+        DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

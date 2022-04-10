@@ -48,14 +48,15 @@ public class SplashScreen extends AppCompatActivity {
         //to get user email
         uAuth = FirebaseAuth.getInstance();
         FirebaseUser curUser = uAuth.getCurrentUser();
-         id = curUser.getEmail();
 
-        if (id==null) {
+
+        if (curUser==null) {
             Intent i = new Intent(SplashScreen.this, Home.class);
             startActivity(i);
         }else{
         /////////////////////////////////////////////////////////
-        DocumentReference documentReference = rootRef.collection("userProfile").document(id);
+            id = curUser.getEmail();
+            DocumentReference documentReference = rootRef.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

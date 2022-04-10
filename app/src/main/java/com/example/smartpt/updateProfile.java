@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -84,6 +85,8 @@ public class updateProfile extends AppCompatActivity implements
     private String dayss;
 
     private Map<String, Object> user = new HashMap<>();
+    private FirebaseAuth uAuth;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +100,11 @@ public class updateProfile extends AppCompatActivity implements
         durationA="";
         remind="";
         numDays="";
-//        dayss="2";
         flag=false;
+
+        uAuth= FirebaseAuth.getInstance();
+        FirebaseUser curUser=uAuth.getCurrentUser();
+        id=curUser.getEmail();
 
 //        if(SessionNo.equals("2")){
 //
@@ -247,7 +253,7 @@ public class updateProfile extends AppCompatActivity implements
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -334,7 +340,7 @@ public class updateProfile extends AppCompatActivity implements
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
 
                     public void onComplete(@NonNull Task<Void> task) {

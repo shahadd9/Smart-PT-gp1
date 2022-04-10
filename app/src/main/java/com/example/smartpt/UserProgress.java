@@ -335,11 +335,11 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         }else if (level.equalsIgnoreCase("Intermediate")){
             durationInt=45;
-            finalDuartion= (int)(time*100/45);
+            finalDuartion= (int)((time/60)*100/45);
 
         }else{
             durationInt=60;
-            finalDuartion= (int)(time*100/60);
+            finalDuartion= (int)((time/60)*100/60);
 
         }
 
@@ -347,7 +347,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 //        time= Double.parseDouble(sharedPreferences.getString("duration","0.0"));
 
 
-        DurationText.setText(durationInt+" Min"+ (time/60));
+        DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
         pcM1.setText(finalDuartion+"");
         double remi=100-finalDuartion;
         pcM2.setText(remi+"");
