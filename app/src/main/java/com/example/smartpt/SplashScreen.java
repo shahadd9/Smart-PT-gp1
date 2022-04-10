@@ -80,13 +80,18 @@ public class SplashScreen extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists() && document != null) {
-//                        ret();
-                        Intent i = new Intent(SplashScreen.this, PlanView.class);
-                        i.putExtra("SessionNo",session);
-                        i.putExtra("level", lvl);
-//                        i.putExtra("counter",FBindex);
-                        startActivity(i);
+                        if(session != null && lvl !=null) {
 
+//                        ret();
+                            Intent i = new Intent(SplashScreen.this, PlanView.class);
+                            i.putExtra("SessionNo", session);
+                            i.putExtra("level", lvl);
+//                        i.putExtra("counter",FBindex);
+                            startActivity(i);
+                        }else {
+                            Intent i = new Intent(SplashScreen.this, Home.class);
+                            startActivity(i);
+                        }
                     } else {
                         Intent i = new Intent(SplashScreen.this, Home.class);
                         startActivity(i);
