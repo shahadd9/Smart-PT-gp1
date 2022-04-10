@@ -52,20 +52,19 @@ public final static String shared="sharedPrefs";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        db = FirebaseFirestore.getInstance();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         setContentView(R.layout.activity_home);
+
         calendar = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         todaytDate = dateFormat.format(calendar.getTime());
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
         textWelcome = findViewById(R.id.welcome);
         startbtn = findViewById(R.id.getStarted);
         imageInHome = findViewById(R.id.homeImage);
-//        textSmartPT = findViewById(R.id.aboutSmartPT);
         SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
         editor.putInt("sessionDone",0);
@@ -76,97 +75,97 @@ public final static String shared="sharedPrefs";
             @Override
             public void onClick(View view) {
 
-                Map<String,Object> user = new HashMap<>();
-                Map<String,Object> week = new HashMap<>();
+//                Map<String,Object> user = new HashMap<>();
+//                Map<String,Object> week = new HashMap<>();
+//
+//                user.put("exerciseIndex",0);
+//                user.put("duration",0.0);
+//                week.put("week",1);
+//                week.put("isItOne","1"); // if it is 1 then dont generate next week
+//                week.put("startDateWeek1",todaytDate);
+//
+//
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").set(week).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//
+//                    }
+//                });
 
-                user.put("exerciseIndex",0);
-                user.put("duration",0.0);
-                week.put("week",1);
-                week.put("isItOne","1"); // if it is 1 then dont generate next week
-                week.put("startDateWeek1",todaytDate);
-
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").set(week).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                    }
-                });
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                    }
-                });
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                    }
-                });
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                    }
-                });
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                    }
-                });
-
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                    }
-                });
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//
+//                    }
+//                });
+//
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//
+//                    }
+//                });
+//
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//
+//                    }
+//                });
+//
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//
+//                    }
+//                });
+//
+//                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+//
+//                    }
+//                });
 
                 Intent intent = new Intent(Home.this, Name.class);
                 startActivity(intent);
