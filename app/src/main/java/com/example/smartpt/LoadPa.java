@@ -27,6 +27,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 
@@ -40,8 +42,10 @@ import java.util.ArrayList;
 public class LoadPa extends AppCompatActivity {
     private ImageView logo;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth uAuth;
+    private String id;
     private String level;
-    private String userIp;
+//    private String userIp;
     private Handler h;
     private String heightD;
     private String weightD;
@@ -129,11 +133,15 @@ public class LoadPa extends AppCompatActivity {
 //        }
 
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp=Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         Map<String,Object> user = new HashMap<>();
 
-        DocumentReference documentReference = db.collection("userProfile").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -301,7 +309,7 @@ public class LoadPa extends AppCompatActivity {
         planAdd.put("duration",duration);
 
 //        ex.document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
-        ex.document(userIp).collection("WorkoutPlan").document(userIp).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+        ex.document(id).collection("WorkoutPlan").document(id).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
 
             @Override
             public void onComplete(@NonNull Task<Void> task) {

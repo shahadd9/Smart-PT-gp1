@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -42,6 +44,7 @@ public class updateProfile extends AppCompatActivity implements
         DB_Dialog.DialogListener, AdapterView.OnItemSelectedListener {
     EditText eName, eHeight, eWeight;
     TextView eDB;
+    ImageView logout;
     Spinner eGender, eReminder, eDuration, eTrainingDays;
     ArrayAdapter<String> eGenderAdapter;
     ArrayAdapter<String> eDurationAdapter;
@@ -234,6 +237,7 @@ public class updateProfile extends AppCompatActivity implements
         eDuration = (Spinner) findViewById(R.id.editDuration);
         eTrainingDays = (Spinner) findViewById(R.id.editTrainingDays);
         updateProfile = (Button) findViewById(R.id.updateProfileB);
+        logout=(ImageView)findViewById(R.id.logout);
 
 
         initializeDropdownData();
@@ -444,7 +448,20 @@ public class updateProfile extends AppCompatActivity implements
 //            }
 //        });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 logout();
+            }
+        });
+
     }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(updateProfile.this,Login.class));
+    }
+
     public void openDB_Dialog() {
         DB_Dialog eDB = new DB_Dialog();
         eDB.show(getSupportFragmentManager(), "DB");

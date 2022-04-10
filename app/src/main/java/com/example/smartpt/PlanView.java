@@ -68,6 +68,7 @@ public class PlanView extends AppCompatActivity {
     private FirebaseFirestore db2;
     private String userIp;
     private ProgressDialog pd;
+    private FirebaseAuth uAuth;
 
     private int  FBindex;
     private Double FBindexD;
@@ -252,6 +253,12 @@ public class PlanView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
+
+        //to get user email
+        uAuth= FirebaseAuth.getInstance();
+        FirebaseUser curUser=uAuth.getCurrentUser();
+        String id=curUser.getEmail();
+
         currDay="0";
         TextviewEx1 = findViewById(R.id.textViewex1);
         TextviewEx2 = findViewById(R.id.textViewex2);

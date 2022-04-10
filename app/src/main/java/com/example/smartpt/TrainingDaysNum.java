@@ -14,6 +14,8 @@ import android.widget.RadioButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -22,7 +24,9 @@ import java.util.Map;
 
 public class TrainingDaysNum extends AppCompatActivity {
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
     private RadioButton r1;
     private RadioButton r2;
     private RadioButton r3;
@@ -40,8 +44,12 @@ public class TrainingDaysNum extends AppCompatActivity {
         setContentView(R.layout.activity_training_days_num);
 
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         tDays= new ArrayList<>();
         r1= findViewById(R.id.r1);
         r2= findViewById(R.id.r2);
@@ -69,7 +77,7 @@ public class TrainingDaysNum extends AppCompatActivity {
                 Map<String,Object> user = new HashMap<>();
                 user.put("TrainingdaysNum",tDaysNo);
                 user.put("trainingDays",tDaysString);
-                db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){

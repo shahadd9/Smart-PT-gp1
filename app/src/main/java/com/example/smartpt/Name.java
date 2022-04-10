@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
@@ -51,7 +53,9 @@ public class Name extends AppCompatActivity {
     public static String name = "";
     private boolean isNameEntered = false;
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
 
     public final static String shared="sharedPrefs";
     private String todaytDate;
@@ -65,14 +69,18 @@ public class Name extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         eName = findViewById(R.id.traineeName);
         qName = findViewById(R.id.qName);
         btnToGender = findViewById(R.id.toGender);
 
         db = FirebaseFirestore.getInstance();
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
 
         eName.setFilters(new InputFilter[]{new InputFilter() {
@@ -128,28 +136,13 @@ public class Name extends AppCompatActivity {
                     week.put("startDateWeek1",todaytDate);
 
 
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").set(week).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Progress").document(id).collection("index").document("weeks").set(week).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
                         }
                     });
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
-
-                        }
-                    });
-
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week1").document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -164,7 +157,7 @@ public class Name extends AppCompatActivity {
                         }
                     });
 
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week1").document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -179,7 +172,7 @@ public class Name extends AppCompatActivity {
                         }
                     });
 
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week1").document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -194,7 +187,22 @@ public class Name extends AppCompatActivity {
                         }
                     });
 
-                    db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week1").document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                //Toast.makeText(Goal.this,"successful",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(Goal.this,"Faild",Toast.LENGTH_SHORT);
+
+                        }
+                    });
+
+                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week1").document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -209,7 +217,7 @@ public class Name extends AppCompatActivity {
                         }
                     });
                   ///////////////////////////////////////////////////////////////////////////////////////
-                    db.collection("userProfile").document(userIp).set(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("userProfile").document(id).set(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hsalf.smileyrating.SmileyRating;
 
@@ -39,9 +41,11 @@ public class feedback extends AppCompatActivity {
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String id;
     private String currDay;
     private int week;
-  private String userIp;
+//  private String userIp;
   private String SessionNo,level;
   private Map<String, Object> user = new HashMap<>();
     private String date;
@@ -55,8 +59,12 @@ public class feedback extends AppCompatActivity {
         setContentView(R.layout.activity_feedback);
 
 //######## Database #########
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
          db = FirebaseFirestore.getInstance();
 
         currDay=getIntent().getStringExtra("currDay");
@@ -171,7 +179,7 @@ public class feedback extends AppCompatActivity {
         submitFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("feedback").document("feedback"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("feedback").document("feedback"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
 
                     public void onComplete(@NonNull Task<Void> task) {
