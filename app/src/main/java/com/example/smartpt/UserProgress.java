@@ -266,6 +266,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                     }else{
 
                         // this is rest day
+
+
                     }
 
                 }
