@@ -199,20 +199,20 @@ public class PlanView extends AppCompatActivity {
 
 
 
-
-    ImageView butAlrt1 ;
     ImageView butstart1;
-    ImageView butAlrt2 ;
-    ImageView butAlrt3 ;
-    ImageView butAlrt4 ;
-    ImageView butAlrt5 ;
-    ImageView butAlrt6 ;
-    ImageView butAlrt7 ;
-    ImageView butAlrt8 ;
-    ImageView butAlrt9 ;
-    ImageView butAlrt10;
-    ImageView butAlrt11;
-    ImageView butAlrt12;
+
+    Button butAlrt1 ;
+    Button butAlrt2 ;
+    Button butAlrt3 ;
+    Button butAlrt4 ;
+    Button butAlrt5 ;
+    Button butAlrt6 ;
+    Button butAlrt7 ;
+    Button butAlrt8 ;
+    Button butAlrt9 ;
+    Button butAlrt10;
+    Button butAlrt11;
+    Button butAlrt12;
     TableRow exRow1;
     TableRow exRow2;
     TableRow exRow3;
@@ -310,19 +310,19 @@ public class PlanView extends AppCompatActivity {
         m10 = findViewById(R.id.m10);
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
-         butAlrt1 =(ImageView) findViewById(R.id.alrt1);
+         butAlrt1 =(Button) findViewById(R.id.alrt1);
          butstart1 =(ImageView) findViewById(R.id.start100);
-         butAlrt2 =(ImageView) findViewById(R.id.alrt2);
-         butAlrt3 =(ImageView) findViewById(R.id.alrt3);
-         butAlrt4 =(ImageView) findViewById(R.id.alrt4);
-         butAlrt5 =(ImageView) findViewById(R.id.alrt5);
-         butAlrt6 =(ImageView) findViewById(R.id.alrt6);
-         butAlrt7 =(ImageView) findViewById(R.id.alrt7);
-         butAlrt8 =(ImageView) findViewById(R.id.alrt8);
-         butAlrt9 =(ImageView) findViewById(R.id.alrt9);
-         butAlrt10 =(ImageView) findViewById(R.id.alrt10);
-         butAlrt11 =(ImageView) findViewById(R.id.alrt11);
-         butAlrt12 =(ImageView) findViewById(R.id.alrt12);
+         butAlrt2 =(Button) findViewById(R.id.alrt2);
+         butAlrt3 =(Button) findViewById(R.id.alrt3);
+         butAlrt4 =(Button) findViewById(R.id.alrt4);
+         butAlrt5 =(Button) findViewById(R.id.alrt5);
+         butAlrt6 =(Button) findViewById(R.id.alrt6);
+         butAlrt7 =(Button) findViewById(R.id.alrt7);
+         butAlrt8 =(Button) findViewById(R.id.alrt8);
+         butAlrt9 =(Button) findViewById(R.id.alrt9);
+         butAlrt10 =(Button) findViewById(R.id.alrt10);
+         butAlrt11 =(Button) findViewById(R.id.alrt11);
+         butAlrt12 =(Button) findViewById(R.id.alrt12);
 
         exRow1 =findViewById(R.id.exRow1);
         exRow2 =findViewById(R.id.exRow2);
@@ -532,7 +532,7 @@ public class PlanView extends AppCompatActivity {
 
                 buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonMon.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonMon.setTextColor(getResources().getColor(R.color.white));
 
@@ -606,7 +606,7 @@ public class PlanView extends AppCompatActivity {
                     daySat = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonSat.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonSat.setTextColor(getResources().getColor(R.color.white));
                 buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
                 buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
@@ -687,7 +687,7 @@ public class PlanView extends AppCompatActivity {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonSun.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonSun.setTextColor(getResources().getColor(R.color.white));
 
                 buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
@@ -788,8 +788,9 @@ public class PlanView extends AppCompatActivity {
 
                 buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonTue.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonTue.setTextColor(getResources().getColor(R.color.white));
+                //A2AAF9
 
                 buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -888,9 +889,10 @@ public class PlanView extends AppCompatActivity {
 
                 buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonWed.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonWed.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonWed.setTextColor(getResources().getColor(R.color.white));
+                //24c8feOR A2AAF9
 
                 buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
@@ -969,7 +971,7 @@ public class PlanView extends AppCompatActivity {
 
                 buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonThu.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonThu.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonThu.setTextColor(getResources().getColor(R.color.white));
 
@@ -1061,7 +1063,7 @@ public class PlanView extends AppCompatActivity {
 
                 buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#24c8fe"));
+                buttonFri.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonFri.setTextColor(getResources().getColor(R.color.white));
 

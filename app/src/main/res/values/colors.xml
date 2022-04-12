@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mainBlue">#81c5fc</color>
+    <color name="brightBlue">#A5D4FA</color>
+    <color name="test4">#C6ECC7</color>
+    <color name="altGreenButt">#7cccbc</color>
 
 <color name="orange1">#fc9d67</color>
 <color name="yell">#fdffb0</color>

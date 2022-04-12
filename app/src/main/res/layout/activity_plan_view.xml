@@ -44,11 +44,12 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="360dp"
+            android:layout_marginStart="349dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="7dp"
             android:layout_marginBottom="44dp"
             android:text="X"
+            android:textStyle="bold"
             android:textColor="@color/black"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
@@ -69,6 +70,7 @@
         android:layout_height="198dp"
         android:layout_below="@+id/alertFrame"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="9dp"
@@ -85,6 +87,8 @@
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
+            android:shadowColor="#506673"
+            android:shadowRadius="2"
             android:text="Welcome"
             android:textColor="#ffff"
             android:textSize="17dp"
@@ -93,13 +97,15 @@
 
         <TextView
             android:id="@+id/weekNo"
-            android:layout_width="200dp"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginStart="250dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
+            android:shadowColor="#506673"
+            android:shadowRadius="2"
             android:text="week"
             android:textColor="#ffff"
             android:textSize="17dp"
@@ -115,6 +121,8 @@
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
+            android:shadowColor="#506673"
+            android:shadowRadius="2"
             android:text="Here Is Your Weekly Active Days"
             android:textColor="#ffff"
             android:textSize="17dp"
@@ -127,119 +135,113 @@
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="3dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Sat"
+            android:padding="10dp"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            />
 
         <Button
             android:id="@+id/buttonSun"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="56dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Sun"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            android:padding="10dp"
+            />
 
         <Button
             android:id="@+id/buttonMon"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="109dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Mon"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
+            android:textSize="12dp"
+            android:padding="10dp"
 
-
-            android:textStyle="bold" />
+            />
 
         <Button
             android:id="@+id/buttonThu"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="268dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="267dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Thu"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            android:padding="10dp"
+/>
 
         <Button
             android:id="@+id/buttonTue"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="162dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Tue"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            android:padding="10dp"
+            />
 
         <Button
             android:id="@+id/buttonWed"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="215dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Wed"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            android:padding="10dp"
+            />
 
         <Button
             android:id="@+id/buttonFri"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="321dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="130dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
             android:text="Fri"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textSize="12dp"
+            android:padding="10dp"
+ />
 
 
     </FrameLayout>
@@ -248,9 +250,9 @@
         android:id="@+id/viewim"
         android:layout_width="396dp"
         android:layout_height="383dp"
+        android:layout_below="@+id/WeeklyFrame"
         android:layout_marginTop="-420dp"
         android:orientation="vertical"
-        android:layout_below="@+id/WeeklyFrame"
 
         >
 
@@ -348,13 +350,26 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
-                    android:id="@+id/alrt1"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt" />
+                <!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    android:layout_marginTop="13dp"-->
+<!--                    app:srcCompat="@drawable/findd"-->
+<!--                    android:scaleType="fitXY" -->
 
+
+                <Button
+                    android:id="@+id/alrt1"
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f1"
@@ -402,12 +417,18 @@
 <!--                android:layout_height="50dp"-->
 <!--                android:layout_marginStart="57dp"-->
 <!--                app:srcCompat="@drawable/startex" />-->
-            <ImageView
+            <Button
                 android:id="@+id/alrt2"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/findalt"  />
+                android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/altGreenButt"
+                app:cornerRadius="10dp"
+                android:text="Find \n Alternative"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/f2"
@@ -454,12 +475,18 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-            <ImageView
+            <Button
                 android:id="@+id/alrt3"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/findalt" />
+                android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/altGreenButt"
+                app:cornerRadius="10dp"
+                android:text="Find \n Alternative"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/f3"
@@ -506,12 +533,18 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt4"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"   />
+                                    android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/altGreenButt"
+                app:cornerRadius="10dp"
+                android:text="Find Alternative"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f4"
                     android:layout_width="wrap_content"
@@ -532,7 +565,7 @@
                 android:id="@+id/exRow5"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                                android:background="@drawable/border"     
+                                android:background="@drawable/border"
                 android:visibility="visible"
                 >
 
@@ -558,12 +591,18 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt5"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f5"
                     android:layout_width="wrap_content"
@@ -612,12 +651,18 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
-                    android:id="@+id/alrt6"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                <Button
+                    android:id="@+id/alrt6"                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f6"
@@ -666,12 +711,19 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt7"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f7"
                     android:layout_width="wrap_content"
@@ -717,12 +769,19 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+                <Button
                     android:id="@+id/alrt8"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f8"
@@ -767,12 +826,18 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt9"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f9"
                     android:layout_width="wrap_content"
@@ -819,12 +884,19 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+                <Button
                     android:id="@+id/alrt10"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f10"
@@ -872,12 +944,18 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt11"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f11"
                     android:layout_width="wrap_content"
@@ -923,12 +1001,18 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+                <Button
                     android:id="@+id/alrt12"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/altGreenButt"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -962,7 +1046,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="-100dp"
         android:layout_marginEnd="36dp"
-        app:srcCompat="@drawable/start2" />
+        app:srcCompat="@drawable/buttonstartsession2" />
 
 
 

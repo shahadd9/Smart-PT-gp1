@@ -4,13 +4,30 @@
 
     <stroke
 
-        android:color="#4f348a" />
+        android:color="#65EC36" />
 
     <gradient
-        android:startColor="#9933ff"
-        android:endColor="#3366ff"/>
+        android:startColor="#A5D4FA"
+        android:endColor="#C6ECC7"/>
     <!-- 36299112 green-->
 
 
     <corners android:radius="5dp" />
 </shape>
+
+    <?xml version="1.0" encoding="utf-8"?>
+
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android" >-->
+
+<!--<stroke-->
+
+<!--    android:color="#65EC36" />-->
+
+<!--<gradient-->
+<!--    android:startColor="#A5D4FA"-->
+<!--    android:endColor="#8FD2DB"/>-->
+<!--&lt;!&ndash; 36299112 green&ndash;&gt;-->
+
+
+<!--<corners android:radius="5dp" />-->
+<!--</shape>-->

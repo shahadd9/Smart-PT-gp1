@@ -18,8 +18,8 @@ android {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
         python {
-            buildPython "C:/Users/96655/AppData/Local/Programs/Python/Python310/Python.exe"
-            buildPython "C:/Windows/py.exe", "-3.8"
+            buildPython "C:/Users/noofe/AppData/Local/Programs/Python/Python310/Python.exe"
+            buildPython "C:/Windows/py.exe", "-3.10"
             pip{
                 install "pandas"
                 install "sklearn"
