@@ -66,7 +66,7 @@ public class PlanView extends AppCompatActivity {
     // data base
     private FirebaseFirestore db;
     private FirebaseFirestore db2;
-    private String userIp;
+//    private String userIp;
     private ProgressDialog pd;
     private FirebaseAuth uAuth;
 
@@ -1907,8 +1907,8 @@ public class PlanView extends AppCompatActivity {
 
     //////////////////////////////////////////////////////////////////////////////////////////
     public void retreivePlan(int i) {
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         db = FirebaseFirestore.getInstance();
 
@@ -2881,8 +2881,8 @@ public class PlanView extends AppCompatActivity {
 
     public void getExIndex(String curr,int wee) {
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {

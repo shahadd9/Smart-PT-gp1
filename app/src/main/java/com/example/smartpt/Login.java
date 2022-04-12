@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -72,6 +73,8 @@ public class Login extends AppCompatActivity {
 
         if(user.isEmpty()){
             email.setError("Email cannot be empty");
+        }else  if(!Patterns.EMAIL_ADDRESS.matcher(user).matches()){
+            email.setError("invalid email format");
         }
         if(pas.isEmpty()){
             pass.setError("Password cannot be empty");

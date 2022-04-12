@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -51,6 +52,10 @@ public class Forgot extends AppCompatActivity {
             email.setError("Email cannot be empty");
             email.requestFocus();
             return;
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
+            email.setError("invalid email format");
+            email.requestFocus();
+            return;
         }
         prog.setVisibility(View.VISIBLE);
         uAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -61,7 +66,7 @@ public class Forgot extends AppCompatActivity {
                     prog.setVisibility(View.INVISIBLE);
 
                 }else{
-                    Toast.makeText(Forgot.this, "Reset failed "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Forgot.this, "Reset failed "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });

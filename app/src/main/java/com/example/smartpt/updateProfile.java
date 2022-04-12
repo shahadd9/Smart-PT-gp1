@@ -53,7 +53,7 @@ public class updateProfile extends AppCompatActivity implements
     ArrayAdapter<String> eDaysAdapter;
     Button updateProfile;
     private FirebaseFirestore db;
-    private String userIp;
+//    private String userIp;
     private ArrayList<String> tDaysN;
     private String name;
     private String date;
@@ -248,8 +248,8 @@ public class updateProfile extends AppCompatActivity implements
 
         initializeDropdownData();
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
         //get data from database
         db = FirebaseFirestore.getInstance();
