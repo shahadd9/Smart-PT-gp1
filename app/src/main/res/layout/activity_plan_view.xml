@@ -139,12 +139,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
-            android:text="Sat"
             android:padding="10dp"
+            android:text="Sat"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/buttonSun"
@@ -155,12 +154,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Sun"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            android:padding="10dp"
-            />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/buttonMon"
@@ -171,11 +169,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Mon"
             android:textAllCaps="false"
             android:textColor="#696969"
             android:textSize="12dp"
-            android:padding="10dp"
 
             />
 
@@ -188,12 +186,11 @@
             android:layout_marginEnd="267dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Thu"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            android:padding="10dp"
-/>
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/buttonTue"
@@ -204,12 +201,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Tue"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            android:padding="10dp"
-            />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/buttonWed"
@@ -220,12 +216,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Wed"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            android:padding="10dp"
-            />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/buttonFri"
@@ -236,12 +231,11 @@
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#f1f3fa"
+            android:padding="10dp"
             android:text="Fri"
             android:textAllCaps="false"
             android:textColor="#696969"
-            android:textSize="12dp"
-            android:padding="10dp"
- />
+            android:textSize="12dp" />
 
 
     </FrameLayout>

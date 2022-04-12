@@ -16,9 +16,9 @@
     tools:context=".Exercise">
     <ImageView
         android:id="@+id/topView"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:background="@drawable/wavee"
+        android:layout_width="418dp"
+        android:layout_height="97dp"
+        android:background="@drawable/wave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
