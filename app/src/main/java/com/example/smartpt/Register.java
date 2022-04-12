@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -149,8 +150,10 @@ public class Register extends AppCompatActivity {
     private void register() {
         user=email.getText().toString().trim();
         pas=pass.getText().toString().trim();
-        if (user.isEmpty()) {
+        if(user.isEmpty()){
             email.setError("Email cannot be empty");
+        }else  if(!Patterns.EMAIL_ADDRESS.matcher(user).matches()){
+            email.setError("invalid email format");
         }
         if (pas.isEmpty()) {
             pass.setError("Password cannot be empty");
@@ -164,7 +167,7 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(Register.this, "Register success ", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Register.this, Name.class));
                     } else {
-                        Toast.makeText(Register.this, "Register failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this, "Register failed " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }
