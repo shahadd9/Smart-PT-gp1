@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -33,6 +34,8 @@ import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -53,14 +56,16 @@ public class SessionView extends AppCompatActivity {
     VideoView v;
     ProgressDialog pd;
     private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String id;
     private int week;
     private Double weekD;
     private int  FBindex ;
     private Double FBindexD;
-    private String userIp;
+//    private String userIp;
     private double set , Res;
     private int s, re, i,sIndex,counter;
-    private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt;
+    private TextView sets, instTxt,exerciseName,counterTxt,rest,timertxt,exeNum;
     private ImageView exist,buttonSpeaker;
     private Button nextbtn,skipbtn,pausebtn;
     private String inst, SessionNo, level,currDay,day,nextExercise, exName, videoLink,audioLink;
@@ -71,12 +76,14 @@ public class SessionView extends AppCompatActivity {
     private int end;
     private TextToSpeech mTTS;
     public boolean isSpeak;
-
     private ProgressBar progress_bar;
     AlertDialog.Builder builder;
     private TimerTask timerTask;
     private Double time;
     private MediaPlayer player,restAudio;
+    public final static String shared="sharedPrefs";
+    private int done;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +103,7 @@ public class SessionView extends AppCompatActivity {
         rest=(TextView) findViewById(R.id.rest);
         v= (VideoView)findViewById(R.id.video);
         timertxt=(TextView)findViewById(R.id.timertxt);
+        exeNum=(TextView)findViewById(R.id.exNum);
         nextbtn =(Button)findViewById(R.id.nextbtn);
         skipbtn =(Button)findViewById(R.id.skipbtn);
         pausebtn =(Button)findViewById(R.id.pausebtn);
@@ -107,7 +115,8 @@ public class SessionView extends AppCompatActivity {
         time= getIntent().getDoubleExtra("duration",-1);
         buttonSpeaker=findViewById(R.id.buttonSpeaker);
 
-
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        done= sharedPreferences.getInt("sessionDone",0);
         //##########################################################################################
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -134,6 +143,7 @@ public class SessionView extends AppCompatActivity {
 
         updteProgressBar();
 
+
         i=0;
         sIndex=0;
 
@@ -148,12 +158,16 @@ public class SessionView extends AppCompatActivity {
 
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -173,7 +187,7 @@ public class SessionView extends AppCompatActivity {
             }
         });
 
-        documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
+        documentReference = db.collection("Progress").document(id).collection("index").document("weeks");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -395,12 +409,19 @@ public class SessionView extends AppCompatActivity {
 //
 //        } catch (IOException e) {
 //            e.printStackTrace();
+//
 //        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("duration",time+"");
+        editor.apply();
+
         counter = counter+1;
         Map<String,Object> user = new HashMap<>();
         user.put("exerciseIndex",counter);
         user.put("duration",time);
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -416,7 +437,7 @@ public class SessionView extends AppCompatActivity {
         });
 
         user.put("sets",i);
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("progressDay"+currDay).document("exercise"+(counter-1)).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).collection("progressDay"+currDay).document("exercise"+(counter-1)).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -446,6 +467,11 @@ public class SessionView extends AppCompatActivity {
     }
     public void endSession(int c){
 
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("duration",time+"");
+        editor.apply();
+
         c=c;
 
 
@@ -455,9 +481,10 @@ public class SessionView extends AppCompatActivity {
             user.put("duration",0);
         }
         else {
+
             user.put("duration", time);
         }
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -473,6 +500,8 @@ public class SessionView extends AppCompatActivity {
         });
 
         if(c==99){
+            editor.putInt("sessionDone",done+1);
+            editor.apply();
             Intent intent= new Intent(this, feedback.class);
             intent.putExtra("SessionNo", SessionNo);
             intent.putExtra("level", level);
@@ -587,10 +616,14 @@ public class SessionView extends AppCompatActivity {
 
 
     public void retrieveExerciseName() {
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        String userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day"+(currDay));
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -599,6 +632,7 @@ public class SessionView extends AppCompatActivity {
                 day = day.substring(2, day.length() - 3);
                 dayAr = day.split("_");
 //                exName= dayAr[counter];
+                exeNum.setText("Exercise: "+(counter+1));
 
                 exerciseName.setText(dayAr[counter]);
                 try {

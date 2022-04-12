@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -28,7 +30,9 @@ public class Exercise extends AppCompatActivity {
     int s, r, re,d;
     TextView alt, exName, target,general, sets, reps, rest, equipment,duration, execution, tips,start, mechanism, force;
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
     private double tPlace;
     private int tP;
     private String equ;
@@ -158,12 +162,16 @@ public class Exercise extends AppCompatActivity {
 //        start=(TextView) findViewById(R.id.startPos);
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
 
         //get data from database
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp);
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

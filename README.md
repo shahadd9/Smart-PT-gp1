@@ -25,6 +25,10 @@ the user can do the following functions in this application:
 - Update a Profile
 - Generate a Workout Plan
 - Find an Alternative Exercise
+- Control session(start, pause, skip) exercise
+- Get real-time audio instruction while exercising
+- Track user progress
+- Give feedback after each session
 
 # Libraries And API
 - Chaquopy

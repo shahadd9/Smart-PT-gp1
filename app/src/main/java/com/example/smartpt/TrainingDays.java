@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -39,7 +41,9 @@ public class TrainingDays extends AppCompatActivity {
     private TextView tip;
     private String txt;
     private FirebaseFirestore db;
-    private String userIp;
+    private FirebaseAuth uAuth;
+    private String id;
+//    private String userIp;
 //    private boolean isChoose;
     private String level;
 //    private ArrayList<String> goal;
@@ -64,8 +68,12 @@ public class TrainingDays extends AppCompatActivity {
         next= findViewById(R.id.next);
         sunCount=0;
         db = FirebaseFirestore.getInstance();
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        //to get user email
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp= Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
 
 //        isChoose=false;
         tDays= new ArrayList<>();
@@ -191,7 +199,7 @@ public class TrainingDays extends AppCompatActivity {
 
                     Map<String,Object> user = new HashMap<>();
                     user.put("trainingDays",tDaysString);
-                    db.collection("userProfile").document(userIp).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("userProfile").document(id).update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

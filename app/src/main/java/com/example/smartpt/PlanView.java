@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
+import java.text.SimpleDateFormat;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -51,6 +53,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +67,8 @@ public class PlanView extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseFirestore db2;
     private String userIp;
+    private ProgressDialog pd;
+    private FirebaseAuth uAuth;
 
     private int  FBindex;
     private Double FBindexD;
@@ -80,6 +85,8 @@ public class PlanView extends AppCompatActivity {
     private String finished;
 
 
+   private  int Curweek;
+
     private TextView TextviewEx1;
     private TextView TextviewEx2;
     private TextView TextviewEx3;
@@ -92,6 +99,9 @@ public class PlanView extends AppCompatActivity {
     private TextView TextviewEx10;
     private TextView TextviewEx11;
     private TextView TextviewEx12;
+
+    public final static String shared="sharedPrefs";
+    private int done;
 
 //    private ImageView img8;
 //    private ImageView img9;
@@ -139,6 +149,11 @@ public class PlanView extends AppCompatActivity {
     private static final String TAG = "PlanView";
 
     private static final String KEY_T = "trainingDays";
+
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+
+    private int weekPassedNum;
 
     boolean daySat;
     boolean daySun;
@@ -210,6 +225,13 @@ public class PlanView extends AppCompatActivity {
     TableRow exRow10;
     TableRow exRow11;
     TableRow exRow12;
+    private String startDate;
+    String startDateAr[] = new String[4];
+    private String todaytDate;
+    String todaytDateAr[] = new String[4];
+    private String id;
+
+
 
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
@@ -217,6 +239,8 @@ public class PlanView extends AppCompatActivity {
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
 //    private int c;
+    private  Intent inProg;
+
 
     private String Wplan;
     //    private String SessionNo;
@@ -230,6 +254,12 @@ public class PlanView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_view);
+
+        //to get user email
+        uAuth= FirebaseAuth.getInstance();
+        FirebaseUser curUser=uAuth.getCurrentUser();
+        id=curUser.getEmail();
+
         currDay="0";
         TextviewEx1 = findViewById(R.id.textViewex1);
         TextviewEx2 = findViewById(R.id.textViewex2);
@@ -306,6 +336,11 @@ public class PlanView extends AppCompatActivity {
         exRow10 =findViewById(R.id.exRow10);
         exRow11 =findViewById(R.id.exRow11);
         exRow12 =findViewById(R.id.exRow12);
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        todaytDate = dateFormat.format(calendar.getTime());
+
+
 
         builder= new AlertDialog.Builder(this);
 
@@ -317,8 +352,7 @@ public class PlanView extends AppCompatActivity {
         TT = findViewById(R.id.WeeklytextView);
 
 
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+
 
         db = FirebaseFirestore.getInstance();
         db2=FirebaseFirestore.getInstance();
@@ -326,7 +360,7 @@ public class PlanView extends AppCompatActivity {
         callweek();
 
 
-        DocumentReference documentReference =  db.collection("userProfile").document(userIp);
+        DocumentReference documentReference =  db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -371,61 +405,34 @@ public class PlanView extends AppCompatActivity {
 
         call_E_F_M();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-//                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+        inProg = new Intent(PlanView.this, UserProgress.class);
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.home:
+////                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+////                        overridePendingTransition(0, 0);
+////                        return true;
+////                     (update profile activity)
+//                    case R.id.profile:
+//                        Intent i = new Intent(PlanView.this, updateProfile.class);
+////                        if (SessionNo.equals("2")) {
+//                        i.putExtra("SessionNo", SessionNo);
+//                        i.putExtra("level", level);
+//                        i.putExtra("week",week);
+//                        i.putExtra("currDay",currDay);
+//                        startActivity(i);
 //                        overridePendingTransition(0, 0);
-//                        return true;
-//                     (update profile activity)
-                    case R.id.profile:
-                        Intent i = new Intent(PlanView.this, updateProfile.class);
-
-
-
-                        if (SessionNo.equals("2")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            return true;
-                        } else if (SessionNo.equals("3")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("4")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        } else if (SessionNo.equals("5")) {
-                            i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-
-                    case R.id.progress:
-                         i = new Intent(PlanView.this, UserProgress.class);
-                        i.putExtra("SessionNo", SessionNo);
-                            i.putExtra("level", level);
-                            i.putExtra("week",week);
-                            i.putExtra("currDay",currDay);
-                            startActivity(i);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            return true;
-//                        if (SessionNo.equals("2")) {
-//                            i.putExtra("SessionNo", SessionNo);
+//                        finish();
+//                            return true;
+//
+//
+//                    case R.id.progress:
+//                         i = new Intent(PlanView.this, UserProgress.class);
+//                        i.putExtra("SessionNo", SessionNo);
 //                            i.putExtra("level", level);
 //                            i.putExtra("week",week);
 //                            i.putExtra("currDay",currDay);
@@ -433,35 +440,44 @@ public class PlanView extends AppCompatActivity {
 //                            overridePendingTransition(0, 0);
 //                            finish();
 //                            return true;
-//                        } else if (SessionNo.equals("3")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("4")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        } else if (SessionNo.equals("5")) {
-//                            i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
-                }
-                return false;
-            }
-        });
+////                        if (SessionNo.equals("2")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                            return true;
+////                        } else if (SessionNo.equals("3")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        } else if (SessionNo.equals("4")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        } else if (SessionNo.equals("5")) {
+////                            i.putExtra("SessionNo", SessionNo);
+////                            i.putExtra("level", level);
+////                            i.putExtra("week",week);
+////                            i.putExtra("currDay",currDay);
+////                            startActivity(i);
+////                            overridePendingTransition(0, 0);
+////                            finish();
+////                        }
+//                }
+//                return false;
+//            }
+//        });
 
         // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
@@ -552,8 +568,10 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
 //
+
                     if (SessionNo.equals("5")) {
                         currDay="2";
+                        inProg.putExtra("currDay",currDay);
                         getExIndex(currDay,week);
 
                         day2();
@@ -624,6 +642,7 @@ public class PlanView extends AppCompatActivity {
 //                        }
                     if (SessionNo.equals("4")) {
                         currDay="4";
+                        inProg.putExtra("currDay",currDay);
                         getExIndex(currDay,week);
                         day4();
 
@@ -709,26 +728,30 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
                     if (SessionNo.equals("2")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
 
                     }
                     if (SessionNo.equals("3")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        getExIndex(currDay,week);
+                        getExIndex(currDay,week);                        inProg.putExtra("currDay",currDay);
+
                         currDay="1";
                         day1();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="1";
+                        currDay="1";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day1();
                     }
@@ -799,27 +822,31 @@ public class PlanView extends AppCompatActivity {
 
 
                     if (SessionNo.equals("2")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("3")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        currDay="2";
+                        currDay="2";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day2();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day3();
                     }
@@ -977,18 +1004,21 @@ public class PlanView extends AppCompatActivity {
 
                     //  }
                     if (SessionNo.equals("3")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         day3();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        currDay="3";
+                        currDay="3";                        inProg.putExtra("currDay",currDay);
+
                         day3();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="4";
+                        currDay="4";                        inProg.putExtra("currDay",currDay);
+
                         day4();
                     }
                     //       break;
@@ -1059,7 +1089,8 @@ public class PlanView extends AppCompatActivity {
 
                     //   break;
                     if (SessionNo.equals("5")) {
-                        currDay="5";
+                        currDay="5";                        inProg.putExtra("currDay",currDay);
+
                         getExIndex(currDay,week);
                         day5();
                     }
@@ -1079,6 +1110,8 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         butAlrt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1532,6 +1565,7 @@ public class PlanView extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                pd= new ProgressDialog(PlanView.this);
                 Intent i = new Intent(PlanView.this, StartSession.class);
                 i.putExtra("name", TextviewEx1.getText());
                 i.putExtra("force", f1.getText());
@@ -1543,9 +1577,10 @@ public class PlanView extends AppCompatActivity {
 
                 if(FBindex<99){
 //                    TextviewEx1.setText(FBindex+"_"+currDay);
-
+//                    pd.show();
                     startActivity(i);
-
+                    finish();
+//                    pd.dismiss();
                 }
                 else{
                     builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
@@ -1563,13 +1598,52 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext(), PlanView.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
+//                     (update profile activity)
+                    case R.id.profile:
+                        Intent i = new Intent(PlanView.this, updateProfile.class);
+//                        if (SessionNo.equals("2")) {
+                        i.putExtra("SessionNo", SessionNo);
+                        i.putExtra("level", level);
+                        i.putExtra("week",week);
+                        i.putExtra("currDay",currDay);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
 
+
+                    case R.id.progress:
+                        inProg.putExtra("SessionNo", SessionNo);
+                        inProg.putExtra("level", level);
+                        inProg.putExtra("week",week);
+                        inProg.putExtra("currDay",currDay);
+                        startActivity(inProg);
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
+
+
+                }
+                return false;
+            }
+        });
 
     }
 
     private void callweek() {
 
-        DocumentReference documentReference = db2.collection("Progress").document(userIp).collection("index").document("weeks");
+        DocumentReference documentReference = db2.collection("Progress").document(id).collection("index").document("weeks");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -1579,6 +1653,7 @@ public class PlanView extends AppCompatActivity {
                         weekD= value.getDouble("week");
                         week=(int)Math.round(weekD);
                         isItOne=value.getString("isItOne");
+                        startDate=value.getString("startDateWeek"+week);
                     } else {
                         //doesn't exist
                     }
@@ -1618,25 +1693,23 @@ public class PlanView extends AppCompatActivity {
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
 //            updateFlag();
-            GeneratenextWeek();
+//            GeneratenextWeek();
             weekNo.setText("Week"+week);
-
 
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
             weekNo.setText("Week"+week);
+            updateFlag();
 
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
+            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
-            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
-
-//            nextWeek();
         } else if (dayOfTheWeek.contains("Thursday")) {
             buttonThu.performClick();
             weekNo.setText("Week"+week);
@@ -1654,20 +1727,68 @@ public class PlanView extends AppCompatActivity {
 
     private void GeneratenextWeek() {
 
+        Curweek=0;
 
+        String update="0";
+        try{
+            Date date1;
+            Date date2;
 
+            date1=dateFormat.parse(startDate);
+            date2=dateFormat.parse(todaytDate);
+
+            long difference = Math.abs(date2.getTime() - date1.getTime());
+            long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+            weekPassedNum= (int)differenceDates/7;
+            if (weekPassedNum==0){
+                weekPassedNum=1;
+            }
+            Curweek= week+weekPassedNum-1;
+
+            if(differenceDates>=7){
+                updateFlag();
+                isItOne=update;
+            }
+        } catch (Exception exception) {
+            Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+        }
         Map<String,Object> weeks = new HashMap<>();
 
         if(isItOne=="0"|| isItOne.equals("0")) {
-            weeks.put("week", ++week);
+            try{
+                Date date1;
+                Date date2;
+
+                date1=dateFormat.parse(startDate);
+                date2=dateFormat.parse( currDay);
+
+                long difference = Math.abs(date2.getTime() - date1.getTime());
+                long differenceDates = difference / (24 * 60 * 60 * 1000);
+
+                weekPassedNum= (int)differenceDates/7;
+                if (weekPassedNum==0){
+                    weekPassedNum=1;
+                }
+                Curweek= week+weekPassedNum-1;
+
+            } catch (Exception exception) {
+                Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+            }
+            weeks.put("week", ++Curweek);
             weeks.put("isItOne", "1");
-            generateNextWeek(week);
+            weeks.put("startDateWeek"+Curweek,todaytDate);
+            generateNextWeek(Curweek);
+
+
+
         }
         else {
             weeks.put("week", week);
             weeks.put("isItOne", "1");
+//            weeks.put("startDateWeek"+week,todaytDate);
         }
-        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -1677,6 +1798,12 @@ public class PlanView extends AppCompatActivity {
     }
 
     private void generateNextWeek(int weekD) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putInt("sessionDone",0);
+        editor.apply();
+
         Map<String,Object> user = new HashMap<>();
         Map<String,Object> week = new HashMap<>();
 
@@ -1684,7 +1811,7 @@ public class PlanView extends AppCompatActivity {
         user.put("duration",0);
 
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day1").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1699,7 +1826,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day2").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1714,7 +1841,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day3").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1729,7 +1856,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day4").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1744,7 +1871,7 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-        db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+weekD).document("day5").set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -1768,7 +1895,7 @@ public class PlanView extends AppCompatActivity {
         Map<String,Object> weeks = new HashMap<>();
 
         weeks.put("isItOne", "0");
-        db.collection("Progress").document(userIp).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Progress").document(id).collection("index").document("weeks").update(weeks).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -1785,7 +1912,7 @@ public class PlanView extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day" + i);
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day" + i);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2632,7 +2759,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M1() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day1");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day1");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2659,7 +2786,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M2() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day2");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day2");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2683,7 +2810,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M3() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day3");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day3");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2707,7 +2834,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M4() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day4");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day4");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2731,7 +2858,7 @@ public class PlanView extends AppCompatActivity {
     public void retreiveF_M5() {
 
         db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("userProfile").document(userIp).collection("WorkoutPlan").document(userIp).collection(userIp).document("day5");
+        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day5");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2756,12 +2883,14 @@ public class PlanView extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
+
+        DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 FBindexD= value.getDouble("exerciseIndex");
+                if(FBindexD !=null)
                 FBindex=(int)Math.round(FBindexD);
 //                FBindex=5;
 
