@@ -1692,6 +1692,9 @@ public class PlanView extends AppCompatActivity {
 
     public void currentDay() {
 
+        getExIndex(currDay,week);
+
+
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
 //            updateFlag();
@@ -2883,9 +2886,6 @@ public class PlanView extends AppCompatActivity {
 
     public void getExIndex(String curr,int wee) {
         db = FirebaseFirestore.getInstance();
-//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
-//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-
         DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -2894,7 +2894,73 @@ public class PlanView extends AppCompatActivity {
                 FBindexD= value.getDouble("exerciseIndex");
                 if(FBindexD !=null)
                 FBindex=(int)Math.round(FBindexD);
-//                FBindex=5;
+                int zero=FBindex;
+
+                FBindex=FBindex+1;
+
+                if(zero==0){
+
+                }
+
+               else if(FBindex==1){
+                    exRow1.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx1.setTextSize(19);
+                }
+                else if(FBindex==2){
+
+                    exRow2.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx2.setTextSize(19);
+                }
+                else if(FBindex==3){
+
+                    exRow3.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx3.setTextSize(19);
+                }
+                else if(FBindex==4){
+
+                    exRow4.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx4.setTextSize(19);
+                }
+                else if(FBindex==5){
+
+                    exRow5.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx5.setTextSize(19);
+                }
+                else if(FBindex==6){
+
+                    exRow6.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx6.setTextSize(19);
+                }
+                else if(FBindex==7){
+
+                    exRow7.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx7.setTextSize(19);
+                }
+                else if(FBindex==8){
+
+                    exRow8.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx8.setTextSize(19);
+                }
+                else if(FBindex==9){
+
+                    exRow9.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx9.setTextSize(19);
+                }
+                else if(FBindex==10){
+
+                    exRow10.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx10.setTextSize(19);
+                }
+                else if(FBindex==11){
+
+                    exRow11.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx11.setTextSize(19);
+                }
+                else if(FBindex==12){
+
+                    exRow12.setBackgroundColor(Color.parseColor("#F8FFD6"));
+                    TextviewEx12.setTextSize(19);
+                }
 
 
             }
