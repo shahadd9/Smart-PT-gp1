@@ -75,7 +75,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="422dp"
-        android:background="@drawable/weekly_textstyle"
+        android:background="@drawable/frame10"
         android:weightSum="10">
 
         <TextView
@@ -86,6 +86,7 @@
             android:layout_marginTop="14dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
+            android:fontFamily="@font/bubblegum_sans"
             android:padding="15dp"
             android:shadowColor="#506673"
             android:shadowRadius="2"
@@ -318,6 +319,7 @@
                 android:id="@+id/exRow1"
                 android:background="@drawable/border"
                 android:visibility="visible"
+                android:backgroundTint="#FAEDC6"
 
                 >
 
@@ -334,6 +336,7 @@
                     android:textSize="14dp"
                     android:layout_gravity="center_vertical"
                     android:textStyle="bold"
+
 
                     />
 
@@ -357,7 +360,7 @@
                     android:layout_width="95dp"
                     android:layout_height="57dp"
                     android:layout_marginStart="10dp"
-                    android:backgroundTint="@color/altGreenButt"
+                    android:backgroundTint="#6DD4F3"
                     app:cornerRadius="10dp"
                     android:text="Find \n Alternative"
                     android:textAllCaps="false"
@@ -386,8 +389,8 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:id="@+id/exRow2"
-                            android:background="@drawable/border"     
-                android:visibility="visible"
+            android:background="@drawable/border"
+            android:visibility="visible"
 
             >
 

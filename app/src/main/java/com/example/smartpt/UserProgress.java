@@ -352,6 +352,9 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
         pcM1.setText(finalDuartion+"");
         double remi=100-finalDuartion;
+        if (remi<0){
+            remi=0;
+        }
         pcM2.setText(remi+"");
 
 
