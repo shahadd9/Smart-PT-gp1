@@ -528,34 +528,34 @@ public class PlanView extends AppCompatActivity {
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonMon.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
 
 
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 // for (int i=0;i<days.size();i++){
@@ -608,18 +608,18 @@ public class PlanView extends AppCompatActivity {
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
                 buttonSat.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonSat.setTextColor(getResources().getColor(R.color.white));
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
-                buttonMon.setTextColor(Color.parseColor("#696969"));
-                buttonSun.setTextColor(Color.parseColor("#696969"));
-                buttonTue.setTextColor(Color.parseColor("#696969"));
-                buttonWed.setTextColor(Color.parseColor("#696969"));
-                buttonThu.setTextColor(Color.parseColor("#696969"));
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (daySat) {
@@ -685,32 +685,32 @@ public class PlanView extends AppCompatActivity {
 
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonSun.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
 
 
-                buttonMon.setTextColor(Color.parseColor("#696969"));
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (daySun) {
@@ -782,34 +782,34 @@ public class PlanView extends AppCompatActivity {
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonTue.setBackgroundColor(Color.parseColor("#6A8DE6"));
                 buttonTue.setTextColor(getResources().getColor(R.color.white));
                 //A2AAF9
 
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
 
 
-                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (dayTue) {
@@ -881,35 +881,35 @@ public class PlanView extends AppCompatActivity {
                 }
 
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonWed.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonWed.setTextColor(getResources().getColor(R.color.white));
                 //24c8feOR A2AAF9
 
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
 
 
-                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (dayWed) {
@@ -961,33 +961,33 @@ public class PlanView extends AppCompatActivity {
                     dayThu = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonThu.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonThu.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonFri.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonFri.setTextColor(Color.parseColor("#696969"));
+                buttonFri.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (dayThu) {
@@ -1051,33 +1051,33 @@ public class PlanView extends AppCompatActivity {
                     dayFri = true;
                 }
                 TextView mon = (TextView) findViewById(R.id.ExercisesView);
-                buttonSat.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSat.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonSun.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonSun.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonMon.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonMon.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonTue.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonTue.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonWed.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonWed.setBackgroundColor(Color.parseColor("#70d4f4"));
 
-                buttonThu.setBackgroundColor(Color.parseColor("#f1f3fa"));
+                buttonThu.setBackgroundColor(Color.parseColor("#70d4f4"));
 
                 buttonFri.setBackgroundColor(Color.parseColor("#6A8DE6"));
 
                 buttonFri.setTextColor(getResources().getColor(R.color.white));
 
-                buttonMon.setTextColor(Color.parseColor("#696969"));
+                buttonMon.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSat.setTextColor(Color.parseColor("#696969"));
+                buttonSat.setTextColor(getResources().getColor(R.color.white));
 
-                buttonSun.setTextColor(Color.parseColor("#696969"));
+                buttonSun.setTextColor(getResources().getColor(R.color.white));
 
-                buttonTue.setTextColor(Color.parseColor("#696969"));
+                buttonTue.setTextColor(getResources().getColor(R.color.white));
 
-                buttonWed.setTextColor(Color.parseColor("#696969"));
+                buttonWed.setTextColor(getResources().getColor(R.color.white));
 
-                buttonThu.setTextColor(Color.parseColor("#696969"));
+                buttonThu.setTextColor(getResources().getColor(R.color.white));
 
 
                 if (dayFri) {
