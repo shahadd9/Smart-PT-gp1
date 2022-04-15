@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/userNamep"
-            android:layout_width="200dp"
+            android:layout_width="238dp"
             android:layout_height="55dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="14dp"
@@ -419,9 +419,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-
+                android:textColor="@color/black"
+                android:textSize="18dp"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-smallcaps"
                 android:textStyle="bold" />
@@ -480,19 +479,12 @@
                 android:layout_marginBottom="7dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
-
                 android:fontFamily="sans-serif-smallcaps"
                 android:textSize="18dp"
-
-                    android:textStyle="bold"
+                android:textStyle="bold"
                 />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/start3"-->
-<!--                    android:layout_width="54dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginStart="57dp"-->
-<!--                    app:srcCompat="@drawable/startex" />-->
+
             <Button
                 android:id="@+id/alrt3"
                 android:layout_width="95dp"
@@ -787,17 +779,12 @@
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-
+                    android:textStyle="bold"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="sans-serif-smallcaps"
                  />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/start8"-->
-<!--                    android:layout_width="54dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginStart="57dp"-->
-<!--                    app:srcCompat="@drawable/startex" />-->
+
 
                 <Button
                     android:id="@+id/alrt8"
@@ -905,7 +892,6 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                    android:textColor="@color/black"
 
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-smallcaps"
@@ -953,7 +939,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                                android:background="@drawable/border"     
+                android:background="@drawable/border"
                 android:visibility="visible"
                 >
 

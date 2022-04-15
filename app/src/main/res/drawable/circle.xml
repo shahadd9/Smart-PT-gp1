@@ -24,8 +24,8 @@
         android:useLevel="true"
         >
         <gradient
-            android:startColor="#E6FB04"
-            android:endColor="#E6FB04"/>
+            android:startColor="#6FD3F3"
+            android:endColor="#3F6DE1"/>
     </shape>
     </rotate>
 </item>
