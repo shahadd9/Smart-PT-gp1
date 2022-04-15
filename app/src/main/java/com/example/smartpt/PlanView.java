@@ -1618,14 +1618,12 @@ public class PlanView extends AppCompatActivity {
 
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
-//            updateFlag();
-//            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
             weekNo.setText("Week"+week);
-            updateFlag();
+
 
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
@@ -1634,6 +1632,7 @@ public class PlanView extends AppCompatActivity {
 
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
+            updateFlag();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Thursday")) {
@@ -2833,26 +2832,26 @@ public class PlanView extends AppCompatActivity {
                     exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
 
 
 
                 }
 
               else   if(FBindex==1){
-                    exRow1.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx1.setTextSize(19);
+                    exRow1.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx1.setTextSize(21);
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -2865,22 +2864,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==2){
 
-                    exRow2.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx2.setTextSize(19);
+                    exRow2.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx2.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -2893,22 +2892,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==3){
 
-                    exRow3.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx3.setTextSize(19);
+                    exRow3.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx3.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -2921,22 +2920,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==4){
 
-                    exRow4.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx4.setTextSize(19);
+                    exRow4.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx4.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -2949,22 +2948,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==5){
 
-                    exRow5.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx5.setTextSize(19);
+                    exRow5.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx5.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -2977,22 +2976,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==6){
 
-                    exRow6.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx6.setTextSize(19);
+                    exRow6.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx6.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3005,22 +3004,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==7){
 
-                    exRow7.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx7.setTextSize(19);
+                    exRow7.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx7.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3033,22 +3032,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==8){
 
-                    exRow8.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx8.setTextSize(19);
+                    exRow8.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx8.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3061,22 +3060,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==9){
 
-                    exRow9.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx9.setTextSize(19);
+                    exRow9.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx9.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3089,22 +3088,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==10){
 
-                    exRow10.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx10.setTextSize(19);
+                    exRow10.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx10.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3117,22 +3116,22 @@ public class PlanView extends AppCompatActivity {
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==11){
 
-                    exRow11.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx11.setTextSize(19);
+                    exRow11.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx11.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3145,22 +3144,22 @@ public class PlanView extends AppCompatActivity {
                     exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx12.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==12){
 
-                    exRow12.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx12.setTextSize(19);
+                    exRow12.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx12.setTextSize(21);
                     exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3173,17 +3172,17 @@ public class PlanView extends AppCompatActivity {
                     exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
                     exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
 
-                    TextviewEx1.setTextSize(17);
-                    TextviewEx2.setTextSize(17);
-                    TextviewEx3.setTextSize(17);
-                    TextviewEx4.setTextSize(17);
-                    TextviewEx5.setTextSize(17);
-                    TextviewEx6.setTextSize(17);
-                    TextviewEx7.setTextSize(17);
-                    TextviewEx8.setTextSize(17);
-                    TextviewEx9.setTextSize(17);
-                    TextviewEx10.setTextSize(17);
-                    TextviewEx11.setTextSize(17);
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
 
                 }
 
