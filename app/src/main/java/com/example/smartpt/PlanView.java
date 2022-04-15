@@ -199,7 +199,7 @@ public class PlanView extends AppCompatActivity {
 
 
 
-    ImageView butstart1;
+    Button butstart1;
 
     Button butAlrt1 ;
     Button butAlrt2 ;
@@ -311,7 +311,7 @@ public class PlanView extends AppCompatActivity {
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
          butAlrt1 =(Button) findViewById(R.id.alrt1);
-         butstart1 =(ImageView) findViewById(R.id.start100);
+         butstart1 =(Button) findViewById(R.id.start100);
          butAlrt2 =(Button) findViewById(R.id.alrt2);
          butAlrt3 =(Button) findViewById(R.id.alrt3);
          butAlrt4 =(Button) findViewById(R.id.alrt4);
