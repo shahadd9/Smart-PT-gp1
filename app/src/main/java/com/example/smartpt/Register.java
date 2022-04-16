@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
         //check length
         if(pas.length()>=8){
             is8=true;
-            c1.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c1.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e1.setVisibility(View.VISIBLE);
         }else{
             is8=false;
@@ -113,7 +113,7 @@ public class Register extends AppCompatActivity {
         //check number
         if(pas.matches(".*[0-9].*")){
             hasnum=true;
-            c2.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c2.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e2.setVisibility(View.VISIBLE);
         }else{
             hasnum=false;
@@ -124,7 +124,7 @@ public class Register extends AppCompatActivity {
         //check upperCase
         if(pas.matches(".*[A-Z].*")){
             hasupper=true;
-            c3.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c3.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e3.setVisibility(View.VISIBLE);
         }else{
             hasupper=false;
@@ -136,7 +136,7 @@ public class Register extends AppCompatActivity {
         //check lowerCase
         if(pas.matches(".*[a-z].*")){
             haslower=true;
-            c4.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c4.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e4.setVisibility(View.VISIBLE);
         }else {
             haslower = false;
