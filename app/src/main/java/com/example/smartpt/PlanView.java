@@ -406,78 +406,7 @@ public class PlanView extends AppCompatActivity {
         call_E_F_M();
 
         inProg = new Intent(PlanView.this, UserProgress.class);
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-//        bottomNavigationView.setSelectedItemId(R.id.home);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.home:
-////                        startActivity(new Intent(getApplicationContext(), PlanView.class));
-////                        overridePendingTransition(0, 0);
-////                        return true;
-////                     (update profile activity)
-//                    case R.id.profile:
-//                        Intent i = new Intent(PlanView.this, updateProfile.class);
-////                        if (SessionNo.equals("2")) {
-//                        i.putExtra("SessionNo", SessionNo);
-//                        i.putExtra("level", level);
-//                        i.putExtra("week",week);
-//                        i.putExtra("currDay",currDay);
-//                        startActivity(i);
-//                        overridePendingTransition(0, 0);
-//                        finish();
-//                            return true;
-//
-//
-//                    case R.id.progress:
-//                         i = new Intent(PlanView.this, UserProgress.class);
-//                        i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            return true;
-////                        if (SessionNo.equals("2")) {
-////                            i.putExtra("SessionNo", SessionNo);
-////                            i.putExtra("level", level);
-////                            i.putExtra("week",week);
-////                            i.putExtra("currDay",currDay);
-////                            startActivity(i);
-////                            overridePendingTransition(0, 0);
-////                            finish();
-////                            return true;
-////                        } else if (SessionNo.equals("3")) {
-////                            i.putExtra("SessionNo", SessionNo);
-////                            i.putExtra("level", level);
-////                            i.putExtra("week",week);
-////                            i.putExtra("currDay",currDay);
-////                            startActivity(i);
-////                            overridePendingTransition(0, 0);
-////                            finish();
-////                        } else if (SessionNo.equals("4")) {
-////                            i.putExtra("SessionNo", SessionNo);
-////                            i.putExtra("level", level);
-////                            i.putExtra("week",week);
-////                            i.putExtra("currDay",currDay);
-////                            startActivity(i);
-////                            overridePendingTransition(0, 0);
-////                            finish();
-////                        } else if (SessionNo.equals("5")) {
-////                            i.putExtra("SessionNo", SessionNo);
-////                            i.putExtra("level", level);
-////                            i.putExtra("week",week);
-////                            i.putExtra("currDay",currDay);
-////                            startActivity(i);
-////                            overridePendingTransition(0, 0);
-////                            finish();
-////                        }
-//                }
-//                return false;
-//            }
-//        });
+
 
         // LinearLayout exFrame = (LinearLayout) findViewById(R.id.ExFrame);
         buttonALeart = (Button) findViewById(R.id.alertButton);
@@ -573,7 +502,6 @@ public class PlanView extends AppCompatActivity {
                         currDay="2";
                         inProg.putExtra("currDay",currDay);
                         getExIndex(currDay,week);
-
                         day2();
                     }
 
@@ -625,21 +553,12 @@ public class PlanView extends AppCompatActivity {
                 if (daySat) {
                     mon.setText("My Exercises for this day");
                     restimg.setVisibility(View.INVISIBLE);
-//                        loadEx1(v);
-//                        loadEx2(v);
-//                        loadEx3(v);
+
                     butstart1.setVisibility(View.VISIBLE);
 
                     scrollView.setVisibility(View.VISIBLE);
 
-//                        if(SessionNo.equals("2")){
-//
-//
-//                        }
-//                        if(SessionNo.equals("3")){
-//
-//
-//                        }
+
                     if (SessionNo.equals("4")) {
                         currDay="4";
                         inProg.putExtra("currDay",currDay);
@@ -648,10 +567,7 @@ public class PlanView extends AppCompatActivity {
 
                     }
 
-//                        if(SessionNo.equals("5")) {
-//                            day2();
-//                        }
-                    ///      break;
+
 
                 } else {
 
@@ -728,7 +644,8 @@ public class PlanView extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
 
                     if (SessionNo.equals("2")) {
-                        currDay="1";                        inProg.putExtra("currDay",currDay);
+                        currDay="1";
+                        inProg.putExtra("currDay",currDay);
 
                         getExIndex(currDay,week);
                         day1();
@@ -1006,21 +923,24 @@ public class PlanView extends AppCompatActivity {
 
                     //  }
                     if (SessionNo.equals("3")) {
-                        currDay="3";                        inProg.putExtra("currDay",currDay);
-
+                        currDay="3";
+                        inProg.putExtra("currDay",currDay);
+                        getExIndex(currDay,week);
                         day3();
 
 
                     }
                     if (SessionNo.equals("4")) {
-                        currDay="3";                        inProg.putExtra("currDay",currDay);
-
+                        currDay="3";
+                        inProg.putExtra("currDay",currDay);
+                        getExIndex(currDay,week);
                         day3();
 
                     }
                     if (SessionNo.equals("5")) {
-                        currDay="4";                        inProg.putExtra("currDay",currDay);
-
+                        currDay="4";
+                        getExIndex(currDay,week);
+                        inProg.putExtra("currDay",currDay);
                         day4();
                     }
                     //       break;
@@ -1091,7 +1011,8 @@ public class PlanView extends AppCompatActivity {
 
                     //   break;
                     if (SessionNo.equals("5")) {
-                        currDay="5";                        inProg.putExtra("currDay",currDay);
+                        currDay="5";
+                        inProg.putExtra("currDay",currDay);
 
                         getExIndex(currDay,week);
                         day5();
@@ -1697,14 +1618,12 @@ public class PlanView extends AppCompatActivity {
 
         if (dayOfTheWeek.contains("Friday")) {
             buttonFri.performClick();
-//            updateFlag();
-//            GeneratenextWeek();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Monday")) {
             buttonMon.performClick();
             weekNo.setText("Week"+week);
-            updateFlag();
+
 
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
@@ -1713,6 +1632,7 @@ public class PlanView extends AppCompatActivity {
 
         } else if (dayOfTheWeek.contains("Saturday")) {
             buttonSat.performClick();
+            updateFlag();
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Thursday")) {
@@ -2886,7 +2806,7 @@ public class PlanView extends AppCompatActivity {
 
     public void getExIndex(String curr,int wee) {
         db = FirebaseFirestore.getInstance();
-        DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+wee).document("day"+curr);
+        DocumentReference d = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
         d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -2900,66 +2820,370 @@ public class PlanView extends AppCompatActivity {
 
                 if(zero==0){
 
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
+
+
+
                 }
 
-               else if(FBindex==1){
-                    exRow1.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx1.setTextSize(19);
+              else   if(FBindex==1){
+                    exRow1.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx1.setTextSize(21);
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==2){
 
-                    exRow2.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx2.setTextSize(19);
+                    exRow2.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx2.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==3){
 
-                    exRow3.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx3.setTextSize(19);
+                    exRow3.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx3.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==4){
 
-                    exRow4.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx4.setTextSize(19);
+                    exRow4.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx4.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==5){
 
-                    exRow5.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx5.setTextSize(19);
+                    exRow5.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx5.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==6){
 
-                    exRow6.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx6.setTextSize(19);
+                    exRow6.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx6.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==7){
 
-                    exRow7.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx7.setTextSize(19);
+                    exRow7.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx7.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==8){
 
-                    exRow8.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx8.setTextSize(19);
+                    exRow8.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx8.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==9){
 
-                    exRow9.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx9.setTextSize(19);
+                    exRow9.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx9.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==10){
 
-                    exRow10.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx10.setTextSize(19);
+                    exRow10.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx10.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==11){
 
-                    exRow11.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx11.setTextSize(19);
+                    exRow11.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx11.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow12.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx12.setTextSize(18);
                 }
                 else if(FBindex==12){
 
-                    exRow12.setBackgroundColor(Color.parseColor("#F8FFD6"));
-                    TextviewEx12.setTextSize(19);
+                    exRow12.setBackgroundColor(Color.parseColor("#ECF9FD"));
+                    TextviewEx12.setTextSize(21);
+                    exRow1.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow3.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow4.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow5.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow6.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow7.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow8.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow9.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow10.setBackgroundColor(Color.parseColor("#ffffff"));
+                    exRow11.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                    TextviewEx1.setTextSize(18);
+                    TextviewEx2.setTextSize(18);
+                    TextviewEx3.setTextSize(18);
+                    TextviewEx4.setTextSize(18);
+                    TextviewEx5.setTextSize(18);
+                    TextviewEx6.setTextSize(18);
+                    TextviewEx7.setTextSize(18);
+                    TextviewEx8.setTextSize(18);
+                    TextviewEx9.setTextSize(18);
+                    TextviewEx10.setTextSize(18);
+                    TextviewEx11.setTextSize(18);
+
                 }
 
 
