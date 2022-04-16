@@ -13,6 +13,8 @@
         android:orientation="vertical">
 
 
+
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="120dp"
@@ -77,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20sp"
-            app:cardBackgroundColor="#11abee">
+            app:cardBackgroundColor="#11abee"
+            >
 
             <TextView
                 android:id="@+id/login"
@@ -90,6 +93,9 @@
                 />
 
         </androidx.cardview.widget.CardView>
+
+
+
         <TextView
             android:id="@+id/Register"
             android:layout_width="85dp"
@@ -109,6 +115,8 @@
             android:textSize="17dp"
             android:textColor="#0009EE"
             />
+
+
 
         <TextView
             android:id="@+id/Txtforgot"

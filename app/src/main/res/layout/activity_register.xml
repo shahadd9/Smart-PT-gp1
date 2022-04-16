@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="120dp"
@@ -231,7 +232,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20sp"
-            app:cardBackgroundColor="#dcdcdc">
+            app:cardBackgroundColor="#11abee">
 
             <TextView
                 android:id="@+id/signup"
@@ -239,11 +240,13 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Sign Up"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
+
+
         <TextView
             android:id="@+id/login"
             android:layout_width="150dp"
@@ -252,6 +255,7 @@
             android:text="have an account? "
             android:textAlignment="center"
             android:textSize="17dp" />
+
         <TextView
             android:id="@+id/Txtlogin"
             android:layout_width="50dp"
