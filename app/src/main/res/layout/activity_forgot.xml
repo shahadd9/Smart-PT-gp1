@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20sp"
-            app:cardBackgroundColor="#dcdcdc">
+            app:cardBackgroundColor="#11abee">
 
             <TextView
                 android:id="@+id/passReset"
@@ -53,7 +53,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Reset "
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

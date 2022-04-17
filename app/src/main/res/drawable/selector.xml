@@ -3,10 +3,12 @@
 
     <item
         android:state_selected="true"
-        android:drawable="@color/purple_500"/>
+        android:drawable="@color/lgray"
+
+        />
 
     <item
         android:state_selected="false"
-        android:drawable="@color/purple_700"/>
+        android:drawable="@color/white"/>
 
 </selector>

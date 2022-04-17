@@ -239,31 +239,31 @@ public class SessionView extends AppCompatActivity {
                 else{
                     sets.setText(i+1+"/"+s);
                     i=i+1;
-                    String sessionComp="Gooood you complete "+i+"set";
-                    mTTS.setSpeechRate(1+sessionComp.length()/200 );
-                    mTTS.speak(sessionComp, TextToSpeech.QUEUE_FLUSH, null);
+//                    String sessionComp="Gooood you complete "+i+"set";
+//                    mTTS.setSpeechRate(1+sessionComp.length()/200 );
+//                    mTTS.speak(sessionComp, TextToSpeech.QUEUE_FLUSH, null);
 
                     if(prog<=90){
                         prog+=(100/s);
                         updteProgressBar();
-//                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
-//
-//                                restAudio = new MediaPlayer();
-//
-//                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//
-//
-//
-//                                try {
-//                                    restAudio.setDataSource(audioUrl);
-//                                    // below line is use to prepare
-//                                    // and start our media player.
-//                                    restAudio.prepare();
-//                                    restAudio.start();
-//
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
+                        String audioUrl = "https://od.lk/s/NzVfMzI5OTA2NTJf/ttsMP3.com_VoiceText_2022-3-3_17_50_19.mp3";
+
+                                restAudio = new MediaPlayer();
+
+                                restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+
+                                try {
+                                    restAudio.setDataSource(audioUrl);
+                                    // below line is use to prepare
+                                    // and start our media player.
+                                    restAudio.prepare();
+                                    restAudio.start();
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                         new CountDownTimer(10000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
@@ -285,7 +285,9 @@ public class SessionView extends AppCompatActivity {
                                 skipbtn.setVisibility(View.VISIBLE);
                                 pausebtn.setVisibility(View.VISIBLE);
 
-
+                                String sessionComp="Gooood you complete "+i+"set";
+                                mTTS.setSpeechRate(1+sessionComp.length()/200 );
+                                mTTS.speak(sessionComp, TextToSpeech.QUEUE_FLUSH, null);
 
 
                             }

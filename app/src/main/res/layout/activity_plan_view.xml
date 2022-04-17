@@ -35,7 +35,8 @@
             android:text="Don't forget to a warm up before exercises and cool down after"
             android:textColor="@color/orange1"
             android:textSize="15dp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:fontFamily="@font/playfair_display"/>
 
         <Button
             android:id="@+id/alertButton"
@@ -44,12 +45,13 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="360dp"
+            android:layout_marginStart="352dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="7dp"
             android:layout_marginBottom="44dp"
             android:text="X"
             android:textColor="@color/black"
+            android:textStyle="bold"
             tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
         <ImageView
@@ -69,177 +71,193 @@
         android:layout_height="198dp"
         android:layout_below="@+id/alertFrame"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="422dp"
-        android:background="@drawable/weekly_textstyle"
+        android:background="@drawable/frame11"
         android:weightSum="10">
 
         <TextView
             android:id="@+id/userNamep"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_width="238dp"
+            android:layout_height="55dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
-            android:padding="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:padding="13dp"
+            android:shadowRadius="2"
             android:text="Welcome"
             android:textColor="#ffff"
-            android:textSize="17dp"
+            android:textSize="24dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
 
         <TextView
             android:id="@+id/weekNo"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_width="122dp"
+            android:layout_height="75dp"
             android:layout_marginStart="250dp"
-            android:layout_marginTop="14dp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="13dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
+            android:shadowRadius="2"
             android:text="week"
             android:textColor="#ffff"
-            android:textSize="17dp"
+            android:textSize="24dp"
             android:textStyle="bold"
             android:translationZ="100dip" />
 
         <TextView
             android:id="@+id/WeeklytextView"
-            android:layout_width="298dp"
+            android:layout_width="377dp"
             android:layout_height="77dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="148dp"
             android:padding="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:shadowRadius="2"
             android:text="Here Is Your Weekly Active Days"
             android:textColor="#ffff"
-            android:textSize="17dp"
-            android:textStyle="bold"
+            android:textSize="21dp"
             android:translationZ="100dip" />
+        <!---  -          android:shadowColor="#506673" -->
 
+        <View
+            android:layout_width="372dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="116dp"
+            android:background="@drawable/rounded_border"
+
+
+            />
 
         <Button
             android:id="@+id/buttonSat"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Sat"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/buttonSun"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Sun"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
 
         <Button
             android:id="@+id/buttonMon"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="109dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="114dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Mon"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
 
-
-            android:textStyle="bold" />
+            />
 
         <Button
             android:id="@+id/buttonThu"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="268dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="270dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="267dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Thu"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
 
         <Button
             android:id="@+id/buttonTue"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="162dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="166dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Tue"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
 
         <Button
             android:id="@+id/buttonWed"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="215dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="218dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Wed"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
 
         <Button
             android:id="@+id/buttonFri"
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="55dp"
-            android:layout_marginStart="321dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="322dp"
+            android:layout_marginTop="124dp"
             android:layout_marginEnd="329dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#f1f3fa"
+            android:backgroundTint="#70d4f4"
+            android:padding="1dp"
             android:text="Fri"
             android:textAllCaps="false"
-            android:textColor="#696969"
-            android:textSize="8dp"
-
-
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
 
 
     </FrameLayout>
@@ -248,9 +266,9 @@
         android:id="@+id/viewim"
         android:layout_width="396dp"
         android:layout_height="383dp"
+        android:layout_below="@+id/WeeklyFrame"
         android:layout_marginTop="-420dp"
         android:orientation="vertical"
-        android:layout_below="@+id/WeeklyFrame"
 
         >
 
@@ -260,15 +278,14 @@
             android:layout_width="388dp"
             android:layout_height="50dp"
             android:layout_below="@+id/viewim"
-
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="13dp"
             android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-medium"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textSize="20dp" />
 
 
         <ImageView
@@ -295,7 +312,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="-350dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="102dp"
+        android:layout_marginBottom="129dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:visibility="visible"
@@ -326,20 +343,18 @@
                 >
 
 
-
-
                 <TextView
                     android:id="@+id/textViewex1"
                     android:layout_width="240dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:layout_gravity="center_vertical"
-                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
-                    />
 
 
 <!--                <ImageView-->
@@ -348,13 +363,27 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
-                    android:id="@+id/alrt1"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt" />
+                <!--                    android:layout_width="54dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginStart="57dp"-->
+<!--                    android:layout_marginTop="13dp"-->
+<!--                    app:srcCompat="@drawable/findd"-->
+<!--                    android:scaleType="fitXY" -->
 
+
+                <Button
+                    android:id="@+id/alrt1"
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:padding="2dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    app:cornerRadius="10dp" />
 
                 <TextView
                     android:id="@+id/f1"
@@ -377,8 +406,8 @@
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:id="@+id/exRow2"
-                            android:background="@drawable/border"     
-                android:visibility="visible"
+            android:background="@drawable/border"
+            android:visibility="visible"
 
             >
 
@@ -390,10 +419,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
                 android:layout_gravity="center_vertical"
-
+                android:fontFamily="sans-serif-smallcaps"
                 android:textStyle="bold" />
 
 <!--            <ImageView-->
@@ -402,12 +431,19 @@
 <!--                android:layout_height="50dp"-->
 <!--                android:layout_marginStart="57dp"-->
 <!--                app:srcCompat="@drawable/startex" />-->
-            <ImageView
+            <Button
                 android:id="@+id/alrt2"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/findalt"  />
+                android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#6FD4F4"
+                app:cornerRadius="10dp"
+                android:text="Find \n Alternative"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/f2"
@@ -441,25 +477,27 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
+                android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
-
-                android:textSize="14dp"
-                    android:textStyle="bold"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/start3"-->
-<!--                    android:layout_width="54dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginStart="57dp"-->
-<!--                    app:srcCompat="@drawable/startex" />-->
-            <ImageView
+
+            <Button
                 android:id="@+id/alrt3"
-                android:layout_width="54dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="57dp"
-                app:srcCompat="@drawable/findalt" />
+                android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#6FD4F4"
+                app:cornerRadius="10dp"
+                android:text="Find \n Alternative"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/f3"
@@ -490,13 +528,15 @@
 
                 <TextView
                     android:id="@+id/textViewex4"
-                                        android:layout_width="240dp"
+                    android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                    android:textSize="18dp"
+
                     android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:textStyle="bold"
                     />
 
@@ -506,12 +546,19 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt4"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"   />
+                    android:layout_width="95dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="#6FD4F4"
+                app:cornerRadius="10dp"
+                android:text="Find Alternative"
+                android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                android:padding="2dp"
+                android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f4"
                     android:layout_width="wrap_content"
@@ -532,7 +579,7 @@
                 android:id="@+id/exRow5"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                                android:background="@drawable/border"     
+                                android:background="@drawable/border"
                 android:visibility="visible"
                 >
 
@@ -545,10 +592,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
                 android:layout_gravity="center_vertical"
-
+                android:fontFamily="sans-serif-smallcaps"
                 android:textStyle="bold"
                 />
 
@@ -558,12 +605,19 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt5"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f5"
                     android:layout_width="wrap_content"
@@ -598,10 +652,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
                 android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-smallcaps"
 
                 />
 
@@ -612,12 +668,19 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
-                    android:id="@+id/alrt6"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                <Button
+                    android:id="@+id/alrt6"                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f6"
@@ -653,11 +716,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
 
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-smallcaps"
                 />
 
 <!--            <ImageView-->
@@ -666,12 +730,20 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt7"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f7"
                     android:layout_width="wrap_content"
@@ -701,28 +773,33 @@
 
                 <TextView
                     android:id="@+id/textViewex8"
-                                        android:layout_width="240dp"
+                    android:layout_width="240dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="7dp"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:layout_gravity="center_vertical"
-                    android:textStyle="bold"                    />
+                    android:fontFamily="sans-serif-smallcaps"
+                 />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/start8"-->
-<!--                    android:layout_width="54dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginStart="57dp"-->
-<!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+
+                <Button
                     android:id="@+id/alrt8"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f8"
@@ -754,11 +831,11 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_gravity="center_vertical"
-
+                android:fontFamily="sans-serif-smallcaps"
                 />
 
 <!--            <ImageView-->
@@ -767,12 +844,19 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt9"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f9"
                     android:layout_width="wrap_content"
@@ -804,12 +888,13 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
+
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
                 android:layout_gravity="center_vertical"
-
-
+                android:fontFamily="sans-serif-smallcaps"
                 />
 
 <!--            <ImageView-->
@@ -819,12 +904,20 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+                <Button
                     android:id="@+id/alrt10"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find 
+ Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/f10"
@@ -846,7 +939,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                                android:background="@drawable/border"     
+                android:background="@drawable/border"
                 android:visibility="visible"
                 >
 
@@ -859,11 +952,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
 
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-smallcaps"
                 />
 
 <!--            <ImageView-->
@@ -872,12 +966,19 @@
 <!--                    android:layout_height="50dp"-->
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
-                <ImageView
+                <Button
                     android:id="@+id/alrt11"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/f11"
                     android:layout_width="wrap_content"
@@ -909,11 +1010,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="7dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
 
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-smallcaps"
                 />
 
 <!--            <ImageView-->
@@ -923,12 +1025,19 @@
 <!--                    android:layout_marginStart="57dp"-->
 <!--                    app:srcCompat="@drawable/startex" />-->
 
-                <ImageView
+                <Button
                     android:id="@+id/alrt12"
-                    android:layout_width="54dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="57dp"
-                    app:srcCompat="@drawable/findalt"  />
+                    android:layout_width="95dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#6FD4F4"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    app:cornerRadius="10dp"
+                    android:text="Find \n Alternative"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:padding="2dp"
+                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -952,120 +1061,25 @@
 
     </ScrollView>
 
-    <ImageView
+    <Button
         android:id="@+id/start100"
-        android:layout_width="50dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/bottom_nav"
         android:layout_below="@+id/ScrollFrame"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="-100dp"
-        android:layout_marginEnd="36dp"
-        app:srcCompat="@drawable/start2" />
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-120dp"
+        android:layout_marginEnd="130dp"
+        android:backgroundTint="#3F6DE1"
+        android:text="Start Session"
+        android:textSize="15sp"
+        app:cornerRadius="20dp" />
 
 
 
 
-    <!-- <LinearLayout
-          android:id="@+id/ExFrame"
-          android:layout_width="388dp"
-          android:layout_height="200dp"
-          android:layout_below="@+id/WeeklyFrame"
-          android:layout_alignParentStart="true"
-          android:layout_alignParentEnd="true"
-          android:layout_alignParentBottom="true"
-          android:layout_marginStart="8dp"
-          android:layout_marginTop="-300dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="102dp"
-          android:layout_weight="1"
-          android:orientation="vertical"
-          android:visibility="invisible">
-
-          <TableRow
-              android:layout_width="match_parent"
-              android:layout_height="67dp">
-
-
-
-              <TextView
-                  android:id="@+id/textViewex1"
-                  android:layout_width="240dp"                android:layout_marginStart="20dp"
-                  android:layout_marginTop="4dp"
-                  android:layout_marginBottom="7dp"                    android:textColor="@color/black"
-                      android:textSize="14dp"
-                      android:textStyle="bold" />
-
-              <ImageView
-                  android:id="@+id/start1"
-                  android:layout_width="60dp"
-                  android:layout_height="wrap_content"
-                  android:layout_marginStart="20dp"
-                  app:srcCompat="@drawable/startex" />
-          </TableRow>
-
-          <TableRow
-              android:layout_width="match_parent"
-              android:layout_height="67dp"
-
-              >
-
-              <ImageView
-                  android:id="@+id/imageViewex2"
-                  android:layout_width="107dp"
-                  android:layout_height="match_parent"
-                  />
-
-              <TextView
-                  android:id="@+id/textViewex2"
-                  android:layout_width="240dp"                android:layout_height="match_parent"
-                  android:layout_marginStart="20dp"
-                  android:layout_marginTop="4dp"
-                  android:layout_marginBottom="7dp"                    android:textColor="@color/black"
-                      android:textSize="14dp"
-                      android:textStyle="bold" />
-
-              <ImageView
-                  android:id="@+id/start2"
-                  android:layout_width="60dp"
-                  android:layout_height="wrap_content"
-                  android:layout_marginStart="20dp"
-                  app:srcCompat="@drawable/startex" />
-          </TableRow>
-
-          <TableRow
-              android:layout_width="match_parent"
-              android:layout_height="67dp">
-
-              <ImageView
-                  android:id="@+id/imageViewex3"
-                  android:layout_width="107dp"
-                  android:layout_height="match_parent"
-                   />
-
-              <TextView
-                  android:id="@+id/textViewex3"
-                  android:layout_width="240dp"                android:layout_height="match_parent"
-                  android:layout_marginStart="20dp"
-                  android:layout_marginTop="4dp"
-                  android:layout_marginBottom="7dp"
-                      android:textColor="@color/black"
-                      android:textSize="14dp"
-                      android:textStyle="bold" />
-
-              <ImageView
-                  android:id="@+id/start3"
-                  android:layout_width="60dp"
-                  android:layout_height="wrap_content"
-                  android:layout_marginStart="20dp"
-                  android:contentDescription="TODO"
-                  app:srcCompat="@drawable/startex" />
-          </TableRow>
-
-      </LinearLayout>
-
-      -->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -1074,8 +1088,8 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@drawable/selector"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemIconTint="#aaa6a4"
+        app:itemTextColor="#aaa6a4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

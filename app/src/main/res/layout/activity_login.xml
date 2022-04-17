@@ -12,12 +12,30 @@
         android:layout_margin="20dp"
         android:orientation="vertical">
 
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/logo1"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="3dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:text="Smart PT"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="Login"
             android:textColor="@android:color/black"
@@ -33,7 +51,7 @@
                 android:id="@+id/logemail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Enter Email"
+                android:hint="Email Address"
                 android:inputType="text"
                 android:textColor="@android:color/black" />
 
@@ -50,7 +68,7 @@
                 android:id="@+id/logpass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Enter Password"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="@android:color/black" />
 
@@ -61,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20sp"
-            app:cardBackgroundColor="#dcdcdc">
+            app:cardBackgroundColor="#11abee"
+            >
 
             <TextView
                 android:id="@+id/login"
@@ -69,21 +88,35 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Login"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                />
 
         </androidx.cardview.widget.CardView>
 
+
+
         <TextView
-            android:id="@+id/TxtRegister"
-            android:layout_width="match_parent"
+            android:id="@+id/Register"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/register"
             android:layout_marginTop="10dp"
-            android:text="new user? now register"
+            android:text="new user?"
             android:textAlignment="textStart"
             android:textSize="17dp" />
+        <TextView
+            android:id="@+id/TxtRegister"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-25dp"
+            android:layout_marginStart="82dp"
+            android:text="now register"
+            android:textSize="17dp"
+            android:textColor="#0009EE"
+            />
+
+
 
         <TextView
             android:id="@+id/Txtforgot"
@@ -91,9 +124,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/TxtRegister"
             android:layout_marginTop="10dp"
-            android:text="forgot password"
+            android:text="forgot password?"
             android:textAlignment="textStart"
-            android:textSize="17dp" />
+            android:textSize="17dp"
+            android:textColor="#0009EE"
+            />
 
 
 

@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -102,7 +103,7 @@ public class Register extends AppCompatActivity {
         //check length
         if(pas.length()>=8){
             is8=true;
-            c1.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c1.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e1.setVisibility(View.VISIBLE);
         }else{
             is8=false;
@@ -112,7 +113,7 @@ public class Register extends AppCompatActivity {
         //check number
         if(pas.matches(".*[0-9].*")){
             hasnum=true;
-            c2.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c2.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e2.setVisibility(View.VISIBLE);
         }else{
             hasnum=false;
@@ -123,7 +124,7 @@ public class Register extends AppCompatActivity {
         //check upperCase
         if(pas.matches(".*[A-Z].*")){
             hasupper=true;
-            c3.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c3.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e3.setVisibility(View.VISIBLE);
         }else{
             hasupper=false;
@@ -135,7 +136,7 @@ public class Register extends AppCompatActivity {
         //check lowerCase
         if(pas.matches(".*[a-z].*")){
             haslower=true;
-            c4.setTextColor(Color.parseColor(getString(R.color.purple_500)));
+            c4.setTextColor(Color.parseColor(getString(R.color.Sets)));
             e4.setVisibility(View.VISIBLE);
         }else {
             haslower = false;
@@ -149,8 +150,10 @@ public class Register extends AppCompatActivity {
     private void register() {
         user=email.getText().toString().trim();
         pas=pass.getText().toString().trim();
-        if (user.isEmpty()) {
+        if(user.isEmpty()){
             email.setError("Email cannot be empty");
+        }else  if(!Patterns.EMAIL_ADDRESS.matcher(user).matches()){
+            email.setError("invalid email format");
         }
         if (pas.isEmpty()) {
             pass.setError("Password cannot be empty");
@@ -164,7 +167,7 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(Register.this, "Register success ", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Register.this, Name.class));
                     } else {
-                        Toast.makeText(Register.this, "Register failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this, "Register failed " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }

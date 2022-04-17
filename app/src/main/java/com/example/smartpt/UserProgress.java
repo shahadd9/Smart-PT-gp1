@@ -2,8 +2,6 @@ package com.example.smartpt;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -14,19 +12,12 @@ import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextWatcher;
 import android.text.format.Formatter;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,17 +30,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
@@ -60,13 +47,10 @@ import org.eazegraph.lib.models.PieModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 
 import lecho.lib.hellocharts.model.Axis;
@@ -98,8 +82,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spin;
     public static int tday, fSession;
     String durationInString;
-    //    String level="Beg";//NEED TO REMOVE
-    String[] userExer = { "Diamond push-up", "Weighted push-up", "Knee push-up", "Barbell bench press", "Stability ball decline push-up" };
+//    String level="Beg";//NEED TO REMOVE
+    String[] users = { "Diamond push-up", "Weighted push-up", "Knee push-up", "Barbell bench press", "Stability ball decline push-up" };
     int beginnerDuration, intermediateDuration, advanceDuartion, finalDuartion;
     private int rem;
     String[] COLORS = new String[] { "#00AB78", "#00ab90","#007865","#bffff5", "#80ffeb"  };
@@ -111,10 +95,9 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     LineChartView lineChartViewWeight, lineChartViewReps, lineChartViewSets;
     String[] axisData = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};//Training days
-    int[] yAxisDataSets ={2, 2, 2, 3, 2, 2, 3};
-    int[] yAxisDataReps= {10};
-    int[] yAxisDataWeights = {0};
-    String[] Ex;
+    int[] yAxisDataSets = {2, 2, 2, 3, 2, 2, 3};
+    int[] yAxisDataReps = {20, 20, 15, 30, 20, 20, 15};
+    int[] yAxisDataWeights = {2, 2, 2, 2, 5,5, 5};
     androidx.cardview.widget.CardView CardViewWeight, CardViewSets, CardViewReps;
 
 
@@ -130,27 +113,16 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     // SHAHAD DECLARATIONS
     private int week;
     private String SessionNo, level,currDay,duration,day;
-    private Double time; // time is in seconds
+    private Double time;
     public final static String shared="sharedPrefs";
     private FirebaseFirestore db;
     private FirebaseAuth uAuth;
     private String id;
-    //    private String userIp;
+//    private String userIp;
     private int durationInt;
     private int done;
     private boolean exist;
     String dayAr[];
-
-
-
-    //TEST
-//    EditText testDuration;
-    private Map<String, Object> user = new HashMap<>();
-    double durationEdited;
-    ArrayAdapter<String> eDurationAdapter;
-    private Boolean flag;
-    String selectedExr;
-
 
 
 
@@ -204,16 +176,6 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         CardViewWeight=findViewById(R.id.CardWeight);
         CardViewReps=findViewById(R.id.CardReps);
         CardViewSets=findViewById(R.id.CardSets);
-
-        //TEst
-//        testDuration=findViewById(R.id.editDurationTest);
-//
-//        testDuration.setVisibility(View.INVISIBLE);
-        flag=true;
-
-
-
-
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -290,24 +252,24 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
-        d.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
+            d.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                DocumentSnapshot document = task.getResult();
-                if (document.exists() && document != null) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists() && document != null) {
 
-                    exist=true;
-                    //calling linechart method
-                    readExerciseName();
-                }else{
+                        exist=true;
+                        //calling linechart method
+                        readExerciseName();
+                    }else{
 
-                    // this is rest day
+                        // this is rest day
+                    }
+
                 }
-
-            }
-        });
+            });
 
 
 
@@ -342,480 +304,16 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-//        testDuration.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                todayChart();
-////                String tD = testDuration.getText().toString();
-//
-////                time = value.getDouble("duration");
-//
-//
-//
-////                testDuration.setText(dur);
-//
-//
-//
-//                double dur = Double.parseDouble(tD);
-////                if (dur > -1 || dur < 121) {
-////                    testDuration.setError("your height is out of range!");
-////                } else {
-////                    flag=true;
-////                    user.put("duration", tD);
-////                }
-//
-//                DurationText.setText(Math.round(dur/60)+"/"+durationInt+" Min");
-////                testDuration.setText(Double.toString(Math.round(dur/60)));
-//
-//
-//
-//
-//            }
-//        });
-
-
-//        testDuration.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int id, KeyEvent event) {
-//                if (id == EditorInfo.IME_ACTION_DONE) {
-////                    todayChart();
-//
-//                    testDuration.addTextChangedListener(new TextWatcher() {
-//
-//                        public void afterTextChanged(Editable s) {
-//
-//                            // you can call or do what you want with your EditText here
-//
-//                            // yourEditText...
-//                            durationEdited= Double.parseDouble(testDuration.getText().toString());
-//                            Log.d("ROWA:", String.valueOf(durationEdited));
-////                            user.put("duration", durationEdited);
-//
-//                        }
-//
-//                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//                        public void onTextChanged(CharSequence s, int start, int before, int count) {}
-//                    });
-//
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-
-
-
-
-
-
-
-
-        //EDIT
-
-
-
-
-        // Get the application context
-        mContext = getApplicationContext();
-
-        // Get the activity
-        mActivity = UserProgress.this;
-
-        // Get the widgets reference from XML layout
-        mRelativeLayout = (RelativeLayout) findViewById(R.id.userProgress);
-        mButton = (Button) findViewById(R.id.editDuration);
-        sButton=(Button) findViewById(R.id.editSession);
-        lButton=(Button) findViewById(R.id.editSRW);
-
-
-        // Set a click listener for the text view
-//        mButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Initialize a new instance of LayoutInflater service
-//                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-//
-//                // Inflate the custom layout/view
-//                View customView = inflater.inflate(R.layout.activity_pop_up_window_duration,null);
-//                testDuration.setVisibility(View.VISIBLE);
-//
-//
-//
-//
-//
-//                /*
-//                    public PopupWindow (View contentView, int width, int height)
-//                        Create a new non focusable popup window which can display the contentView.
-//                        The dimension of the window must be passed to this constructor.
-//
-//                        The popup does not provide any background. This should be handled by
-//                        the content view.
-//
-//                    Parameters
-//                        contentView : the popup's content
-//                        width : the popup's width
-//                        height : the popup's height
-//                */
-//                // Initialize a new instance of popup window
-//                mPopupWindow = new PopupWindow(
-//                        customView,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT
-//
-//                );
-//
-//                // Set an elevation value for popup window
-//                // Call requires API level 21
-//                if(Build.VERSION.SDK_INT>=21){
-//                    mPopupWindow.setElevation(5.0f);
-//                }
-//
-//                // Get a reference for the custom view close button
-//                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-//
-//                // Set a click listener for the popup window close button
-//                closeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // Dismiss the popup window
-//                        mPopupWindow.dismiss();
-//                    }
-//                });
-//
-//                /*
-//                    public void showAtLocation (View parent, int gravity, int x, int y)
-//                        Display the content view in a popup window at the specified location. If the
-//                        popup window cannot fit on screen, it will be clipped.
-//                        Learn WindowManager.LayoutParams for more information on how gravity and the x
-//                        and y parameters are related. Specifying a gravity of NO_GRAVITY is similar
-//                        to specifying Gravity.LEFT | Gravity.TOP.
-//
-//                    Parameters
-//                        parent : a parent view to get the getWindowToken() token from
-//                        gravity : the gravity which controls the placement of the popup window
-//                        x : the popup's x location offset
-//                        y : the popup's y location offset
-//                */
-//                // Finally, show the popup window at the center location of root relative layout
-//                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
-//            }
-//        });
-
-
-//
-//
-//        // Set a click listener for the text view
-//        sButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Initialize a new instance of LayoutInflater service
-//                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-//
-//                // Inflate the custom layout/view
-//                View customView = inflater.inflate(R.layout.activity_popup_window_session,null);
-//
-//
-//                // Initialize a new instance of popup window
-//                mPopupWindow = new PopupWindow(
-//                        customView,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT
-//                );
-//
-//                // Set an elevation value for popup window
-//                // Call requires API level 21
-//                if(Build.VERSION.SDK_INT>=21){
-//                    mPopupWindow.setElevation(5.0f);
-//                }
-//
-//                // Get a reference for the custom view close button
-//                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-//
-//                // Set a click listener for the popup window close button
-//                closeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // Dismiss the popup window
-//                        mPopupWindow.dismiss();
-//                    }
-//                });
-//
-//
-//                // Finally, show the popup window at the center location of root relative layout
-//                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
-//            }
-//        });
-
-
-        // Set lButton.setOnClickListener(new View.OnClickListener() {
-        ////            @Override
-        ////            public void onClick(View view) {
-        ////                // Initialize a new instance of LayoutInflater service
-        ////                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-        ////
-        ////                // Inflate the custom layout/view
-        ////                View customView = inflater.inflate(R.layout.activity_pop_up_window_line_chart,null);
-        ////
-        ////
-        ////                // Initialize a new instance of popup window
-        ////                mPopupWindow = new PopupWindow(
-        ////                        customView,
-        ////                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-        ////                        RelativeLayout.LayoutParams.WRAP_CONTENT
-        ////                );
-        ////
-        ////                // Set an elevation value for popup window
-        ////                // Call requires API level 21
-        ////                if(Build.VERSION.SDK_INT>=21){
-        ////                    mPopupWindow.setElevation(5.0f);
-        ////                }
-        ////
-        ////                // Get a reference for the custom view close button
-        ////                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-        ////
-        ////                // Set a click listener for the popup window close button
-        ////                closeButton.setOnClickListener(new View.OnClickListener() {
-        ////                    @Override
-        ////                    public void onClick(View view) {
-        ////                        // Dismiss the popup window
-        ////                        mPopupWindow.dismiss();
-        ////                    }
-        ////                });
-        ////
-        ////
-        ////                // Finally, show the popup window at the center location of root relative layout
-        ////                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
-        ////            }
-        ////        }); a click listener for the text view
-//
-
-
-
-
-
-
     }
     //
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
         Toast.makeText(getApplicationContext(), "Selected User: "+dayAr[position] ,Toast.LENGTH_SHORT).show();
-        selectedExr=dayAr[position];
     }
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO - Custom Code
     }
-
-//Edit Duration
-    public void btn_showMessage(View view){
-        final AlertDialog.Builder alert = new AlertDialog.Builder(UserProgress.this);
-        View mView = getLayoutInflater().inflate(R.layout.activity_pop_up_window_duration,null);
-        EditText txt_inputText = (EditText)mView.findViewById(R.id.txt_input);
-        Button btn_cancel = (Button)mView.findViewById(R.id.btn_cancel);
-        Button btn_okay = (Button)mView.findViewById(R.id.btn_okay);
-        alert.setView(mView);
-        final AlertDialog alertDialog = alert.create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        btn_okay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                DurationText.setText(txt_inputText.getText().toString()+"/"+durationInt+" Min");
-                alertDialog.dismiss();
-                double inputText=Double.parseDouble(txt_inputText.getText().toString());
-                Log.d("I'm Here and my value:", String.valueOf(inputText));
-                time= inputText * 60; // to convert minutes to seconds
-                //SAVE IT TO DB (time)
-
-
-                db = FirebaseFirestore.getInstance();
-                db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).update("duration", time);
-
-//                todayChart();
-                read();
-
-            }
-        });
-        alertDialog.show();
-    }
-
-
-
-
-
-//Edit Reps , Weight, sets
-    public void btn_showEditLine(View view){
-        final AlertDialog.Builder alert = new AlertDialog.Builder(UserProgress.this);
-        View lView = getLayoutInflater().inflate(R.layout.activity_pop_up_window_line_chart,null);
-        EditText reps_inputText = (EditText)lView.findViewById(R.id.reps_input);
-        EditText weight_inputText = (EditText)lView.findViewById(R.id.weight_input);
-        EditText sets_inputText = (EditText)lView.findViewById(R.id.reps_input);
-
-        Button btn_cancel_line = (Button)lView.findViewById(R.id.btn_cancel_line);
-        Button btn_okay_line = (Button)lView.findViewById(R.id.btn_okay_line);
-
-        TextView exrciseDetails =(TextView)lView.findViewById(R.id.LogexerciseDetail);
-
-        exrciseDetails.setText("Log "+ selectedExr+" details:");
-
-
-
-
-        alert.setView(lView);
-        final AlertDialog alertDialog = alert.create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        btn_cancel_line.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        btn_okay_line.setOnClickListener(new View.OnClickListener() {
-            double inputReps, inputWeight, inputSets;
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-//                DurationText.setText(txt_inputText.getText().toString()+"/"+durationInt+" Min");
-                alertDialog.dismiss();
-                String repsCheck = reps_inputText.getText().toString();
-                if(!repsCheck.matches("")) {
-                    inputReps = Double.parseDouble(reps_inputText.getText().toString());
-
-                    if (inputReps < 10 || inputReps > 50) {
-                        reps_inputText.setError("your reps is out of range!");
-                        flag = false;
-
-
-                    } else {
-                        //SAVE TO DB ;
-                        flag = true;
-                    }
-                }
-
-                String weightCheck = weight_inputText.getText().toString();
-                if (!weightCheck.matches("")) {
-                    inputWeight = Double.parseDouble(weight_inputText.getText().toString());
-                    if (inputWeight < 0 || inputWeight > 101) {
-                        reps_inputText.setError("your Weight is out of range!");
-                        flag = false;
-
-
-                    } else {
-                        //SAVE TO DB ;
-//                        ({"ExerciseType": "x"},
-//                        {"ExerciseDetail": {"reps": 1, "weight": 3, "sets": 2});
-                        flag = true;
-                    }
-                }
-
-                String setsCheck = sets_inputText.getText().toString();
-                if (!setsCheck.matches("")) {
-                    inputSets = Double.parseDouble(sets_inputText.getText().toString());
-
-                    if (inputSets < 1 || inputReps > 20) {
-                        reps_inputText.setError("your sets is out of range!");
-                        flag = false;
-
-
-                    } else {
-                        //SAVE TO DB ;
-                        flag = true;
-                    }
-                }
-
-
-
-                Log.d("I'm Here and my Reps:", String.valueOf(inputReps));
-                Log.d("I'm Here and my weight:", String.valueOf(inputWeight));
-                Log.d("I'm Here and my Sets:", String.valueOf(inputSets));
-                //SAVE IT TO DB (time)
-
-
-                db = FirebaseFirestore.getInstance();
-               DocumentReference docRef= db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
-//                //docRef.set("Reps",{10,10});
-
-                Map<String, Object> progress = new HashMap<>();
-                Map<String, Object> progressDetail = new HashMap<>();
-//                progressDetail.put("ExerciseType", selectedExr);
-//                db.collection("Exercise/").child("userId1234").update(user);
-
-
-
-
-
-                if(selectedExr.equals(progress.get("Type"))){
-                    progressDetail.replace("Reps", inputReps);
-                    progressDetail.replace("Weight", inputWeight);
-                    progressDetail.replace("Sets", inputSets);
-                    //progress.replace("ExerciseDetail", Arrays.asList(progressDetail));
-
-
-                }else {
-
-                    progress.put("Type", selectedExr);
-
-                    progressDetail.put("Reps", inputReps);
-                    progressDetail.put("Weight", inputWeight);
-                    progressDetail.put("Sets", inputSets);
-                    progress.put("ExerciseDetail", Arrays.asList(progressDetail));
-
-                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week" + week).document("day" + currDay).update("Exercise", FieldValue.arrayUnion(progress)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Log.d("Saved Data:", "Success");
-
-
-//                        userExer
-
-                            //progressDetail.get("Reps");
-
-//
-//                        CollectionReference doc1 = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day1").collection("Exercise");
-//                        DocumentReference ex = doc1.("Exercise");
-//
-//
-//                        doc1.Exercise[0].
-//
-//                        DatabaseReference eventIdRef = rootRef.child("EventPlayer").child(eventId);
-//
-//                        yAxisDataSets={} ;
-//
-//                        yAxisDataReps{};
-//                        yAxisDataWeights{};
-
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("Saved Data:", "Error!!");
-                        }
-                    });
-                }
-
-               read();
-
-
-            }
-        });
-
-            alertDialog.show();
-
-
-    }
-
-
-
-
 
 
 
@@ -826,7 +324,6 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     //First Chart
     public void todayChart(){
-
 //        read();
 
 
@@ -846,62 +343,29 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         }
 
-//        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
 //        time= Double.parseDouble(sharedPreferences.getString("duration","0.0"));
-//        int intime= Integer.parseInt(sharedPreferences.getString("duration","0.0"));
 
 
-//        DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
-//        int timeinInt= Integer.parseInt(time);
-        DurationText.setText(Math.round(time/60)+"/"+durationInt+" Min");
-//        testDuration.setText(Double.toString(Math.round(time/60)));
-//
-//        testDuration.setOnKeyListener(new View.OnKeyListener() {
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                // If the event is a key-down event on the "enter" button
-//                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-//                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//                    // Perform action on key press
-//                   double durationEdited= Double.parseDouble(testDuration.getText().toString());
-//                    Log.d("myTag", String.valueOf(durationEdited));
-//                    //todayChart();
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
+        DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
+        pcM1.setText(finalDuartion+"");
+        double remi=100-finalDuartion;
+        pcM2.setText(remi+"");
 
 
-        pcM1.setText(Math.round(finalDuartion) + "");
-        int remi = 100 - Math.round(finalDuartion);
-        if (remi < 0){
-            remi = 0;
-        }
-        pcM2.setText(remi + "");
+        // Set the data and color to the pie chart "Today"
+        pieChart.addPieSlice(
+                new PieModel(
+                        "",
+                        Integer.parseInt(pcM1.getText().toString()),
+                        Color.parseColor("#66BB6A")));
+        pieChart.addPieSlice(
+                new PieModel(
+                        "",
+                        Float.parseFloat(pcM2.getText().toString()),
+                        Color.parseColor("#D3C6B4")));
 
-
-            if (remi == 100) {
-                pieChart.addPieSlice(
-                        new PieModel(
-                                "",
-                                Integer.parseInt(pcM2.getText().toString()),
-                                Color.parseColor("#D3C6B4")));
-                pieChart.startAnimation();
-            } else {
-                // Set the data and color to the pie chart "Today"
-                pieChart.addPieSlice(
-                        new PieModel(
-                                "",
-                                Integer.parseInt(pcM1.getText().toString()),
-                                Color.parseColor("#66BB6A")));
-                pieChart.addPieSlice(
-                        new PieModel(
-                                "",
-                                Integer.parseInt(pcM2.getText().toString()),
-                                Color.parseColor("#D3C6B4")));
-                pieChart.startAnimation();
-            }
-
+        pieChart.startAnimation();
 
     }
 
@@ -1117,23 +581,23 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         if (SessionNo.equals("2")){
 
-            pcDay1.setText(Integer.toString(50));
+                pcDay1.setText(Integer.toString(50));
 
 
         }else if (SessionNo.equals("3")){
 
-            pcDay1.setText(Integer.toString(33));
+                pcDay1.setText(Integer.toString(33));
 
 
 //            pcDay1=pcDay2=pcDay3=33.33;
 
         }else if (SessionNo.equals("4")){
 
-            pcDay1.setText(Integer.toString(25));
+                pcDay1.setText(Integer.toString(25));
 
 
         }else {
-            pcDay1.setText(Integer.toString(20));
+                pcDay1.setText(Integer.toString(20));
 
 
 
@@ -1172,7 +636,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         WeekpieChart.startAnimation();
 
-        finishedSession.setText(done+" of "+SessionNo+" Sessions completed");
+        finishedSession.setText(done+" of "+SessionNo+" Sessions complated");
 
         if (done==0){ //0 of 4 days 0/2 0/3 0/4 0/5
             String[] zeroText= {"This could be your best week ever.", "New week, new chances. Let's do this!", "Alright, let's make this happen.", "Remember that goal? Let's go get it!"};
@@ -1213,48 +677,15 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 time = value.getDouble("duration");
-//                testDuration.setText(0);
-                Log.d("This is the time:", ""+time);
-                if (time == null){
-                    time = 0.0;
-                }
-
-
-
-
 
                 todayChart();
-                //lineChart();
+//                lineChart();
                 weekChart();
 
 
             }
         });
     }
-
-
-    public void readExerciseDetails(){
-
-        DocumentReference documentReference = db.collection("progress").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                day = value.getString("plan");
-                day = day.substring(2, day.length() - 3);
-                dayAr = day.split("_");
-
-                lineChart();
-
-
-            }
-        });
-
-
-
-
-    }
-
 
     public void readExerciseName(){
         DocumentReference documentReference = db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).collection(id).document("day"+(currDay));
