@@ -26,7 +26,7 @@
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_audio.xml" value="0.1" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_birthdate.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_equipment.xml" value="0.264" />
-        <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_exercise.xml" value="0.264" />
+        <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_exercise.xml" value="0.6" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_feedback.xml" value="0.12907608695652173" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_fitness_level.xml" value="0.2" />
         <entry key="..\:/Users/96655/AndroidStudioProjects/Smart-PT-gp1#19/app/src/main/res/layout/activity_forgot.xml" value="0.264" />
@@ -99,7 +99,6 @@
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp2/app/src/main/res/layout/activity_home.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp2/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp2/app/src/main/res/layout/activity_plan_view.xml" value="0.264" />
-        <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp2/app/src/main/res/layout/activity_update_profile.xml" value="0.1" />
         <entry key="..\:/Users/noofe/AndroidStudioProjects/Smart-PT-gp2/app/src/main/res/layout/content_home.xml" value="0.1" />
       </map>
     </option>

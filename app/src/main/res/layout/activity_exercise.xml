@@ -185,11 +185,11 @@
 
     <TextView
         android:id="@+id/mchanism"
-        android:layout_width="118dp"
+        android:layout_width="117dp"
         android:layout_height="46dp"
         android:gravity="center"
-        android:textSize="25dp"
         android:textColor="@color/black"
+        android:textSize="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.673"
