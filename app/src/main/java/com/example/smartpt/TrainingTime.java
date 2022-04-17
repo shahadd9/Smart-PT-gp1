@@ -89,6 +89,7 @@ public class TrainingTime extends AppCompatActivity {
     public void rntn(View v){
         if(mor.isChecked()){
             tTime=(String)mor.getText();
+
         }
         else if(noon.isChecked()){
             tTime=(String)noon.getText();

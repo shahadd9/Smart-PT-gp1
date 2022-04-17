@@ -24,8 +24,20 @@
             android:name=".Login"
             android:exported="false" />
         <activity
+            android:name=".PopUpWindowLineChart"
+            android:exported="false" />
+        <activity
+            android:name=".PopUpWindowSession"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarPage"
+            android:exported="false" />
+        <activity
             android:name=".UserProgress"
             android:exported="true" />
+        <activity
+            android:name=".PopUpWindowDuration"
+            android:exported="false" />
         <activity
             android:name=".feedback"
             android:exported="true" />

@@ -499,10 +499,10 @@ def findAlternative1(exName,num):
     
   index=df.index[df['exerciseName']==exName]
   index=index[0] #exercise index to find its alternatives 
-  ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[0:50]
+  ex =cos_sim_data.loc[index].sort_values(ascending=False).index.tolist()[0:20]
 #   print(ex)
   ex_recomm =  df['exerciseName'].loc[ex].values
-  for i in range(19):
+  for i in range(9):
     ex[i]=ex[i]+1
   RecommendedList=[]#append
   j=1
@@ -515,15 +515,12 @@ def findAlternative1(exName,num):
   if num >=2:
     alt=RecommendedList.loc[(RecommendedList['exerciseName']!=exName)&(RecommendedList['isNeedEquipment']==0)]
     if not alt.empty:
-        alt=alt.iloc[num]
+        alt=alt.iloc[0]
     else:
         alt=alt.iloc[5]
   else:
-    alt=RecommendedList.loc[(RecommendedList['exerciseName']!=exName)&(RecommendedList['isNeedEquipment']==1)]
-    if not alt.empty:
-        alt=alt.iloc[num]
-    else:
-        alt=alt.iloc[6]
+    alt=RecommendedList.loc[(RecommendedList['exerciseName']!=exName)]
+    alt=alt.iloc[num]
 
 
     

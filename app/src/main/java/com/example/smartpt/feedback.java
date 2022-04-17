@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hsalf.smileyrating.SmileyRating;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;

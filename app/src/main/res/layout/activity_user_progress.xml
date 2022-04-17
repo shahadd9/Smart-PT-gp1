@@ -146,7 +146,9 @@ android:layout_height="fill_parent">
                 android:text="Edit"
                 android:textAlignment="center"
                 android:textColor="#77A806"
-                app:cornerRadius="15dp">
+                app:cornerRadius="15dp"
+                android:onClick="btn_showMessage">
+
 
             </Button>
 
@@ -180,6 +182,18 @@ android:layout_height="fill_parent">
                 android:text="30 Min"
                 android:textAlignment="center"
                 android:textSize="20sp" />
+
+
+<!--            <EditText-->
+<!--                android:id="@+id/editDurationTest"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="TEST"-->
+<!--                android:layout_marginTop="90dp"-->
+<!--                android:imeOptions="actionDone"-->
+<!--                android:maxLines="1"-->
+<!--                android:inputType="numberDecimal"-->
+<!--                />-->
 
 
             <LinearLayout
@@ -290,6 +304,8 @@ android:layout_height="fill_parent">
 
             </LinearLayout>
 
+
+
             <TextView
                 android:id="@+id/FinishDay"
                 android:layout_width="match_parent"
@@ -373,7 +389,8 @@ android:layout_height="fill_parent">
                 android:text="Edit"
                 android:textAlignment="center"
                 android:textColor="#77A806"
-                app:cornerRadius="15dp">
+                app:cornerRadius="15dp"
+                android:onClick="btn_showEditLine">
 
             </Button>
 
@@ -386,7 +403,8 @@ android:layout_height="fill_parent">
                 android:layout_marginTop="30dp"
                 android:text="Select exercise:"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <Spinner
                 android:id="@+id/spinner1"

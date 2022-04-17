@@ -52,11 +52,11 @@ public class LoadPa extends AppCompatActivity {
     private int height;
     private int weight;
     private double bmi;
-    private int rest;
+    private int rest;//
     private String duration;
     private int exNo;
-    private int sets;
-    private int reps;
+    private int sets;//
+    private int reps;//
 //    private String exercises;
     private String equ;
     private String SessionNo;
