@@ -36,7 +36,7 @@
             android:layout_margin="10dp"
             android:background="#EDEDED"
             android:checked="true"
-            android:onClick="rntn"
+            android:onClick="rntn1"
             />
 
         <RadioButton
@@ -46,7 +46,7 @@
             android:text="Afternoon (12-6 pm)"
             android:layout_margin="10dp"
             android:background="#EDEDED"
-            android:onClick="rntn"
+            android:onClick="rntn1"
 
 
             />
@@ -58,7 +58,7 @@
             android:text="Evening (7-11 pm)"
             android:layout_margin="10dp"
             android:background="#EDEDED"
-            android:onClick="rntn"
+            android:onClick="rntn1"
 
 
             />

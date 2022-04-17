@@ -349,7 +349,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 //        time= Double.parseDouble(sharedPreferences.getString("duration","0.0"));
 
 
-        DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
+        DurationText.setText(durationInt+" Min"+ (time/60));
         pcM1.setText(finalDuartion+"");
         double remi=100-finalDuartion;
         if (remi<0){

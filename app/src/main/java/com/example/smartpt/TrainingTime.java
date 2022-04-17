@@ -49,8 +49,8 @@ public class TrainingTime extends AppCompatActivity {
         noon=findViewById(R.id.noon);
         ev=findViewById(R.id.ev);
         time=findViewById(R.id.time);
-        tTime=(String)mor.getText();//by dafault
 
+        tTime=(String)mor.getText();//by dafault
         time.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -86,7 +86,7 @@ public class TrainingTime extends AppCompatActivity {
 
     }
 
-    public void rntn(View v){
+    public void rntn1(View v){
         if(mor.isChecked()){
             tTime=(String)mor.getText();
         }
