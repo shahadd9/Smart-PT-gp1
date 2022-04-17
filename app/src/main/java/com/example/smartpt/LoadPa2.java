@@ -115,7 +115,6 @@ public class LoadPa2 extends AppCompatActivity {
 
 
         retreiveInfo();
-        rotateAnimation();
 
 
 
@@ -151,6 +150,8 @@ public class LoadPa2 extends AppCompatActivity {
                 bmi= (weight/(height*height))*10000;
                 BMI(bmi,level);
                 addPlan();
+                rotateAnimation();
+
 
 
 
@@ -462,6 +463,9 @@ public class LoadPa2 extends AppCompatActivity {
 
         }
 
+        addPlan();
+
+
 
 
     }
@@ -531,18 +535,27 @@ public class LoadPa2 extends AppCompatActivity {
         planAdd.put("exNO",exNo);
         planAdd.put("duration",duration);
 
-        ex.document(id).collection("WorkoutPlan").document(id).set(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).update(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
+
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(LoadPa2.this,"successful",Toast.LENGTH_SHORT);
+                if (task.isSuccessful()) {
+
+////                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
+////                                    Toast.LENGTH_LONG).show();
+//                            if(flag) {
+//                                startActivity(new Intent(updateProfile.this, LoadPa2.class));
+//                            }
+//                            else {
+//                                Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",Toast.LENGTH_LONG).show();
+//                            }
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoadPa2.this,"Faild",Toast.LENGTH_SHORT);
-
+//                        Toast.makeText(com.example.smartpt.updateProfile.this, "faild",
+//                                Toast.LENGTH_LONG).show();
             }
         });
 

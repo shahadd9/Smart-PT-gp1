@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -67,10 +68,11 @@ public class updateProfile extends AppCompatActivity implements
     private String tDaysString = "";
     private ArrayList<String> a;
     private String tTime;
-    private double tDuration;
+    private double tDuration,height,weight;
     private String level;
     private String SessionNo;
     private Boolean flag;
+    private int sets;
     private String durationA;
     private String remind;
     private String numDays;
@@ -106,74 +108,7 @@ public class updateProfile extends AppCompatActivity implements
         FirebaseUser curUser=uAuth.getCurrentUser();
         id=curUser.getEmail();
 
-//        if(SessionNo.equals("2")){
-//
-//            day1=getIntent().getStringExtra("day1");
-//
-//
-//
-//            day2=getIntent().getStringExtra("day2");
-//
-//
-//
-//
-//        }
-//        else if(SessionNo.equals("3")){
-//
-//            day1=getIntent().getStringExtra("day1");
-//
-//
-//
-//            day2=getIntent().getStringExtra("day2");
-//
-//
-//
-//            day3=getIntent().getStringExtra("day3");
-//
-//
-//
-//
-//        }
-//        else if(SessionNo.equals("4")){
-//            day1=getIntent().getStringExtra("day1");
-//
-//
-//            day2=getIntent().getStringExtra("day2");
-//
-//
-//
-//            day3=getIntent().getStringExtra("day3");
-//
-//
-//
-//            day4=getIntent().getStringExtra("day4");
-//
-//
-//        }
-//        else if(SessionNo.equals("5")){
-//            day1=getIntent().getStringExtra("day1");
-//
-//
-//
-//            day2=getIntent().getStringExtra("day2");
-//
-//
-//
-//            day3=getIntent().getStringExtra("day3");
-//
-//
-//
-//            day4=getIntent().getStringExtra("day4");
-//
-//
-//
-//            day5=getIntent().getStringExtra("day5");
-//
-//
-//
-//        }
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //(navigation bar)
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -188,34 +123,12 @@ public class updateProfile extends AppCompatActivity implements
 //                        if(SessionNo.equals("2")){
                             i.putExtra("SessionNo", SessionNo);
                             i.putExtra("level", level);
-//                            i.putExtra("week",week);
-//                            i.putExtra("currDay",currDay);
+
                             startActivity(i);
                             overridePendingTransition(0, 0);
                             finish();
                             return true;
-//                        }
-//                        else if(SessionNo.equals("3")){
-//                            i.putExtra("SessionNo",SessionNo);
-//                            i.putExtra("level",level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
-//                        else if(SessionNo.equals("4")){
-//                            i.putExtra("SessionNo",SessionNo);
-//                            i.putExtra("level",level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
-//                        else if(SessionNo.equals("5")) {
-//                             i.putExtra("SessionNo", SessionNo);
-//                            i.putExtra("level", level);
-//                            startActivity(i);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                        }
+
 
                     case R.id.progress:
                         i = new Intent(updateProfile.this, UserProgress.class);
@@ -274,9 +187,11 @@ public class updateProfile extends AppCompatActivity implements
                 eDB.setText(date);
                 h=value.getString("height");
                 eHeight.setText(h);
+                height= Double.parseDouble(h);
                 w=value.getString("weight");
+                weight=Double.parseDouble(w);
                 eWeight.setText(w);
-//                dayss=value.getString("TrainingdaysNum");
+
                 remind = value.getString("TrainingTime");
                 durationA= value.getString("TrainingDuration");
                 numDays=value.getString("TrainingdaysNum");
@@ -287,54 +202,7 @@ public class updateProfile extends AppCompatActivity implements
                 eTrainingDays.setSelection(eDaysAdapter.getPosition(value.getString("TrainingdaysNum")));
             }
         });
-            /////////////////////////////////////////////////////////
-//        tDaysN=TrainingDays.gettDays();
 
-
-
-//        eTrainingDays.setText(tDaysString);
-//        ///////////////////////////////////////////////////////////
-//        goal=Goal.focusArea;
-//    for(int i = 0; i<goal.size();i++){
-//
-//        goalStrin=goalStrin+" "+ goal.get(i);
-//        }
-//        eFocusArea.setText(goalStrin);
-/////////////////////////////////////////////////////////////////////
-//        name=Name.name;
-//        eName.setText(name);
-/////////////////////////////////////////////////////////////////////
-//        gender=Gender.gen;
-//        if (gender==0)
-//        eGender.setText("Male");
-//        else
-//            eGender.setText("Female");
-/////////////////////////////////////////////////////////////////////
-//        date=Birthdate.date;
-//        eDB.setText(date);
-/////////////////////////////////////////////////////////////////////
-//        h=HeightandWeight.h;
-//        w=HeightandWeight.w;
-//        eHeight.setText(""+h+"cm");
-//        eWeight.setText(""+w+"kg");
-/////////////////////////////////////////////////////////////////////
-//        tTime=TrainingTime.tTime;
-//        eReminder.setText(tTime);
-//
-//        tDuration=TrainingDuration.tDuration+"";
-//        eDuration.setText(tDuration+" minutes");
-
-//        eName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(eName.getText().toString().matches("[a-zA-Z ]+")){
-//                    eName.setError("Only Alphabets characters are accepted! ");
-//                } else if( eName.getText().toString().equals("")){
-//                    eName.setError("This field is required!");
-//                }else{ applyNameText(eName.toString());}
-//            }
-//        });
 
 
         updateProfile.setOnClickListener(new View.OnClickListener() {
@@ -401,13 +269,77 @@ public class updateProfile extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 String h = eHeight.getText().toString();
-                double height = Double.parseDouble(h);
+                 height = Double.parseDouble(h);
                 if (height > 249 || height < 99) {
                     eHeight.setError("your height is out of range!");
                 } else {
                     flag=true;
                     user.put("height", h);
                 }
+                double bmi= (weight/(height*height))*10000;
+
+                if(level.equalsIgnoreCase("Beginner")){
+                    if(bmi < 18.5){
+                        sets =2;
+
+                    }
+                    else if(bmi >=18.5 &&bmi<=24.9){
+                        sets=3;
+                    }
+                    else{
+                        sets=2;
+                    }
+                }
+                else if(level.equalsIgnoreCase("Intermediate")){
+                    if(bmi < 18.5){
+                        sets =3;
+
+                    }
+                    else if(bmi >=18.5 &&bmi<=bmi){
+                        sets=4;
+                    }
+                    else{
+                        sets=3;
+                    }
+                }
+                else {
+                    if (bmi < 18.5) {
+                        sets = 4;
+
+                    } else if (bmi >= 18.5 && bmi <= 24.9) {
+                        sets = 5;
+                    } else {
+                        sets = 4;
+                    }
+                }
+                Map<String,Object> planAdd = new HashMap<>();
+
+                CollectionReference ex = db.collection("userProfile");
+                planAdd.put("sets",sets);
+
+                db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).update(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+////                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
+////                                    Toast.LENGTH_LONG).show();
+//                            if(flag) {
+//                                startActivity(new Intent(updateProfile.this, LoadPa2.class));
+//                            }
+//                            else {
+//                                Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",Toast.LENGTH_LONG).show();
+//                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(com.example.smartpt.updateProfile.this, "faild",
+//                                Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         });
@@ -423,9 +355,73 @@ public class updateProfile extends AppCompatActivity implements
                     flag=true;
                     user.put("weight", w);
                 }
+                double bmi= (weight/(height*height))*10000;
 
+                if(level.equalsIgnoreCase("Beginner")){
+                    if(bmi < 18.5){
+                        sets =2;
+
+                    }
+                    else if(bmi >=18.5 &&bmi<=24.9){
+                        sets=3;
+                    }
+                    else{
+                        sets=2;
+                    }
+                }
+                else if(level.equalsIgnoreCase("Intermediate")){
+                    if(bmi < 18.5){
+                        sets =3;
+
+                    }
+                    else if(bmi >=18.5 &&bmi<=bmi){
+                        sets=4;
+                    }
+                    else{
+                        sets=3;
+                    }
+                }
+                else {
+                    if (bmi < 18.5) {
+                        sets = 4;
+
+                    } else if (bmi >= 18.5 && bmi <= 24.9) {
+                        sets = 5;
+                    } else {
+                        sets = 4;
+                    }
+                }
+                Map<String,Object> planAdd = new HashMap<>();
+
+                CollectionReference ex = db.collection("userProfile");
+                planAdd.put("sets",sets);
+
+                db.collection("userProfile").document(id).collection("WorkoutPlan").document(id).update(planAdd).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+////                            Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",
+////                                    Toast.LENGTH_LONG).show();
+//                            if(flag) {
+//                                startActivity(new Intent(updateProfile.this, LoadPa2.class));
+//                            }
+//                            else {
+//                                Toast.makeText(com.example.smartpt.updateProfile.this, "profile has been updated",Toast.LENGTH_LONG).show();
+//                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(com.example.smartpt.updateProfile.this, "faild",
+//                                Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
+
 
 
         eDB.setOnClickListener(new View.OnClickListener() {
