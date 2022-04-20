@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity {
                         getSessionLevel();
 //                        startActivity(new Intent(Login.this, PlanView.class));
                     }else{
-                        Toast.makeText(Login.this, "Login failed "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Login failed email or password is incorrect", Toast.LENGTH_LONG).show();
                     }
                 }
             });
