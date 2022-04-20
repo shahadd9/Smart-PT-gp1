@@ -468,7 +468,7 @@ public class LoadPaP2 extends AppCompatActivity {
 
         }
 
-        addPlan();
+//        addPlan();
 
     }
 

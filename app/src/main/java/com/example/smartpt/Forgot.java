@@ -61,13 +61,8 @@ public class Forgot extends AppCompatActivity {
         uAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(Forgot.this,"Check your email to reset your password",Toast.LENGTH_LONG).show();
-                    prog.setVisibility(View.INVISIBLE);
-
-                }else{
-                    Toast.makeText(Forgot.this, "Reset failed "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(Forgot.this,"if your email exist, you will have a message to reset your password",Toast.LENGTH_LONG).show();
+                prog.setVisibility(View.INVISIBLE);
             }
         });
     }
