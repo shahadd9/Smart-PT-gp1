@@ -7,12 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mainBlue">#81c5fc</color>
+    <color name="brightBlue">#A5D4FA</color>
+    <color name="test4">#C6ECC7</color>
+    <color name="altGreenButt">#7cccbc</color>
 
-<color name="orange1">#fc9d67</color>
-<color name="yell">#fdffb0</color>
-<color name="textYell">#fedf26</color>
-<color name="butt">#f1f3fa</color>
-<color name="textbut">#d1d4dd</color>
+    <color name="orange1">#fc9d67</color>
+    <color name="yell">#fdffb0</color>
+    <color name="textYell">#fedf26</color>
+    <color name="butt">#f1f3fa</color>
+    <color name="textbut">#d1d4dd</color>
 
     <!--Track user progress-->
     <color name="Reps">#FFA726</color>
@@ -34,5 +38,10 @@
     <color name="colorPrimaryDark">#024265</color>
     <color name="colorAccent">#05af9b</color>
 
+    <color name="lgray">#F5F5F4</color>
+    <color name="bluefs">#70D3F3</color>
+    <color name="bluedark">#3E6CDF</color>
+
+    <color name="them">#6594e9</color>
 
 </resources>

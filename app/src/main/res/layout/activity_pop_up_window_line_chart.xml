@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Enter your Message"
+        android:hint="Enter Reps"
         android:textSize="20sp"
         android:inputType="numberDecimal"/>
     <EditText
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Enter your Message"
+        android:hint="Enter Weight"
         android:textSize="20sp"
         android:inputType="numberDecimal"/>
     <EditText
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Enter your Message"
+        android:hint="Enter Sets"
         android:textSize="20sp"
         android:inputType="numberDecimal"/>
 
@@ -44,6 +44,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="Cancel"
             android:textColor="#ffffff"
