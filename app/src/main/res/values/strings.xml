@@ -24,4 +24,6 @@
     <string name="title_activity_gender">Gender</string>
     <string name="title_activity_birthdate">Birthdate</string>
     <string name="title_activity_heightand_weight">HeightandWeight</string>
+
+
 </resources>

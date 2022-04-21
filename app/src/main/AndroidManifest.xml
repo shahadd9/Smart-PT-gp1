@@ -14,12 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPT">
         <activity
+            android:name=".TableProgress"
+            android:exported="true" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".Forgot"
             android:exported="false"
-            android:parentActivityName=".Login"/>
+            android:parentActivityName=".Login" />
         <activity
             android:name=".Login"
             android:exported="false" />
