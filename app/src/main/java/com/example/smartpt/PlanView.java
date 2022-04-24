@@ -490,7 +490,7 @@ public class PlanView extends AppCompatActivity {
                 // for (int i=0;i<days.size();i++){
                 //   String day =days.get(i);
                 if (dayMon) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
                     butstart1.setVisibility(View.VISIBLE);
 
@@ -551,7 +551,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (daySat) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 
                     butstart1.setVisibility(View.VISIBLE);
@@ -630,7 +630,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (daySun) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 //                    if (SessionNo.equals("2")) {
 //                        day1();
@@ -730,7 +730,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (dayTue) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
@@ -830,7 +830,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (dayWed) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
@@ -908,7 +908,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (dayThu) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
@@ -1001,7 +1001,7 @@ public class PlanView extends AppCompatActivity {
 
 
                 if (dayFri) {
-                    mon.setText("My Exercises for this day");
+                    mon.setText("Your Exercises For This Day");
                     restimg.setVisibility(View.INVISIBLE);
 //                        loadEx1(v);
 //                        loadEx2(v);
