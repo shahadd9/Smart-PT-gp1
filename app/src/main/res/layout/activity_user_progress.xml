@@ -338,6 +338,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="550dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="150dp"
                     android:elevation="10dp"
                     app:cardCornerRadius="10dp">
 
@@ -575,29 +576,8 @@
                     android:textSize="1sp"
                     android:textStyle="bold" />
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcM3"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcM4"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
+
 
                 <TextView
                     android:id="@+id/pcDay1"
@@ -611,128 +591,21 @@
                     android:textSize="1sp"
                     android:textStyle="bold" />
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcDay2"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
 
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcDay3"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
-
-
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcDay4"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
-
-
-                <!--                <TextView-->
-                <!--                    android:id="@+id/pcDay5"-->
-                <!--                    android:layout_width="fill_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:fontFamily="sans-serif-light"-->
-                <!--                    android:text="0"-->
-                <!--                    android:textAlignment="textEnd"-->
-                <!--                    android:textColor="@color/color_one"-->
-                <!--                    android:textSize="18sp"-->
-                <!--                    android:textStyle="bold" />-->
-
-
-                <!--            <RelativeLayout-->
-                <!--                xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_margin="20dp"-->
-                <!--                android:background="#62def8">-->
-
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_centerInParent="true"-->
-                <!--                    android:layout_margin="30dp"-->
-                <!--                    android:textSize="22sp"-->
-                <!--                    android:text="This is a popup window."/>-->
-
-                <!--            </RelativeLayout>.-->
-
-
-                <!--            firebase-->
-
-                <!--            &lt;!&ndash;Edittext for getting course Name&ndash;&gt;-->
-                <!--            <EditText-->
-                <!--                android:id="@+id/idEdtCourseName"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginStart="10dp"-->
-                <!--                android:layout_marginTop="20dp"-->
-                <!--                android:layout_marginEnd="10dp"-->
-                <!--                android:hint="Course Name"-->
-                <!--                android:importantForAutofill="no"-->
-                <!--                android:inputType="text" />-->
-
-                <!--            &lt;!&ndash;Edittext for getting course Duration&ndash;&gt;-->
-                <!--            <EditText-->
-                <!--                android:id="@+id/idEdtCourseDuration"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginStart="10dp"-->
-                <!--                android:layout_marginTop="20dp"-->
-                <!--                android:layout_marginEnd="10dp"-->
-                <!--                android:hint="Course Duration in min"-->
-                <!--                android:importantForAutofill="no"-->
-                <!--                android:inputType="time" />-->
-
-                <!--            &lt;!&ndash;Edittext for getting course Description&ndash;&gt;-->
-                <!--            <EditText-->
-                <!--                android:id="@+id/idEdtCourseDescription"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginStart="10dp"-->
-                <!--                android:layout_marginTop="20dp"-->
-                <!--                android:layout_marginEnd="10dp"-->
-                <!--                android:hint="Course Description"-->
-                <!--                android:importantForAutofill="no"-->
-                <!--                android:inputType="text" />-->
-
-                <!--            &lt;!&ndash;Button for adding your course to Firebase&ndash;&gt;-->
-                <!--            <Button-->
-                <!--                android:id="@+id/idBtnSubmitCourse"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_margin="10dp"-->
-                <!--                android:text="Submit Course Details"-->
-                <!--                android:textAllCaps="false" />-->
-
-
+                <Button
+                    android:id="@+id/tProg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="1000dp"
+                    android:text="Next"
+                    />
             </RelativeLayout>
         </LinearLayout>
 
     </ScrollView>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

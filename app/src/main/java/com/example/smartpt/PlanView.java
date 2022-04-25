@@ -359,7 +359,8 @@ public class PlanView extends AppCompatActivity {
 
         callweek();
 
-
+        uAuth= FirebaseAuth.getInstance();
+        id=curUser.getEmail();
         DocumentReference documentReference =  db.collection("userProfile").document(id);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override

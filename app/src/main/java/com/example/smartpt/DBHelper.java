@@ -26,13 +26,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        db.execSQL("create Table "+user+"(id integer primary key autoincrement, name TEXT,date TEXT, sets TEXT, reps TEXT, weight TEXT)");
+        db.execSQL("create Table trainee(id integer primary key autoincrement, name TEXT,date TEXT, sets TEXT, reps TEXT, weight TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("drop Table if exists "+user);
+        db.execSQL("drop Table if exists trainee");
     }
 
     public boolean insertuserdata(String name,String date, String sets, String reps, String weight){
@@ -47,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("reps",reps);
         contentValues.put("weight",weight);
 
-        long result= db.insert(user,null,contentValues);
+        long result= db.insert("trainee",null,contentValues);
 
         if(result ==-1){
             return false;
@@ -69,10 +69,10 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("reps",reps);
         contentValues.put("weight",weight);
 
-        Cursor cursor=db.rawQuery("Select * from "+user+" where id = ?",new String[]{idS});
+        Cursor cursor=db.rawQuery("Select * from trainee where id = ?",new String[]{idS});
 
         if(cursor.getCount()>0) {
-            long result = db.update(user, contentValues, "id=?", new String[]{idS});
+            long result = db.update("trainee", contentValues, "id=?", new String[]{idS});
 
             if (result == -1) {
                 return false;
@@ -90,7 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor=db.rawQuery("Select * from "+user+" Where name =?",new String[]{name},null);
+        Cursor cursor=db.rawQuery("Select * from trainee Where name =?",new String[]{name},null);
 
 
         return cursor;
@@ -100,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor=db.rawQuery("Select DISTINCT name from "+user,null);
+        Cursor cursor=db.rawQuery("Select DISTINCT name from trainee",null);
 
         return cursor;
     }
