@@ -39,7 +39,7 @@ public class LoadPaP2 extends AppCompatActivity {
     private FirebaseAuth uAuth;
     private String id;
     private String level;
-//    private String userIp;
+    //    private String userIp;
     private Handler h;
     private String heightD;
     private String weightD;
@@ -468,7 +468,7 @@ public class LoadPaP2 extends AppCompatActivity {
 
         }
 
-//        addPlan();
+        addPlan();
 
     }
 

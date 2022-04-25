@@ -317,7 +317,7 @@ public class SessionView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                builder.setTitle("").setMessage("Are you sure you want to end the session?").setCancelable(true)
+                builder.setTitle("").setTitle("Are you sure you want to end the session?").setMessage("By clicking Yes, you will start from the beginning.").setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -600,6 +600,7 @@ public class SessionView extends AppCompatActivity {
                 if(counter==dayAr.length-1 || counter==dayAr.length+1  || counter==dayAr.length){
                     nextExercise="finish";
                     skipbtn.setText("Finish");
+//                    skipbtn.
 //                    skipbtn.setVisibility(View.INVISIBLE);
                 }
                 else {
@@ -671,11 +672,7 @@ public class SessionView extends AppCompatActivity {
 
     public void saveProgress(String eName, String today, double sets){
 
-//        if (! Python.isStarted()) {
-//            Python.start(new AndroidPlatform(this));
-//        }
-//        Python py = Python.getInstance();
-//        // creating python object
+
        String eName1= exerciseName.getText().toString();
        String setS=i+"";
 //        PyObject pyObj= py.getModule("progressScript"); // call the python file

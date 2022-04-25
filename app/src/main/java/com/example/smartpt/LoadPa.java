@@ -45,7 +45,7 @@ public class LoadPa extends AppCompatActivity {
     private FirebaseAuth uAuth;
     private String id;
     private String level;
-//    private String userIp;
+    //    private String userIp;
     private Handler h;
     private String heightD;
     private String weightD;
@@ -57,7 +57,7 @@ public class LoadPa extends AppCompatActivity {
     private int exNo;
     private int sets;
     private int reps;
-//    private String exercises;
+    //    private String exercises;
     private String equ;
     private String SessionNo;
     private  String trainingDays;
@@ -97,7 +97,7 @@ public class LoadPa extends AppCompatActivity {
 
 
 
-//    private CollectionReference plan = db.collection("userProfile");
+    //    private CollectionReference plan = db.collection("userProfile");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -277,7 +277,7 @@ public class LoadPa extends AppCompatActivity {
         }
         if(tP==0)  {
             if((equ.equals(0)||equ.equals("0")))
-            bench=false;
+                bench=false;
             barbell=false;
             cableMachine=false;
             stabilityBall=false;
@@ -289,7 +289,7 @@ public class LoadPa extends AppCompatActivity {
 
         }
         else {
-}
+        }
     }
 
 

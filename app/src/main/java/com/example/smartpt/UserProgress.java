@@ -137,6 +137,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private FirebaseFirestore db;
     private FirebaseAuth uAuth;
     private String id;
+    private Button goTProgress;
     //    private String userIp;
     private int durationInt;
     private int done;
@@ -203,6 +204,21 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         flag=true;
 
+        goTProgress=findViewById(R.id.tProg);
+
+        goTProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(UserProgress.this, TableProgress.class);
+                i.putExtra("SessionNo", SessionNo);
+                i.putExtra("level", level);
+                i.putExtra("week",week);
+                i.putExtra("currDay",currDay);
+                startActivity(i);
+
+            }
+        });
 
 
 

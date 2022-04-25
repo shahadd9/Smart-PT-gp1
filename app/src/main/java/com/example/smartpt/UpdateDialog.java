@@ -51,6 +51,7 @@ public class UpdateDialog extends AppCompatDialogFragment {
                 String repsText= reps.getText().toString();
                 String weightText= weight.getText().toString();
 
+
                 listener.applyText(setsText,repsText,weightText);
 
             }
