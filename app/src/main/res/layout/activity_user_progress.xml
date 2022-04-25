@@ -598,8 +598,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="150dp"
                     android:layout_marginTop="1000dp"
-                    android:text="Next"
-                    />
+                    android:text="More"
+                    android:textSize="20dp" />
             </RelativeLayout>
         </LinearLayout>
 
