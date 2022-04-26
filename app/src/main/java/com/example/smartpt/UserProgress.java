@@ -78,7 +78,10 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
-
+//Firebase
+//import java.util.Calendar;
+//import java.util.Date;
+//popup window
 
 
 
@@ -97,6 +100,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spin;
     public static int tday, fSession;
     String durationInString;
+    String[] userExer = { "Diamond push-up", "Weighted push-up", "Knee push-up", "Barbell bench press", "Stability ball decline push-up" };
     int  finalDuration;
     private int rem;
     String[] COLORS = new String[] { "#00AB78", "#00ab90","#007865","#bffff5", "#80ffeb"  };
@@ -107,12 +111,25 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     //line chart
 
     LineChartView lineChartViewWeight, lineChartViewReps, lineChartViewSets;
-    String[] axisData = new String[]{"Sat","Sun", "Mon", "Tue", "Wed", "Thur", "Fri"};//Training days
+    String[] axisData;
+    //{"Sat","Sun", "Mon", "Tue", "Wed", "Thur", "Fri"};//Training days
+    int[] yAxisDataSets ={2, 2, 2, 3, 2, 2, 3};
+    int[] yAxisDataReps= {10,10,10,10,10,10,10};
+    int[] yAxisDataWeights= {0,0,0,0,0,0,0};
+    String[] Ex;
     androidx.cardview.widget.CardView CardViewWeight, CardViewSets, CardViewReps;
 
 
 
+    //popup window
+    private Context mContext;
+    private Activity mActivity;
+    private RelativeLayout mRelativeLayout;
+    private Button mButton, sButton, lButton;
+    private PopupWindow mPopupWindow, sPopupWindow, lPopupWindow;
 
+
+    // SHAHAD DECLARATIONS
     private int week;
     private String SessionNo, level,currDay,duration,day;
     private Double time; // time is in seconds
@@ -120,6 +137,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
     private FirebaseFirestore db;
     private FirebaseAuth uAuth;
     private String id;
+    private Button goTProgress;
+    //    private String userIp;
     private int durationInt;
     private int done;
     private boolean exist;
@@ -128,7 +147,10 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
     //TEST
+//    EditText testDuration;
     private Map<String, Object> user = new HashMap<>();
+    double durationEdited;
+    ArrayAdapter<String> eDurationAdapter;
     private Boolean flag;
     String selectedExr;
 
@@ -180,8 +202,23 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         CardViewSets=findViewById(R.id.CardSets);
 
 
-        //flag=true;
+        flag=true;
 
+        goTProgress=findViewById(R.id.tProg);
+
+        goTProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(UserProgress.this, TableProgress.class);
+                i.putExtra("SessionNo", SessionNo);
+                i.putExtra("level", level);
+                i.putExtra("week",week);
+                i.putExtra("currDay",currDay);
+                startActivity(i);
+
+            }
+        });
 
 
 
@@ -232,10 +269,13 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 ////////////////////////////////////////////////////////////////////
 
 
+//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         //to get user email
         uAuth = FirebaseAuth.getInstance();
         FirebaseUser curUser = uAuth.getCurrentUser();
         id = curUser.getEmail();
+//        read();
         db = FirebaseFirestore.getInstance();
 
 
@@ -252,6 +292,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                 }else{
                     time=0.0;
                     todayChart();
+//                    lineChart();
                     weekChart();
                 }
             }
@@ -299,6 +340,25 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+        //EDIT
+
+
+
+
+        // Get the application context
+        mContext = getApplicationContext();
+
+        // Get the activity
+        mActivity = UserProgress.this;
+
+        // Get the widgets reference from XML layout
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.userProgress);
+        mButton = (Button) findViewById(R.id.editDuration);
+        //sButton=(Button) findViewById(R.id.editSession);
+        lButton=(Button) findViewById(R.id.editSRW);
+
+
+
 
 
 
@@ -312,6 +372,40 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         List axisValues = new ArrayList();
 
+        if (tday==2){
+            axisData= new String[]{"sun", "Tue"};
+
+
+
+
+
+        }else if (tday==3){
+            axisData= new String[] {"Sun", "Tue","Thur"};
+
+            //yAxisDataSets = new int[] {as default =2, 2, =index(1), 3, =index(3), 3, =index(4)};
+
+
+            //just log in (sun, Tue, Thur)
+
+        }else if (tday==4){
+            axisData=new String[]{"Sat","Sun", "Tue", "Thur"};
+
+            //yAxisDataSets = new int[] { 2,2, =index(1), 3, =index(3), 4, =index(4)};
+
+
+            //just log (sun, Tue, Thur, Sat)
+
+        }else {
+            axisData=new String[] {"Sun","Mon","Tue", "Thur", "Fri"};
+
+            //yAxisDataSets = new int[] { as default , 2,2, 3, =index(3), 4, =index(4)};
+
+
+            //just log in (sun, mon, Tue, Thur, Fri)
+
+
+
+        }
 
 
 
@@ -376,6 +470,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         btn_okay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                DurationText.setText(txt_inputText.getText().toString()+"/"+durationInt+" Min");
                 alertDialog.dismiss();
 
                 todayChart();
@@ -436,116 +531,103 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
-
             }
         });
         btn_okay_line.setOnClickListener(new View.OnClickListener() {
             double inputReps, inputWeight, inputSets;
-            double checkInputReps, checkInputWeight, checkInputSets;
             @Override
             public void onClick(View v) {
+//                DurationText.setText(txt_inputText.getText().toString()+"/"+durationInt+" Min");
+                alertDialog.dismiss();
                 String repsCheck = reps_inputText.getText().toString();
-                if (repsCheck.matches("")){
-                    reps_inputText.setError("Please Enter reps!");
-                    flag=false;
-
-                }
                 if(!repsCheck.matches("")) {
-                    checkInputReps = Double.parseDouble(reps_inputText.getText().toString());
-                    if (checkInputReps < 0 || checkInputReps > 50) {
+                    inputReps = Double.parseDouble(reps_inputText.getText().toString());
+
+                    if (inputReps < 10 || inputReps > 50) {
                         reps_inputText.setError("your reps is out of range!");
                         flag = false;
 
 
                     } else {
-                        inputReps=checkInputReps;
+                        //SAVE TO DB ;
                         flag = true;
-
                     }
                 }
 
                 String weightCheck = weight_inputText.getText().toString();
-
-                if (weightCheck.matches((""))){
-                    weight_inputText.setError("Please Enter a weight!");
-                    flag=false;
-
-                }
                 if (!weightCheck.matches("")) {
-                    checkInputWeight = Double.parseDouble(weight_inputText.getText().toString());
-                    if (checkInputWeight < 0 || checkInputWeight > 100) {
+                    inputWeight = Double.parseDouble(weight_inputText.getText().toString());
+                    if (inputWeight < 0 || inputWeight > 101) {
+                        reps_inputText.setError("your Weight is out of range!");
                         flag = false;
-                        weight_inputText.setError("The weight is out of range!");
-
 
 
                     } else {
-                        inputWeight = checkInputWeight;
+                        //SAVE TO DB ;
+//                        ({"ExerciseType": "x"},
+//                        {"ExerciseDetail": {"reps": 1, "weight": 3, "sets": 2});
                         flag = true;
-
                     }
                 }
 
                 String setsCheck = sets_inputText.getText().toString();
-                if (setsCheck.matches((""))){
-                    sets_inputText.setError("Please Enter sets!");
-                    flag=false;
-
-                }
                 if (!setsCheck.matches("")) {
-                    checkInputSets = Double.parseDouble(sets_inputText.getText().toString());
+                    inputSets = Double.parseDouble(sets_inputText.getText().toString());
 
-                    if (checkInputSets < 0 || checkInputSets > 18) {
-                        sets_inputText.setError("your sets is out of range!");
+                    if (inputSets < 1 || inputReps > 20) {
+                        reps_inputText.setError("your sets is out of range!");
                         flag = false;
 
+
                     } else {
-                        inputSets = checkInputSets;
+                        //SAVE TO DB ;
                         flag = true;
                     }
                 }
 
-                if (flag) {
-                        alertDialog.dismiss();
-                        Log.d("I'm Here and my Reps:", String.valueOf(inputReps));
-                        Log.d("I'm Here and my weight:", String.valueOf(inputWeight));
-                        Log.d("I'm Here and my Sets:", String.valueOf(inputSets));
 
 
-                        db = FirebaseFirestore.getInstance();
-                        DocumentReference docRef = db.collection("Progress").document(id).collection("index").document("weeks").collection("week" + week).document("day" + currDay);
-
-                        Map<String, Object> progress = new HashMap<>();
-                        Map<String, Object> progressDetail = new HashMap<>();
-                        progressDetail.put("Reps", inputReps);
-                        progressDetail.put("Weight", inputWeight);
-                        progressDetail.put("Sets", inputSets);
-                        progress.put("Type", selectedExr);
-                        progress.put("ExerciseDetail", Arrays.asList(progressDetail));
-
-                    db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).update("Exercise", FieldValue.arrayUnion(progress)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Log.d("Saved Data:", "Success");
+                Log.d("I'm Here and my Reps:", String.valueOf(inputReps));
+                Log.d("I'm Here and my weight:", String.valueOf(inputWeight));
+                Log.d("I'm Here and my Sets:", String.valueOf(inputSets));
+                //SAVE IT TO DB (time)
 
 
-    //                        userExer
+                db = FirebaseFirestore.getInstance();
+                DocumentReference docRef= db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
+//                //docRef.set("Reps",{10,10});
 
-                            progressDetail.get("Reps");
+                Map<String, Object> progress = new HashMap<>();
+                Map<String, Object> progressDetail = new HashMap<>();
+//                progressDetail.put("ExerciseType", selectedExr);
+                progressDetail.put("Reps", inputReps);
+                progressDetail.put("Weight", inputWeight);
+                progressDetail.put("Sets", inputSets);
+                progress.put("Type", selectedExr);
+                progress.put("ExerciseDetail", Arrays.asList(progressDetail));
+
+                db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week).document("day"+currDay).update("Exercise", FieldValue.arrayUnion(progress)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("Saved Data:", "Success");
+
+
+//                        userExer
+
+                        progressDetail.get("Reps");
 
 
 
 
 
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("Saved Data:", "Error!!");
-                        }
-                    });
-                }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Saved Data:", "Error!!");
+                    }
+                });
 
                 read();
 
@@ -568,11 +650,10 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-
-
-
     //First Chart
     public void todayChart(){
+
+//        read();
 
 
         if(level.equalsIgnoreCase("Beginner")){
@@ -591,8 +672,30 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
         }
 
-        DurationText.setText(Math.round(time/60)+"/"+durationInt+" Min");
+//        SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
+//        time= Double.parseDouble(sharedPreferences.getString("duration","0.0"));
+//        int intime= Integer.parseInt(sharedPreferences.getString("duration","0.0"));
 
+
+//        DurationText.setText(durationInt+" Min"+ (time/60)+" curr:" +currDay+" w:"+week);
+//        int timeinInt= Integer.parseInt(time);
+        DurationText.setText(Math.round(time/60)+"/"+durationInt+" Min");
+//        testDuration.setText(Double.toString(Math.round(time/60)));
+//
+//        testDuration.setOnKeyListener(new View.OnKeyListener() {
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                // If the event is a key-down event on the "enter" button
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+//                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    // Perform action on key press
+//                   double durationEdited= Double.parseDouble(testDuration.getText().toString());
+//                    Log.d("myTag", String.valueOf(durationEdited));
+//                    //todayChart();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
 
         pcM1.setText(Math.round(finalDuration) + "");
@@ -651,101 +754,10 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                Log.d("day:", Integer.parseInt(currDay) + "");
-                weekReps.clear();
+                Log.d("day:", Integer.parseInt(currDay)+"");
                 ArrayList<ArrayList<HashMap<String, Object>>> dayExcList = new ArrayList<>();
-
-
-
-            int dayOfWeek = 1;
-            if(tday == 2 && currDay.equals("2")) {
-                dayOfWeek = 2;
-            }
-            if(tday == 3){
-                if(currDay.equals("2")){
-                    dayOfWeek = 2;
-                }
-                if(currDay.equals("3")){
-                    dayOfWeek = 3;
-                }
-            }
-            if(tday == 4){
-                if(currDay.equals("2")){
-                    dayOfWeek = 2;
-                }
-                if(currDay.equals("3")) {
-                    dayOfWeek = 3;
-                }
-            }
-            if(tday == 5){
-                if(currDay.equals("2")){
-                    dayOfWeek = 2;
-                }
-                if(currDay.equals("3")){
-                    dayOfWeek = 3;
-                }
-                if(currDay.equals("4")){
-                    dayOfWeek = 4;
-                }
-                if(currDay.equals("5")){
-                    dayOfWeek = 5;
-                }
-            }
-            Log.d("dayOfWeek",dayOfWeek+"");
-//            Log.d("exall:", value.getDocuments().get(1).getData().get("Exercise").toString());
-                for(int i = 0; i < dayOfWeek; i++){
-                    Log.d("Tday:", tday+"");
-                    if(tday != 4 && i == 0){
-                        Log.d("Sunday:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 2 && i > 0 && i != 2){
-                        //sunday and Tuesday
-                        Log.d("Tday2:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 3 && i > 0){
-                        //Sunday, Tuesday and Thursday
-                        Log.d("Tday3:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 4 && i > 0 && !currDay.equals("4") && !currDay.equals("1")){
-                        //0: Sat, 1: Sunday, 2: Tuesday and 3: Thursday
-                        Log.d("Tday4:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 5 && i > 2 && i != 4){
-                        //0: Sunday, 1: Monday, 2: Tuesday, 3: Thursday and 4: Friday
-                        Log.d("Tday5:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
+                for(int i = 0; i < Integer.parseInt(currDay); i++){
                     if(value.getDocuments().get(i).getData().get("Exercise") == null){
-                        Log.d("checkForListNull:", "Passed!");
                         HashMap<String, Object> emptyMap = new HashMap<>();
                         emptyMap.put("empty", "null");
                         emptyMap.put("data", "null");
@@ -753,108 +765,56 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                         emptyList.add(emptyMap);
                         dayExcList.add(emptyList);
                     }else {
-                        if(tday == 4 && currDay.equals("4")){
-                            dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                        }else {
-                            if(tday == 4 && i == 0){
-                                dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                            }
-                            dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
-                        }
+                        dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
                     }
                 }
-                Log.d("ListOfExDays:", dayExcList.toString());
-                int remainingDays = 7 - dayExcList.size(); //remaining week days
-
-                Log.d("ListBefore: ", dayExcList.toString());
-                Log.d("ListSizeBefore:", dayExcList.size()+"");
-                Log.d("remainingDays:", remainingDays+"");
-
-                for (int i = 0; i < remainingDays; i++){
-                    HashMap<String, Object> emptyMap = new HashMap<>();
-                    emptyMap.put("empty", "null");
-                    emptyMap.put("data", "null");
-                    ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                    emptyList.add(emptyMap);
-                    dayExcList.add(emptyList);
-                }
-
-
-
-
-
-
-
                 int counter = 0;
                 Boolean addedReps = false;
                 Log.d("List size:", dayExcList.size()+"");
                 for(int i = 0; i < dayExcList.size(); i++) {
-                    Log.d("ExDay:", i + "");
-                    Log.d("ValueOfColl:", dayExcList.get(i) + "");
+                    Log.d("ExDay:", i+"");
+                    Log.d("ValueOfColl:", dayExcList.get(i)+"");
+                    Map<String, Object> Exercises = dayExcList.get(i).get(0);
                     Boolean exerciseTypeMached = false;
                     Boolean checkEmpty = false;
-                    Boolean sameReps = false;
-                    if (dayExcList.get(i) != null){
-                        for (int j = 0; j < dayExcList.get(i).size(); j++) {
-                            Map<String, Object> Exercises = dayExcList.get(i).get(j);
-                            for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
-                                if (entry.getKey().equals("empty")) {
-                                    weekReps.add(0.0);
-                                    checkEmpty = true;
-                                } else {
-                                    checkEmpty = false;
-                                    Log.d("Selected Exer111", selectedExr);
-                                    Log.d("valueEn:", entry.getValue().toString());
-                                    if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
-                                        Log.d("Condition1: ", "Passed!");
-                                        Log.d("Selected Exer", selectedExr);
+                    for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
+                        if(entry.getKey().equals("empty")){
+                            weekReps.add(0.0);
+                            checkEmpty = true;
+                        }else {
+                            checkEmpty = false;
+                            Log.d("Selected Exer111", selectedExr);
+                            if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
+                                Log.d("Condition1: ", "Passed!");
+                                Log.d("Selected Exer", selectedExr);
 
-                                        exerciseTypeMached = true;
-                                    }else{
-                                        if(entry.getKey().equals("Type")) {
-                                            exerciseTypeMached = false;
-                                        }
-                                    }
-                                    if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
-                                        Log.d("Condition2: ", "Passed!");
-                                        Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
-                                        for (Map.Entry<String, Object> inner : detail.entrySet()) {
-                                            if (inner.getKey().equals("Reps")) {
-                                                Log.d("Condition3:", "Passed!");
-                                                if(sameReps){
-                                                    Log.d("Condition4:", "Passed!");
-                                                    int index = weekReps.size() - 1;
-                                                    weekReps.remove(index);
-                                                    weekReps.add((Double) inner.getValue());
-                                                }else{
-                                                    weekReps.add((Double) inner.getValue());
-                                                    sameReps = true;
-                                                }
-                                                addedReps = true;
-                                            }
-                                        }
+                                exerciseTypeMached = true;
+                            }
+                            if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
+                                Log.d("Condition1: ", "Passed!");
+                                Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
+                                for (Map.Entry<String, Object> inner : detail.entrySet()) {
+                                    if (inner.getKey().equals("Reps")) {
+                                        weekReps.add((Double) inner.getValue());
+                                        addedReps = true;
                                     }
                                 }
                             }
                         }
-                }
-                    if (counter % 2 == 1 && !addedReps & !exerciseTypeMached && !checkEmpty) {
-                        weekReps.add(0.0);
                     }
-                    if (counter % 2 == 0 && !addedReps && !checkEmpty) {
-                        weekReps.add(0.0);
-                    } else {
+                    if(counter % 2 == 0 && !addedReps && !checkEmpty){
+                        weekReps.add(10.0);
+                    }else{
                         addedReps = false;
                     }
                     Log.d("Reps", weekReps.toString());
                     counter++;
-                    Log.d("Counter:", counter + "");
+                    Log.d("Counter:", counter+"");
                 }
                 Log.d("WeekReps:" , weekReps.toString());
                 List yAxisValuesReps = new ArrayList();
                 Line RepsLine = new Line(yAxisValuesReps).setColor(Color.parseColor("#FFA726"));
                 for (int R = 0; R < weekReps.size(); R++) {
-
                     yAxisValuesReps.add(new PointValue(R, Float.parseFloat(weekReps.get(R).toString())));
                 }
                 List lineReps = new ArrayList();
@@ -899,6 +859,13 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+//
+//        List yAxisValuesReps = new ArrayList();
+//        Line RepsLine = new Line(yAxisValuesReps).setColor(Color.parseColor("#FFA726"));
+//        for (int R = 0; R < yAxisDataReps.length; R++) {
+//            yAxisValuesReps.add(new PointValue(R,yAxisDataReps[R]));
+//        }
+
 
 
 
@@ -913,8 +880,6 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     public void setsChart(List axisValues, Axis yAxis){
 
-
-
         List<Double> weekSets = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         CollectionReference coll = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week);
@@ -922,99 +887,10 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                Log.d("day:", Integer.parseInt(currDay) + "");
-                weekSets.clear();
+                Log.d("day:", Integer.parseInt(currDay)+"");
                 ArrayList<ArrayList<HashMap<String, Object>>> dayExcList = new ArrayList<>();
-
-                int dayOfWeek = 1;
-                if(tday == 2 && currDay.equals("2")) {
-                    dayOfWeek = 2;
-                }
-                if(tday == 3){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")){
-                        dayOfWeek = 3;
-                    }
-                }
-                if(tday == 4){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")) {
-                        dayOfWeek = 3;
-                    }
-                }
-                if(tday == 5){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")){
-                        dayOfWeek = 3;
-                    }
-                    if(currDay.equals("4")){
-                        dayOfWeek = 4;
-                    }
-                    if(currDay.equals("5")){
-                        dayOfWeek = 5;
-                    }
-                }
-                Log.d("dayOfWeek",dayOfWeek+"");
-//            Log.d("exall:", value.getDocuments().get(1).getData().get("Exercise").toString());
-                for(int i = 0; i < dayOfWeek; i++){
-                    Log.d("Tday:", tday+"");
-                    if(tday != 4 && i == 0){
-                        Log.d("Sunday:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 2 && i > 0 && i != 2){
-                        //sunday and Tuesday
-                        Log.d("Tday2:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 3 && i > 0){
-                        //Sunday, Tuesday and Thursday
-                        Log.d("Tday3:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 4 && i > 0 && !currDay.equals("4") && !currDay.equals("1")){
-                        //0: Sat, 1: Sunday, 2: Tuesday and 3: Thursday
-                        Log.d("Tday4:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 5 && i > 2 && i != 4){
-                        //0: Sunday, 1: Monday, 2: Tuesday, 3: Thursday and 4: Friday
-                        Log.d("Tday5:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
+                for(int i = 0; i < Integer.parseInt(currDay); i++){
                     if(value.getDocuments().get(i).getData().get("Exercise") == null){
-                        Log.d("checkForListNull:", "Passed!");
                         HashMap<String, Object> emptyMap = new HashMap<>();
                         emptyMap.put("empty", "null");
                         emptyMap.put("data", "null");
@@ -1022,102 +898,48 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                         emptyList.add(emptyMap);
                         dayExcList.add(emptyList);
                     }else {
-                        if(tday == 4 && currDay.equals("4")){
-                            dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                        }else {
-                            if(tday == 4 && i == 0){
-                                dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                            }
-                            dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
-                        }
+                        dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
                     }
                 }
-                Log.d("ListOfExDays:", dayExcList.toString());
-                int remainingDays = 7 - dayExcList.size(); //remaining week days
-
-                Log.d("ListBefore: ", dayExcList.toString());
-                Log.d("ListSizeBefore:", dayExcList.size()+"");
-                Log.d("remainingDays:", remainingDays+"");
-
-                for (int i = 0; i < remainingDays; i++){
-                    HashMap<String, Object> emptyMap = new HashMap<>();
-                    emptyMap.put("empty", "null");
-                    emptyMap.put("data", "null");
-                    ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                    emptyList.add(emptyMap);
-                    dayExcList.add(emptyList);
-                }
-
-
-
-
-
-
-
                 int counter = 0;
                 Boolean addedSets = false;
                 Log.d("List size:", dayExcList.size()+"");
                 for(int i = 0; i < dayExcList.size(); i++) {
-                    Log.d("ExDay:", i + "");
-                    Log.d("ValueOfColl:", dayExcList.get(i) + "");
+                    Log.d("ExDay:", i+"");
+                    Log.d("ValueOfColl:", dayExcList.get(i)+"");
+                    Map<String, Object> Exercises = dayExcList.get(i).get(0);
                     Boolean exerciseTypeMached = false;
                     Boolean checkEmpty = false;
-                    Boolean sameSets = false;
-                    if (dayExcList.get(i) != null){
-                        for (int j = 0; j < dayExcList.get(i).size(); j++) {
-                            Map<String, Object> Exercises = dayExcList.get(i).get(j);
-                            for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
-                                if (entry.getKey().equals("empty")) {
-                                    weekSets.add(0.0);
-                                    checkEmpty = true;
-                                } else {
-                                    checkEmpty = false;
-                                    Log.d("Selected Exer111", selectedExr);
-                                    Log.d("valueEn:", entry.getValue().toString());
-                                    if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
-                                        Log.d("Condition1: ", "Passed!");
-                                        Log.d("Selected Exer", selectedExr);
+                    for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
+                        if(entry.getKey().equals("empty")){
+                            weekSets.add(0.0);
+                            checkEmpty = true;
+                        }else {
+                            checkEmpty = false;
+                            if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
+                                Log.d("Condition2: ", "Passed!");
 
-                                        exerciseTypeMached = true;
-                                    }else{
-                                        if(entry.getKey().equals("Type")) {
-                                            exerciseTypeMached = false;
-                                        }
-                                    }
-                                    if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
-                                        Log.d("Condition2: ", "Passed!");
-                                        Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
-                                        for (Map.Entry<String, Object> inner : detail.entrySet()) {
-                                            if (inner.getKey().equals("Sets")) {
-                                                Log.d("Condition3:", "Passed!");
-                                                if(sameSets){
-                                                    Log.d("Condition4:", "Passed!");
-                                                    int index = weekSets.size() - 1;
-                                                    weekSets.remove(index);
-                                                    weekSets.add((Double) inner.getValue());
-                                                }else{
-                                                    weekSets.add((Double) inner.getValue());
-                                                    sameSets = true;
-                                                }
-                                                addedSets = true;
-                                            }
-                                        }
+                                exerciseTypeMached = true;
+                            }
+                            if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
+                                Log.d("Condition2: ", "Passed!");
+                                Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
+                                for (Map.Entry<String, Object> inner : detail.entrySet()) {
+                                    if (inner.getKey().equals("Sets")) {
+                                        weekSets.add((Double) inner.getValue());
+                                        addedSets = true;
                                     }
                                 }
                             }
                         }
                     }
-                    if (counter % 2 == 1 && !addedSets & !exerciseTypeMached && !checkEmpty) {
-                        weekSets.add(0.0);
-                    }
-                    if (counter % 2 == 0 && !addedSets && !checkEmpty) {
-                        weekSets.add(0.0);
-                    } else {
+                    if(counter % 2 == 0 && !addedSets && !checkEmpty){
+                        weekSets.add(2.0);
+                    }else{
                         addedSets = false;
                     }
                     Log.d("Sets", weekSets.toString());
                     counter++;
-                    Log.d("Counter:", counter + "");
                 }
                 Log.d("WeekSets:" , weekSets.toString());
                 List yAxisValuesSets = new ArrayList();
@@ -1184,6 +1006,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
     public void weightChart(List axisValues, Axis yAxis){
 
+
         List<Double> weekWeight = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         CollectionReference coll = db.collection("Progress").document(id).collection("index").document("weeks").collection("week"+week);
@@ -1191,100 +1014,10 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                Log.d("day:", Integer.parseInt(currDay) + "");
-                weekWeight.clear();
+                Log.d("day:", Integer.parseInt(currDay)+"");
                 ArrayList<ArrayList<HashMap<String, Object>>> dayExcList = new ArrayList<>();
-
-
-                int dayOfWeek = 1;
-                if(tday == 2 && currDay.equals("2")) {
-                    dayOfWeek = 2;
-                }
-                if(tday == 3){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")){
-                        dayOfWeek = 3;
-                    }
-                }
-                if(tday == 4){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")) {
-                        dayOfWeek = 3;
-                    }
-                }
-                if(tday == 5){
-                    if(currDay.equals("2")){
-                        dayOfWeek = 2;
-                    }
-                    if(currDay.equals("3")){
-                        dayOfWeek = 3;
-                    }
-                    if(currDay.equals("4")){
-                        dayOfWeek = 4;
-                    }
-                    if(currDay.equals("5")){
-                        dayOfWeek = 5;
-                    }
-                }
-                Log.d("dayOfWeek",dayOfWeek+"");
-//            Log.d("exall:", value.getDocuments().get(1).getData().get("Exercise").toString());
-                for(int i = 0; i < dayOfWeek; i++){
-                    Log.d("Tday:", tday+"");
-                    if(tday != 4 && i == 0){
-                        Log.d("Sunday:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 2 && i > 0 && i != 2){
-                        //sunday and Tuesday
-                        Log.d("Tday2:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 3 && i > 0){
-                        //Sunday, Tuesday and Thursday
-                        Log.d("Tday3:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 4 && i > 0 && !currDay.equals("4") && !currDay.equals("1")){
-                        //0: Sat, 1: Sunday, 2: Tuesday and 3: Thursday
-                        Log.d("Tday4:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
-                    if(tday == 5 && i > 2 && i != 4){
-                        //0: Sunday, 1: Monday, 2: Tuesday, 3: Thursday and 4: Friday
-                        Log.d("Tday5:", "Passed!");
-                        HashMap<String, Object> emptyMap = new HashMap<>();
-                        emptyMap.put("empty", "null");
-                        emptyMap.put("data", "null");
-                        ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                        emptyList.add(emptyMap);
-                        dayExcList.add(emptyList);
-                    }
+                for(int i = 0; i < Integer.parseInt(currDay); i++){
                     if(value.getDocuments().get(i).getData().get("Exercise") == null){
-                        Log.d("checkForListNull:", "Passed!");
                         HashMap<String, Object> emptyMap = new HashMap<>();
                         emptyMap.put("empty", "null");
                         emptyMap.put("data", "null");
@@ -1292,102 +1025,48 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                         emptyList.add(emptyMap);
                         dayExcList.add(emptyList);
                     }else {
-                        if(tday == 4 && currDay.equals("4")){
-                            dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                        }else {
-                            if(tday == 4 && i == 0){
-                                dayExcList.add((ArrayList) value.getDocuments().get(3).getData().get("Exercise"));
-                            }
-                            dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
-                        }
+                        dayExcList.add((ArrayList) value.getDocuments().get(i).getData().get("Exercise"));
                     }
                 }
-                Log.d("ListOfExDays:", dayExcList.toString());
-                int remainingDays = 7 - dayExcList.size(); //remaining week days
-
-                Log.d("ListBefore: ", dayExcList.toString());
-                Log.d("ListSizeBefore:", dayExcList.size()+"");
-                Log.d("remainingDays:", remainingDays+"");
-
-                for (int i = 0; i < remainingDays; i++){
-                    HashMap<String, Object> emptyMap = new HashMap<>();
-                    emptyMap.put("empty", "null");
-                    emptyMap.put("data", "null");
-                    ArrayList<HashMap<String,Object>> emptyList = new ArrayList<>();
-                    emptyList.add(emptyMap);
-                    dayExcList.add(emptyList);
-                }
-
-
-
-
-
-
-
                 int counter = 0;
                 Boolean addedWeight = false;
                 Log.d("List size:", dayExcList.size()+"");
                 for(int i = 0; i < dayExcList.size(); i++) {
-                    Log.d("ExDay:", i + "");
-                    Log.d("ValueOfColl:", dayExcList.get(i) + "");
+                    Log.d("ExDay:", i+"");
+                    Log.d("ValueOfColl:", dayExcList.get(i)+"");
+                    Map<String, Object> Exercises = dayExcList.get(i).get(0);
                     Boolean exerciseTypeMached = false;
                     Boolean checkEmpty = false;
-                    Boolean sameWeight = false;
-                    if (dayExcList.get(i) != null){
-                        for (int j = 0; j < dayExcList.get(i).size(); j++) {
-                            Map<String, Object> Exercises = dayExcList.get(i).get(j);
-                            for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
-                                if (entry.getKey().equals("empty")) {
-                                    weekWeight.add(0.0);
-                                    checkEmpty = true;
-                                } else {
-                                    checkEmpty = false;
-                                    Log.d("Selected Exer111", selectedExr);
-                                    Log.d("valueEn:", entry.getValue().toString());
-                                    if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
-                                        Log.d("Condition1: ", "Passed!");
-                                        Log.d("Selected Exer", selectedExr);
+                    for (Map.Entry<String, Object> entry : Exercises.entrySet()) {
+                        if(entry.getKey().equals("empty")){
+                            weekWeight.add(0.0);
+                            checkEmpty = true;
+                        }else {
+                            checkEmpty = false;
+                            if (entry.getKey().equals("Type") && entry.getValue().toString().equals(selectedExr)) {
+                                Log.d("Condition3: ", "Passed!");
 
-                                        exerciseTypeMached = true;
-                                    }else{
-                                        if(entry.getKey().equals("Type")) {
-                                            exerciseTypeMached = false;
-                                        }
-                                    }
-                                    if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
-                                        Log.d("Condition2: ", "Passed!");
-                                        Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
-                                        for (Map.Entry<String, Object> inner : detail.entrySet()) {
-                                            if (inner.getKey().equals("Weight")) {
-                                                Log.d("Condition3:", "Passed!");
-                                                if(sameWeight){
-                                                    Log.d("Condition4:", "Passed!");
-                                                    int index = weekWeight.size() - 1;
-                                                    weekWeight.remove(index);
-                                                    weekWeight.add((Double) inner.getValue());
-                                                }else{
-                                                    weekWeight.add((Double) inner.getValue());
-                                                    sameWeight = true;
-                                                }
-                                                addedWeight = true;
-                                            }
-                                        }
+                                exerciseTypeMached = true;
+                            }
+                            if (entry.getKey().toString().equals("ExerciseDetail") && exerciseTypeMached) {
+                                Log.d("Condition3: ", "Passed!");
+                                Map<String, Object> detail = (HashMap) ((ArrayList) entry.getValue()).get(0);
+                                for (Map.Entry<String, Object> inner : detail.entrySet()) {
+                                    if (inner.getKey().equals("Weight")) {
+                                        weekWeight.add((Double) inner.getValue());
+                                        addedWeight = true;
                                     }
                                 }
                             }
                         }
                     }
-                    if (counter % 2 == 1 && !addedWeight & !exerciseTypeMached && !checkEmpty) {
+                    if(counter % 2 == 0 && !addedWeight && !checkEmpty){
                         weekWeight.add(0.0);
-                    }
-                    if (counter % 2 == 0 && !addedWeight && !checkEmpty) {
-                        weekWeight.add(0.0);
-                    } else {
+                    }else{
                         addedWeight = false;
                     }
                     Log.d("Weight", weekWeight.toString());
                     counter++;
-                    Log.d("Counter:", counter + "");
                 }
                 Log.d("WeekWeight:" , weekWeight.toString());
                 List yAxisValuesWeight = new ArrayList();
@@ -1405,6 +1084,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
                 dataWeight.setLines(lineWeight);
 
 
+//        yAxis.setName("Weight");
 
                 Axis axisWeight = new Axis();
                 axisWeight.setValues(axisValues);
@@ -1457,6 +1137,8 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
         done= sharedPreferences.getInt("sessionDone",0);
 
 
+//        done=2;
+//        SessionNo="4";
         tday= Integer.parseInt(SessionNo);
 
 
@@ -1487,11 +1169,17 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+//        else if(finalDuration!=(time/60)){
+//            done--;
+//        }
+
+
 
 
         int t=0;
         while(t< done) {
 
+//            String c= COLORS[t];
 
             WeekpieChart.addPieSlice(
                     new PieModel(
@@ -1561,6 +1249,7 @@ public class UserProgress extends AppCompatActivity implements AdapterView.OnIte
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 time = value.getDouble("duration");
+//                testDuration.setText(0);
                 Log.d("This is the time:", ""+time);
                 if (time == null){
                     time = 0.0;

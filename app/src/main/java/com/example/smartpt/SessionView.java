@@ -43,6 +43,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -84,6 +86,12 @@ public class SessionView extends AppCompatActivity {
     public final static String shared="sharedPrefs";
     private int done;
 
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String todaytDate;
+
+    DBHelper DB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +122,12 @@ public class SessionView extends AppCompatActivity {
         currDay=getIntent().getStringExtra("currDay");
         time= getIntent().getDoubleExtra("duration",-1);
         buttonSpeaker=findViewById(R.id.buttonSpeaker);
+
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        todaytDate = dateFormat.format(calendar.getTime());
+
+        DB=new DBHelper(this);
 
         SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
         done= sharedPreferences.getInt("sessionDone",0);
@@ -303,7 +317,7 @@ public class SessionView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                builder.setTitle("").setMessage("Are you sure you want to end the session?").setCancelable(true)
+                builder.setTitle("").setTitle("Are you sure you want to end the session?").setMessage("By clicking Yes, you will start from the beginning.").setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -340,54 +354,7 @@ public class SessionView extends AppCompatActivity {
 
             }
         });
-//        retreiveInstructions(exName);
-//        exerciseName.setText(exName);
 
-//        if(counter>0){
-//            DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week"+week).document("day"+currDay);
-//            d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//                @Override
-//                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//
-//                    FBindexD= value.getDouble("duration");
-//                    FBindex=(int)Math.round(FBindexD);
-//                    time=FBindexD+0.0;
-//                    startTimer();
-//
-//
-//                }
-//            });
-//        }
-//        else {
-//            time=0.0;
-//            startTimer();
-//
-//        }
-
-//        if(time==-1) {
-//
-//            userIp = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
-//            DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week" + week).document("day" + currDay);
-//            d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//                @Override
-//                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//                    time = value.getDouble("duration");
-//                    startTimer();
-//
-//
-//                }
-//            });
-//        }
-//        else{
-
-//        }
-
-
-
-
-//        startTimer();
 
     }
     public void updteProgressBar(){
@@ -396,23 +363,7 @@ public class SessionView extends AppCompatActivity {
 
     }
     public void nextExercise(int re){
-//        String readyAudio = "https://od.lk/s/NzVfMzMwMTYzNjlf/next.mp3";
-//
-//        restAudio = new MediaPlayer();
-//
-//        restAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//
-//
-//
-//        try {
-//            restAudio.setDataSource(readyAudio);
-//            restAudio.prepare();
-//            restAudio.start();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//
-//        }
+
 
         SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -453,6 +404,7 @@ public class SessionView extends AppCompatActivity {
 
             }
         });
+        saveProgress(exName,todaytDate,set);
 
         Intent intent= new Intent(this, StartSession.class);
         intent.putExtra("rest",re);
@@ -502,6 +454,8 @@ public class SessionView extends AppCompatActivity {
         });
 
         if(c==99){
+            saveProgress(exName,todaytDate,set);
+
             editor.putInt("sessionDone",done+1);
             editor.apply();
             Intent intent= new Intent(this, feedback.class);
@@ -646,6 +600,7 @@ public class SessionView extends AppCompatActivity {
                 if(counter==dayAr.length-1 || counter==dayAr.length+1  || counter==dayAr.length){
                     nextExercise="finish";
                     skipbtn.setText("Finish");
+//                    skipbtn.
 //                    skipbtn.setVisibility(View.INVISIBLE);
                 }
                 else {
@@ -715,21 +670,26 @@ public class SessionView extends AppCompatActivity {
 
     }
 
+    public void saveProgress(String eName, String today, double sets){
 
-//    private void getDuration(int wee, String curr){
-////
-////        DocumentReference d = db.collection("Progress").document(userIp).collection("index").document("weeks").collection("week1").document("day"+currDay);
-////        d.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-////            @Override
-////            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-////
-//////                String v = value.getString("exerciseIndex")+"";
-////                time= value.getDouble("duration");
-////                timertxt.setText(time+""+week+" "+currDay+" "+v);
-////
-////
-////            }
-////        });
-//    }
+
+       String eName1= exerciseName.getText().toString();
+       String setS=i+"";
+//        PyObject pyObj= py.getModule("progressScript"); // call the python file
+//        PyObject instructions = pyObj.callAttr("saveProgress",id,eName,today,sets); // call the  method in python
+//        exerciseName.setText(instructions.toString());
+//        instTxt.setText(instructions.toString());
+
+        Boolean check=DB.insertuserdata(eName1,today,setS,"10","Enter");
+
+        if(check==true){
+            Toast.makeText(SessionView.this,"new entry",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(SessionView.this,"NO",Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 
 }

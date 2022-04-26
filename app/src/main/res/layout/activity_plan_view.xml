@@ -45,7 +45,7 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="352dp"
+            android:layout_marginStart="356dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="7dp"
             android:layout_marginBottom="44dp"
@@ -124,7 +124,7 @@
             android:padding="15dp"
             android:fontFamily="sans-serif-medium"
             android:shadowRadius="2"
-            android:text="Here Is Your Weekly Active Days"
+            android:text="Here Is Your Plan For The Week"
             android:textColor="#ffff"
             android:textSize="21dp"
             android:translationZ="100dip" />
