@@ -100,33 +100,29 @@ public class TrainingDuration extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(System.currentTimeMillis());
-             //   calendar.set(Calendar.HOUR_OF_DAY, 9);
-             //   calendar.set(Calendar.MINUTE, 00);
-               // calendar.set(Calendar.SECOND, 00);
-               // alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
-                TrainingTime time= new TrainingTime();
                String Rtime=tTime;
 
 
                 if (Rtime=="mor"){
                 calendar.set(Calendar.HOUR_OF_DAY, 7);
-                calendar.set(Calendar.MINUTE, 00);
-                calendar.set(Calendar.SECOND, 00);}
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 1);}
 
                 if (Rtime=="noon"){
                     calendar.set(Calendar.HOUR_OF_DAY, 14);
-                    calendar.set(Calendar.MINUTE, 00);
-                    calendar.set(Calendar.SECOND, 00);}
+                    calendar.set(Calendar.MINUTE, 0);
+                    calendar.set(Calendar.SECOND, 1);}
 
                 if (Rtime=="ev"){
                     calendar.set(Calendar.HOUR_OF_DAY, 22);
-                    calendar.set(Calendar.MINUTE, 00);
-                    calendar.set(Calendar.SECOND, 00);}
+                    calendar.set(Calendar.MINUTE, 0);
+                    calendar.set(Calendar.SECOND, 1);}
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
 
             }
+
         });
 
 

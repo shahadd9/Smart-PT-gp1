@@ -5,7 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import java.text.SimpleDateFormat;
+
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +20,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Formatter;
@@ -231,6 +237,10 @@ public class PlanView extends AppCompatActivity {
     String todaytDateAr[] = new String[4];
     private String id;
 
+    //Reminder
+    private String trainingTime="";
+
+
 
 
 
@@ -371,6 +381,12 @@ public class PlanView extends AppCompatActivity {
                     SessionNo=value.getString("TrainingdaysNum");
                     namedays = test;
                     currentDay();
+                    //Reminder
+                    trainingTime = value.getString("TrainingTime");
+                    Log.d("Training Time End:" , trainingTime);
+                    Reminder();
+
+
 
                 } else {
                     Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
@@ -378,6 +394,16 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+
+
+
+
 //        db.collection("userProfile").document(userIp).get()
 //                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //                    @Override
@@ -429,6 +455,7 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
+
 
 
         ImageView restimg=(ImageView) findViewById(R.id.restimg);
@@ -1561,6 +1588,9 @@ public class PlanView extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
 
     }
 
@@ -3191,4 +3221,61 @@ public class PlanView extends AppCompatActivity {
         });
 
     }
+
+
+
+    public void Reminder(){
+        //Reminder
+        Log.d("Training Time End2" , trainingTime);
+
+        if (trainingTime.equals("Morning")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 7);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+        if (trainingTime.equals("Afternoon")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 14);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+        if (trainingTime.equals("Evening")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 22);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+    }
+
+
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            CharSequence name="ReminderChannel";
+            String description = "Channel for Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel=new NotificationChannel("notify", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
 }

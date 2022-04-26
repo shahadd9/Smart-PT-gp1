@@ -6,14 +6,23 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Random;
+
 
 public class Reminder extends BroadcastReceiver{
+
+    Random r= new Random();
+
     @Override
     public void onReceive(Context context, Intent intent){
+
+        String[] ReminderText={"Keep up the good work!!","Let's do this.","Remember that goal? Let's go get it!", "You're on your way to your goal!"};
+        int randnum=r.nextInt(ReminderText.length);
+
         NotificationCompat.Builder builder= new NotificationCompat.Builder(context,"notify")
                 .setSmallIcon(R.drawable.logo1)
                 .setContentTitle("Reminder")
-                .setContentText("It's not about the results but the progress!\r\nKeep up the good work!!")
+                .setContentText(ReminderText[randnum])
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(context);

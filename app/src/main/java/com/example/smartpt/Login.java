@@ -1,10 +1,17 @@
 package com.example.smartpt;
 
+import static com.example.smartpt.TrainingTime.tTime;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -22,6 +29,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.Calendar;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth uAuth;
@@ -96,6 +105,9 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+
+
+
     }
 
     public void getSessionLevel(){
@@ -119,5 +131,21 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            CharSequence name="ReminderChannel";
+            String description = "Channel for Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel=new NotificationChannel("notify", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
     }
