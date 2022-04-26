@@ -60,7 +60,6 @@ public class TrainingDuration extends AppCompatActivity {
         time=findViewById(R.id.time);
         tDuration=30+"";
 
-        createNotificationChannel();
 
         time.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,36 +89,6 @@ public class TrainingDuration extends AppCompatActivity {
 
                 startActivity(new Intent(TrainingDuration.this, LoadPa.class));
 
-                int duration = Toast.LENGTH_SHORT;
-                Toast.makeText(TrainingDuration.this,"Reminder Set",duration).show();
-
-
-                Intent intent =new Intent(TrainingDuration.this,Reminder.class);
-                PendingIntent pendingIntent= PendingIntent.getBroadcast(TrainingDuration.this, 0, intent, 0);
-                AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
-
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(System.currentTimeMillis());
-
-               String Rtime=tTime;
-
-
-                if (Rtime=="mor"){
-                calendar.set(Calendar.HOUR_OF_DAY, 7);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 1);}
-
-                if (Rtime=="noon"){
-                    calendar.set(Calendar.HOUR_OF_DAY, 14);
-                    calendar.set(Calendar.MINUTE, 0);
-                    calendar.set(Calendar.SECOND, 1);}
-
-                if (Rtime=="ev"){
-                    calendar.set(Calendar.HOUR_OF_DAY, 22);
-                    calendar.set(Calendar.MINUTE, 0);
-                    calendar.set(Calendar.SECOND, 1);}
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
 
             }
 
@@ -143,20 +112,6 @@ public class TrainingDuration extends AppCompatActivity {
 
     }
 
-    private void createNotificationChannel(){
-
-        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
-            CharSequence name="ReminderChannel";
-            String description = "Channel for Reminder";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel channel=new NotificationChannel("notify", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager=getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
 
 
 }

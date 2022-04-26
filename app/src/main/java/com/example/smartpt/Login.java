@@ -134,18 +134,4 @@ public class Login extends AppCompatActivity {
     }
 
 
-    private void createNotificationChannel(){
-
-        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
-            CharSequence name="ReminderChannel";
-            String description = "Channel for Reminder";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel channel=new NotificationChannel("notify", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager=getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
     }

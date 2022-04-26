@@ -72,7 +72,7 @@ public class PlanView extends AppCompatActivity {
     // data base
     private FirebaseFirestore db;
     private FirebaseFirestore db2;
-//    private String userIp;
+    //    private String userIp;
     private ProgressDialog pd;
     private FirebaseAuth uAuth;
 
@@ -91,7 +91,7 @@ public class PlanView extends AppCompatActivity {
     private String finished;
 
 
-   private  int Curweek;
+    private  int Curweek;
 
     private TextView TextviewEx1;
     private TextView TextviewEx2;
@@ -237,10 +237,6 @@ public class PlanView extends AppCompatActivity {
     String todaytDateAr[] = new String[4];
     private String id;
 
-    //Reminder
-    private String trainingTime="";
-
-
 
 
 
@@ -248,7 +244,7 @@ public class PlanView extends AppCompatActivity {
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
-//    private int c;
+    //    private int c;
     private  Intent inProg;
 
 
@@ -258,6 +254,9 @@ public class PlanView extends AppCompatActivity {
 
 
     private ArrayList<String> days = TrainingDaysNum.gettDays();
+
+    //Reminder
+    private String trainingTime="";
 
 
     @Override
@@ -320,19 +319,19 @@ public class PlanView extends AppCompatActivity {
         m10 = findViewById(R.id.m10);
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
-         butAlrt1 =(Button) findViewById(R.id.alrt1);
-         butstart1 =(Button) findViewById(R.id.start100);
-         butAlrt2 =(Button) findViewById(R.id.alrt2);
-         butAlrt3 =(Button) findViewById(R.id.alrt3);
-         butAlrt4 =(Button) findViewById(R.id.alrt4);
-         butAlrt5 =(Button) findViewById(R.id.alrt5);
-         butAlrt6 =(Button) findViewById(R.id.alrt6);
-         butAlrt7 =(Button) findViewById(R.id.alrt7);
-         butAlrt8 =(Button) findViewById(R.id.alrt8);
-         butAlrt9 =(Button) findViewById(R.id.alrt9);
-         butAlrt10 =(Button) findViewById(R.id.alrt10);
-         butAlrt11 =(Button) findViewById(R.id.alrt11);
-         butAlrt12 =(Button) findViewById(R.id.alrt12);
+        butAlrt1 =(Button) findViewById(R.id.alrt1);
+        butstart1 =(Button) findViewById(R.id.start100);
+        butAlrt2 =(Button) findViewById(R.id.alrt2);
+        butAlrt3 =(Button) findViewById(R.id.alrt3);
+        butAlrt4 =(Button) findViewById(R.id.alrt4);
+        butAlrt5 =(Button) findViewById(R.id.alrt5);
+        butAlrt6 =(Button) findViewById(R.id.alrt6);
+        butAlrt7 =(Button) findViewById(R.id.alrt7);
+        butAlrt8 =(Button) findViewById(R.id.alrt8);
+        butAlrt9 =(Button) findViewById(R.id.alrt9);
+        butAlrt10 =(Button) findViewById(R.id.alrt10);
+        butAlrt11 =(Button) findViewById(R.id.alrt11);
+        butAlrt12 =(Button) findViewById(R.id.alrt12);
 
         exRow1 =findViewById(R.id.exRow1);
         exRow2 =findViewById(R.id.exRow2);
@@ -382,12 +381,11 @@ public class PlanView extends AppCompatActivity {
                     SessionNo=value.getString("TrainingdaysNum");
                     namedays = test;
                     currentDay();
+
                     //Reminder
                     trainingTime = value.getString("TrainingTime");
                     Log.d("Training Time End:" , trainingTime);
                     Reminder();
-
-
 
                 } else {
                     Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
@@ -395,16 +393,6 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
 //        db.collection("userProfile").document(userIp).get()
 //                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //                    @Override
@@ -456,7 +444,6 @@ public class PlanView extends AppCompatActivity {
 
             }
         });
-
 
 
         ImageView restimg=(ImageView) findViewById(R.id.restimg);
@@ -1590,9 +1577,6 @@ public class PlanView extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     private void callweek() {
@@ -1993,7 +1977,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day11[7]);
             TextviewEx9.setText(day11[8]);
             TextviewEx10.setText(day11[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2133,7 +2117,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day22[7]);
             TextviewEx9.setText(day22[8]);
             TextviewEx10.setText(day22[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2275,7 +2259,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day33[7]);
             TextviewEx9.setText(day33[8]);
             TextviewEx10.setText(day33[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2416,7 +2400,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day44[7]);
             TextviewEx9.setText(day44[8]);
             TextviewEx10.setText(day44[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2558,7 +2542,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day55[7]);
             TextviewEx9.setText(day55[8]);
             TextviewEx10.setText(day55[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2844,7 +2828,7 @@ public class PlanView extends AppCompatActivity {
 
                 FBindexD= value.getDouble("exerciseIndex");
                 if(FBindexD !=null)
-                FBindex=(int)Math.round(FBindexD);
+                    FBindex=(int)Math.round(FBindexD);
                 int zero=FBindex;
 
                 FBindex=FBindex+1;
@@ -2880,7 +2864,7 @@ public class PlanView extends AppCompatActivity {
 
                 }
 
-              else   if(FBindex==1){
+                else   if(FBindex==1){
                     exRow1.setBackgroundColor(Color.parseColor("#ECF9FD"));
                     TextviewEx1.setTextSize(21);
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3225,6 +3209,8 @@ public class PlanView extends AppCompatActivity {
 
 
 
+
+
     public void Reminder(){
         //Reminder
         Log.d("Training Time End2" , trainingTime);
@@ -3251,7 +3237,7 @@ public class PlanView extends AppCompatActivity {
         }
         if (trainingTime.equals("Evening")) {
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 22);
+            calendar.set(Calendar.HOUR_OF_DAY,22);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
             Intent intent1 = new Intent(PlanView.this, Reminder.class);
@@ -3277,6 +3263,9 @@ public class PlanView extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+
+
 
 
 }
