@@ -5,7 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import java.text.SimpleDateFormat;
+
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +20,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Formatter;
@@ -66,7 +72,7 @@ public class PlanView extends AppCompatActivity {
     // data base
     private FirebaseFirestore db;
     private FirebaseFirestore db2;
-//    private String userIp;
+    //    private String userIp;
     private ProgressDialog pd;
     private FirebaseAuth uAuth;
 
@@ -85,7 +91,7 @@ public class PlanView extends AppCompatActivity {
     private String finished;
 
 
-   private  int Curweek;
+    private  int Curweek;
 
     private TextView TextviewEx1;
     private TextView TextviewEx2;
@@ -238,7 +244,7 @@ public class PlanView extends AppCompatActivity {
     Date date = new Date();
     String dayOfTheWeek = sdf.format(date);
     private String currDay;
-//    private int c;
+    //    private int c;
     private  Intent inProg;
 
 
@@ -248,6 +254,9 @@ public class PlanView extends AppCompatActivity {
 
 
     private ArrayList<String> days = TrainingDaysNum.gettDays();
+
+    //Reminder
+    private String trainingTime="";
 
 
     @Override
@@ -310,19 +319,19 @@ public class PlanView extends AppCompatActivity {
         m10 = findViewById(R.id.m10);
         m11 = findViewById(R.id.m11);
         m12 = findViewById(R.id.m12);
-         butAlrt1 =(Button) findViewById(R.id.alrt1);
-         butstart1 =(Button) findViewById(R.id.start100);
-         butAlrt2 =(Button) findViewById(R.id.alrt2);
-         butAlrt3 =(Button) findViewById(R.id.alrt3);
-         butAlrt4 =(Button) findViewById(R.id.alrt4);
-         butAlrt5 =(Button) findViewById(R.id.alrt5);
-         butAlrt6 =(Button) findViewById(R.id.alrt6);
-         butAlrt7 =(Button) findViewById(R.id.alrt7);
-         butAlrt8 =(Button) findViewById(R.id.alrt8);
-         butAlrt9 =(Button) findViewById(R.id.alrt9);
-         butAlrt10 =(Button) findViewById(R.id.alrt10);
-         butAlrt11 =(Button) findViewById(R.id.alrt11);
-         butAlrt12 =(Button) findViewById(R.id.alrt12);
+        butAlrt1 =(Button) findViewById(R.id.alrt1);
+        butstart1 =(Button) findViewById(R.id.start100);
+        butAlrt2 =(Button) findViewById(R.id.alrt2);
+        butAlrt3 =(Button) findViewById(R.id.alrt3);
+        butAlrt4 =(Button) findViewById(R.id.alrt4);
+        butAlrt5 =(Button) findViewById(R.id.alrt5);
+        butAlrt6 =(Button) findViewById(R.id.alrt6);
+        butAlrt7 =(Button) findViewById(R.id.alrt7);
+        butAlrt8 =(Button) findViewById(R.id.alrt8);
+        butAlrt9 =(Button) findViewById(R.id.alrt9);
+        butAlrt10 =(Button) findViewById(R.id.alrt10);
+        butAlrt11 =(Button) findViewById(R.id.alrt11);
+        butAlrt12 =(Button) findViewById(R.id.alrt12);
 
         exRow1 =findViewById(R.id.exRow1);
         exRow2 =findViewById(R.id.exRow2);
@@ -372,6 +381,11 @@ public class PlanView extends AppCompatActivity {
                     SessionNo=value.getString("TrainingdaysNum");
                     namedays = test;
                     currentDay();
+
+                    //Reminder
+                    trainingTime = value.getString("TrainingTime");
+                    Log.d("Training Time End:" , trainingTime);
+                    Reminder();
 
                 } else {
                     Toast.makeText(PlanView.this, "Document not exist", Toast.LENGTH_SHORT).show();
@@ -1963,7 +1977,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day11[7]);
             TextviewEx9.setText(day11[8]);
             TextviewEx10.setText(day11[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2103,7 +2117,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day22[7]);
             TextviewEx9.setText(day22[8]);
             TextviewEx10.setText(day22[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2245,7 +2259,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day33[7]);
             TextviewEx9.setText(day33[8]);
             TextviewEx10.setText(day33[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2386,7 +2400,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day44[7]);
             TextviewEx9.setText(day44[8]);
             TextviewEx10.setText(day44[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2528,7 +2542,7 @@ public class PlanView extends AppCompatActivity {
             TextviewEx8.setText(day55[7]);
             TextviewEx9.setText(day55[8]);
             TextviewEx10.setText(day55[9]);
-        
+
 //             TextviewEx11.setVisibility(View.GONE);
 //             TextviewEx12.setVisibility(View.GONE);
 
@@ -2814,7 +2828,7 @@ public class PlanView extends AppCompatActivity {
 
                 FBindexD= value.getDouble("exerciseIndex");
                 if(FBindexD !=null)
-                FBindex=(int)Math.round(FBindexD);
+                    FBindex=(int)Math.round(FBindexD);
                 int zero=FBindex;
 
                 FBindex=FBindex+1;
@@ -2850,7 +2864,7 @@ public class PlanView extends AppCompatActivity {
 
                 }
 
-              else   if(FBindex==1){
+                else   if(FBindex==1){
                     exRow1.setBackgroundColor(Color.parseColor("#ECF9FD"));
                     TextviewEx1.setTextSize(21);
                     exRow2.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -3192,4 +3206,66 @@ public class PlanView extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
+    public void Reminder(){
+        //Reminder
+        Log.d("Training Time End2" , trainingTime);
+
+        if (trainingTime.equals("Morning")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 7);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+        if (trainingTime.equals("Afternoon")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 14);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+        if (trainingTime.equals("Evening")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY,22);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Intent intent1 = new Intent(PlanView.this, Reminder.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(PlanView.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) PlanView.this.getSystemService(PlanView.this.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+    }
+
+
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            CharSequence name="ReminderChannel";
+            String description = "Channel for Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel=new NotificationChannel("notify", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
+
+
+
 }
