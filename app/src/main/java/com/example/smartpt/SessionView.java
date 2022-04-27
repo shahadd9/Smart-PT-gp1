@@ -683,7 +683,7 @@ public class SessionView extends AppCompatActivity {
         Boolean check=DB.insertuserdata(eName1,today,setS,"10","Enter");
 
         if(check==true){
-            Toast.makeText(SessionView.this,"new entry",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SessionView.this,"new entry",Toast.LENGTH_SHORT).show();
         }
         else {
             Toast.makeText(SessionView.this,"NO",Toast.LENGTH_SHORT).show();
