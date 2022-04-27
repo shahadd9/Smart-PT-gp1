@@ -293,12 +293,10 @@ public class LoadPaP2 extends AppCompatActivity {
         // creating python object
         PyObject pyObj= py.getModule("myscript"); // call the python file
         PyObject equi = pyObj.callAttr("exercises",bench,barbell,stabilityBall,dumbbell,dipMachine,cableMachine); // call the exercise method in python
-//        exercises = equi.toString();//retrieve  output
 
-//        //1
+        //1
         if(SessionNo.equals("2")){
-//            int i;
-//            for (i = 0 ;i<2;i++){
+
 
             PyObject fullBody= pyObj.callAttr("fullbody",level);
             PyObject fullBodyN1= pyObj.callAttr("getfullbodyName");
@@ -476,8 +474,6 @@ public class LoadPaP2 extends AppCompatActivity {
 
 
     public void equipment(){
-
-
 
         if (equ.indexOf("Bench")==-1){
             bench=false;
