@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        db.execSQL("create Table trainee(id integer primary key autoincrement, name TEXT,date TEXT, sets TEXT, reps TEXT, weight TEXT)");
+        db.execSQL("create Table trainee(id integer primary key autoincrement, name TEXT,date TEXT, sets TEXT, reps TEXT, weight TEXT, email TEXT)");
     }
 
     @Override
@@ -35,17 +35,19 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists trainee");
     }
 
-    public boolean insertuserdata(String name,String date, String sets, String reps, String weight){
+    public boolean insertuserdata(String name,String date, String sets, String reps, String weight, String email){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues= new ContentValues();
+
 
         contentValues.put("name",name);
         contentValues.put("date",date);
         contentValues.put("sets",sets);
         contentValues.put("reps",reps);
         contentValues.put("weight",weight);
+        contentValues.put("email",email);
 
         long result= db.insert("trainee",null,contentValues);
 
@@ -86,21 +88,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    public Cursor getdata ( String name){
+    public Cursor getdata ( String name, String email){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor=db.rawQuery("Select * from trainee Where name =?",new String[]{name},null);
+        Cursor cursor=db.rawQuery("Select * from trainee Where name =? AND email=?",new String[]{name,email},null);
 
 
         return cursor;
     }
 
-    public Cursor getex ( ){
+    public Cursor getex ( String email){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor=db.rawQuery("Select DISTINCT name from trainee",null);
+        Cursor cursor=db.rawQuery("Select DISTINCT name from trainee WHERE email=?",new String[]{email},null);
 
         return cursor;
     }

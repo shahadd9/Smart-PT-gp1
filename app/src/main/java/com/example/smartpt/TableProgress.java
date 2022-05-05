@@ -18,6 +18,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class TableProgress extends AppCompatActivity implements UpdateDialog.updateDialogListener {
@@ -33,6 +37,9 @@ public class TableProgress extends AppCompatActivity implements UpdateDialog.upd
     private int id,week;
     private boolean flag;
     private Button back;
+    private FirebaseFirestore db;
+    private FirebaseAuth uAuth;
+    private String ide;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,9 @@ public class TableProgress extends AppCompatActivity implements UpdateDialog.upd
         weightList=new String[100];
         flag=false;
         back=findViewById(R.id.backbtn);
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        ide = curUser.getEmail();
         getex();
         Spinner spin = (Spinner) findViewById(R.id.spinnerD);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dayAr);
@@ -85,7 +95,7 @@ public class TableProgress extends AppCompatActivity implements UpdateDialog.upd
 
     private void getex() {
 
-        Cursor names =DB.getex();
+        Cursor names =DB.getex(ide);
         if(names==null){
             Toast.makeText(TableProgress.this,"No Progress Yet",Toast.LENGTH_SHORT).show();
 
@@ -118,7 +128,7 @@ public class TableProgress extends AppCompatActivity implements UpdateDialog.upd
             listView=findViewById(R.id.list);
             rows= new ArrayList<>();
 
-            Cursor table =DB.getdata(name);
+            Cursor table =DB.getdata(name, ide);
 
             if(table.getCount()==0){
                 Toast.makeText(TableProgress.this,"No Progress For This Exercise",Toast.LENGTH_SHORT).show();
