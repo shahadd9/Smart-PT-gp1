@@ -680,7 +680,7 @@ public class SessionView extends AppCompatActivity {
 //        exerciseName.setText(instructions.toString());
 //        instTxt.setText(instructions.toString());
 
-        Boolean check=DB.insertuserdata(eName1,today,setS,"10","Enter");
+        Boolean check=DB.insertuserdata(eName1,today,setS,"10","Enter", id);
 
         if(check==true){
 //            Toast.makeText(SessionView.this,"new entry",Toast.LENGTH_SHORT).show();
