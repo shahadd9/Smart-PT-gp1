@@ -59,6 +59,10 @@ public class TableProgress extends AppCompatActivity implements UpdateDialog.upd
         uAuth = FirebaseAuth.getInstance();
         FirebaseUser curUser = uAuth.getCurrentUser();
         ide = curUser.getEmail();
+        if(ide==null){
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(TableProgress.this,Login.class));
+        }
         getex();
         Spinner spin = (Spinner) findViewById(R.id.spinnerD);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dayAr);

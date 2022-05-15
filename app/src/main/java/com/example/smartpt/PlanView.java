@@ -1501,10 +1501,7 @@ public class PlanView extends AppCompatActivity {
         butstart1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                pd= new ProgressDialog(PlanView.this);
-                Intent i = new Intent(PlanView.this, StartSession.class);
+                Intent i = new Intent(PlanView.this,StartSession.class);
                 i.putExtra("name", TextviewEx1.getText());
                 i.putExtra("force", f1.getText());
                 i.putExtra("muscle", m1.getText());
@@ -1512,13 +1509,31 @@ public class PlanView extends AppCompatActivity {
                 i.putExtra("currDay",currDay);
                 i.putExtra("SessionNo",SessionNo);
                 i.putExtra("week",week);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(PlanView.this, 0, i, 0);
+
+//                pd= new ProgressDialog(PlanView.this);
+//                Intent i = new Intent(PlanView.this, StartSession.class);
+//                i.putExtra("name", TextviewEx1.getText());
+//                i.putExtra("force", f1.getText());
+//                i.putExtra("muscle", m1.getText());
+//                i.putExtra("level",level);
+//                i.putExtra("currDay",currDay);
+//                i.putExtra("SessionNo",SessionNo);
+//                i.putExtra("week",week);
 
                 if(FBindex<99){
-//                    TextviewEx1.setText(FBindex+"_"+currDay);
-//                    pd.show();
-                    startActivity(i);
-                    finish();
-//                    pd.dismiss();
+                    try {
+                        pendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        e.printStackTrace();
+                    }
+
+////                    TextviewEx1.setText(FBindex+"_"+currDay);
+////                    pd.show();
+//                    startActivity(i);
+//                    finish();
+////                    pd.dismiss();
                 }
                 else{
                     builder.setTitle("").setMessage("You have finished this session").setCancelable(true)
@@ -1642,7 +1657,7 @@ public class PlanView extends AppCompatActivity {
 
         } else if (dayOfTheWeek.contains("Sunday")) {
             buttonSun.performClick();
-            GeneratenextWeek();
+            GeneratenextWeek(week);
             weekNo.setText("Week"+week);
 
         } else if (dayOfTheWeek.contains("Saturday")) {
@@ -1665,7 +1680,7 @@ public class PlanView extends AppCompatActivity {
         }
     }
 
-    private void GeneratenextWeek() {
+    private void GeneratenextWeek(int week) {
 
         Curweek=0;
 
@@ -1691,7 +1706,9 @@ public class PlanView extends AppCompatActivity {
                 isItOne=update;
             }
         } catch (Exception exception) {
-            Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "week"+week, Toast.LENGTH_SHORT).show();
+            weekNo.setText("Week"+week);
+            return;
         }
         Map<String,Object> weeks = new HashMap<>();
 
@@ -1713,7 +1730,10 @@ public class PlanView extends AppCompatActivity {
                 Curweek= week+weekPassedNum-1;
 
             } catch (Exception exception) {
-                Toast.makeText(this, "Unable to find difference", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "week"+week, Toast.LENGTH_SHORT).show();
+                weekNo.setText("Week"+week);
+
+                return;
             }
             weeks.put("week", ++Curweek);
             weeks.put("isItOne", "1");

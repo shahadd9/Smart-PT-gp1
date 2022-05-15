@@ -38,12 +38,12 @@ public class StartSession extends AppCompatActivity {
     private String id;
     private int  FBindex ;
     private int week;
-    private Double FBindexD,weekD;
+    private Double FBindexD;
     private int rest,count;
-//    private String userIp;
     private String restText , SessionNo, level, currDay,nextEx,weekSt;
     int countDown;
-    private TextView counter,counterMessage,txt1,txt2,timertxt;
+    private boolean clicked;
+    private TextView counter,counterMessage,txt1,txt2,skip;
     private MediaPlayer startAudio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,26 +53,14 @@ public class StartSession extends AppCompatActivity {
         String audioUrl = "https://od.lk/s/NzVfMzI5OTExNzNf/start.mp3";
         startAudio = new MediaPlayer();
 
-//        startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//
-//
-//        try {
-//            startAudio.setDataSource(audioUrl);
-//            // below line is use to prepare
-//            // and start our media player.
-//            startAudio.prepare();
-//            startAudio.start();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        weekD=-1;
+        clicked=false;
+
         week= getIntent().getIntExtra("week",0);
         counter = findViewById(R.id.timer);
         counterMessage=findViewById(R.id.counterMessage);
         txt1=findViewById(R.id.txt1);
         txt2=findViewById(R.id.txt2);
-        timertxt=(TextView)findViewById(R.id.timertxt);
+        skip= findViewById(R.id.skipCount);
 
         time = getIntent().getDoubleExtra("duration",-1);
         rest = getIntent().getIntExtra("rest",0);
@@ -114,6 +102,7 @@ public class StartSession extends AppCompatActivity {
         if(rest ==0){
             txt1.setVisibility(View.INVISIBLE);
             txt2.setVisibility(View.INVISIBLE);
+            skip.setVisibility(View.INVISIBLE);
             countDown=5000;
             restText="Starts in:";
             startAudio.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -137,12 +126,15 @@ public class StartSession extends AppCompatActivity {
             rest=5;
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
+            skip.setVisibility(View.INVISIBLE);
+
             txt2.setText(nextEx);
             time=time+5;
         }
         else {
             txt1.setVisibility(View.VISIBLE);
             txt2.setVisibility(View.VISIBLE);
+            skip.setVisibility(View.VISIBLE);
             txt2.setText(nextEx);
             countDown=rest*1000;
             time=time+rest;
@@ -151,6 +143,15 @@ public class StartSession extends AppCompatActivity {
         }
 
         counterMessage.setText(restText); //////////////////////////////////////////////
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked=true;
+                startSession();
+
+            }
+        });
 
         new CountDownTimer(countDown + 100, 1000) {
             @Override
@@ -167,7 +168,9 @@ public class StartSession extends AppCompatActivity {
             @Override
             public void onFinish() {
                 counter.setText("00 : 00");
-                startSession();
+                if(!clicked) {
+                    startSession();
+                }
 /*
                 intent.start
                 Toast.makeText(getApplicationContext(),"")
@@ -193,20 +196,6 @@ public class StartSession extends AppCompatActivity {
 
     }
 
-//    private void whatWeek() {
-//
-//       DocumentReference documentReference = db.collection("Progress").document(userIp).collection("index").document("weeks");
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//
-//
-//                weekD= value.getDouble("week");
-//                week=(int)weekD;
-//
-//            }
-//        });
-//    }
-//
+
 
 }
