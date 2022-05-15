@@ -96,6 +96,8 @@ public class SessionView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_view);
+        DB=new DBHelper(this);
+
         timer=new Timer();
         prog=0;
         end=0;
@@ -127,7 +129,6 @@ public class SessionView extends AppCompatActivity {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         todaytDate = dateFormat.format(calendar.getTime());
 
-        DB=new DBHelper(this);
 
         SharedPreferences sharedPreferences = getSharedPreferences(shared,MODE_PRIVATE);
         done= sharedPreferences.getInt("sessionDone",0);
@@ -675,10 +676,10 @@ public class SessionView extends AppCompatActivity {
 
        String eName1= exerciseName.getText().toString();
        String setS=i+"";
-//        PyObject pyObj= py.getModule("progressScript"); // call the python file
-//        PyObject instructions = pyObj.callAttr("saveProgress",id,eName,today,sets); // call the  method in python
-//        exerciseName.setText(instructions.toString());
-//        instTxt.setText(instructions.toString());
+
+        uAuth = FirebaseAuth.getInstance();
+        FirebaseUser curUser = uAuth.getCurrentUser();
+        id = curUser.getEmail();
 
         Boolean check=DB.insertuserdata(eName1,today,setS,"10","Enter", id);
 
