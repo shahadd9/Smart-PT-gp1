@@ -21,7 +21,7 @@ thus helping them to improve their fitness and gain strength.
 
 # Application Functions
 the user can do the following functions in this application:
-- Rejister
+- Register
 - Log in
 - Log out
 - Reset Password
