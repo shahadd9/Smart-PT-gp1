@@ -6,12 +6,12 @@
 # Smart-PT
 **Smart-PT** stands for "Smart Personal Trainer" is an Android mobile application written using **Java** and **Python** it is developed as a purpose for the graduation project.
 
-This application will simulate the role of a personal trainer by creating a workout plan for users, tracking the progress, and observing the user's workout
+This application will simulate the role of a personal trainer by creating a workout plan for users, tracking the progress, and guiding the user's workout
 
 # Application Description
 This Application will simulate the role of a personal trainer by creating a workout plan depending on the user's information
 tracking the progress of the user over time, 
-and observing the user's workout by providing audio instructions as well as feedback in real-time. Therefore, 
+and guiding the user's workout by providing audio instructions as well as feedback in real-time. Therefore, 
 the application can provide smart workout recommendations that are tailored to users’ preferences and needs. 
 That can be done through a **recommendation system model** by using the information provided by the user such as
 (height, weight, age, fitness level, available equipment, training days). 
