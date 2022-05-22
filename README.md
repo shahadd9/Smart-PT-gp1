@@ -21,6 +21,10 @@ thus helping them to improve their fitness and gain strength.
 
 # Application Functions
 the user can do the following functions in this application:
+- Rejister
+- Log in
+- Log out
+- Reset Password
 - Create a Profile 
 - Update a Profile
 - Generate a Workout Plan
